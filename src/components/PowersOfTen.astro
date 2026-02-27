@@ -1,0 +1,749 @@
+---
+const socialLinks = [
+  {
+    name: 'Twitter',
+    url: 'https://twitter.com/seth',
+    icon: `<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+    </svg>`
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://linkedin.com/in/sethg',
+    icon: `<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+    </svg>`
+  },
+  {
+    name: 'Instagram',
+    url: 'https://instagram.com/sethgoldstein',
+    icon: `<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </svg>`
+  },
+  {
+    name: 'Email',
+    url: 'mailto:sethgoldstein@gmail.com',
+    icon: `<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+    </svg>`
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/brightseth',
+    icon: `<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+    </svg>`
+  }
+];
+
+const navigationLinks = [
+  { id: 'writing', text: 'Writing', content: "Essays and posts from seth.ghost.io on technology, art, and autonomous creation." },
+  { id: 'press', text: 'Press', content: "Seth Goldstein has been featured in major publications including The New York Times, Wall Street Journal, Billboard, Coindesk, and more, discussing his work in digital art, music technology, entrepreneurship, and community building." },
+  { id: 'media', text: 'Media', content: "Explore video content from Bright Moments events around the world, including live minting experiences, artist interviews, and community gatherings across Venice Beach, New York, Berlin, London, Paris, Tokyo, Buenos Aires, and Venice, Italy." },
+  { id: 'photos', text: 'Photos', content: "Browse 1,292 favorite moments from 2024-2025." },
+  { id: 'talk', text: 'Talk', content: "Have a conversation with an AI version of Seth." },
+  { id: 'whitepaper', text: 'Whitepaper', content: "Technology, Art, and Autonomous Creation: A biographical study of three decades at the intersection of innovation and expression." }
+];
+
+const timelinePeriods = [
+  {
+    year: "1980s",
+    title: "Early Artistic Foundations",
+    content: "My journey began in theater, performing in avant-garde productions at the American Repertory Theater. This early exposure to both performing arts and nascent computer technology created the foundation for my unique perspective on creativity and technology. When I was a kid in the late 70's, my dad worked as a quality assurance consultant for computer companies up and down Boston's Route 128. He tested new machines and software packages, looking for bugs. One night he brought me to his office at Applicon, an early CAD pioneer, and showed me a digital image of a bear. It was the first computer graphic I had ever seen. My real passion growing up, though, was theater. I started as a child actor in avant garde productions at the American Repertory Theater in Cambridge, MA. In 1984, when I was 14, I was cast by Robert Wilson for his restaging of the Cologne section of the 'Civil WarS' and he became a huge influence on me."
+  },
+  {
+    year: "1992",
+    title: "Digital Art Pioneer",
+    content: "After graduating from Columbia, I worked as Robert Wilson's archivist and conceived the Interactive Multimedia Archive Project (IMAP), one of the first attempts to document performing arts using CD-ROM technology. With a $50,000 grant, I created one of the first multimedia documentations of a performing artist's work, incorporating research photos, drawings, furniture design, rehearsal and performance video, and text for Wilson's 'The Life and Times of Joseph Stalin.' In 1993, I brought my multimedia application to the Mediale Convention in Hamburg and the Frankfurt Book Fair, expanding my artistic technology work to Europe. This collaboration with William Forsythe resulted in 'Improvisation Technologies,' a groundbreaking digital documentation of Forsythe's dance methodology. Simultaneously, I was invited by the Center for Art and Media Technology (ZKM) in Karlsruhe to become an Artist in Residence, helping develop their CD-ROM publishing lab."
+  },
+  {
+    year: "1995",
+    title: "Internet Pioneer",
+    content: "Founded SiteSpecific, one of the first interactive marketing agencies. The company quickly grew from my apartment to create innovative campaigns for major brands when internet marketing was still being defined. It was really the glory years of the internet before it became overrun by MBAs and bankers and all sorts of mercenaries and opportunists. It was naïve and wonderful and it really felt like we were doing something original. Within 18 months, SiteSpecific grew to over $3 million in annual revenue. The company became the subject of Harvard Business School's first case study on internet marketing, and I was recognized as one of Red Herring's Top 20 Entrepreneurs of the year. In 1997, SiteSpecific was acquired by CKS Group for approximately $12 million. Following this success, I joined Flatiron Partners in 1999 as their first Entrepreneur-in-Residence and Investment Principal, developing a $75 million portfolio focused on 'pervasive computing' – technologies that would move the internet beyond desktop computers."
+  },
+  {
+    year: "2002",
+    title: "Data Innovation",
+    content: "Co-founded Majestic Research, pioneering the use of alternative data for financial research. We developed methodologies to analyze web traffic and online consumer behavior for hedge fund insights. In 2009-2010 we were selling $200,000 worth of research to over 200 different hedge funds. Serving as both CEO and later Chairman, I grew Majestic into a profitable enterprise that transformed how investment decisions were made. The company was acquired by Investment Technology Group (ITG) in 2010 for approximately $75 million, validating my vision of data-driven financial services. During this period, my interest in consumer data rights emerged. In 2005, I co-founded Root Markets, an online mortgage exchange, and established the non-profit AttentionTrust.org in 2006. This organization advocated for personal information rights, distributing a free browser plugin that gave users more control over their data – a prescient concern that would become mainstream years later."
+  },
+  {
+    year: "2010",
+    title: "Social Music Innovation",
+    content: "Co-founded Turntable.fm, a revolutionary social music platform allowing users to DJ together in virtual rooms. The site exploded to 600,000 users within four months. We didn't build up the hype but then we got accused of it dropping off. It's exactly the same in music when a new artist comes out. It's on us to keep evolving. Within like two or three months, Billy and another engineer finished the prototype. We then plugged in an integration with MediaNet so people could choose music from that library. It was clear early on there was something compelling about this way of listening to music. Turntable.fm secured $7 million in venture funding at a $37 million valuation, with me serving as Chairman. The platform became a cultural phenomenon, combining music, gaming, and social networking in a way that predated many later developments in virtual social spaces. In 2012, I continued my exploration of digital music culture by founding DJZ, a content platform and mobile app catering to the booming electronic dance music (EDM) scene."
+  },
+  {
+    year: "2021",
+    title: "Web3 & Digital Art",
+    content: "Founded Bright Moments, a crypto art gallery organized as a DAO. We pioneered 'live minting' experiences where artists and collectors witness the generation of algorithmic art together in real time. I woke up the next morning and realized that my NFT had been sold while I was asleep, and that there was ETH in my wallet. This was a breakthrough moment for me, as it dawned on me how significant this file format could be as a creative unlock. This moment reminded me of what I felt with the dawn of the Web in the summer of 1995. What we stumbled onto is the special experience of a human being looking at a screen with other humans as a work of generative art is revealed for the first time. It's memorable because you're bringing something that is mathematically random into the real world. Bright Moments quickly evolved from a local gallery to a global art movement, establishing a systematic approach to building the DAO community through CryptoCitizens – unique, generative pixel-art NFTs that served as both art and membership tokens."
+  }
+];
+
+const powerLevels = [
+  { id: 'one', title: '1 Word', content: "@seth" },
+  { id: 'ten', title: '10 Words', content: "Pioneer connecting creativity and technology through meaningful human experiences." },
+  { id: 'hundred', title: '100 Words', content: "Seth Goldstein is a visionary entrepreneur and digital art pioneer who has consistently bridged the worlds of technology and creativity throughout his career. From founding groundbreaking internet companies to launching innovative social platforms and championing the NFT art movement, his work focuses on building meaningful connections between people and technology. Through ventures like Bright Moments, he continues to push the boundaries of digital expression and community engagement. His ability to identify transformative technologies before mainstream adoption has established him as a forward-thinking leader in both the tech and art worlds." },
+  { id: 'thousand', title: '1000 Words', content: "Seth Goldstein: Pioneer, Entrepreneur, Creator\n\nSeth Goldstein has spent three decades identifying transformative technology platforms years before mainstream adoption, from early web advertising to blockchain and NFTs. His career represents a unique convergence of artistic sensibility, entrepreneurial drive, and technological vision.\n\nBeginning in theater and performance art, Seth's formative experiences shaped his understanding of human connection and creative expression. As a teenager in the 1980s, he performed in avant-garde productions and was mentored by visionary theater director Robert Wilson. This early exposure to experimental art forms laid the foundation for his interdisciplinary approach to business and technology.\n\nIn the early 1990s, Seth pioneered the digital documentation of performing arts, creating interactive CD-ROM archives of Robert Wilson's theatrical work and William Forsythe's choreography. These projects represented early explorations of how technology could preserve and transform artistic experiences.\n\nWith the dawn of the commercial internet, Seth founded SiteSpecific in 1995, one of the first interactive advertising agencies. The company quickly grew from his apartment to a multimillion-dollar business creating innovative campaigns for major brands when web marketing was still being defined. After SiteSpecific's acquisition, Seth joined Flatiron Partners as their first Entrepreneur-in-Residence, developing investments in pervasive computing technologies.\n\nIn 2002, Seth co-founded Majestic Research, pioneering the use of alternative data for financial research—a concept that would become industry standard years later. This was followed by the creation of AttentionTrust.org in 2006, advocating for personal data rights well before privacy concerns entered mainstream consciousness.\n\nSeth's innovation in social media came with Turntable.fm in 2011, a revolutionary platform that allowed users to DJ together in virtual rooms. The site exploded to 600,000 users in four months, creating a cultural phenomenon that combined music, gaming, and social networking in ways that anticipated future virtual social spaces.\n\nIn 2021, Seth returned to his artistic roots by founding Bright Moments, a crypto art gallery and DAO that has pioneered 'live minting' experiences for generative art. By creating immersive in-person events where artists and collectors witness the creation of algorithmic art together, Seth has helped bridge the physical and digital art worlds in unprecedented ways.\n\nFrom his early theatrical work to his current focus on NFTs and generative art, Seth Goldstein's career demonstrates a consistent thread: using technology to enhance human creativity and connection. His ventures have repeatedly identified significant shifts in technology and culture years before they became mainstream, establishing him as both a visionary entrepreneur and a meaningful contributor to the evolution of digital expression." },
+  { id: 'tenthousand', title: '10000 Words', content: "Seth Goldstein: A Journey Through Technology, Art, and Entrepreneurship\n\nIn the evolving landscape where technology and creativity intersect, Seth Goldstein stands as a unique figure whose career spans over three decades of pioneering innovation. Not easily categorized as either purely a technologist or an artist, Seth has consistently occupied the fertile space between these domains, recognizing transformative platforms years before mainstream adoption and building ventures that enhance human connection and creative expression.\n\n**Early Foundations: Theater and Technology (1980s)**\n\nSeth's journey begins not with computers but on stage. As a child in Boston during the late 1970s and early 1980s, he was immersed in two seemingly disparate worlds that would later converge in his professional life: experimental theater and emerging computing technology.\n\n\"When I was a kid in the late 70's, my dad worked as a quality assurance consultant for computer companies up and down Boston's Route 128,\" Seth recalls. \"He tested new machines and software packages, looking for bugs. One night he brought me to his office at Applicon, an early CAD pioneer, and showed me a digital image of a bear. It was the first computer graphic I had ever seen.\"\n\nWhile this early exposure to digital imaging planted a seed, Seth's primary passion was theatrical performance. He began as a child actor in avant-garde productions at the American Repertory Theater in Cambridge, Massachusetts, receiving an education in experimental art that would profoundly influence his later work.\n\nA pivotal moment came in 1984 when, at just 14 years old, Seth was cast by legendary theater director Robert Wilson for the restaging of the Cologne section of \"Civil WarS.\" Wilson's visionary approach to integrating visual art, movement, and technology in theatrical production became a fundamental influence on Seth's developing aesthetic and conceptual framework.\n\n\"My real passion growing up was theater,\" Seth explains. \"I started as a child actor in avant-garde productions at the American Repertory Theater in Cambridge, MA. In 1984, when I was 14, I was cast by Robert Wilson for his restaging of the Cologne section of the 'Civil WarS' and he became a huge influence on me.\"\n\nSeth continued his artistic education at Interlochen Arts Academy in Michigan for his senior year of high school. There, surrounded by musicians, poets, dancers, and fellow actors, he further developed his understanding of creative collaboration and interdisciplinary approaches. He went on to study Dramatic Literature at Columbia University, where he continued theatrical pursuits while developing a deeper theoretical understanding of narrative and performance.\n\n**Digital Documentation of Performance (1992-1995)**\n\nAfter graduating from Columbia in 1992, Seth began working as an archivist at Robert Wilson's Byrd Hoffman Foundation. This position gave him intimate access to Wilson's groundbreaking body of work, from the 7-day play \"KA Mountain\" in Iran to the revolutionary opera \"Einstein on the Beach\" with Philip Glass.\n\nIt was in this context that Seth's technological vision began to emerge. Recognizing the limitations of traditional documentation methods for capturing the full dimensionality of Wilson's work, Seth conceived the Interactive Multimedia Archive Project (IMAP). This pioneering project represented one of the first attempts to use CD-ROM technology to create a comprehensive digital archive of a performing artist's work.\n\nWith a $50,000 grant, Seth created one of the first multimedia documentations of a performing artist's work, incorporating research photos, drawings, furniture design, rehearsal and performance video, and text for Wilson's \"The Life and Times of Joseph Stalin.\" This project was revolutionary for its time, using interactive technology to present a non-linear exploration of artistic work—a precursor to many digital documentation methods that would become standard decades later.\n\nIn 1993, Seth brought his multimedia application to the Mediale Convention in Hamburg and the Frankfurt Book Fair, expanding his exploration of artistic technology to Europe. This exposure led to a collaboration with William Forsythe, director of the Frankfurt Ballet, who invited Seth to create a similar multimedia presentation for his choreographic work. The resulting project, \"Improvisation Technologies,\" became a groundbreaking digital documentation of Forsythe's dance methodology, used by dance companies and educational institutions worldwide.\n\nSimultaneously, Seth was invited by the Center for Art and Media Technology (ZKM) in Karlsruhe to become an Artist in Residence, helping develop their CD-ROM publishing lab. Working alongside Jeffrey Shaw at ZKM's Multimedia Lab placed Seth in the company of early digital art pioneers and further cemented his conviction that technology could transform artistic expression and documentation.\n\n**The Internet Pioneer (1995-2000)**\n\nWhen the World Wide Web emerged as a commercial medium in the mid-1990s, Seth recognized its transformative potential and returned to New York to engage with this new technology. He joined the World Wide Web Artists Consortium and produced websites for Agency.com, Michael Wolff's Your Personal Network, and Conde Nast's Epicurious.\n\n\"I had a couple of early Web gigs writing HTML code for Agency.com and Epicurious.com before starting my own Web advertising firm, SiteSpecific,\" Seth explains. \"We had a lot of fun creating new marketing campaigns (before it all became so toxic) and sold the firm to a larger agency a few years later.\"\n\nIn August 1995, at just 25 years old, Seth founded SiteSpecific, one of the first interactive marketing agencies. The company quickly evolved from Seth's apartment in New York City to a leading force in the nascent internet advertising industry. SiteSpecific created innovative campaigns for major brands like Duracell, Microsoft, and AT&T, pioneering many techniques that would become standard in digital marketing.\n\n\"It was really the glory years of the internet before it became overrun by MBAs and bankers and all sorts of mercenaries and opportunists,\" Seth recalls. \"It was naïve and wonderful and it really felt like we were doing something original.\"\n\nWithin 18 months, SiteSpecific grew to over $3 million in annual revenue. The company became the subject of Harvard Business School's first case study on internet marketing, and Seth was recognized as one of Red Herring's Top 20 Entrepreneurs of the year. In 1997, SiteSpecific was acquired by CKS Group for approximately $12 million.\n\nFollowing this success, Seth joined Flatiron Partners in 1999 as their first Entrepreneur-in-Residence and Investment Principal. Working alongside renowned VC Fred Wilson, Seth developed a $75 million portfolio focused on \"pervasive computing\"—technologies that would move the internet beyond desktop computers. His investments included wireless content provider Vindigo, Kozmo.com, and semiconductor company PortalPlayer, giving him front-row access to the dot-com boom's rapid evolution.\n\nSeth organized the Flatiron Partners Pervasive Computing Portfolio conference in May 2000, bringing together management from over ten technology companies, investment professionals, industry analysts, and media representatives. The event facilitated cross-portfolio business development and established Flatiron's presence in the emerging wireless space. This initiative expanded when Esther Dyson invited Seth to organize a Pervasive Pavilion for her Spring PC Forum conference in Arizona.\n\n**Data and Research Innovation (2002-2010)**\n\nAs the internet matured, Seth recognized the growing importance of data analytics. In 2002, he founded Majestic Research, a groundbreaking financial research firm that harnessed internet data to provide market insights. Years before \"alternative data\" became a Wall Street buzzword, Majestic Research analyzed web traffic and commerce data to provide hedge funds with proprietary guidance.\n\n\"In 2009-2010 we were selling $200,000 worth of research to over 200 different hedge funds,\" Seth notes.\n\nServing as both CEO and later Chairman, Seth grew Majestic into a profitable enterprise that transformed how investment decisions were made. The company's approach to using non-traditional data sources to predict company performance represented a significant innovation in financial research. The company was acquired by Investment Technology Group (ITG) in 2010 for approximately $75 million, validating Seth's vision of data-driven financial services.\n\nDuring this period, Seth's interest in consumer data rights emerged as a parallel concern. In 2005, he co-founded Root Markets, an online mortgage exchange, and established the non-profit AttentionTrust.org in 2006. This organization advocated for personal information rights, distributing a free browser plugin that gave users more control over their data—a prescient concern that would become mainstream years later with growing awareness about privacy and data ownership.\n\n**Social Media and Music Innovation (2010-2016)**\n\nAs social networks gained popularity, Seth saw new opportunities at the intersection of technology and culture. In 2010, he co-founded Stickybits with Billy Chasen, envisioning an \"augmented reality\" platform that allowed users to attach digital content to real-world objects via barcodes. While ahead of its time for mainstream adoption, this venture demonstrated Seth's constant push toward emerging technological frontiers.\n\nWhen Stickybits didn't gain the expected traction, Seth demonstrated his adaptability by pivoting the concept into Turntable.fm in 2011. This revolutionary social music platform allowed users to DJ and listen to music together in virtual rooms, creating an entirely new form of social interaction online. The site exploded to 600,000 users within four months.\n\n\"We didn't build up the hype but then we got accused of it dropping off,\" Seth explains. \"It's exactly the same in music when a new artist comes out. It's on us to keep evolving.\"\n\nThe development process itself was remarkably lean and focused: \"Within like two or three months, Billy and another engineer finished the prototype. We then plugged in an integration with MediaNet so people could choose music from that library. It was clear early on there was something compelling about this way of listening to music.\"\n\nTurntable.fm secured $7 million in venture funding at a $37 million valuation, with Seth serving as Chairman. The platform became a cultural phenomenon, combining music, gaming, and social networking in a way that predated many later developments in virtual social spaces.\n\nIn 2012, Seth continued his exploration of digital music culture by founding DJZ, a content platform and mobile app catering to the booming electronic dance music (EDM) scene. DJZ combined news, videos, and interactive features for fans, and released the innovative iPhone app Crossfader that allowed anyone to remix music by tilting their phone.\n\nIn 2014, Seth co-authored \"The Secret of Raising Money,\" a blueprint for entrepreneurs seeking funding. This book shared his accumulated wisdom on aligning with investors based on vision and values, not just valuation.\n\nIn 2016, Seth founded LiveAds, a creative agency and production studio focused on next-generation advertising content. This venture allowed him to apply his extensive experience in digital marketing and social media to help brands create engaging real-time content.\n\n**Web3 and Crypto Art Revolution (2020-Present)**\n\nThe COVID-19 pandemic marked a pivotal moment in Seth's career, reconnecting his technological expertise with his artistic foundations. After moving to Venice Beach with his partner Kristi in 2020, he began experimenting with digital art, capturing photographs of Venice Beach sunsets and transforming them into AI-generated videos using GAN models.\n\nSeth's entry into the NFT space began with minting his own artwork, an experience that revealed the transformative potential of blockchain for creators: \"I woke up the next morning and realized that my NFT had been sold while I was asleep, and that there was ETH in my wallet. This was a breakthrough moment for me, as it dawned on me how significant this file format could be as a creative unlock. This moment reminded me of what I felt with the dawn of the Web in the summer of 1995.\"\n\nIn 2021, Seth founded Bright Moments, a crypto art gallery organized as a Decentralized Autonomous Organization (DAO). Beginning with a small gallery space beneath the Venice sign, Bright Moments pioneered the concept of \"live minting\"—creating immersive in-person experiences where artists and collectors could witness the generation of algorithmic art together in real time.\n\n\"What we stumbled onto is the special experience of a human being looking at a screen with other humans as a work of generative art is revealed for the first time,\" Seth explains. \"It's memorable because you're bringing something that is mathematically random into the real world.\"\n\nBright Moments quickly evolved from a local gallery to a global art movement. Seth established a systematic approach to building the DAO community through CryptoCitizens—unique, generative pixel-art NFTs that served as both art and membership tokens. Starting with 1,000 CryptoVenetians in Venice Beach, the project expanded to include unique collections for New York, Berlin, London, Mexico City, Tokyo, Buenos Aires, Paris, and Venice, Italy.\n\nThe gallery's impact on the generative art movement has been significant, featuring renowned artists like Tyler Hobbs, Emily Xie, and Dmitri Cherniak, while also introducing new talent to the space. By bridging physical locations with digital assets, Bright Moments created a unique hybrid model for experiencing digital art.\n\nThe Bright Moments journey concluded in April 2024 with \"The Finale\" at the Scuola Grande San Giovanni in Venice, Italy—bringing together almost every artist who participated in the DAO's previous projects. This symbolic return to Venice (this time in Italy rather than California) completed a global circuit of generative art exhibitions and community building.\n\n\"I know I'm not going to do something like this again in my lifetime,\" Seth reflected. \"We accomplished something that goes beyond money or status—we said we were going to go to ten cities and we finished what we said we'd finish. I hope the art we supported will stand the test of time as a sort of canon, a time capsule of this chapter in the history of generative art.\"\n\n**Legacy and Impact**\n\nNow in his fifties, Seth continues to innovate at the intersection of technology, art, and community. His career represents a remarkable thread through the evolution of digital culture—from the early days of interactive CD-ROMs to the blockchain-powered art galleries of today.\n\nWhat distinguishes Seth's career is his consistent bridging of artistic and technological worlds. While many tech entrepreneurs focus solely on business metrics, and many artists remain distant from technological innovation, Seth has spent decades creating meaningful intersections between these domains. This has allowed him to identify opportunities that others miss and build platforms that resonate on deeper human levels.\n\n\"Money is not the goal,\" Seth has stated, \"it's a means of helping you work on what you want, when you want and with whom you want.\"\n\nThroughout his journey, Seth has mentored countless entrepreneurs and creators, sharing his experience through formal programs like the U.S. State Department's Global Entrepreneurship Program and informal relationships with emerging founders. His support for artists transitioning into new technological frontiers has been particularly significant, helping traditional creators navigate the complexities of blockchain, NFTs, and generative systems.\n\n\"We built a diverse team of people from Venice Beach to New York to Tokyo to Buenos Aires,\" Seth explains. \"To see folks in their twenties who came of age at a very difficult time during Covid develop valuable skills in smart contracts, web3 marketing, live event production, generative AI—that's really special. That's our real legacy.\"\n\nSeth Goldstein's career defies simple categorization—he is simultaneously entrepreneur, artist, investor, community builder, and futurist. What remains consistent is his ability to see emerging possibilities before others and his commitment to using technology to enhance human creativity and connection. From digitizing Robert Wilson's theatrical archives in 1992 to minting generative art in Venice in 2024, Seth has remained true to his vision of technology as a tool for expanding human expression and building meaningful communities.\n\n\"As much as we want to believe that the process of incubating startups can be reduced to science,\" Seth observes, \"the fact remains that it is an innately artistic, human process, and therefore filled with messy emotions, complex motivations, and latent triggers.\"\n\nIn a world increasingly dominated by algorithms and optimization, Seth Goldstein continues to champion the human, the creative, and the unexpected—always with one foot slightly over the ledge, pioneering new possibilities at the frontier of what's possible.\n\n\"I doubt that I will ever give up trying to create new things.\"\n\n**Key Career Milestones**\n\n1980s - Performed in avant-garde theater productions; cast by Robert Wilson at age 14\n1992 - Created Interactive Multimedia Archive Project (IMAP) for Robert Wilson's work\n1993 - Developed \"Improvisation Technologies\" with William Forsythe; Artist in Residence at ZKM\n1995 - Founded SiteSpecific, one of the first interactive marketing agencies\n1997 - SiteSpecific acquired by CKS Group for $12 million\n1999 - Joined Flatiron Partners as Entrepreneur-in-Residence, focused on pervasive computing\n2002 - Co-founded Majestic Research, pioneering alternative data for financial insights\n2005 - Co-founded Root Markets, an online mortgage exchange\n2006 - Established AttentionTrust.org advocating for personal data rights\n2010 - Majestic Research acquired by ITG for $75 million\n2011 - Co-founded Turntable.fm, social music platform reaching 600,000 users\n2012 - Founded DJZ, content platform and app for electronic dance music\n2014 - Co-authored \"The Secret of Raising Money\"\n2016 - Founded LiveAds, creative agency for real-time content\n2021 - Founded Bright Moments, pioneering live minting experiences for generative art\n2024 - Completed the global Bright Moments journey with \"The Finale\" in Venice, Italy\n\n**Core Philosophies and Principles**\n\n1. **Anticipate the Future** - Seth consistently identifies technologies and cultural shifts 3-5 years before mainstream adoption, from web advertising in 1995 to NFTs in 2021.\n\n2. **Empower Creativity Through Technology** - From his earliest work digitizing performance art to Bright Moments' generative art experiences, Seth has consistently used technology to expand creative possibilities.\n\n3. **Build Community-Centric Innovation** - Seth's ventures consistently prioritize human connection, creating platforms that bring people together in meaningful ways.\n\n4. **Embrace Adaptability** - Throughout his career, Seth has demonstrated the ability to pivot and evolve when necessary while maintaining focus on long-term vision.\n\n5. **Lead with Empathy** - Seth values genuine human connection and transparent communication in his organizations.\n\n**In Seth's Words**\n\n\"I have been an entrepreneur for as long as I can remember. What does it feel like? Like being on a ledge, somewhere deep in the pit of my stomach; a place where I need to feel my foot slightly over the lip in order to feel alive, but where it's also hard to feel satisfied enough to step fully down.\"\n\n\"The world is orienting towards increasing optimization. We are training the algorithms of the global, connected AI brain to need us less and less. Scratches, hesitations, curiosity, noise, and genuine cluelessness, remain beyond the machine to model.\"\n\n\"If digital software is eating the world, then digital art is a key nutrient. It is the native cultural layer for creating space to breathe in an attention economy that threatens to suffocate us with our own endless scroll.\"\n\n\"The class of generative artists working today will be revered in the future as the last tribe of artisanal coders who held out the promise of human digital creativity before the onset of AI.\"\n\n\"Have difficult conversations now. Do not wait. They do not get easier or better with time.\"\n\n\"The CEO's job is to be anxious when things are going too well, and relaxed when things are going too badly; like a shock absorber.\"\n\n\"If you aren't embarrassed by what you release, you have waited too long.\"\n\nAs Seth continues to explore new frontiers in technology and art, his work remains a testament to the power of interdisciplinary thinking and the value of creating experiences that enhance human connection in an increasingly digital world." }
+];
+
+const topTenLists = [
+  { id: 'quotes_others', title: '10 Quotes (Others)', items: [
+    "\"A man may fish with the worm that hath eat of a king, and eat of the fish that hath fed of that worm.\" — William Shakespeare, Hamlet (1603)",
+    "\"The time has come when advertising has in some hands reached the status of a science. It is based on fixed principles and is reasonably exact.\" — Claude Hopkins (1923)",
+    "\"The great categories which determine not only the shape of the systems, but also philosophical terminology... do not acquire their significance as the names of special disciplines, but as monuments in the discontinuous structure of the world of ideas.\" — Walter Benjamin (1928)",
+    "\"Control, in other words, is nothing but the sending of messages which effectively change the behavior of the recipient... I wish to devote this book to a protest against this inhuman use of human beings.\" — Norbert Weiner (1950)",
+    "\"We have got on to slippery ice where there is no friction and so in a certain sense the conditions are ideal, but also, just because of that, we are unable to walk. We want to walk: so we need friction. Back to the rough ground!\" — Ludwig Wittgenstein (1953)",
+    "\"Attention is scarce because each of us has only so much of it to give, and it can come only from us -- not machines, computers or anywhere else.\" — Michael Goldhaber (1997)",
+    "\"If the attention due to me is not only credited to me personally but is also registered by others, and if the attention I pay to others is valued in proportion to the amount of attention earned by me, then an accounting system is set in motion...\" — Georg Franck (1999)",
+    "\"Mercenaries are driven by paranoia; missionaries are driven by passion. Mercenaries think opportunistically; missionaries think strategically.\" — John Doerr (2000)",
+    "\"Death is very likely the single best invention of Life. It is Life's change agent. It clears out the old to make way for the new.\" — Steve Jobs (2005)",
+    "\"Poetry can repair no loss, but it defies the space which separates.\" — John Berger"
+  ]},
+  { id: 'myquotes', title: '10 Quotes (Mine)', items: [
+    "\"I have been an entrepreneur for as long as I can remember. What does it feel like? Like being on a ledge, somewhere deep in the pit of my stomach; a place where I need to feel my foot slightly over the lip in order to feel alive, but where it's also hard to feel satisfied enough to step fully down.\"",
+    "\"There is nothing like numbers to kill a good story.\"",
+    "\"If you aren't embarrassed by what you release, you have waited too long.\"",
+    "\"Have difficult conversations now. Do not wait. They do not get easier or better with time.\"",
+    "\"The CEO's job is to be anxious when things are going too well, and relaxed when things are going too badly; like a shock absorber.\"",
+    "\"Money is not the goal, it's a means of helping you work on what you want, when you want and with whom you want.\"",
+    "\"The world is orienting towards increasing optimization. We are training the algorithms of the global, connected AI brain to need us less and less. Scratches, hesitations, curiosity, noise, and genuine cluelessness, remain beyond the machine to model.\"",
+    "\"If digital software is eating the world, then digital art is a key nutrient. It is the native cultural layer for creating space to breathe in an attention economy that threatens to suffocate us with our own endless scroll.\"",
+    "\"What we stumbled onto is the special experience of a human being looking at a screen with other humans as a work of generative art is revealed for the first time. It's memorable because you're bringing something that is mathematically random into the real world.\"",
+    "\"The class of generative artists working today will be revered in the future as the last tribe of artisanal coders who held out the promise of human digital creativity before the onset of AI.\""
+  ]},
+  { id: 'startups', title: '10 Startups', items: [
+    "SiteSpecific (1995) — One of the first internet advertising agencies, sold to CKS Group in 1997",
+    "Root.net (1997) — Digital concierge service that provided personal assistance through technology",
+    "Majestic Research (2002) — Alternative data investment research firm, sold to ITG in 2010 for $75 million",
+    "Root Markets (2005) — Online mortgage exchange and data marketplace with investments from Lewis Ranieri and others",
+    "AttentionTrust (2006) — Non-profit advocating for user control over personal data",
+    "SocialMedia.com (2007) — Social advertising platform pioneering engagement mechanics via Facebook applications",
+    "Pier 38 (2009) — Co-working space in San Francisco where Instagram, Twilio, and other startups began",
+    "Stickybits/Turntable.fm (2010) — AR platform using barcode stickers that pivoted to become a social music service",
+    "DJZ/Crossfader (2012) — Content platform and mobile app for electronic dance music culture",
+    "Bright Moments (2021) — NFT Gallery DAO that expanded to nine cities worldwide with live minting experiences"
+  ]},
+  { id: 'investments', title: '10 Investments', items: [
+    "Del.icio.us (2005) — Social bookmarking service founded by Joshua Schachter, acquired by Yahoo!",
+    "Betaworks (2007) — Startup studio and investment company founded by John Borthwick",
+    "AppJet (2007) — Collaborative text editor founded by David Greenspan, acquired by Google",
+    "Glif (2010) — iPhone tripod mount and stand created by Tom Gerhardt and Dan Provost",
+    "KiwiCo (2011) — STEAM subscription boxes for children founded by Sandra Oh Lin",
+    "Gumroad (2012) — Creator-centric commerce platform founded by Sahil Lavingia",
+    "Joyride (2013) — Music platform for drivers founded by Jeff Chen",
+    "Splice (2013) — Music creation and collaboration platform founded by Steve Martocci and Matt Aimonetti",
+    "Greenhouse Software (2013) — Recruiting software founded by Daniel Chait and Jon Stross",
+    "Le Random (2022) — Digital art platform focusing on generative art and NFT exhibitions"
+  ]},
+  { id: 'collaborators', title: '10 Collaborators', items: [
+    "Berkman, Tony — Co-founder of Majestic Research, pioneering alternative data for Wall Street",
+    "Chasen, Billy — Co-founder of Turntable.fm, creating social music experiences",
+    "Elffers, Joost — Dutch designer, publisher and creative entrepreneur who influenced visual communication approaches",
+    "Forsythe, William — Director of the Frankfurt Ballet; collaborated on \"Improvisation Technologies\" digital documentation",
+    "Mohun, Phili — Partner in founding Bright Moments in Venice Beach",
+    "Qian, Qian — Designer who created CryptoVenetians pixel art for Bright Moments",
+    "Ranieri, Lewis — Wall Street pioneer who invested in and collaborated on Root Markets",
+    "Shirky, Clay — Served as CTO at SiteSpecific during its founding years",
+    "Wilson, Fred — VC who brought Seth in as the first Entrepreneur-in-Residence at Flatiron Partners",
+    "Wilson, Robert — Avant-garde theater director; Seth served as his archivist at the Byrd Hoffman Foundation"
+  ]},
+  { id: 'cultural_artifacts', title: '10 Cultural Artifacts', items: [
+    "8½ (1963) — Federico Fellini's surrealist masterpiece on creativity and creative block",
+    "Ran (1985) — Akira Kurosawa's epic reimagining of King Lear in feudal Japan",
+    "The Wire (2002-2008) — David Simon's novelistic examination of institutional failure in Baltimore",
+    "the CIVIL warS (1984) — Robert Wilson's twelve-hour opera, performed at age 14 in the Cologne section",
+    "Ethics (1677) — Baruch Spinoza's geometric proof of reality, God, and human freedom",
+    "Philosophical Investigations (1953) — Ludwig Wittgenstein on language games and the limits of meaning",
+    "Heart of Darkness (1899) — Joseph Conrad's journey into colonial horror and moral ambiguity",
+    "Wag the Dog (1997) — Barry Levinson's prescient satire on media manipulation and manufactured reality",
+    "Loss of Small Detail (1991) — William Forsythe's deconstructed ballet, collaborated on \"Improvisation Technologies\"",
+    "Until the End of the World (1991) — Wim Wenders' road movie about technology, memory, and human connection"
+  ]}
+];
+
+const videoItems = [
+  {
+    title: "August 2011: Lightning Field (Walter de Maria)",
+    url: "https://www.youtube.com/watch?v=umwWKPcPlNU",
+    thumbnail: "https://i.ytimg.com/vi/umwWKPcPlNU/maxresdefault.jpg",
+    description: "Documentary on Walter de Maria's iconic land art installation"
+  },
+  {
+    title: "December 2021: Tyler Hobbs on the Power of IRL NFT Minting",
+    url: "https://www.youtube.com/watch?v=dpaov9R78zM",
+    thumbnail: "https://i.ytimg.com/vi/dpaov9R78zM/maxresdefault.jpg",
+    description: "Interview with generative artist Tyler Hobbs about in-person NFT experiences"
+  },
+  {
+    title: "April 2022: Einstein on the Beach at NFT Art Berlin",
+    url: "https://www.youtube.com/watch?v=q2PJJ0PlF0M",
+    thumbnail: "https://i.ytimg.com/vi/q2PJJ0PlF0M/maxresdefault.jpg",
+    description: "Special generative art event at Berlin's NFT Art exhibition"
+  },
+  {
+    title: "January 2023: Matt DesLauriers 'Folio' Q&A",
+    url: "https://www.youtube.com/watch?v=3IcdRzmUc4k",
+    thumbnail: "https://i.ytimg.com/vi/3IcdRzmUc4k/maxresdefault.jpg",
+    description: "Artist discussion with Matt DesLauriers at Bright Moments London"
+  },
+  {
+    title: "November 2023: Deafbeef in Patagonia",
+    url: "https://www.youtube.com/watch?v=7OEl0TNQRfg",
+    thumbnail: "https://i.ytimg.com/vi/7OEl0TNQRfg/maxresdefault.jpg",
+    description: "Deafbeef live minting experience in Patagonia, Argentina"
+  },
+  {
+    title: "November 2023: CryptoPatagonians in Buenos Aires",
+    url: "https://www.youtube.com/watch?v=V-9qW-pHbAo",
+    thumbnail: "https://i.ytimg.com/vi/V-9qW-pHbAo/maxresdefault.jpg",
+    description: "Bright Moments Buenos Aires — CryptoPatagonians minting ceremony"
+  },
+  {
+    title: "February 2024: CryptoParisians in Paris",
+    url: "https://www.youtube.com/watch?v=edLd-G57sqY",
+    thumbnail: "https://i.ytimg.com/vi/edLd-G57sqY/maxresdefault.jpg",
+    description: "Bright Moments Paris — CryptoParisians live minting experience"
+  },
+  {
+    title: "April 2024: The Dream Cathedral by Huemin x Ganbrood",
+    url: "https://www.youtube.com/watch?v=neReLuV1XQk",
+    thumbnail: "https://i.ytimg.com/vi/neReLuV1XQk/maxresdefault.jpg",
+    description: "AI art installation at Bright Moments Venice Finale"
+  },
+  {
+    title: "June 2024: Venice to Venice — The Bright Moments Documentary",
+    url: "https://vimeo.com/936900367/7306ef852d",
+    thumbnail: "https://i.ytimg.com/vi/936900367/maxresdefault.jpg",
+    description: "The full documentary of Bright Moments' three-year journey from Venice Beach to Venice, Italy"
+  }
+];
+
+const artItems = [
+  {
+    title: "Synthetic Venice Sunset",
+    artist: "Seth Goldstein",
+    date: "March 6, 2021",
+    image: "https://i.seadn.io/gae/lT9E2UrZKQECJiLzwC_bnEA1-wxFpnIZGYa3JNgwGw1EPM2N89DvZ6MYlw91K_ewyAHpZGYDRkPVtEQ7xyW4n4MvXDMCcmN0uOYlhA?auto=format&dpr=1&w=1000",
+    link: "https://opensea.io/item/ethereum/0x3b3ee1931dc30c1957379fac9aba94d1c48a5405/4341",
+    description: "An early NFT artwork capturing Venice Beach sunsets"
+  },
+  {
+    title: "CryptoVenetian #540",
+    artist: "phil.brightmoments.eth",
+    date: "2021",
+    image: "https://i.seadn.io/gae/Cdf7sueKjB4fMQsNCZwO3HoG4PgAFRzmkivzB0JnAk9t3l4hqvYRYRVU8X9MBd6FgmjamDz_QpP26bkvE3QADi-94AkcO4FrcSXI?auto=format&dpr=1&w=1000",
+    link: "https://opensea.io/item/ethereum/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270/95000540",
+    description: "One of the original CryptoVenetians from Bright Moments"
+  },
+  {
+    title: "100 PRINT #43",
+    artist: "Ben Kovach",
+    date: "2022",
+    image: "https://i.seadn.io/gae/5HtAQ6P9ixeS3sTfOjHy6uH2_eHtw8Cn3SuM2b0WYt-QjjWLdmpVyOyLITgbQEtFO3vHMtR3aD0NJ-BHVYa-NeDVsM36VpN-BQWc?auto=format&dpr=1&w=1000",
+    link: "https://opensea.io/item/ethereum/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270/310000043",
+    description: "Generative artwork by Ben Kovach from the Bright Moments collection"
+  },
+  {
+    title: "Finale #463",
+    artist: "Ertdfgcvb",
+    date: "2024",
+    image: "https://i.seadn.io/gae/RsyYwJ2iXwBPrRDqIZwVsXAr3RDSM3HQOAJ32s3u3PsPW_njBEKKEL3SqUMUYWasMM4u5DRxQhPLsxEkSWyTzqfYz56Sj2bcYLCvNQ?auto=format&dpr=1&w=1000",
+    link: "https://opensea.io/item/ethereum/0x381233d5584fdb42e46b4d9ba91876479aab7acd/463",
+    description: "Piece from the final Bright Moments collection in Venice, Italy"
+  }
+];
+---
+
+<div class="min-h-screen flex flex-col font-helvetica">
+  <!-- Name Banner -->
+  <div class="w-full bg-black py-12 flex-shrink-0">
+    <h1 class="text-white text-4xl md:text-5xl lg:text-[7.5rem] font-black text-center tracking-tighter leading-none">
+      SETH GOLDSTEIN
+    </h1>
+  </div>
+
+  <!-- Timeline Section -->
+  <div class="bg-black p-4 md:p-8 flex-shrink-0">
+    <div class="max-w-6xl mx-auto relative">
+      <div class="hidden md:flex justify-between mb-8">
+        {timelinePeriods.map(period => (
+          <span class="text-white text-sm font-bold">{period.year}</span>
+        ))}
+      </div>
+      <div class="relative">
+        <!-- Timeline track -->
+        <div class="timeline-track h-2 bg-gray-700 rounded-full relative">
+          <!-- Progress bar -->
+          <div id="timeline-progress" class="absolute top-0 left-0 h-full bg-blue-500 rounded-full transition-all duration-300" style="width: 0%"></div>
+          
+          <!-- Draggable handle -->
+          <div 
+            id="timeline-handle" 
+            class="absolute top-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full cursor-pointer shadow-lg hover:scale-110 transition-transform"
+            style="left: 0%; margin-left: -16px;"
+          ></div>
+
+          <!-- Year markers -->
+          <div class="hidden md:block">
+            {timelinePeriods.map((period, index) => (
+              <button
+                class="timeline-marker absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full transition-transform"
+                style={`left: ${(index / (timelinePeriods.length - 1)) * 100}%`}
+                data-index={index}
+              />
+            ))}
+          </div>
+          
+          <!-- Mobile year buttons -->
+          <div class="flex justify-between mt-6 md:hidden">
+            {timelinePeriods.map((period, index) => (
+              <button
+                class="timeline-button px-2 py-1 text-xs text-white hover:bg-gray-700 rounded"
+                data-index={index}
+              >
+                {period.year}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 flex flex-col md:flex-row min-h-0">
+    <!-- Left Sidebar - Powers of Ten -->
+    <div class="w-full md:w-80 bg-black text-white border-r border-gray-800 overflow-y-auto flex-shrink-0 order-2 md:order-1">
+      <div class="p-6 space-y-4">
+        {powerLevels.map(level => (
+          <button 
+            class="power-tab w-full text-left p-4 bg-black rounded-lg border border-gray-800 hover:bg-gray-900 transition-colors"
+            data-id={level.id}
+          >
+            <h3 class="text-lg font-bold text-white">{level.title}</h3>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Center Content -->
+    <div class="flex-1 bg-white p-4 md:p-8 overflow-y-auto order-1 md:order-2 min-h-[300px] md:min-h-0">
+      <div id="content-display" class="max-w-4xl mx-auto overflow-y-auto">
+        <div class="bg-white text-black p-4 md:p-8 rounded-lg border border-gray-300 shadow-lg">
+          <h2 id="current-period" class="text-2xl md:text-3xl font-bold mb-4">
+            {timelinePeriods[0].title}
+          </h2>
+          <p id="current-content" class="text-gray-800 text-base md:text-xl leading-relaxed">
+            {timelinePeriods[0].content}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar - Top 10 Lists -->
+    <div class="w-full md:w-80 bg-black text-white border-l border-gray-800 overflow-y-auto flex-shrink-0 order-3">
+      <div class="p-6 space-y-4">
+        {topTenLists.map(list => (
+          <button 
+            class="list-tab w-full text-left p-4 bg-black rounded-lg border border-gray-800 hover:bg-gray-900 transition-colors"
+            data-id={list.id}
+          >
+            <h3 class="text-lg font-bold text-white">{list.title}</h3>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Links -->
+  <div class="bg-black border-t border-gray-800 py-4 order-4">
+    <div class="container mx-auto px-4 flex justify-center gap-4 md:gap-12 flex-wrap">
+      {navigationLinks.map(link => (
+        <button 
+          class="nav-link text-white hover:text-gray-300 font-bold text-base md:text-lg uppercase tracking-wide"
+          data-id={link.id}
+        >
+          {link.text}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Social Links -->
+  <div class="bg-black border-t border-gray-800 py-4 order-5">
+    <div class="container mx-auto px-4 flex justify-center gap-6">
+      {socialLinks.map(link => (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-white transition-colors"
+          title={link.name}
+        >
+          <Fragment set:html={link.icon} />
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ timelinePeriods, powerLevels, topTenLists, navigationLinks, videoItems, artItems }}>
+  // Timeline functionality
+  const timeline = document.querySelector('.timeline-track');
+  const progress = document.getElementById('timeline-progress');
+  const handle = document.getElementById('timeline-handle');
+  const markers = document.querySelectorAll('.timeline-marker');
+  const mobileButtons = document.querySelectorAll('.timeline-button');
+  const contentDisplay = document.getElementById('content-display');
+
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  function updateTimeline(percentage) {
+    const clampedPercentage = Math.max(0, Math.min(100, percentage));
+    progress.style.width = `${clampedPercentage}%`;
+    handle.style.left = `${clampedPercentage}%`;
+    
+    const index = Math.round((clampedPercentage / 100) * (timelinePeriods.length - 1));
+    updateContent(index);
+  }
+
+  function updateContent(index) {
+    const period = timelinePeriods[index];
+    contentDisplay.innerHTML = `
+      <div class="bg-white text-black p-4 md:p-8 rounded-lg border border-gray-300 shadow-lg">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">${period.title}</h2>
+        <p class="text-gray-800 text-base md:text-xl leading-relaxed">${period.content}</p>
+      </div>
+    `;
+  }
+
+  // Mouse events for timeline
+  if (timeline) {
+    timeline.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX - timeline.offsetLeft;
+      scrollLeft = progress.style.width ? parseInt(progress.style.width) : 0;
+    });
+
+    timeline.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].pageX - timeline.offsetLeft;
+      scrollLeft = progress.style.width ? parseInt(progress.style.width) : 0;
+    });
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging || !timeline) return;
+    e.preventDefault();
+    const x = e.pageX - timeline.offsetLeft;
+    const percentage = (x / timeline.offsetWidth) * 100;
+    updateTimeline(percentage);
+  });
+
+  document.addEventListener('touchmove', (e) => {
+    if (!isDragging || !timeline) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX - timeline.offsetLeft;
+    const percentage = (x / timeline.offsetWidth) * 100;
+    updateTimeline(percentage);
+  });
+
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  document.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  // Click events for markers
+  markers.forEach((marker, index) => {
+    marker.addEventListener('click', () => {
+      const percentage = (index / (timelinePeriods.length - 1)) * 100;
+      updateTimeline(percentage);
+    });
+  });
+
+  // Click events for mobile buttons
+  mobileButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const index = parseInt(button.getAttribute('data-index') || '0');
+      const percentage = (index / (timelinePeriods.length - 1)) * 100;
+      updateTimeline(percentage);
+    });
+  });
+
+  // Power tabs functionality
+  function displayPowerContent(id) {
+    const level = powerLevels.find(l => l.id === id);
+    if (level && contentDisplay) {
+      contentDisplay.innerHTML = `
+        <div class="bg-white text-black p-4 md:p-8 rounded-lg border border-gray-300 shadow-lg">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">${level.title}</h2>
+          <p class="text-base md:text-xl leading-relaxed whitespace-pre-line">${level.content}</p>
+        </div>
+      `;
+    }
+  }
+
+  // List tabs functionality
+  function displayListContent(id) {
+    const list = topTenLists.find(l => l.id === id);
+    if (list && contentDisplay) {
+      contentDisplay.innerHTML = `
+        <div class="bg-white text-black p-4 md:p-8 rounded-lg border border-gray-300 shadow-lg">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">${list.title}</h2>
+          <ol class="list-decimal pl-6 space-y-4">
+            ${list.items.map(item => `
+              <li class="pl-2 text-base md:text-xl">${item}</li>
+            `).join('')}
+          </ol>
+        </div>
+      `;
+    }
+  }
+
+  // Navigation links functionality (media, press, art)
+  function displayMediaContent() {
+    if (contentDisplay) {
+      contentDisplay.innerHTML = `
+        <div class="bg-white text-black p-4 md:p-8 rounded-lg border border-gray-300 shadow-lg">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">Media</h2>
+          <p class="text-base md:text-lg mb-6">Explore video content from Bright Moments events around the world.</p>
+          <div class="grid gap-4 md:grid-cols-2">
+            ${videoItems.map(video => `
+              <a href="${video.url}" target="_blank" rel="noopener noreferrer" class="group block bg-white border border-gray-200 hover:shadow-lg transition-all overflow-hidden rounded-lg">
+                <div class="relative aspect-video overflow-hidden">
+                  <img src="${video.thumbnail}" alt="${video.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                  <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity flex items-center justify-center">
+                    <div class="w-12 h-12 bg-white bg-opacity-80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-3">
+                  <h3 class="text-sm md:text-base font-bold group-hover:underline line-clamp-2">${video.title}</h3>
+                  <p class="text-gray-600 mt-1 text-xs md:text-sm line-clamp-2">${video.description}</p>
+                </div>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  function displayPressContent() {
+    if (contentDisplay) {
+      contentDisplay.innerHTML = `
+        <div class="bg-white text-black p-4 md:p-8 rounded-lg border border-gray-300 shadow-lg">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">Press Coverage</h2>
+          <p class="text-base md:text-lg mb-6">Seth Goldstein has been featured in major publications discussing his work in digital art, music technology, entrepreneurship, and community building.</p>
+          <div class="space-y-6">
+            <div class="border-l-4 border-blue-600 pl-4">
+              <p class="italic text-gray-600 mb-2">"Bright Moments created a gallery format that isn't seen in traditional fine art spaces... They created a space where people could experiment with each other."</p>
+              <p class="text-sm text-gray-500">— Outland, February 2024</p>
+            </div>
+            <div class="border-l-4 border-blue-600 pl-4">
+              <p class="italic text-gray-600 mb-2">"The site exploded in popularity when it launched last month, quickly amassing hundreds of thousands of users."</p>
+              <p class="text-sm text-gray-500">— New York Times on Turntable.fm, July 2011</p>
+            </div>
+            <div class="border-l-4 border-blue-600 pl-4">
+              <p class="italic text-gray-600 mb-2">"Seth was early to recognize the potential of the internet as an advertising medium, founding one of the first interactive agencies that helped define how brands would engage with consumers online."</p>
+              <p class="text-sm text-gray-500">— Wall Street Journal, October 1997</p>
+            </div>
+          </div>
+          <p class="mt-6 text-base">For full press coverage, see the Press page with articles from The New York Times, Wall Street Journal, Billboard, Coindesk, and more.</p>
+        </div>
+      `;
+    }
+  }
+
+  function displayArtContent() {
+    if (contentDisplay) {
+      contentDisplay.innerHTML = `
+        <div class="bg-white text-black p-4 md:p-8 rounded-lg border border-gray-300 shadow-lg">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6">Art Collection</h2>
+          <div class="flex items-center justify-center py-12">
+            <div class="text-center">
+              <h3 class="text-5xl font-black text-gray-800 mb-6 border-b-4 border-black pb-4 inline-block">COMING SOON</h3>
+              <p class="text-xl text-gray-600 max-w-2xl">
+                Our curated digital art collection is being updated. Please check back soon to explore Seth's generative art pieces and CryptoCitizens from the Bright Moments journey.
+              </p>
+            </div>
+          </div>
+          <div class="text-center mt-8">
+            <a 
+              href="https://gallery.so/sethnfts"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block px-6 py-3 bg-black text-white font-bold hover:bg-gray-900 transition-colors"
+            >
+              View Full Collection →
+            </a>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('data-id');
+      if (id === 'media') {
+        displayMediaContent();
+      } else if (id === 'press') {
+        displayPressContent();
+      } else if (id === 'photos') {
+        window.location.href = '/photos';
+      } else if (id === 'talk') {
+        window.location.href = '/live';
+      } else if (id === 'whitepaper') {
+        window.location.href = '/whitepaper';
+      }
+    });
+  });
+
+  // Event listeners for tabs
+  const powerTabs = document.querySelectorAll('.power-tab');
+  powerTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      powerTabs.forEach(t => t.classList.remove('bg-gray-900'));
+      tab.classList.add('bg-gray-900');
+      const id = tab.getAttribute('data-id');
+      if (id) displayPowerContent(id);
+    });
+  });
+
+  const listTabs = document.querySelectorAll('.list-tab');
+  listTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      listTabs.forEach(t => t.classList.remove('bg-gray-900'));
+      tab.classList.add('bg-gray-900');
+      const id = tab.getAttribute('data-id');
+      if (id) displayListContent(id);
+    });
+  });
+
+  // Initialize first marker
+  if (markers.length > 0) {
+    markers[0].click();
+  } else if (mobileButtons.length > 0) {
+    mobileButtons[0].click();
+  }
+
+  // Helper function for mobile detection
+  function isMobile() {
+    return window.innerWidth < 768;
+  }
+
+  // Adjust layout for mobile on load and resize
+  function adjustForMobile() {
+    if (isMobile()) {
+      // Mobile-specific adjustments
+      document.querySelectorAll('.order-1, .order-2, .order-3').forEach(el => {
+        el.style.minHeight = 'auto';
+      });
+    } else {
+      // Desktop-specific adjustments
+    }
+  }
+
+  // Responsive adjustments
+  window.addEventListener('resize', adjustForMobile);
+  document.addEventListener('DOMContentLoaded', adjustForMobile);
+
+  // Line clamp helper
+  document.querySelectorAll('.line-clamp-2').forEach(el => {
+    el.style.display = '-webkit-box';
+    el.style.webkitLineClamp = '2';
+    el.style.webkitBoxOrient = 'vertical';
+    el.style.overflow = 'hidden';
+  });
+</script>
+
+<style>
+  .font-helvetica {
+    font-family: var(--font-display, 'Helvetica Neue', Helvetica, Arial, sans-serif);
+  }
+
+  .overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: #666 #333;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: #333;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+  }
+
+  .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: #888;
+  }
+
+  .whitespace-pre-line {
+    white-space: pre-line;
+  }
+
+  .timeline-track {
+    @apply relative h-2 bg-gray-700 rounded-full cursor-pointer;
+  }
+
+  .timeline-handle {
+    @apply absolute top-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full cursor-grab shadow-lg hover:scale-110 transition-transform;
+  }
+
+  .timeline-handle:active {
+    @apply cursor-grabbing scale-110;
+  }
+
+  .timeline-marker {
+    @apply absolute top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full transition-transform cursor-pointer;
+  }
+
+  .timeline-marker:hover {
+    @apply scale-150;
+  }
+
+  .timeline-marker.active {
+    @apply scale-150 bg-blue-500;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    #content-display {
+      min-height: 300px;
+    }
+    
+    .timeline-track {
+      height: 4px;
+    }
+    
+    .timeline-handle {
+      width: 16px;
+      height: 16px;
+      margin-left: -8px;
+    }
+    
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+</style>

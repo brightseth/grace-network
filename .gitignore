@@ -1,0 +1,10 @@
+.vercel
+node_modules
+photo-export/
+dist/
+.env
+.astro/
+*.db
+*.db-shm
+*.db-wal
+.next/

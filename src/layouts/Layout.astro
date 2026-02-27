@@ -1,0 +1,136 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/tokens.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title,
+  description = "Seth Goldstein - Serial entrepreneur, digital art pioneer. 30+ years bridging creativity and technology. Founded SiteSpecific, Majestic Research, Turntable.fm, Bright Moments. Founder of Spirit Protocol.",
+  image = "https://sethgoldstein.com/images/seth-og.jpg",
+  canonicalPath
+} = Astro.props;
+
+const canonicalURL = canonicalPath ? `https://sethgoldstein.com${canonicalPath}` : Astro.url.href;
+
+// JSON-LD structured data for LLMs and search engines
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Seth Goldstein",
+  "alternateName": "@seth",
+  "url": "https://sethgoldstein.com",
+  "image": "https://sethgoldstein.com/images/seth.jpg",
+  "email": "sethgoldstein@gmail.com",
+  "description": "Serial entrepreneur, digital art pioneer, and technology visionary who has spent 30+ years bridging creativity and technology. Founder of Spirit Protocol.",
+  "jobTitle": "Entrepreneur & Advisor",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Spirit Protocol",
+    "url": "https://spiritprotocol.io"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Columbia University"
+    }
+  ],
+  "knowsAbout": [
+    "Entrepreneurship",
+    "Digital Art",
+    "NFTs",
+    "Generative Art",
+    "AI Agents",
+    "Web3",
+    "Community Building",
+    "Technology Innovation"
+  ],
+  "sameAs": [
+    "https://twitter.com/seth",
+    "https://linkedin.com/in/sethg",
+    "https://instagram.com/sethgoldstein"
+  ],
+  "founder": [
+    {
+      "@type": "Organization",
+      "name": "SiteSpecific",
+      "foundingDate": "1995"
+    },
+    {
+      "@type": "Organization",
+      "name": "Majestic Research",
+      "foundingDate": "2002"
+    },
+    {
+      "@type": "Organization",
+      "name": "Turntable.fm",
+      "foundingDate": "2011"
+    },
+    {
+      "@type": "Organization",
+      "name": "Bright Moments",
+      "foundingDate": "2021"
+    },
+    {
+      "@type": "Organization",
+      "name": "Spirit Protocol",
+      "foundingDate": "2025",
+      "url": "https://spiritprotocol.io"
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Seth Goldstein" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Seth Goldstein" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@seth" />
+    <meta name="twitter:creator" content="@seth" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- LinkedIn specific -->
+    <meta property="og:locale" content="en_US" />
+    <meta name="linkedin:owner" content="seth" />
+
+    <!-- LLM-friendly meta tags -->
+    <link rel="alternate" type="application/json" href="/seth.json" title="Structured Data (Schema.org)" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context Guide" />
+    <meta name="ai-content-declaration" content="This site is designed for both humans and AI agents. See /llms.txt for guidance." />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <ViewTransitions />
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>

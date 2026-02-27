@@ -1,0 +1,130 @@
+/* Seth Goldstein Design System Tokens */
+/* Unified across sethgoldstein.com and vibecodings */
+
+:root {
+  /* Typography */
+  --font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', Monaco, Consolas, 'Liberation Mono', monospace;
+
+  /* Type Scale */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.5rem;      /* 24px */
+  --text-2xl: 2rem;       /* 32px */
+  --text-3xl: 3rem;       /* 48px */
+  --text-4xl: 4rem;       /* 64px */
+
+  /* Colors - Core */
+  --color-bg: #000000;
+  --color-surface: #111111;
+  --color-border: #333333;
+
+  /* Colors - Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #888888;
+  --color-text-muted: #666666;
+
+  /* Colors - Accent */
+  --color-accent: #6B8FFF;
+  --color-accent-hover: #8BA8FF;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* Borders */
+  --border-width: 1px;
+  --border-color: var(--color-border);
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Common Patterns */
+.uppercase-label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.link-subtle {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.link-subtle:hover {
+  color: var(--color-text-primary);
+}
+
+/* Button Base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.btn-primary {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.btn-ghost:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+/* Card Pattern */
+.card {
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  padding: var(--space-6);
+}

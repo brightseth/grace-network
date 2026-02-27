@@ -1,0 +1,17 @@
+{
+  "name": "@seth/mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for interacting with Seth Goldstein's context and knowledge",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "seth-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "keywords": ["mcp", "seth", "sethgoldstein", "ai-agent"]
+}

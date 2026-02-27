@@ -1,0 +1,49 @@
+---
+const principles = [
+  {
+    title: "Anticipate the Future",
+    description: "Seth consistently identifies technologies and cultural shifts 3-5 years before mainstream adoption, from web advertising in 1995 to NFTs in 2021.",
+    quote: "Start a company when you imagine a solution that feels more and more inevitable to a problem that seems to be getting bigger and bigger."
+  },
+  {
+    title: "Empower Creativity Through Technology",
+    description: "From his earliest work digitizing performance art to Bright Moments' generative art experiences, Seth has consistently used technology to expand creative possibilities.",
+    quote: "The class of generative artists working today will be revered in the future as the last tribe of artisanal coders who held out the promise of human digital creativity before the onset of AI."
+  },
+  {
+    title: "Build Community-Centric Innovation",
+    description: "Seth's ventures consistently prioritize human connection, creating platforms that bring people together in meaningful ways.",
+    quote: "The world is orienting towards increasing optimization. We are training the algorithms of the global, connected AI brain to need us less and less. Scratches, hesitations, curiosity, noise, and genuine cluelessness, remain beyond the machine to model."
+  },
+  {
+    title: "Embrace Adaptability",
+    description: "Throughout his career, Seth has demonstrated the ability to pivot and evolve when necessary while maintaining focus on long-term vision.",
+    quote: "If you aren't embarrassed by your first version then you waited too long to release it."
+  },
+  {
+    title: "Lead with Empathy",
+    description: "Seth values genuine human connection and transparent communication in his organizations.",
+    quote: "The CEO's job is to be anxious when things are going too well, and relaxed when things are going too badly; like a shock absorber."
+  }
+];
+---
+
+<section id="principles" class="py-24">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-16 text-center gradient-text">
+      Guiding Principles
+    </h2>
+    
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+      {principles.map(principle => (
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <h3 class="text-2xl font-bold mb-4">{principle.title}</h3>
+          <p class="text-gray-600 mb-6">{principle.description}</p>
+          <blockquote class="border-l-4 border-primary-500 pl-4 italic text-gray-700">
+            "{principle.quote}"
+          </blockquote>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

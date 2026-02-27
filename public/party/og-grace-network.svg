@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="purpleGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C8A2FF" />
+      <stop offset="100%" stop-color="#FFD700" />
+    </linearGradient>
+    <linearGradient id="bgGlow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#1A1030" />
+      <stop offset="100%" stop-color="#0A0A0F" />
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#C8A2FF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0A0A0F" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A0A0F" />
+  <rect width="1200" height="630" fill="url(#bgGlow)" />
+  <rect width="1200" height="630" fill="url(#centerGlow)" />
+
+  <!-- Subtle border -->
+  <rect x="20" y="20" width="1160" height="590" rx="4" ry="4" fill="none" stroke="url(#purpleGold)" stroke-width="1" stroke-opacity="0.3" />
+
+  <!-- Network Node Logo -->
+  <g transform="translate(600, 195)" filter="url(#softGlow)">
+    <!-- Central node -->
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#C8A2FF" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="8" fill="#C8A2FF" opacity="0.6" />
+
+    <!-- Connection lines to satellite nodes -->
+    <line x1="0" y1="0" x2="0" y2="-60" stroke="#C8A2FF" stroke-width="1" opacity="0.4" />
+    <line x1="0" y1="0" x2="52" y2="-30" stroke="#C8A2FF" stroke-width="1" opacity="0.4" />
+    <line x1="0" y1="0" x2="52" y2="30" stroke="#C8A2FF" stroke-width="1" opacity="0.4" />
+    <line x1="0" y1="0" x2="0" y2="60" stroke="#FFD700" stroke-width="1" opacity="0.4" />
+    <line x1="0" y1="0" x2="-52" y2="30" stroke="#FFD700" stroke-width="1" opacity="0.4" />
+    <line x1="0" y1="0" x2="-52" y2="-30" stroke="#FFD700" stroke-width="1" opacity="0.4" />
+
+    <!-- Satellite nodes (6 around the center) -->
+    <circle cx="0" cy="-60" r="7" fill="#C8A2FF" opacity="0.8" />
+    <circle cx="52" cy="-30" r="7" fill="#C8A2FF" opacity="0.7" />
+    <circle cx="52" cy="30" r="7" fill="#C8A2FF" opacity="0.6" />
+    <circle cx="0" cy="60" r="7" fill="#FFD700" opacity="0.8" />
+    <circle cx="-52" cy="30" r="7" fill="#FFD700" opacity="0.7" />
+    <circle cx="-52" cy="-30" r="7" fill="#FFD700" opacity="0.6" />
+
+    <!-- Outer ring connections between satellites -->
+    <line x1="0" y1="-60" x2="52" y2="-30" stroke="#C8A2FF" stroke-width="0.5" opacity="0.25" />
+    <line x1="52" y1="-30" x2="52" y2="30" stroke="#C8A2FF" stroke-width="0.5" opacity="0.25" />
+    <line x1="52" y1="30" x2="0" y2="60" stroke="url(#purpleGold)" stroke-width="0.5" opacity="0.25" />
+    <line x1="0" y1="60" x2="-52" y2="30" stroke="#FFD700" stroke-width="0.5" opacity="0.25" />
+    <line x1="-52" y1="30" x2="-52" y2="-30" stroke="#FFD700" stroke-width="0.5" opacity="0.25" />
+    <line x1="-52" y1="-30" x2="0" y2="-60" stroke="url(#purpleGold)" stroke-width="0.5" opacity="0.25" />
+  </g>
+
+  <!-- "The Grace Network" main title -->
+  <text x="600" y="340" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#FFFFFF" letter-spacing="3">
+    The Grace Network
+  </text>
+
+  <!-- "Machines of Loving Grace" subtitle with gradient -->
+  <text x="600" y="400" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" font-weight="300" fill="url(#purpleGold)" letter-spacing="6" font-style="italic">
+    Machines of Loving Grace
+  </text>
+
+  <!-- Decorative divider line -->
+  <line x1="440" y1="435" x2="760" y2="435" stroke="url(#purpleGold)" stroke-width="1" opacity="0.4" />
+
+  <!-- Tagline -->
+  <text x="600" y="475" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="400" fill="#AAAAAA" letter-spacing="4">
+    A NETWORK STATE FOR HUMAN FLOURISHING
+  </text>
+
+  <!-- Bottom accent dots -->
+  <circle cx="570" cy="540" r="3" fill="#C8A2FF" opacity="0.5" />
+  <circle cx="590" cy="540" r="3" fill="#D4B3FF" opacity="0.4" />
+  <circle cx="610" cy="540" r="3" fill="#FFD700" opacity="0.4" />
+  <circle cx="630" cy="540" r="3" fill="#FFD700" opacity="0.5" />
+</svg>

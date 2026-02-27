@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const pressItems = [
+  {
+    year: '2024',
+    items: [
+      {
+        title: 'Bright Moments (Gen Art)',
+        source: 'Tetragrammaton',
+        url: 'https://www.tetragrammaton.com/content/brightmoments',
+        excerpt: 'A ten-city, three-year voyage including 150 artists, 10,000 CryptoCitizens, and tens of thousands of visitors to a roving experiential art gallery.',
+        date: '2024',
+        thumbnail: 'https://www.tetragrammaton.com/content/brightmoments'
+      },
+      {
+        title: 'Bright Moments on Prioritizing the Personal',
+        source: 'Le Random',
+        url: 'https://www.lerandom.art/editorial/bright-moments-on-prioritizing-the-personal',
+        excerpt: 'As Bright Moments concludes its three-year global tour at the Venice Biennale, the Finale Collection showcases over sixty artists on a single contract.',
+        date: 'April 2024',
+        thumbnail: 'https://www.lerandom.art/editorial/bright-moments-on-prioritizing-the-personal'
+      },
+      {
+        title: 'Bright Moments Founder Seth Goldstein in Conversation with Fakewhale',
+        source: 'Fakewhale',
+        url: 'https://log.fakewhale.xyz/bright-moments-founder-seth-goldstein-in-conversation-with-fakewhale/',
+        excerpt: 'An in-depth conversation about the evolution of digital art, community building, and the future of creative expression.',
+        date: 'March 2024',
+        thumbnail: 'https://substackcdn.com/image/fetch/w_1200,h_600,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1d6d3d19-4ef2-4e87-b532-6dee24eedeac_1200x672.jpeg'
+      },
+      {
+        title: 'Bright Moments',
+        source: 'Outland',
+        url: 'https://outland.art/bright-moments/',
+        excerpt: 'How a Venice Beach gallery became a global force in generative art.',
+        date: 'February 2024',
+        thumbnail: 'https://outland.art/wp-content/uploads/2024/04/Bright-Moments-Venice-2024-Hero-1.jpg'
+      }
+    ]
+  },
+  {
+    year: '2023',
+    items: [
+      {
+        title: 'Art Blocks and NFT Gallery Bright Moments Team Up',
+        source: 'Coindesk',
+        url: 'https://www.coindesk.com/web3/2023/02/16/art-blocks-and-nft-gallery-bright-moments-team-up-to-bring-generative-art-irl/',
+        excerpt: 'Partnership brings generative art to physical spaces worldwide.',
+        date: 'February 2023',
+        thumbnail: 'https://www.coindesk.com/resizer/1P4xuhDuPGEpzrDjTtIy7NIPPdE=/1200x628/center/middle/cloudfront-us-east-1.images.arcpublishing.com/coindesk/NJUKHMFKKNCALCLEAQ3XLQP6CA.jpg'
+      },
+      {
+        title: 'Bright Moments Transports Live NFT Art Minting Experience to Tokyo',
+        source: 'Decrypt',
+        url: 'https://decrypt.co/138965/bright-moments-transports-live-nft-art-minting-experience-tokyo',
+        excerpt: 'The NFT art gallery brings its unique minting experience to Asia.',
+        date: 'July 2023',
+        thumbnail: 'https://img.decrypt.co/insecure/rs:fit:1536:0:0/plain/https://cdn.decrypt.co/wp-content/uploads/2023/07/bright-moments-tokyo-gid-2.jpg@webp'
+      }
+    ]
+  },
+  {
+    year: '2022',
+    items: [
+      {
+        title: 'In The Powerhouse of New Art: Einstein on the NFT',
+        source: 'FAZ',
+        url: 'https://www.faz.net/aktuell/feuilleton/kunst-und-architektur/einstein-und-die-nft-im-kraftwerk-der-neuen-kunst-17863834.html',
+        excerpt: 'How digital art is transforming the traditional art world.',
+        date: 'April 2022',
+        thumbnail: 'https://media1.faz.net/ppmedia/aktuell/feuilleton/kunst-und-architektur/1673722086/1.7863884/mmobject-still_full/neu-am-potsdamer-platz-das.jpg'
+      }
+    ]
+  },
+  {
+    year: '2021',
+    items: [
+      {
+        title: 'Minting Takes Manhattan: An NFT Gallery Sells Millions Even Before the Art Is Made',
+        source: 'The Information',
+        url: 'https://www.theinformation.com/articles/minting-takes-manhattan-an-nft-gallery-sells-millions-even-before-the-art-is-made',
+        excerpt: 'Opening night of Tyler Hobbs\' Incomplete Control at Bright Moments Gallery in Soho, where collectors prepaid $120,000 to $400,000 per piece.',
+        date: 'December 2021',
+        thumbnail: 'https://www.theinformation.com/s/img/ti-logo-share.png'
+      },
+      {
+        title: 'The Betrayal of Bright Moments',
+        source: 'Decential',
+        url: 'https://www.decential.io/articles/the-betrayal-of-bright-moments',
+        excerpt: 'The genesis saga of the Bright Moments NFT art gallery — from Venice Beach to a new adventure in NYC.',
+        date: 'November 2021',
+        thumbnail: 'https://www.decential.io/articles/the-betrayal-of-bright-moments'
+      },
+      {
+        title: 'An NFT Gallery Pops Up in Venice Beach, California',
+        source: 'Decrypt',
+        url: 'https://decrypt.co/68536/bright-moments-nft-art-installation-is-bringing-the-venice-ca-counter-culture-into-web-3-0',
+        excerpt: 'A pop-up NFT gallery is an experiment that could lead to the build out of an international gallery DAO.',
+        date: 'April 2021',
+        thumbnail: 'https://img.decrypt.co/insecure/rs:fit:1536:0:0/plain/https://cdn.decrypt.co/wp-content/uploads/2021/04/bright-moments.jpg@webp'
+      }
+    ]
+  },
+  {
+    year: '2011',
+    items: [
+      {
+        title: 'Spotify Is Great, but Turntable.fm Is Amazing',
+        source: 'New York Times',
+        url: 'https://archive.nytimes.com/gadgetwise.blogs.nytimes.com/2011/07/20/spotify-is-great-but-turntable-fm-is-amazing/',
+        excerpt: 'A review of the revolutionary social music platform.',
+        date: 'July 2011',
+        thumbnail: 'https://static01.nyt.com/images/2011/07/20/technology/20bits-turntable/20bits-turntable-blog480.jpg'
+      },
+      {
+        title: 'Turntable.fm Co-Founder Seth Goldstein Talks Success, Licensing and What He\'s Learned',
+        source: 'Billboard',
+        url: 'https://www.billboard.com/pro/turntable-fm-co-founder-seth-goldstein-talks-success-licensing-and-what-hes-learned/',
+        excerpt: 'Interview about the rapid growth and future of Turntable.fm.',
+        date: 'September 2011',
+        thumbnail: 'https://www.billboard.com/wp-content/uploads/media/billboard-logo-black-2022.jpg'
+      }
+    ]
+  },
+  {
+    year: '2009',
+    items: [
+      {
+        title: 'SocialMedia.com Focused On Turning Any Display Ad Into A Social Ad Says CEO Goldstein',
+        source: 'AdExchanger',
+        url: 'https://www.adexchanger.com/ad-networks/socialmediacom-focused-on-turning-any-display-ad-into-a-social-ad-says-ceo-goldstein/',
+        excerpt: 'Interview about innovative approaches to social advertising.',
+        date: 'March 2009',
+        thumbnail: 'https://www.adexchanger.com/wp-content/uploads/2022/11/adexchanger_logo.jpg'
+      }
+    ]
+  },
+  {
+    year: '2006',
+    items: [
+      {
+        title: 'If I Had A Nickel For Every Click...',
+        source: 'BusinessWeek',
+        url: 'https://www.bloomberg.com/news/articles/2006-06-06/if-i-had-a-nickel-for-every-click-dot-dot-dot',
+        excerpt: 'Feature about Root Markets and early work in attention economics.',
+        date: 'June 2006',
+        thumbnail: 'https://assets.bbhub.io/dotorg/sites/3/2022/02/BW-social.png'
+      }
+    ]
+  },
+  {
+    year: '2005',
+    items: [
+      {
+        title: 'Increasingly, Stock Research Serves the Pros, Not \'Little Guy\'',
+        source: 'Wall Street Journal',
+        url: 'https://www.wsj.com/articles/SB112599679829632871',
+        excerpt: 'Featured Majestic Research\'s use of web data for investment insights.',
+        date: 'September 2005',
+        thumbnail: 'https://s.wsj.net/img/meta/wsj-social-share.png'
+      }
+    ]
+  },
+  {
+    year: '1997',
+    items: [
+      {
+        title: 'Culture Clash',
+        source: 'Wall Street Journal',
+        url: 'https://www.wsj.com/articles/SB875137001161371500',
+        excerpt: 'Front page story about SiteSpecific\'s acquisition by CKS Group.',
+        date: 'October 1997',
+        thumbnail: 'https://s.wsj.net/img/meta/wsj-social-share.png'
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Press | Seth Goldstein">
+  <Header />
+  <main class="container mx-auto px-4 py-24">
+    <h1 class="text-4xl font-black mb-12 uppercase tracking-tight">Press Coverage</h1>
+    
+    <div class="space-y-16">
+      {pressItems.map(yearGroup => (
+        <div>
+          <h2 class="text-2xl font-bold mb-8">{yearGroup.year}</h2>
+          <div class="grid gap-8 md:grid-cols-2">
+            {yearGroup.items.map(item => (
+              <a 
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group bg-white rounded-lg shadow-lg border-2 border-black hover:shadow-xl transition-all overflow-hidden"
+              >
+                <div class="aspect-video overflow-hidden">
+                  <img 
+                    src={item.thumbnail} 
+                    alt={item.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="text-sm text-gray-500">{item.date}</span>
+                    <span class="text-sm font-bold text-blue-600">{item.source}</span>
+                  </div>
+                  <h3 class="text-xl font-bold mb-3 group-hover:underline">{item.title}</h3>
+                  <p class="text-gray-600">{item.excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+  <Footer />
+</Layout>

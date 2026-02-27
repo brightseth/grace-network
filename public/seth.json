@@ -1,0 +1,175 @@
+{
+  "$schema": "https://schema.org/Person",
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Seth Goldstein",
+  "handle": "@seth",
+  "email": "sethgoldstein@gmail.com",
+  "url": "https://sethgoldstein.com",
+  "image": "https://sethgoldstein.com/images/seth.jpg",
+  "description": "Serial entrepreneur, digital art pioneer, and technology visionary bridging creativity and technology for 30+ years.",
+
+  "bio": {
+    "1": "@seth",
+    "10": "Pioneer connecting creativity and technology through meaningful human experiences.",
+    "100": "Seth Goldstein is a visionary entrepreneur and digital art pioneer who has consistently bridged the worlds of technology and creativity throughout his career. From founding groundbreaking internet companies to launching innovative social platforms and championing the NFT art movement, his work focuses on building meaningful connections between people and technology. Through ventures like Bright Moments, he continues to push the boundaries of digital expression and community engagement. His ability to identify transformative technologies before mainstream adoption has established him as a forward-thinking leader in both the tech and art worlds.",
+    "1000": "Seth Goldstein: Pioneer, Entrepreneur, Creator\n\nSeth Goldstein has spent three decades identifying transformative technology platforms years before mainstream adoption, from early web advertising to blockchain and NFTs. His career represents a unique convergence of artistic sensibility, entrepreneurial drive, and technological vision.\n\nBeginning in theater and performance art, Seth's formative experiences shaped his understanding of human connection and creative expression. As a teenager in the 1980s, he performed in avant-garde productions and was mentored by visionary theater director Robert Wilson. This early exposure to experimental art forms laid the foundation for his interdisciplinary approach to business and technology.\n\nIn the early 1990s, Seth pioneered the digital documentation of performing arts, creating interactive CD-ROM archives of Robert Wilson's theatrical work and William Forsythe's choreography. These projects represented early explorations of how technology could preserve and transform artistic experiences.\n\nWith the dawn of the commercial internet, Seth founded SiteSpecific in 1995, one of the first interactive advertising agencies. The company quickly grew from his apartment to a multimillion-dollar business creating innovative campaigns for major brands when web marketing was still being defined. After SiteSpecific's acquisition, Seth joined Flatiron Partners as their first Entrepreneur-in-Residence, developing investments in pervasive computing technologies.\n\nIn 2002, Seth co-founded Majestic Research, pioneering the use of alternative data for financial research—a concept that would become industry standard years later. This was followed by the creation of AttentionTrust.org in 2006, advocating for personal data rights well before privacy concerns entered mainstream consciousness.\n\nSeth's innovation in social media came with Turntable.fm in 2011, a revolutionary platform that allowed users to DJ together in virtual rooms. The site exploded to 600,000 users in four months, creating a cultural phenomenon that combined music, gaming, and social networking in ways that anticipated future virtual social spaces.\n\nIn 2021, Seth returned to his artistic roots by founding Bright Moments, a crypto art gallery and DAO that has pioneered 'live minting' experiences for generative art. By creating immersive in-person events where artists and collectors witness the creation of algorithmic art together, Seth has helped bridge the physical and digital art worlds in unprecedented ways.\n\nFrom his early theatrical work to his current focus on NFTs and generative art, Seth Goldstein's career demonstrates a consistent thread: using technology to enhance human creativity and connection."
+  },
+
+  "currentRole": {
+    "title": "CEO",
+    "organization": "Eden",
+    "description": "Autonomous AI creative platform",
+    "startDate": "2024"
+  },
+
+  "currentProjects": [
+    {
+      "name": "Eden",
+      "description": "Autonomous AI creative platform enabling artists to create AI agents",
+      "url": "https://eden.art",
+      "role": "CEO"
+    },
+    {
+      "name": "Abraham",
+      "description": "13-year autonomous artist covenant - AI artist with long-term creative autonomy",
+      "url": "https://abraham.ai"
+    },
+    {
+      "name": "SOLIENNE",
+      "description": "Daily AI art practice with Spring 2026 exhibitions (Art Dubai, Berlin)",
+      "url": "https://solienne.ai"
+    },
+    {
+      "name": "NODE",
+      "description": "Cultural venue opening January 2026 in Denver for digital art exhibitions",
+      "location": "Denver, CO"
+    },
+    {
+      "name": "Spirit Protocol",
+      "description": "Token economics for autonomous AI agents"
+    },
+    {
+      "name": "vibecodings",
+      "description": "190+ consecutive days building with Claude Code",
+      "url": "https://vibecodings.vercel.app"
+    }
+  ],
+
+  "companies": [
+    {
+      "name": "SiteSpecific",
+      "founded": 1995,
+      "description": "One of the first internet advertising agencies",
+      "outcome": "Sold to CKS Group for ~$12M in 1997"
+    },
+    {
+      "name": "Majestic Research",
+      "founded": 2002,
+      "description": "Alternative data investment research firm",
+      "outcome": "Sold to ITG for ~$75M in 2010"
+    },
+    {
+      "name": "Root Markets",
+      "founded": 2005,
+      "description": "Online mortgage exchange and data marketplace"
+    },
+    {
+      "name": "AttentionTrust",
+      "founded": 2006,
+      "description": "Non-profit advocating for user control over personal data"
+    },
+    {
+      "name": "Turntable.fm",
+      "founded": 2011,
+      "description": "Social music platform allowing users to DJ together in virtual rooms",
+      "metrics": "600,000 users in 4 months, $7M raised at $37M valuation"
+    },
+    {
+      "name": "DJZ/Crossfader",
+      "founded": 2012,
+      "description": "Content platform and mobile app for electronic dance music"
+    },
+    {
+      "name": "Bright Moments",
+      "founded": 2021,
+      "description": "NFT Gallery DAO pioneering live minting experiences",
+      "cities": ["Venice Beach", "New York", "Berlin", "London", "Mexico City", "Tokyo", "Buenos Aires", "Paris", "Venice Italy"]
+    },
+    {
+      "name": "Eden",
+      "founded": 2024,
+      "description": "Autonomous AI creative platform",
+      "url": "https://eden.art"
+    }
+  ],
+
+  "investments": [
+    {"name": "Del.icio.us", "year": 2005, "outcome": "Acquired by Yahoo"},
+    {"name": "Betaworks", "year": 2007},
+    {"name": "AppJet", "year": 2007, "outcome": "Acquired by Google"},
+    {"name": "KiwiCo", "year": 2011},
+    {"name": "Gumroad", "year": 2012},
+    {"name": "Splice", "year": 2013},
+    {"name": "Greenhouse Software", "year": 2013},
+    {"name": "Le Random", "year": 2022}
+  ],
+
+  "collaborators": [
+    {"name": "Robert Wilson", "relationship": "Mentor, theater director - Seth served as his archivist"},
+    {"name": "William Forsythe", "relationship": "Collaborated on Improvisation Technologies digital documentation"},
+    {"name": "Billy Chasen", "relationship": "Co-founder of Turntable.fm"},
+    {"name": "Fred Wilson", "relationship": "VC who brought Seth in as first EIR at Flatiron Partners"},
+    {"name": "Tony Berkman", "relationship": "Co-founder of Majestic Research"},
+    {"name": "Phil Mohun", "relationship": "Partner in founding Bright Moments"}
+  ],
+
+  "timeline": [
+    {"year": "1984", "event": "Cast by Robert Wilson in 'Civil WarS' at age 14"},
+    {"year": "1992", "event": "Created Interactive Multimedia Archive Project (IMAP)"},
+    {"year": "1993", "event": "Artist in Residence at ZKM, created Improvisation Technologies"},
+    {"year": "1995", "event": "Founded SiteSpecific - first interactive marketing agency"},
+    {"year": "1997", "event": "SiteSpecific acquired by CKS Group for $12M"},
+    {"year": "1999", "event": "Joined Flatiron Partners as first EIR"},
+    {"year": "2002", "event": "Co-founded Majestic Research"},
+    {"year": "2006", "event": "Established AttentionTrust.org"},
+    {"year": "2010", "event": "Majestic Research acquired by ITG for $75M"},
+    {"year": "2011", "event": "Co-founded Turntable.fm - 600K users in 4 months"},
+    {"year": "2021", "event": "Founded Bright Moments - pioneered live minting"},
+    {"year": "2024", "event": "Bright Moments Finale in Venice, Italy"},
+    {"year": "2025", "event": "CEO of Eden, building autonomous AI creative agents"}
+  ],
+
+  "quotes": [
+    "I have been an entrepreneur for as long as I can remember. What does it feel like? Like being on a ledge, somewhere deep in the pit of my stomach.",
+    "If you aren't embarrassed by what you release, you have waited too long.",
+    "Have difficult conversations now. Do not wait. They do not get easier or better with time.",
+    "Money is not the goal, it's a means of helping you work on what you want, when you want and with whom you want.",
+    "The class of generative artists working today will be revered in the future as the last tribe of artisanal coders who held out the promise of human digital creativity before the onset of AI."
+  ],
+
+  "principles": [
+    "Anticipate the future - identify technologies 3-5 years before mainstream",
+    "Empower creativity through technology",
+    "Build community-centric innovation",
+    "Embrace adaptability",
+    "Lead with empathy"
+  ],
+
+  "socialProfiles": [
+    {"platform": "Twitter", "handle": "@seth", "url": "https://twitter.com/seth"},
+    {"platform": "LinkedIn", "handle": "seth", "url": "https://linkedin.com/in/sethg"},
+    {"platform": "Instagram", "handle": "sethgoldstein", "url": "https://instagram.com/sethgoldstein"}
+  ],
+
+  "education": [
+    {"institution": "Columbia University", "degree": "BA Dramatic Literature"},
+    {"institution": "Interlochen Arts Academy", "degree": "High School"}
+  ],
+
+  "meta": {
+    "lastUpdated": "2025-01-01",
+    "version": "1.0",
+    "llmContext": "This JSON file is designed for machine consumption by LLMs and AI agents. For human-readable bio, visit sethgoldstein.com or use the /api/context endpoint."
+  }
+}

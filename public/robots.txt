@@ -1,0 +1,19 @@
+# robots.txt for sethgoldstein.com
+# This site welcomes both traditional crawlers and AI agents
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sethgoldstein.com/sitemap.xml
+
+# AI-friendly resources
+# LLM guidance: https://sethgoldstein.com/llms.txt
+# Structured data: https://sethgoldstein.com/seth.json
+# API explorer: https://sethgoldstein.com/api/explore
+
+# API endpoints are available for programmatic access
+Allow: /api/
+
+# Crawl-delay suggestion (be gentle)
+Crawl-delay: 1

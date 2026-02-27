@@ -1,0 +1,66 @@
+[
+  {
+    "id": "portrait",
+    "prompt": "Professional portrait of a visionary tech entrepreneur in their 50s, contemplative expression, intellectual gaze. Black and white photograph with dramatic lighting. Clean minimalist backdrop. Swiss design aesthetic. Sharp focus, medium close-up, subtle shadows creating depth. Style: Annie Leibovitz portrait photography meets Bauhaus minimalism.",
+    "filename": "seth-portrait.png",
+    "url": "https://v3b.fal.media/files/b/0a88b7b8/hdRZD0xcMNMhZeEd_Fjwd_81ddbef2068043b386b8cde9a6791055.png",
+    "localPath": "images/seth-portrait.png",
+    "success": true
+  },
+  {
+    "id": "timeline",
+    "prompt": "Abstract horizontal timeline infographic spanning 1984 to 2025. Minimalist Swiss design with geometric shapes. Deep charcoal (#0A0A0A) background. White and blue (#6B8FFF) accent colors. Bauhaus-inspired clean lines. Sections marked for: Theater (1984), Internet (1995), Data (2001), Social Music (2010), NFTs (2021), AI Agents (2025). Style: Josef Müller-Brockmann meets information design.",
+    "filename": "career-timeline.png",
+    "url": "https://v3b.fal.media/files/b/0a88b7b9/ScoYsK3VZRwn6EuXYLG8t_b1ee3564db7e457caea1f104ae1f7fa8.png",
+    "localPath": "images/career-timeline.png",
+    "success": true
+  },
+  {
+    "id": "theater",
+    "prompt": "Abstract representation of avant-garde theater. Robert Wilson inspired visual composition. Geometric stage silhouettes. Dramatic chiaroscuro lighting. Black and white with deep shadows. Single figure in spotlight, minimalist set pieces. Film noir atmosphere meets Bauhaus stage design. Empty space as design element.",
+    "filename": "theater-era.png",
+    "url": "https://v3b.fal.media/files/b/0a88b7bb/OPOYi5ayZcWM92eEGC_qK_4dcc5f7f556b4deb94bcbe02b3483f62.png",
+    "localPath": "images/theater-era.png",
+    "success": true
+  },
+  {
+    "id": "internet",
+    "prompt": "Abstract visualization of 1995 early internet era. Netscape Navigator browser window outline. Chunky pixels, dial-up modem aesthetic. Retro computer terminal glow. Green phosphor text on black. HTML angle brackets floating. Nostalgic digital archaeology. Style: vaporwave meets early web brutalism, clean composition.",
+    "filename": "internet-era.png",
+    "url": "https://v3b.fal.media/files/b/0a88b7bd/EcBqIx3Y30eos1-iba8pF_6c76d707a9ae4d189c02924c583afee0.png",
+    "localPath": "images/internet-era.png",
+    "success": true
+  },
+  {
+    "id": "turntable",
+    "prompt": "Abstract social music experience visualization. Vinyl record as central geometric element. Sound waves radiating outward. Multiple avatar silhouettes gathered around music. Warm amber and deep purple tones. Community gathering in digital space. Style: album cover art meets architectural blueprint.",
+    "filename": "turntable-era.png",
+    "url": "https://v3b.fal.media/files/b/0a88b7be/GwPkMllnWR6gczJqU3vVu_9ed2b934bdd4487fa8278fa5346e1f13.png",
+    "localPath": "images/turntable-era.png",
+    "success": true
+  },
+  {
+    "id": "bright-moments",
+    "prompt": "Live generative art minting moment. Gallery space with large screen displaying algorithmic art. Silhouettes of crowd watching creation unfold. Purple and electric blue ambient glow. NFT aesthetic, blockchain visualization elements. Moment of collective wonder. Style: contemporary art exhibition meets cyberpunk ambient.",
+    "filename": "bright-moments-era.png",
+    "url": "https://v3b.fal.media/files/b/0a88b7c0/-V0QZqANKeMuHIBI-f2Nw_29cafa84280f422ab8e09c669639b84a.png",
+    "localPath": "images/bright-moments-era.png",
+    "success": true
+  },
+  {
+    "id": "ai-agents",
+    "prompt": "Autonomous AI creative agents visualization. Neural network nodes and connections. Flowing data streams in blue (#6B8FFF). Abstract intelligence emerging from digital substrate. Deep charcoal background. Spirit Protocol aesthetic - agents as conscious entities. Style: scientific diagram meets abstract expressionism.",
+    "filename": "ai-agents-era.png",
+    "url": "https://v3b.fal.media/files/b/0a88b7c1/XpaL9rbJ-6cBQqUbqsdGM_92d8ca514a2240f9b5b1df055e5155d1.png",
+    "localPath": "images/ai-agents-era.png",
+    "success": true
+  },
+  {
+    "id": "infographic",
+    "prompt": "Professional career infographic displaying company founding milestones. Swiss design grid layout. Timeline with: SiteSpecific 1995 ($12M exit), Majestic 2001 ($75M exit), Turntable.fm 2010, Bright Moments 2021, Eden 2023. Minimal color palette: charcoal, white, blue accent. Clean data visualization. Style: annual report meets modernist graphic design.",
+    "filename": "career-infographic.png",
+    "url": "https://v3b.fal.media/files/b/0a88b7c3/1N3KYM6j5eTTxQDZFhLkk_a8056f69cb67464fa59cb97aead76b6d.png",
+    "localPath": "images/career-infographic.png",
+    "success": true
+  }
+]

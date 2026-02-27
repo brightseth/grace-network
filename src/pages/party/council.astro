@@ -1,0 +1,1169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const foundingInfluences = [
+  {
+    name: "Norbert Wiener",
+    initials: "NW",
+    era: "1894–1964",
+    title: "Father of Cybernetics",
+    quote: "The world of the future will be an ever more demanding struggle against the limitations of our intelligence, not a comfortable hammock.",
+    description: "Wiener founded the field of cybernetics and warned about the ethical implications of autonomous machines decades before AI existed. His insistence that technology must serve human values—not replace human judgment—is a cornerstone of aligned governance.",
+    accent: "purple",
+  },
+  {
+    name: "John Rawls",
+    initials: "JR",
+    era: "1921–2002",
+    title: "Political Philosopher",
+    quote: "Justice is the first virtue of social institutions.",
+    description: "His 'veil of ignorance' thought experiment is foundational to aligned governance: design institutions as if you don't know your position in them. Rawls gave us the intellectual framework for building systems that are fair by design, not by accident.",
+    accent: "gold",
+  },
+  {
+    name: "Buckminster Fuller",
+    initials: "BF",
+    era: "1895–1983",
+    title: "Systems Thinker & Futurist",
+    quote: "You never change things by fighting the existing reality. To change something, build a new model that makes the existing model obsolete.",
+    description: "Fuller believed technology could create abundance for all humanity if we designed comprehensive systems rather than piecemeal fixes. His vision of 'doing more with less' anticipated the cascading abundance at the heart of The Grace Network.",
+    accent: "purple",
+  },
+  {
+    name: "Ada Lovelace",
+    initials: "AL",
+    era: "1815–1852",
+    title: "First Computer Programmer",
+    quote: "The Analytical Engine has no pretensions whatever to originate anything. It can do whatever we know how to order it to perform.",
+    description: "Lovelace saw both the potential and the limits of computing machines, insisting they could never 'originate anything' without human guidance. Her clarity about the boundary between human and machine intelligence remains essential to AI safety thinking.",
+    accent: "gold",
+  },
+  {
+    name: "Václav Havel",
+    initials: "VH",
+    era: "1936–2011",
+    title: "Playwright & President",
+    quote: "The salvation of this human world lies nowhere else than in the human heart, in the human power to reflect, in human meekness and human responsibility.",
+    description: "Havel led Czechoslovakia's Velvet Revolution through moral authority and truth-telling, not violence. His concept of 'living in truth' aligns directly with The Grace Network's commitment to radical transparency and governance by conscience.",
+    accent: "purple",
+  },
+];
+
+const contemporaryInfluences = [
+  {
+    name: "Dario Amodei",
+    initials: "DA",
+    era: "Contemporary",
+    title: "CEO of Anthropic",
+    quote: "We should be planning for a world where AI can do extraordinary things—and building the institutions to ensure those benefits reach everyone.",
+    description: "Architect of responsible scaling and constitutional AI. His essay 'Machines of Loving Grace' articulates the positive vision this movement is built upon—that safety and transformative benefit are not in tension but are deeply complementary.",
+    accent: "gold",
+  },
+  {
+    name: "Balaji Srinivasan",
+    initials: "BS",
+    era: "Contemporary",
+    title: "Technologist & Author",
+    quote: "A network state is a social network with a moral proposition, a sense of national consciousness, a recognized founder, a capacity for collective action, and a physical presence.",
+    description: "His 'Network State' framework provides the organizational blueprint for digital-first governance and cloud-first communities. The Grace Network's structure—from digital constitution to eventual physical archipelago—follows the path he charted.",
+    accent: "purple",
+  },
+  {
+    name: "Audrey Tang",
+    initials: "AT",
+    era: "Contemporary",
+    title: "Digital Democracy Pioneer",
+    quote: "When we see the internet of things, let's make it an internet of beings. When we see virtual reality, let's make it a shared reality.",
+    description: "As Taiwan's former Digital Minister, Tang demonstrated that radical transparency and digital participation can strengthen democracy rather than undermine it. Their work on tools like Polis and vTaiwan proved consensus-building at scale is possible.",
+    accent: "gold",
+  },
+  {
+    name: "Amartya Sen",
+    initials: "AS",
+    era: "Contemporary",
+    title: "Economist & Philosopher",
+    quote: "Development consists of the removal of various types of unfreedoms that leave people with little choice and little opportunity.",
+    description: "His capability approach to human development aligns with universal flourishing—measuring progress not by GDP alone but by what people are actually free to do and become. This framework underpins The Grace Network's commitment to dignity and agency.",
+    accent: "purple",
+  },
+  {
+    name: "Yoshua Bengio",
+    initials: "YB",
+    era: "Contemporary",
+    title: "AI Researcher & Safety Advocate",
+    quote: "We need to take AI safety seriously because the potential consequences of getting it wrong are enormous.",
+    description: "A Turing Award laureate and pioneer of deep learning, Bengio has become a leading voice for AI safety governance from within the technical community. His willingness to prioritize caution over speed embodies the safety-first principle of our movement.",
+    accent: "gold",
+  },
+  {
+    name: "Michael Levin",
+    initials: "ML",
+    era: "Contemporary",
+    title: "Biologist & Collective Intelligence Researcher",
+    quote: "Every cell is an agent. Every tissue is a collective. Intelligence is a spectrum, not a binary.",
+    description: "Levin's groundbreaking work on bioelectricity and morphogenesis reveals how collectives of cells make decisions, solve problems, and self-organize without centralized control. His research on biological collective intelligence provides a scientific foundation for understanding how networks of agents—whether cells or citizens—can achieve aligned, emergent governance.",
+    accent: "purple",
+  },
+  {
+    name: "Yuval Noah Harari",
+    initials: "YH",
+    era: "Contemporary",
+    title: "Historian & Philosopher",
+    quote: "In a world deluged by irrelevant information, clarity is power.",
+    description: "Harari's sweeping histories of humanity—from Sapiens to Homo Deus—illuminate how shared myths and stories create the cooperative frameworks that underpin civilization. His urgent warnings about AI's potential to concentrate power and erode democracy make him an essential voice for aligned governance in the age of intelligence.",
+    accent: "gold",
+  },
+  {
+    name: "Barack Obama",
+    initials: "BO",
+    era: "Contemporary",
+    title: "44th President of the United States",
+    quote: "The best way to not feel hopeless is to get up and do something. Don't wait for good things to happen to you. If you go out and make some good things happen, you will fill the world with hope.",
+    description: "Obama's presidency demonstrated that aspirational leadership and pragmatic governance can coexist. His emphasis on building broad coalitions, evidence-based policy, and expanding access to opportunity embodies the Grace Network's conviction that democratic institutions can be strengthened—not replaced—by technology and collective will.",
+    accent: "purple",
+  },
+  {
+    name: "Michael Bloomberg",
+    initials: "MB",
+    era: "Contemporary",
+    title: "Entrepreneur, Philanthropist & Former Mayor",
+    quote: "What I think the government should be doing is incentivizing behavior, giving information, making sure that there's a level playing field.",
+    description: "Bloomberg bridges the worlds of technology entrepreneurship, data-driven governance, and large-scale philanthropy. As mayor of New York, he pioneered using data analytics to improve city services. His approach to governance—measure everything, publish the results, iterate—mirrors the Grace Network's commitment to scientific governance and radical transparency.",
+    accent: "gold",
+  },
+  {
+    name: "Vitalik Buterin",
+    initials: "VB",
+    era: "Contemporary",
+    title: "Co-founder of Ethereum",
+    quote: "The thing that I find most interesting about Ethereum is that it lets you do things that you could not do before, not that it lets you do things cheaper.",
+    description: "Buterin created the infrastructure that makes digital sovereignty possible. Ethereum's programmable smart contracts, decentralized governance tools, and on-chain coordination mechanisms are the technical building blocks of network state governance. His ongoing work on quadratic voting, public goods funding, and soulbound tokens directly enables the aligned incentive structures The Grace Network envisions.",
+    accent: "purple",
+  },
+  {
+    name: "André 3000",
+    initials: "A3",
+    era: "Contemporary",
+    title: "Artist, Musician & Philosophical Wanderer",
+    quote: "Across cultures, darker people suffer most. Why?",
+    description: "André Benjamin defies every category. From redefining hip-hop with Outkast to his meditative instrumental album 'New Blue Sun', he embodies the Grace Network's conviction that human meaning and creativity cannot be reduced to optimization. His restless evolution—from pop icon to flautist to quiet philosopher—is a living argument that flourishing means the freedom to become something no algorithm could predict.",
+    accent: "gold",
+  },
+  {
+    name: "John Lennon",
+    initials: "JL",
+    era: "1940–1980",
+    title: "Musician, Artist & Peace Activist",
+    quote: "Imagine all the people sharing all the world.",
+    description: "Lennon weaponized imagination itself as a political act. 'Imagine' is the closest thing the modern world has to a universal anthem for human flourishing—a world without borders, without hoarding, without violence. The Grace Network's vision of a cloud-first community united by values rather than geography is, at its core, the realization of what Lennon asked us to imagine.",
+    accent: "purple",
+  },
+  {
+    name: "Yoko Ono",
+    initials: "YO",
+    era: "Contemporary",
+    title: "Artist, Musician & Peace Activist",
+    quote: "A dream you dream alone is only a dream. A dream you dream together is reality.",
+    description: "Ono pioneered participatory, conceptual art that demanded the audience become co-creator—decades before anyone talked about collective intelligence or open-source governance. Her Wish Trees, her instruction paintings, her bed-ins for peace: all are blueprints for a politics built on imagination, radical participation, and the insistence that every person's voice shapes the whole.",
+    accent: "gold",
+  },
+];
+---
+
+<Layout
+  title="Council of Influences — The Grace Network"
+  description="The intellectual and moral advisors whose ideas guide The Grace Network. A curated pantheon of thinkers — both historical and contemporary — who form the foundations of aligned governance."
+  image="https://sethgoldstein.com/party/og-grace-network.svg"
+>
+  <!-- Navigation -->
+  <nav class="party-nav">
+    <div class="nav-inner">
+      <a href="/party" class="nav-logo">
+        <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="56" stroke="#C8A2FF" stroke-width="2"/>
+          <path d="M60 20 L60 100" stroke="#C8A2FF" stroke-width="1.5" opacity="0.4"/>
+          <path d="M20 60 L100 60" stroke="#C8A2FF" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="60" cy="60" r="12" fill="#C8A2FF" opacity="0.9"/>
+          <circle cx="60" cy="60" r="28" stroke="#C8A2FF" stroke-width="1" opacity="0.5"/>
+          <circle cx="60" cy="60" r="42" stroke="#C8A2FF" stroke-width="0.75" opacity="0.3"/>
+          <circle cx="60" cy="32" r="4" fill="#FFD700" opacity="0.8"/>
+          <circle cx="84" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
+          <circle cx="84" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
+          <circle cx="60" cy="88" r="4" fill="#FFD700" opacity="0.8"/>
+          <circle cx="36" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
+          <circle cx="36" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
+        </svg>
+        <span>The Grace Network</span>
+      </a>
+      <div class="nav-links">
+        <a href="/party">Home</a>
+        <a href="/party/constitution">Constitution</a>
+        <a href="/party/toolkit">Toolkit</a>
+        <a href="/party/council" class="nav-active">Council</a>
+        <a href="#sign" class="nav-cta">Join the Network</a>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">INTELLECTUAL FOUNDATIONS</div>
+      <h1>
+        <span class="hero-line-1">The Council of</span>
+        <span class="hero-line-2">Influences</span>
+      </h1>
+      <p class="hero-subtitle">
+        The intellectual and moral foundations of The Grace Network — a curated pantheon
+        of thinkers whose ideas illuminate the path toward aligned governance and human flourishing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro-strip">
+    <div class="intro-inner">
+      <p>
+        The Council of Influences is not a governing body. It is a constellation of minds — both
+        historical and living — whose ideas form the intellectual bedrock of our movement. These
+        are the thinkers who saw the future clearly: who understood that powerful systems must be
+        built with care, that justice must be designed in from the start, and that technology's
+        highest purpose is universal human flourishing. We study them, cite them, and carry their
+        work forward.
+      </p>
+    </div>
+  </section>
+
+  <!-- Founding Influences -->
+  <section class="council-section" id="founding">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-tag">FOUNDING INFLUENCES</span>
+        <h2>The Historical Foundations</h2>
+        <p class="section-desc">
+          The thinkers of the past whose foresight, moral clarity, and intellectual courage
+          laid the groundwork for everything we are building.
+        </p>
+      </div>
+
+      <div class="council-grid">
+        {foundingInfluences.map((member) => (
+          <div class={`council-card accent-${member.accent}`}>
+            <div class="card-header">
+              <div class={`avatar avatar-${member.accent}`}>
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#C8A2FF' : '#FFD700'} stroke-width="1.5" opacity="0.4"/>
+                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(200, 162, 255, 0.1)' : 'rgba(255, 215, 0, 0.1)'}/>
+                  <text x="40" y="46" text-anchor="middle" fill={member.accent === 'purple' ? '#C8A2FF' : '#FFD700'} font-size="22" font-weight="700" font-family="Helvetica Neue, sans-serif">{member.initials}</text>
+                </svg>
+              </div>
+              <div class="card-identity">
+                <h3>{member.name}</h3>
+                <span class="card-era">{member.era}</span>
+                <span class="card-title">{member.title}</span>
+              </div>
+            </div>
+            <blockquote class="card-quote">
+              "{member.quote}"
+            </blockquote>
+            <p class="card-relevance">{member.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contemporary Influences -->
+  <section class="council-section council-section-alt" id="contemporary">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-tag">CONTEMPORARY INFLUENCES</span>
+        <h2>The Living Foundation</h2>
+        <p class="section-desc">
+          The voices of today who are actively shaping the landscape of AI safety, digital governance,
+          and human flourishing — thinkers whose work is ongoing and whose impact is still unfolding.
+        </p>
+      </div>
+
+      <div class="council-grid">
+        {contemporaryInfluences.map((member) => (
+          <div class={`council-card accent-${member.accent}`}>
+            <div class="card-header">
+              <div class={`avatar avatar-${member.accent}`}>
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#C8A2FF' : '#FFD700'} stroke-width="1.5" opacity="0.4"/>
+                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(200, 162, 255, 0.1)' : 'rgba(255, 215, 0, 0.1)'}/>
+                  <text x="40" y="46" text-anchor="middle" fill={member.accent === 'purple' ? '#C8A2FF' : '#FFD700'} font-size="22" font-weight="700" font-family="Helvetica Neue, sans-serif">{member.initials}</text>
+                </svg>
+              </div>
+              <div class="card-identity">
+                <h3>{member.name}</h3>
+                <span class="card-era">{member.era}</span>
+                <span class="card-title">{member.title}</span>
+              </div>
+            </div>
+            <blockquote class="card-quote">
+              "{member.quote}"
+            </blockquote>
+            <p class="card-relevance">{member.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Nominate an Influence -->
+  <section class="nominate" id="nominate">
+    <div class="section-inner">
+      <div class="nominate-container">
+        <div class="section-header">
+          <span class="section-tag">EXPAND THE COUNCIL</span>
+          <h2>Nominate an Influence</h2>
+          <p class="section-desc">
+            The Council of Influences is a living document. Know a thinker — past or present —
+            whose ideas align with our vision of safety-first progress, radical transparency,
+            or universal flourishing? Nominate them for consideration.
+          </p>
+        </div>
+        <form class="nominate-form" id="nominateForm">
+          <div class="form-group">
+            <label for="nomName">Name</label>
+            <input type="text" id="nomName" name="nomName" required placeholder="e.g. Hannah Arendt" />
+          </div>
+          <div class="form-group">
+            <label for="nomEra">Era / Dates</label>
+            <input type="text" id="nomEra" name="nomEra" required placeholder="e.g. 1906–1975 or Contemporary" />
+          </div>
+          <div class="form-group">
+            <label for="nomReason">Why They Belong</label>
+            <textarea id="nomReason" name="nomReason" rows="4" required placeholder="Describe why this thinker's ideas are relevant to The Grace Network's mission..."></textarea>
+          </div>
+          <button type="submit" class="btn-grace btn-full">Submit Nomination</button>
+        </form>
+        <div class="nominate-success" id="nominateSuccess" style="display: none;">
+          <div class="success-icon">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#C8A2FF" stroke-width="2"/><path d="M20 32l8 8 16-16" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Nomination Received</h3>
+          <p>Thank you for helping expand the intellectual foundations of The Grace Network. All nominations are reviewed by the community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Living Document Note -->
+  <section class="living-note">
+    <div class="section-inner">
+      <div class="note-card">
+        <div class="note-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="20" stroke="#C8A2FF" stroke-width="1" opacity="0.5"/>
+            <circle cx="24" cy="24" r="4" fill="#C8A2FF" opacity="0.8"/>
+            <path d="M24 4v8M24 36v8M4 24h8M36 24h8M9.86 9.86l5.66 5.66M32.48 32.48l5.66 5.66M9.86 38.14l5.66-5.66M32.48 15.52l5.66-5.66" stroke="#C8A2FF" stroke-width="0.75" opacity="0.3"/>
+          </svg>
+        </div>
+        <p>
+          The Council of Influences is a living document. As our community grows, so does our
+          intellectual foundation. New voices will be added as the movement evolves — always
+          guided by the principles of safety, transparency, and universal flourishing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA to Sign -->
+  <section class="sign-cta" id="sign">
+    <div class="section-inner">
+      <div class="cta-card">
+        <div class="cta-text">
+          <span class="section-tag">JOIN THE MOVEMENT</span>
+          <h3>Stand on the Shoulders of Giants</h3>
+          <p>
+            The Council of Influences points the way. Your signature carries the work forward.
+            Sign the Constitution and become a founding member of The Grace Network.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a href="/party/constitution" class="btn-grace">Sign the Constitution</a>
+          <a href="/party" class="btn-ghost-grace">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="party-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="56" stroke="#C8A2FF" stroke-width="2"/>
+            <circle cx="60" cy="60" r="12" fill="#C8A2FF" opacity="0.9"/>
+            <circle cx="60" cy="32" r="4" fill="#FFD700" opacity="0.8"/>
+            <circle cx="84" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
+            <circle cx="84" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
+            <circle cx="60" cy="88" r="4" fill="#FFD700" opacity="0.8"/>
+            <circle cx="36" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
+            <circle cx="36" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
+          </svg>
+          <span>The Grace Network</span>
+        </div>
+        <div class="footer-links">
+          <a href="/party">Home</a>
+          <a href="/party/constitution">Constitution</a>
+          <a href="/party/toolkit">Toolkit</a>
+          <a href="/party/council">Council</a>
+          <a href="#sign">Join</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2026 The Grace Network. A network state movement for aligned governance and human flourishing.
+        </p>
+        <p class="footer-motto">Built with care. Governed with grace. Aligned by design.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nomination form handling
+    const form = document.getElementById('nominateForm');
+    const success = document.getElementById('nominateSuccess');
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (form instanceof HTMLFormElement) {
+        form.style.display = 'none';
+      }
+      if (success instanceof HTMLElement) {
+        success.style.display = 'block';
+      }
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn?.addEventListener('click', () => {
+      navLinks?.classList.toggle('open');
+    });
+  </script>
+
+  <style>
+    /* ============================================
+       THE GRACE NETWORK — Council of Influences
+       ============================================ */
+
+    /* Color System */
+    :root {
+      --grace-purple: #C8A2FF;
+      --grace-purple-dim: #9B7ACC;
+      --grace-gold: #FFD700;
+      --grace-gold-dim: #B8A040;
+      --grace-bg: #0A0A0F;
+      --grace-surface: #12121A;
+      --grace-surface-2: #1A1A25;
+      --grace-border: #2A2A3A;
+      --grace-text: #EEEEF0;
+      --grace-text-secondary: #9999AA;
+      --grace-text-muted: #666677;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--grace-bg);
+      color: var(--grace-text);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .party-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--grace-border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--grace-text);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--grace-text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--grace-text); }
+
+    .nav-links a.nav-active {
+      color: var(--grace-purple);
+    }
+
+    .nav-cta {
+      background: var(--grace-purple);
+      color: var(--grace-bg) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      font-size: 0.8rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--grace-gold) !important;
+      color: var(--grace-bg) !important;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--grace-text);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--grace-bg);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--grace-border);
+      }
+      .nav-links.open { display: flex; }
+      .mobile-menu-btn { display: block; }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200, 162, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 162, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(200, 162, 255, 0.08) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--grace-gold);
+      padding: 0.5rem 1.25rem;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 100px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-line-1 {
+      display: block;
+      color: var(--grace-text);
+    }
+
+    .hero-line-2 {
+      display: block;
+      background: linear-gradient(135deg, var(--grace-purple) 0%, var(--grace-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: var(--grace-text-secondary);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* Intro Strip */
+    .intro-strip {
+      background: var(--grace-surface);
+      border-top: 1px solid var(--grace-border);
+      border-bottom: 1px solid var(--grace-border);
+      padding: 3.5rem 2rem;
+    }
+
+    .intro-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro-inner p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--grace-text-secondary);
+      font-weight: 300;
+    }
+
+    /* Sections */
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--grace-gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--grace-text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Council Sections */
+    .council-section {
+      padding: 6rem 0;
+    }
+
+    .council-section-alt {
+      background: var(--grace-surface);
+      border-top: 1px solid var(--grace-border);
+      border-bottom: 1px solid var(--grace-border);
+    }
+
+    /* Council Grid */
+    .council-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .council-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Council Cards */
+    .council-card {
+      background: var(--grace-surface-2);
+      border: 1px solid var(--grace-border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .council-section-alt .council-card {
+      background: var(--grace-bg);
+    }
+
+    .council-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .council-card.accent-purple::before {
+      box-shadow: 0 0 40px rgba(200, 162, 255, 0.1), inset 0 0 40px rgba(200, 162, 255, 0.02);
+    }
+
+    .council-card.accent-gold::before {
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.1), inset 0 0 40px rgba(255, 215, 0, 0.02);
+    }
+
+    .council-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .council-card:hover::before {
+      opacity: 1;
+    }
+
+    .council-card.accent-purple:hover {
+      border-color: rgba(200, 162, 255, 0.4);
+    }
+
+    .council-card.accent-gold:hover {
+      border-color: rgba(255, 215, 0, 0.4);
+    }
+
+    /* Card Header */
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .avatar svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .avatar-purple {
+      background: radial-gradient(circle at 30% 30%, rgba(200, 162, 255, 0.15) 0%, rgba(200, 162, 255, 0.05) 100%);
+      border: 1.5px solid rgba(200, 162, 255, 0.3);
+    }
+
+    .avatar-gold {
+      background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.12) 0%, rgba(255, 215, 0, 0.04) 100%);
+      border: 1.5px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .card-identity {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .card-identity h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--grace-text);
+      letter-spacing: -0.01em;
+    }
+
+    .card-era {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--grace-text-muted);
+    }
+
+    .card-title {
+      font-size: 0.85rem;
+      color: var(--grace-purple);
+      font-weight: 500;
+    }
+
+    .accent-gold .card-title {
+      color: var(--grace-gold-dim);
+    }
+
+    /* Card Quote */
+    .card-quote {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      font-style: italic;
+      color: var(--grace-text);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      border-left: 3px solid var(--grace-border);
+      background: rgba(200, 162, 255, 0.03);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .accent-purple .card-quote {
+      border-left-color: rgba(200, 162, 255, 0.4);
+    }
+
+    .accent-gold .card-quote {
+      border-left-color: rgba(255, 215, 0, 0.4);
+      background: rgba(255, 215, 0, 0.02);
+    }
+
+    /* Card Relevance */
+    .card-relevance {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--grace-text-secondary);
+    }
+
+    /* Nominate Section */
+    .nominate {
+      padding: 6rem 0;
+    }
+
+    .nominate-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .nominate-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--grace-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--grace-surface);
+      border: 1px solid var(--grace-border);
+      border-radius: 8px;
+      color: var(--grace-text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--grace-purple);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--grace-text-muted);
+    }
+
+    .form-group textarea { resize: vertical; }
+
+    /* Nominate Success */
+    .nominate-success {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .success-icon {
+      width: 64px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .nominate-success h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .nominate-success p {
+      color: var(--grace-text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Living Note */
+    .living-note {
+      padding: 4rem 0;
+      background: var(--grace-surface);
+      border-top: 1px solid var(--grace-border);
+      border-bottom: 1px solid var(--grace-border);
+    }
+
+    .note-card {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .note-icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    .note-card p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--grace-text-secondary);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* Buttons */
+    .btn-grace {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      background: linear-gradient(135deg, var(--grace-purple) 0%, #A87FE0 100%);
+      color: var(--grace-bg);
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-grace:hover {
+      background: linear-gradient(135deg, var(--grace-gold) 0%, #E0C060 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(200, 162, 255, 0.2);
+    }
+
+    .btn-ghost-grace {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      background: transparent;
+      color: var(--grace-text);
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border: 1px solid var(--grace-border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-ghost-grace:hover {
+      border-color: var(--grace-purple);
+      color: var(--grace-purple);
+    }
+
+    .btn-full { width: 100%; }
+
+    /* Sign CTA */
+    .sign-cta {
+      padding: 5rem 0;
+    }
+
+    .cta-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(200, 162, 255, 0.08) 0%, rgba(255, 215, 0, 0.04) 100%);
+      border: 1px solid var(--grace-border);
+      border-radius: 16px;
+      padding: 3rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .cta-text h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .cta-text p {
+      color: var(--grace-text-secondary);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .party-footer {
+      border-top: 1px solid var(--grace-border);
+      padding: 3rem 0;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--grace-text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--grace-text); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--grace-border);
+      padding-top: 2rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--grace-text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-motto {
+      color: var(--grace-purple) !important;
+      font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .council-card {
+        padding: 2rem;
+      }
+
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .cta-card {
+        padding: 2rem;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cta-actions {
+        justify-content: center;
+      }
+    }
+  </style>
+</Layout>
