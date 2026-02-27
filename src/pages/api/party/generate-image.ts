@@ -12,17 +12,18 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const enhancedPrompt = `Political campaign imagery for 'The Grace Network', a futuristic network state movement for human flourishing. Dark background with purple and gold accents, modern minimalist design, elegant typography. ${prompt}`;
+    const enhancedPrompt = `Political campaign imagery for 'The Grace Network', a network state movement for human flourishing. Minimal, light, confident design inspired by Anthropic aesthetics and Shepard Fairey poster art. Clean typography, purposeful color. ${prompt}`;
 
     fal.config({
       credentials: import.meta.env.FAL_KEY || process.env.FAL_KEY,
     });
 
-    const result = await fal.subscribe('fal-ai/flux/schnell', {
+    const result = await fal.subscribe('fal-ai/nano-banana-pro', {
       input: {
         prompt: enhancedPrompt,
-        image_size: 'landscape_16_9',
+        aspect_ratio: '16:9',
         num_images: 1,
+        output_format: 'png',
       },
     }) as any;
 
