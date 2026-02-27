@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request }) => {
       credentials: import.meta.env.FAL_KEY || process.env.FAL_KEY,
     });
 
-    const result = await fal.subscribe('fal-ai/nanobananapro2', {
+    const result = await fal.subscribe('fal-ai/flux/schnell', {
       input: {
         prompt: enhancedPrompt,
         image_size: 'landscape_16_9',
