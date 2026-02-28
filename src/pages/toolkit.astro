@@ -51,13 +51,13 @@ import SectionHeader from '../components/SectionHeader.astro';
           <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" class="asset-svg">
             <defs>
               <linearGradient id="pfGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C8A2FF"/>
-                <stop offset="100%" stop-color="#FFD700"/>
+                <stop offset="0%" stop-color="#8B5CF6"/>
+                <stop offset="100%" stop-color="#D97706"/>
               </linearGradient>
               <radialGradient id="pfCenter" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="transparent"/>
                 <stop offset="70%" stop-color="transparent"/>
-                <stop offset="100%" stop-color="rgba(10,10,15,0.3)"/>
+                <stop offset="100%" stop-color="rgba(139,92,246,0.06)"/>
               </radialGradient>
               <clipPath id="circClip">
                 <circle cx="200" cy="200" r="160"/>
@@ -66,34 +66,34 @@ import SectionHeader from '../components/SectionHeader.astro';
             <!-- Transparent center for profile photo overlay -->
             <rect width="400" height="400" fill="none"/>
             <!-- Outer gradient ring -->
-            <circle cx="200" cy="200" r="190" fill="none" stroke="url(#pfGrad)" stroke-width="6" opacity="0.9"/>
-            <circle cx="200" cy="200" r="175" fill="none" stroke="url(#pfGrad)" stroke-width="2" opacity="0.4"/>
-            <circle cx="200" cy="200" r="165" fill="none" stroke="#C8A2FF" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="200" cy="200" r="190" fill="none" stroke="url(#pfGrad)" stroke-width="6" opacity="0.85"/>
+            <circle cx="200" cy="200" r="175" fill="none" stroke="url(#pfGrad)" stroke-width="2" opacity="0.3"/>
+            <circle cx="200" cy="200" r="165" fill="none" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
             <!-- Network node decorations -->
-            <circle cx="200" cy="18" r="8" fill="#FFD700" opacity="0.9"/>
-            <circle cx="328" cy="78" r="6" fill="#C8A2FF" opacity="0.8"/>
-            <circle cx="378" cy="185" r="7" fill="#FFD700" opacity="0.85"/>
-            <circle cx="340" cy="310" r="6" fill="#C8A2FF" opacity="0.8"/>
-            <circle cx="248" cy="378" r="8" fill="#FFD700" opacity="0.9"/>
-            <circle cx="152" cy="378" r="6" fill="#C8A2FF" opacity="0.8"/>
-            <circle cx="60" cy="310" r="7" fill="#FFD700" opacity="0.85"/>
-            <circle cx="22" cy="185" r="6" fill="#C8A2FF" opacity="0.8"/>
-            <circle cx="72" cy="78" r="8" fill="#FFD700" opacity="0.9"/>
+            <circle cx="200" cy="18" r="8" fill="#D97706" opacity="0.85"/>
+            <circle cx="328" cy="78" r="6" fill="#8B5CF6" opacity="0.7"/>
+            <circle cx="378" cy="185" r="7" fill="#D97706" opacity="0.8"/>
+            <circle cx="340" cy="310" r="6" fill="#8B5CF6" opacity="0.7"/>
+            <circle cx="248" cy="378" r="8" fill="#D97706" opacity="0.85"/>
+            <circle cx="152" cy="378" r="6" fill="#8B5CF6" opacity="0.7"/>
+            <circle cx="60" cy="310" r="7" fill="#D97706" opacity="0.8"/>
+            <circle cx="22" cy="185" r="6" fill="#8B5CF6" opacity="0.7"/>
+            <circle cx="72" cy="78" r="8" fill="#D97706" opacity="0.85"/>
             <!-- Connection lines from nodes to ring -->
-            <line x1="200" y1="18" x2="200" y2="10" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
-            <line x1="328" y1="78" x2="335" y2="72" stroke="#C8A2FF" stroke-width="1" opacity="0.4"/>
-            <line x1="378" y1="185" x2="385" y2="183" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
-            <line x1="340" y1="310" x2="346" y2="316" stroke="#C8A2FF" stroke-width="1" opacity="0.4"/>
-            <line x1="248" y1="378" x2="250" y2="386" stroke="#FFD700" stroke-width="1" opacity="0.5"/>
+            <line x1="200" y1="18" x2="200" y2="10" stroke="#D97706" stroke-width="1" opacity="0.4"/>
+            <line x1="328" y1="78" x2="335" y2="72" stroke="#8B5CF6" stroke-width="1" opacity="0.35"/>
+            <line x1="378" y1="185" x2="385" y2="183" stroke="#D97706" stroke-width="1" opacity="0.4"/>
+            <line x1="340" y1="310" x2="346" y2="316" stroke="#8B5CF6" stroke-width="1" opacity="0.35"/>
+            <line x1="248" y1="378" x2="250" y2="386" stroke="#D97706" stroke-width="1" opacity="0.4"/>
             <!-- Small connector dots -->
-            <circle cx="264" cy="22" r="3" fill="#C8A2FF" opacity="0.5"/>
-            <circle cx="136" cy="22" r="3" fill="#C8A2FF" opacity="0.5"/>
-            <circle cx="360" cy="140" r="3" fill="#FFD700" opacity="0.4"/>
-            <circle cx="360" cy="260" r="3" fill="#FFD700" opacity="0.4"/>
-            <circle cx="40" cy="140" r="3" fill="#FFD700" opacity="0.4"/>
-            <circle cx="40" cy="260" r="3" fill="#FFD700" opacity="0.4"/>
+            <circle cx="264" cy="22" r="3" fill="#8B5CF6" opacity="0.4"/>
+            <circle cx="136" cy="22" r="3" fill="#8B5CF6" opacity="0.4"/>
+            <circle cx="360" cy="140" r="3" fill="#D97706" opacity="0.35"/>
+            <circle cx="360" cy="260" r="3" fill="#D97706" opacity="0.35"/>
+            <circle cx="40" cy="140" r="3" fill="#D97706" opacity="0.35"/>
+            <circle cx="40" cy="260" r="3" fill="#D97706" opacity="0.35"/>
             <!-- Bottom branding arc text approximation -->
-            <text x="200" y="394" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="0.15em" opacity="0.7">THE GRACE NETWORK</text>
+            <text x="200" y="394" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="0.15em" opacity="0.6">THE GRACE NETWORK</text>
           </svg>
         </div>
       </div>
@@ -108,71 +108,73 @@ import SectionHeader from '../components/SectionHeader.astro';
           <svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500" class="asset-svg">
             <defs>
               <linearGradient id="bannerBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0A0A0F"/>
-                <stop offset="50%" stop-color="#12121A"/>
-                <stop offset="100%" stop-color="#0A0A0F"/>
+                <stop offset="0%" stop-color="#FAFAF8"/>
+                <stop offset="50%" stop-color="#F5F3FF"/>
+                <stop offset="100%" stop-color="#FAFAF8"/>
               </linearGradient>
               <linearGradient id="bannerAccent" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#C8A2FF" stop-opacity="0.6"/>
-                <stop offset="50%" stop-color="#FFD700" stop-opacity="0.3"/>
-                <stop offset="100%" stop-color="#C8A2FF" stop-opacity="0.6"/>
+                <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.5"/>
+                <stop offset="50%" stop-color="#D97706" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.5"/>
               </linearGradient>
               <radialGradient id="bannerGlow" cx="50%" cy="50%" r="40%">
-                <stop offset="0%" stop-color="#C8A2FF" stop-opacity="0.08"/>
+                <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.06"/>
                 <stop offset="100%" stop-color="transparent"/>
               </radialGradient>
             </defs>
             <rect width="1500" height="500" fill="url(#bannerBg)"/>
             <rect width="1500" height="500" fill="url(#bannerGlow)"/>
+            <!-- Subtle border -->
+            <rect width="1500" height="500" fill="none" stroke="#E5E3DE" stroke-width="1"/>
             <!-- Grid lines -->
-            <line x1="0" y1="250" x2="1500" y2="250" stroke="#C8A2FF" stroke-width="0.5" opacity="0.05"/>
-            <line x1="750" y1="0" x2="750" y2="500" stroke="#C8A2FF" stroke-width="0.5" opacity="0.05"/>
+            <line x1="0" y1="250" x2="1500" y2="250" stroke="#8B5CF6" stroke-width="0.5" opacity="0.06"/>
+            <line x1="750" y1="0" x2="750" y2="500" stroke="#8B5CF6" stroke-width="0.5" opacity="0.06"/>
             <!-- Network visualization -->
-            <circle cx="750" cy="250" r="120" stroke="#C8A2FF" stroke-width="0.75" opacity="0.2"/>
-            <circle cx="750" cy="250" r="80" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
-            <circle cx="750" cy="250" r="40" stroke="#C8A2FF" stroke-width="0.5" opacity="0.1"/>
+            <circle cx="750" cy="250" r="120" stroke="#8B5CF6" stroke-width="0.75" opacity="0.12"/>
+            <circle cx="750" cy="250" r="80" stroke="#8B5CF6" stroke-width="0.5" opacity="0.09"/>
+            <circle cx="750" cy="250" r="40" stroke="#8B5CF6" stroke-width="0.5" opacity="0.06"/>
             <!-- Network nodes left side -->
-            <circle cx="180" cy="150" r="4" fill="#C8A2FF" opacity="0.3"/>
-            <circle cx="250" cy="280" r="3" fill="#FFD700" opacity="0.3"/>
-            <circle cx="320" cy="180" r="5" fill="#C8A2FF" opacity="0.4"/>
-            <circle cx="400" cy="320" r="3" fill="#FFD700" opacity="0.25"/>
-            <circle cx="480" cy="200" r="4" fill="#C8A2FF" opacity="0.35"/>
-            <circle cx="550" cy="300" r="3" fill="#FFD700" opacity="0.3"/>
+            <circle cx="180" cy="150" r="4" fill="#8B5CF6" opacity="0.25"/>
+            <circle cx="250" cy="280" r="3" fill="#D97706" opacity="0.25"/>
+            <circle cx="320" cy="180" r="5" fill="#8B5CF6" opacity="0.3"/>
+            <circle cx="400" cy="320" r="3" fill="#D97706" opacity="0.2"/>
+            <circle cx="480" cy="200" r="4" fill="#8B5CF6" opacity="0.28"/>
+            <circle cx="550" cy="300" r="3" fill="#D97706" opacity="0.25"/>
             <!-- Network nodes right side -->
-            <circle cx="950" cy="200" r="4" fill="#C8A2FF" opacity="0.35"/>
-            <circle cx="1020" cy="300" r="3" fill="#FFD700" opacity="0.3"/>
-            <circle cx="1100" cy="180" r="5" fill="#C8A2FF" opacity="0.4"/>
-            <circle cx="1180" cy="320" r="3" fill="#FFD700" opacity="0.25"/>
-            <circle cx="1250" cy="150" r="4" fill="#C8A2FF" opacity="0.3"/>
-            <circle cx="1320" cy="280" r="3" fill="#FFD700" opacity="0.3"/>
+            <circle cx="950" cy="200" r="4" fill="#8B5CF6" opacity="0.28"/>
+            <circle cx="1020" cy="300" r="3" fill="#D97706" opacity="0.25"/>
+            <circle cx="1100" cy="180" r="5" fill="#8B5CF6" opacity="0.3"/>
+            <circle cx="1180" cy="320" r="3" fill="#D97706" opacity="0.2"/>
+            <circle cx="1250" cy="150" r="4" fill="#8B5CF6" opacity="0.25"/>
+            <circle cx="1320" cy="280" r="3" fill="#D97706" opacity="0.25"/>
             <!-- Connection lines -->
-            <line x1="180" y1="150" x2="320" y2="180" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
-            <line x1="320" y1="180" x2="480" y2="200" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
-            <line x1="480" y1="200" x2="630" y2="250" stroke="#C8A2FF" stroke-width="0.5" opacity="0.2"/>
-            <line x1="870" y1="250" x2="950" y2="200" stroke="#C8A2FF" stroke-width="0.5" opacity="0.2"/>
-            <line x1="950" y1="200" x2="1100" y2="180" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
-            <line x1="1100" y1="180" x2="1250" y2="150" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
-            <line x1="250" y1="280" x2="400" y2="320" stroke="#FFD700" stroke-width="0.5" opacity="0.12"/>
-            <line x1="400" y1="320" x2="550" y2="300" stroke="#FFD700" stroke-width="0.5" opacity="0.12"/>
-            <line x1="1020" y1="300" x2="1180" y2="320" stroke="#FFD700" stroke-width="0.5" opacity="0.12"/>
-            <line x1="1180" y1="320" x2="1320" y2="280" stroke="#FFD700" stroke-width="0.5" opacity="0.12"/>
+            <line x1="180" y1="150" x2="320" y2="180" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
+            <line x1="320" y1="180" x2="480" y2="200" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
+            <line x1="480" y1="200" x2="630" y2="250" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
+            <line x1="870" y1="250" x2="950" y2="200" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
+            <line x1="950" y1="200" x2="1100" y2="180" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
+            <line x1="1100" y1="180" x2="1250" y2="150" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
+            <line x1="250" y1="280" x2="400" y2="320" stroke="#D97706" stroke-width="0.5" opacity="0.1"/>
+            <line x1="400" y1="320" x2="550" y2="300" stroke="#D97706" stroke-width="0.5" opacity="0.1"/>
+            <line x1="1020" y1="300" x2="1180" y2="320" stroke="#D97706" stroke-width="0.5" opacity="0.1"/>
+            <line x1="1180" y1="320" x2="1320" y2="280" stroke="#D97706" stroke-width="0.5" opacity="0.1"/>
             <!-- Center logo -->
-            <circle cx="750" cy="250" r="24" fill="#C8A2FF" opacity="0.15"/>
-            <circle cx="750" cy="250" r="14" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="750" cy="218" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="778" cy="234" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="778" cy="266" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="750" cy="282" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="722" cy="266" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="722" cy="234" r="5" fill="#FFD700" opacity="0.8"/>
+            <circle cx="750" cy="250" r="24" fill="#8B5CF6" opacity="0.1"/>
+            <circle cx="750" cy="250" r="14" fill="#8B5CF6" opacity="0.85"/>
+            <circle cx="750" cy="218" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="778" cy="234" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="778" cy="266" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="750" cy="282" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="722" cy="266" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="722" cy="234" r="5" fill="#D97706" opacity="0.75"/>
             <!-- Main title text -->
-            <text x="750" y="140" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="64" font-weight="800" letter-spacing="-0.02em">Machines of Loving Grace</text>
+            <text x="750" y="140" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="64" font-weight="800" letter-spacing="-0.02em">Machines of Loving Grace</text>
             <!-- Tagline -->
-            <text x="750" y="390" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="500" letter-spacing="0.15em" opacity="0.8">A NETWORK STATE FOR HUMAN FLOURISHING</text>
+            <text x="750" y="390" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="20" font-weight="500" letter-spacing="0.15em" opacity="0.7">A NETWORK STATE FOR HUMAN FLOURISHING</text>
             <!-- Bottom accent line -->
             <line x1="550" y1="420" x2="950" y2="420" stroke="url(#bannerAccent)" stroke-width="1"/>
             <!-- Bottom branding -->
-            <text x="750" y="460" text-anchor="middle" fill="#9999AA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="0.2em">THE GRACE NETWORK</text>
+            <text x="750" y="460" text-anchor="middle" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="0.2em">THE GRACE NETWORK</text>
           </svg>
         </div>
       </div>
@@ -187,71 +189,73 @@ import SectionHeader from '../components/SectionHeader.astro';
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" class="asset-svg asset-story">
             <defs>
               <linearGradient id="storyBg" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#0A0A0F"/>
-                <stop offset="50%" stop-color="#12121A"/>
-                <stop offset="100%" stop-color="#0A0A0F"/>
+                <stop offset="0%" stop-color="#FAFAF8"/>
+                <stop offset="50%" stop-color="#F5F3FF"/>
+                <stop offset="100%" stop-color="#FAFAF8"/>
               </linearGradient>
               <linearGradient id="storyAccent" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#C8A2FF"/>
-                <stop offset="100%" stop-color="#FFD700"/>
+                <stop offset="0%" stop-color="#8B5CF6"/>
+                <stop offset="100%" stop-color="#D97706"/>
               </linearGradient>
             </defs>
             <rect width="1080" height="1920" fill="url(#storyBg)"/>
+            <!-- Subtle border -->
+            <rect width="1080" height="1920" fill="none" stroke="#E5E3DE" stroke-width="1"/>
             <!-- Background grid -->
-            <line x1="0" y1="480" x2="1080" y2="480" stroke="#C8A2FF" stroke-width="0.5" opacity="0.04"/>
-            <line x1="0" y1="960" x2="1080" y2="960" stroke="#C8A2FF" stroke-width="0.5" opacity="0.04"/>
-            <line x1="0" y1="1440" x2="1080" y2="1440" stroke="#C8A2FF" stroke-width="0.5" opacity="0.04"/>
-            <line x1="540" y1="0" x2="540" y2="1920" stroke="#C8A2FF" stroke-width="0.5" opacity="0.04"/>
+            <line x1="0" y1="480" x2="1080" y2="480" stroke="#8B5CF6" stroke-width="0.5" opacity="0.05"/>
+            <line x1="0" y1="960" x2="1080" y2="960" stroke="#8B5CF6" stroke-width="0.5" opacity="0.05"/>
+            <line x1="0" y1="1440" x2="1080" y2="1440" stroke="#8B5CF6" stroke-width="0.5" opacity="0.05"/>
+            <line x1="540" y1="0" x2="540" y2="1920" stroke="#8B5CF6" stroke-width="0.5" opacity="0.05"/>
             <!-- Top glow -->
-            <ellipse cx="540" cy="400" rx="400" ry="300" fill="#C8A2FF" opacity="0.04"/>
+            <ellipse cx="540" cy="400" rx="400" ry="300" fill="#8B5CF6" opacity="0.03"/>
             <!-- Logo at top -->
-            <circle cx="540" cy="240" r="56" stroke="#C8A2FF" stroke-width="2" opacity="0.6"/>
-            <circle cx="540" cy="240" r="14" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="540" cy="212" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="564" cy="226" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="564" cy="254" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="540" cy="268" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="516" cy="254" r="5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="516" cy="226" r="5" fill="#FFD700" opacity="0.8"/>
-            <text x="540" y="340" text-anchor="middle" fill="#9999AA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="0.2em">THE GRACE NETWORK</text>
+            <circle cx="540" cy="240" r="56" stroke="#8B5CF6" stroke-width="2" opacity="0.4"/>
+            <circle cx="540" cy="240" r="14" fill="#8B5CF6" opacity="0.85"/>
+            <circle cx="540" cy="212" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="564" cy="226" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="564" cy="254" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="540" cy="268" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="516" cy="254" r="5" fill="#D97706" opacity="0.75"/>
+            <circle cx="516" cy="226" r="5" fill="#D97706" opacity="0.75"/>
+            <text x="540" y="340" text-anchor="middle" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="0.2em">THE GRACE NETWORK</text>
             <!-- Main headline -->
-            <text x="540" y="560" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="-0.02em">I SIGNED</text>
-            <text x="540" y="680" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="-0.02em">THE</text>
-            <text x="540" y="820" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="108" font-weight="800" letter-spacing="-0.02em" fill="#C8A2FF">CONSTITUTION</text>
+            <text x="540" y="560" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="-0.02em">I SIGNED</text>
+            <text x="540" y="680" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="-0.02em">THE</text>
+            <text x="540" y="820" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="108" font-weight="800" letter-spacing="-0.02em" fill="#8B5CF6">CONSTITUTION</text>
             <!-- Decorative line -->
-            <line x1="340" y1="890" x2="740" y2="890" stroke="url(#storyAccent)" stroke-width="2" opacity="0.6"/>
+            <line x1="340" y1="890" x2="740" y2="890" stroke="url(#storyAccent)" stroke-width="2" opacity="0.5"/>
             <!-- 7 Pillars list -->
-            <text x="540" y="990" text-anchor="middle" fill="#FFD700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="0.2em">THE SEVEN PILLARS</text>
-            <text x="540" y="1060" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.9">Safety-First Progress</text>
-            <text x="540" y="1120" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.9">Universal Flourishing</text>
-            <text x="540" y="1180" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.9">Radical Transparency</text>
-            <text x="540" y="1240" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.9">Digital Sovereignty</text>
-            <text x="540" y="1300" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.9">Scientific Governance</text>
-            <text x="540" y="1360" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.9">Aligned Incentives</text>
-            <text x="540" y="1420" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.9">Cascading Abundance</text>
+            <text x="540" y="990" text-anchor="middle" fill="#D97706" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="0.2em">THE SEVEN PILLARS</text>
+            <text x="540" y="1060" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.85">Safety-First Progress</text>
+            <text x="540" y="1120" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.85">Universal Flourishing</text>
+            <text x="540" y="1180" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.85">Radical Transparency</text>
+            <text x="540" y="1240" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.85">Digital Sovereignty</text>
+            <text x="540" y="1300" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.85">Scientific Governance</text>
+            <text x="540" y="1360" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.85">Aligned Incentives</text>
+            <text x="540" y="1420" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" opacity="0.85">Cascading Abundance</text>
             <!-- Pillar numbers -->
-            <text x="310" y="1060" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.5">I</text>
-            <text x="310" y="1120" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.5">II</text>
-            <text x="310" y="1180" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.5">III</text>
-            <text x="310" y="1240" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.5">IV</text>
-            <text x="310" y="1300" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.5">V</text>
-            <text x="310" y="1360" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.5">VI</text>
-            <text x="310" y="1420" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.5">VII</text>
+            <text x="310" y="1060" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.4">I</text>
+            <text x="310" y="1120" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.4">II</text>
+            <text x="310" y="1180" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.4">III</text>
+            <text x="310" y="1240" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.4">IV</text>
+            <text x="310" y="1300" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.4">V</text>
+            <text x="310" y="1360" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.4">VI</text>
+            <text x="310" y="1420" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="300" opacity="0.4">VII</text>
             <!-- Bottom decorative line -->
-            <line x1="340" y1="1500" x2="740" y2="1500" stroke="url(#storyAccent)" stroke-width="2" opacity="0.6"/>
+            <line x1="340" y1="1500" x2="740" y2="1500" stroke="url(#storyAccent)" stroke-width="2" opacity="0.5"/>
             <!-- Bottom network nodes -->
-            <circle cx="380" cy="1640" r="4" fill="#C8A2FF" opacity="0.3"/>
-            <circle cx="460" cy="1680" r="3" fill="#FFD700" opacity="0.25"/>
-            <circle cx="540" cy="1640" r="5" fill="#C8A2FF" opacity="0.35"/>
-            <circle cx="620" cy="1680" r="3" fill="#FFD700" opacity="0.25"/>
-            <circle cx="700" cy="1640" r="4" fill="#C8A2FF" opacity="0.3"/>
-            <line x1="380" y1="1640" x2="460" y2="1680" stroke="#C8A2FF" stroke-width="0.5" opacity="0.2"/>
-            <line x1="460" y1="1680" x2="540" y2="1640" stroke="#C8A2FF" stroke-width="0.5" opacity="0.2"/>
-            <line x1="540" y1="1640" x2="620" y2="1680" stroke="#C8A2FF" stroke-width="0.5" opacity="0.2"/>
-            <line x1="620" y1="1680" x2="700" y2="1640" stroke="#C8A2FF" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="380" cy="1640" r="4" fill="#8B5CF6" opacity="0.25"/>
+            <circle cx="460" cy="1680" r="3" fill="#D97706" opacity="0.2"/>
+            <circle cx="540" cy="1640" r="5" fill="#8B5CF6" opacity="0.3"/>
+            <circle cx="620" cy="1680" r="3" fill="#D97706" opacity="0.2"/>
+            <circle cx="700" cy="1640" r="4" fill="#8B5CF6" opacity="0.25"/>
+            <line x1="380" y1="1640" x2="460" y2="1680" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
+            <line x1="460" y1="1680" x2="540" y2="1640" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
+            <line x1="540" y1="1640" x2="620" y2="1680" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
+            <line x1="620" y1="1680" x2="700" y2="1640" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
             <!-- Bottom CTA -->
-            <text x="540" y="1780" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="0.1em">gracenetwork.org</text>
-            <text x="540" y="1840" text-anchor="middle" fill="#9999AA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.15em">A Network State for Human Flourishing</text>
+            <text x="540" y="1780" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="0.1em">gracenetwork.org</text>
+            <text x="540" y="1840" text-anchor="middle" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.15em">A Network State for Human Flourishing</text>
           </svg>
         </div>
       </div>
@@ -266,52 +270,54 @@ import SectionHeader from '../components/SectionHeader.astro';
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" class="asset-svg asset-square">
             <defs>
               <linearGradient id="sqBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0A0A0F"/>
-                <stop offset="100%" stop-color="#12121A"/>
+                <stop offset="0%" stop-color="#FAFAF8"/>
+                <stop offset="100%" stop-color="#F5F3FF"/>
               </linearGradient>
               <linearGradient id="sqAccent" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C8A2FF"/>
-                <stop offset="100%" stop-color="#FFD700"/>
+                <stop offset="0%" stop-color="#8B5CF6"/>
+                <stop offset="100%" stop-color="#D97706"/>
               </linearGradient>
             </defs>
             <rect width="1080" height="1080" fill="url(#sqBg)"/>
+            <!-- Subtle border -->
+            <rect width="1080" height="1080" fill="none" stroke="#E5E3DE" stroke-width="1"/>
             <!-- Background glow -->
-            <ellipse cx="540" cy="540" rx="400" ry="400" fill="#C8A2FF" opacity="0.03"/>
+            <ellipse cx="540" cy="540" rx="400" ry="400" fill="#8B5CF6" opacity="0.025"/>
             <!-- Grid -->
-            <line x1="0" y1="360" x2="1080" y2="360" stroke="#C8A2FF" stroke-width="0.5" opacity="0.04"/>
-            <line x1="0" y1="720" x2="1080" y2="720" stroke="#C8A2FF" stroke-width="0.5" opacity="0.04"/>
-            <line x1="360" y1="0" x2="360" y2="1080" stroke="#C8A2FF" stroke-width="0.5" opacity="0.04"/>
-            <line x1="720" y1="0" x2="720" y2="1080" stroke="#C8A2FF" stroke-width="0.5" opacity="0.04"/>
+            <line x1="0" y1="360" x2="1080" y2="360" stroke="#8B5CF6" stroke-width="0.5" opacity="0.05"/>
+            <line x1="0" y1="720" x2="1080" y2="720" stroke="#8B5CF6" stroke-width="0.5" opacity="0.05"/>
+            <line x1="360" y1="0" x2="360" y2="1080" stroke="#8B5CF6" stroke-width="0.5" opacity="0.05"/>
+            <line x1="720" y1="0" x2="720" y2="1080" stroke="#8B5CF6" stroke-width="0.5" opacity="0.05"/>
             <!-- Scattered network nodes -->
-            <circle cx="180" cy="200" r="4" fill="#C8A2FF" opacity="0.2"/>
-            <circle cx="900" cy="200" r="4" fill="#C8A2FF" opacity="0.2"/>
-            <circle cx="180" cy="880" r="4" fill="#FFD700" opacity="0.2"/>
-            <circle cx="900" cy="880" r="4" fill="#FFD700" opacity="0.2"/>
-            <circle cx="140" cy="540" r="3" fill="#FFD700" opacity="0.15"/>
-            <circle cx="940" cy="540" r="3" fill="#FFD700" opacity="0.15"/>
-            <line x1="180" y1="200" x2="360" y2="360" stroke="#C8A2FF" stroke-width="0.5" opacity="0.1"/>
-            <line x1="900" y1="200" x2="720" y2="360" stroke="#C8A2FF" stroke-width="0.5" opacity="0.1"/>
-            <line x1="180" y1="880" x2="360" y2="720" stroke="#FFD700" stroke-width="0.5" opacity="0.1"/>
-            <line x1="900" y1="880" x2="720" y2="720" stroke="#FFD700" stroke-width="0.5" opacity="0.1"/>
+            <circle cx="180" cy="200" r="4" fill="#8B5CF6" opacity="0.18"/>
+            <circle cx="900" cy="200" r="4" fill="#8B5CF6" opacity="0.18"/>
+            <circle cx="180" cy="880" r="4" fill="#D97706" opacity="0.18"/>
+            <circle cx="900" cy="880" r="4" fill="#D97706" opacity="0.18"/>
+            <circle cx="140" cy="540" r="3" fill="#D97706" opacity="0.12"/>
+            <circle cx="940" cy="540" r="3" fill="#D97706" opacity="0.12"/>
+            <line x1="180" y1="200" x2="360" y2="360" stroke="#8B5CF6" stroke-width="0.5" opacity="0.08"/>
+            <line x1="900" y1="200" x2="720" y2="360" stroke="#8B5CF6" stroke-width="0.5" opacity="0.08"/>
+            <line x1="180" y1="880" x2="360" y2="720" stroke="#D97706" stroke-width="0.5" opacity="0.08"/>
+            <line x1="900" y1="880" x2="720" y2="720" stroke="#D97706" stroke-width="0.5" opacity="0.08"/>
             <!-- Main text: ALIGNED -->
-            <text x="540" y="460" text-anchor="middle" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="200" font-weight="800" letter-spacing="0.05em">ALIGNED</text>
+            <text x="540" y="460" text-anchor="middle" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="200" font-weight="800" letter-spacing="0.05em">ALIGNED</text>
             <!-- Gradient underline -->
-            <line x1="180" y1="500" x2="900" y2="500" stroke="url(#sqAccent)" stroke-width="3" opacity="0.7"/>
+            <line x1="180" y1="500" x2="900" y2="500" stroke="url(#sqAccent)" stroke-width="3" opacity="0.6"/>
             <!-- Logo -->
-            <circle cx="540" cy="620" r="40" stroke="#C8A2FF" stroke-width="2" opacity="0.6"/>
-            <circle cx="540" cy="620" r="10" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="540" cy="598" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="559" cy="609" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="559" cy="631" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="540" cy="642" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="521" cy="631" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="521" cy="609" r="4" fill="#FFD700" opacity="0.8"/>
+            <circle cx="540" cy="620" r="40" stroke="#8B5CF6" stroke-width="2" opacity="0.4"/>
+            <circle cx="540" cy="620" r="10" fill="#8B5CF6" opacity="0.85"/>
+            <circle cx="540" cy="598" r="4" fill="#D97706" opacity="0.75"/>
+            <circle cx="559" cy="609" r="4" fill="#D97706" opacity="0.75"/>
+            <circle cx="559" cy="631" r="4" fill="#D97706" opacity="0.75"/>
+            <circle cx="540" cy="642" r="4" fill="#D97706" opacity="0.75"/>
+            <circle cx="521" cy="631" r="4" fill="#D97706" opacity="0.75"/>
+            <circle cx="521" cy="609" r="4" fill="#D97706" opacity="0.75"/>
             <!-- Join text -->
-            <text x="540" y="730" text-anchor="middle" fill="#C8A2FF" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="0.1em">Join The Grace Network</text>
+            <text x="540" y="730" text-anchor="middle" fill="#8B5CF6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="0.1em">Join The Grace Network</text>
             <!-- URL -->
-            <text x="540" y="800" text-anchor="middle" fill="#FFD700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="32" font-weight="600" letter-spacing="0.15em">gracenetwork.org</text>
+            <text x="540" y="800" text-anchor="middle" fill="#D97706" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="32" font-weight="600" letter-spacing="0.15em">gracenetwork.org</text>
             <!-- Bottom tagline -->
-            <text x="540" y="960" text-anchor="middle" fill="#9999AA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.15em">A NETWORK STATE FOR HUMAN FLOURISHING</text>
+            <text x="540" y="960" text-anchor="middle" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" font-weight="500" letter-spacing="0.15em">A NETWORK STATE FOR HUMAN FLOURISHING</text>
           </svg>
         </div>
       </div>
@@ -333,46 +339,46 @@ import SectionHeader from '../components/SectionHeader.astro';
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" class="asset-svg asset-quote">
             <defs>
               <linearGradient id="q1Bg" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0A0A0F"/>
-                <stop offset="40%" stop-color="#1A1528"/>
-                <stop offset="100%" stop-color="#0A0A0F"/>
+                <stop offset="0%" stop-color="#FAFAF8"/>
+                <stop offset="40%" stop-color="#F5F3FF"/>
+                <stop offset="100%" stop-color="#FAFAF8"/>
               </linearGradient>
               <linearGradient id="q1Line" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#C8A2FF"/>
-                <stop offset="100%" stop-color="#FFD700"/>
+                <stop offset="0%" stop-color="#8B5CF6"/>
+                <stop offset="100%" stop-color="#D97706"/>
               </linearGradient>
             </defs>
             <rect width="1200" height="675" fill="url(#q1Bg)"/>
-            <rect width="1200" height="675" fill="none" stroke="#2A2A3A" stroke-width="2"/>
+            <rect width="1200" height="675" fill="none" stroke="#E5E3DE" stroke-width="2"/>
             <!-- Accent line left -->
             <rect x="60" y="120" width="4" height="200" fill="url(#q1Line)" rx="2"/>
             <!-- Decorative nodes -->
-            <circle cx="1100" cy="100" r="4" fill="#C8A2FF" opacity="0.2"/>
-            <circle cx="1140" cy="140" r="3" fill="#FFD700" opacity="0.15"/>
-            <circle cx="1060" cy="80" r="3" fill="#FFD700" opacity="0.15"/>
-            <line x1="1100" y1="100" x2="1140" y2="140" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
-            <line x1="1100" y1="100" x2="1060" y2="80" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
+            <circle cx="1100" cy="100" r="4" fill="#8B5CF6" opacity="0.18"/>
+            <circle cx="1140" cy="140" r="3" fill="#D97706" opacity="0.14"/>
+            <circle cx="1060" cy="80" r="3" fill="#D97706" opacity="0.14"/>
+            <line x1="1100" y1="100" x2="1140" y2="140" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
+            <line x1="1100" y1="100" x2="1060" y2="80" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
             <!-- Quote mark -->
-            <text x="88" y="160" fill="#C8A2FF" font-family="Georgia, serif" font-size="80" opacity="0.3">"</text>
+            <text x="88" y="160" fill="#8B5CF6" font-family="Georgia, serif" font-size="80" opacity="0.2">"</text>
             <!-- Quote text -->
-            <text x="100" y="220" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" font-style="italic">
+            <text x="100" y="220" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" font-style="italic">
               <tspan x="100" dy="0">Safety and capability are not at odds.</tspan>
               <tspan x="100" dy="52">The most capable systems will be</tspan>
               <tspan x="100" dy="52">the safest.</tspan>
             </text>
             <!-- Bottom bar -->
-            <line x1="60" y1="560" x2="1140" y2="560" stroke="#2A2A3A" stroke-width="1"/>
+            <line x1="60" y1="560" x2="1140" y2="560" stroke="#E5E3DE" stroke-width="1"/>
             <!-- Logo bottom left -->
-            <circle cx="90" cy="610" r="18" stroke="#C8A2FF" stroke-width="1.5" opacity="0.6"/>
-            <circle cx="90" cy="610" r="5" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="90" cy="600" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="99" cy="605" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="99" cy="615" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="90" cy="620" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="81" cy="615" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="81" cy="605" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <text x="124" y="616" fill="#9999AA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.1em">THE GRACE NETWORK</text>
-            <text x="1140" y="616" text-anchor="end" fill="#666677" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0.05em">gracenetwork.org</text>
+            <circle cx="90" cy="610" r="18" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="90" cy="610" r="5" fill="#8B5CF6" opacity="0.85"/>
+            <circle cx="90" cy="600" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="99" cy="605" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="99" cy="615" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="90" cy="620" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="81" cy="615" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="81" cy="605" r="2.5" fill="#D97706" opacity="0.75"/>
+            <text x="124" y="616" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.1em">THE GRACE NETWORK</text>
+            <text x="1140" y="616" text-anchor="end" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0.05em">gracenetwork.org</text>
           </svg>
         </div>
 
@@ -381,39 +387,39 @@ import SectionHeader from '../components/SectionHeader.astro';
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" class="asset-svg asset-quote">
             <defs>
               <linearGradient id="q2Bg" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0A0A0F"/>
-                <stop offset="50%" stop-color="#15121E"/>
-                <stop offset="100%" stop-color="#0F0D14"/>
+                <stop offset="0%" stop-color="#FAFAF8"/>
+                <stop offset="50%" stop-color="#FFFBF0"/>
+                <stop offset="100%" stop-color="#FAFAF8"/>
               </linearGradient>
               <linearGradient id="q2Line" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#FFD700"/>
-                <stop offset="100%" stop-color="#C8A2FF"/>
+                <stop offset="0%" stop-color="#D97706"/>
+                <stop offset="100%" stop-color="#8B5CF6"/>
               </linearGradient>
             </defs>
             <rect width="1200" height="675" fill="url(#q2Bg)"/>
-            <rect width="1200" height="675" fill="none" stroke="#2A2A3A" stroke-width="2"/>
+            <rect width="1200" height="675" fill="none" stroke="#E5E3DE" stroke-width="2"/>
             <rect x="60" y="120" width="4" height="220" fill="url(#q2Line)" rx="2"/>
             <!-- Decorative nodes -->
-            <circle cx="100" cy="80" r="4" fill="#FFD700" opacity="0.2"/>
-            <circle cx="140" cy="60" r="3" fill="#C8A2FF" opacity="0.15"/>
-            <line x1="100" y1="80" x2="140" y2="60" stroke="#FFD700" stroke-width="0.5" opacity="0.15"/>
-            <text x="88" y="160" fill="#FFD700" font-family="Georgia, serif" font-size="80" opacity="0.3">"</text>
-            <text x="100" y="220" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" font-style="italic">
+            <circle cx="100" cy="80" r="4" fill="#D97706" opacity="0.18"/>
+            <circle cx="140" cy="60" r="3" fill="#8B5CF6" opacity="0.14"/>
+            <line x1="100" y1="80" x2="140" y2="60" stroke="#D97706" stroke-width="0.5" opacity="0.12"/>
+            <text x="88" y="160" fill="#D97706" font-family="Georgia, serif" font-size="80" opacity="0.2">"</text>
+            <text x="100" y="220" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" font-style="italic">
               <tspan x="100" dy="0">We don't need to choose between</tspan>
               <tspan x="100" dy="52">progress and safety. We choose</tspan>
               <tspan x="100" dy="52">all of it.</tspan>
             </text>
-            <line x1="60" y1="560" x2="1140" y2="560" stroke="#2A2A3A" stroke-width="1"/>
-            <circle cx="90" cy="610" r="18" stroke="#C8A2FF" stroke-width="1.5" opacity="0.6"/>
-            <circle cx="90" cy="610" r="5" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="90" cy="600" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="99" cy="605" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="99" cy="615" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="90" cy="620" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="81" cy="615" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="81" cy="605" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <text x="124" y="616" fill="#9999AA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.1em">THE GRACE NETWORK</text>
-            <text x="1140" y="616" text-anchor="end" fill="#666677" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0.05em">gracenetwork.org</text>
+            <line x1="60" y1="560" x2="1140" y2="560" stroke="#E5E3DE" stroke-width="1"/>
+            <circle cx="90" cy="610" r="18" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="90" cy="610" r="5" fill="#8B5CF6" opacity="0.85"/>
+            <circle cx="90" cy="600" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="99" cy="605" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="99" cy="615" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="90" cy="620" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="81" cy="615" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="81" cy="605" r="2.5" fill="#D97706" opacity="0.75"/>
+            <text x="124" y="616" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.1em">THE GRACE NETWORK</text>
+            <text x="1140" y="616" text-anchor="end" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0.05em">gracenetwork.org</text>
           </svg>
         </div>
 
@@ -422,43 +428,43 @@ import SectionHeader from '../components/SectionHeader.astro';
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" class="asset-svg asset-quote">
             <defs>
               <linearGradient id="q3Bg" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#0A0A0F"/>
-                <stop offset="40%" stop-color="#181320"/>
-                <stop offset="100%" stop-color="#0A0A0F"/>
+                <stop offset="0%" stop-color="#FAFAF8"/>
+                <stop offset="40%" stop-color="#F5F3FF"/>
+                <stop offset="100%" stop-color="#FAFAF8"/>
               </linearGradient>
               <linearGradient id="q3Line" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#C8A2FF"/>
-                <stop offset="50%" stop-color="#FFD700"/>
-                <stop offset="100%" stop-color="#C8A2FF"/>
+                <stop offset="0%" stop-color="#8B5CF6"/>
+                <stop offset="50%" stop-color="#D97706"/>
+                <stop offset="100%" stop-color="#8B5CF6"/>
               </linearGradient>
             </defs>
             <rect width="1200" height="675" fill="url(#q3Bg)"/>
-            <rect width="1200" height="675" fill="none" stroke="#2A2A3A" stroke-width="2"/>
+            <rect width="1200" height="675" fill="none" stroke="#E5E3DE" stroke-width="2"/>
             <rect x="60" y="100" width="4" height="260" fill="url(#q3Line)" rx="2"/>
             <!-- Decorative network cluster -->
-            <circle cx="1080" cy="560" r="5" fill="#C8A2FF" opacity="0.2"/>
-            <circle cx="1120" cy="530" r="3" fill="#FFD700" opacity="0.15"/>
-            <circle cx="1050" cy="530" r="4" fill="#C8A2FF" opacity="0.15"/>
-            <line x1="1080" y1="560" x2="1120" y2="530" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
-            <line x1="1080" y1="560" x2="1050" y2="530" stroke="#C8A2FF" stroke-width="0.5" opacity="0.15"/>
-            <line x1="1120" y1="530" x2="1050" y2="530" stroke="#FFD700" stroke-width="0.5" opacity="0.1"/>
-            <text x="88" y="148" fill="#C8A2FF" font-family="Georgia, serif" font-size="80" opacity="0.3">"</text>
-            <text x="100" y="200" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" font-style="italic">
+            <circle cx="1080" cy="560" r="5" fill="#8B5CF6" opacity="0.18"/>
+            <circle cx="1120" cy="530" r="3" fill="#D97706" opacity="0.14"/>
+            <circle cx="1050" cy="530" r="4" fill="#8B5CF6" opacity="0.14"/>
+            <line x1="1080" y1="560" x2="1120" y2="530" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
+            <line x1="1080" y1="560" x2="1050" y2="530" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
+            <line x1="1120" y1="530" x2="1050" y2="530" stroke="#D97706" stroke-width="0.5" opacity="0.08"/>
+            <text x="88" y="148" fill="#8B5CF6" font-family="Georgia, serif" font-size="80" opacity="0.2">"</text>
+            <text x="100" y="200" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" font-style="italic">
               <tspan x="100" dy="0">This is not utopia — it is an engineering</tspan>
               <tspan x="100" dy="50">problem. And we intend to solve it</tspan>
               <tspan x="100" dy="50">with grace.</tspan>
             </text>
-            <line x1="60" y1="560" x2="1140" y2="560" stroke="#2A2A3A" stroke-width="1"/>
-            <circle cx="90" cy="610" r="18" stroke="#C8A2FF" stroke-width="1.5" opacity="0.6"/>
-            <circle cx="90" cy="610" r="5" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="90" cy="600" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="99" cy="605" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="99" cy="615" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="90" cy="620" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="81" cy="615" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="81" cy="605" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <text x="124" y="616" fill="#9999AA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.1em">THE GRACE NETWORK</text>
-            <text x="1140" y="616" text-anchor="end" fill="#666677" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0.05em">gracenetwork.org</text>
+            <line x1="60" y1="560" x2="1140" y2="560" stroke="#E5E3DE" stroke-width="1"/>
+            <circle cx="90" cy="610" r="18" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="90" cy="610" r="5" fill="#8B5CF6" opacity="0.85"/>
+            <circle cx="90" cy="600" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="99" cy="605" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="99" cy="615" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="90" cy="620" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="81" cy="615" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="81" cy="605" r="2.5" fill="#D97706" opacity="0.75"/>
+            <text x="124" y="616" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.1em">THE GRACE NETWORK</text>
+            <text x="1140" y="616" text-anchor="end" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0.05em">gracenetwork.org</text>
           </svg>
         </div>
 
@@ -467,41 +473,41 @@ import SectionHeader from '../components/SectionHeader.astro';
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" class="asset-svg asset-quote">
             <defs>
               <linearGradient id="q4Bg" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#0A0A0F"/>
-                <stop offset="50%" stop-color="#161220"/>
-                <stop offset="100%" stop-color="#0A0A0F"/>
+                <stop offset="0%" stop-color="#FAFAF8"/>
+                <stop offset="50%" stop-color="#FFFBF0"/>
+                <stop offset="100%" stop-color="#FAFAF8"/>
               </linearGradient>
               <linearGradient id="q4Line" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#FFD700"/>
-                <stop offset="100%" stop-color="#C8A2FF"/>
+                <stop offset="0%" stop-color="#D97706"/>
+                <stop offset="100%" stop-color="#8B5CF6"/>
               </linearGradient>
             </defs>
             <rect width="1200" height="675" fill="url(#q4Bg)"/>
-            <rect width="1200" height="675" fill="none" stroke="#2A2A3A" stroke-width="2"/>
+            <rect width="1200" height="675" fill="none" stroke="#E5E3DE" stroke-width="2"/>
             <rect x="60" y="110" width="4" height="240" fill="url(#q4Line)" rx="2"/>
             <!-- Decorative network -->
-            <circle cx="1100" cy="100" r="3" fill="#FFD700" opacity="0.15"/>
-            <circle cx="1050" cy="130" r="4" fill="#C8A2FF" opacity="0.2"/>
-            <circle cx="1130" cy="150" r="3" fill="#FFD700" opacity="0.15"/>
-            <line x1="1100" y1="100" x2="1050" y2="130" stroke="#C8A2FF" stroke-width="0.5" opacity="0.12"/>
-            <line x1="1050" y1="130" x2="1130" y2="150" stroke="#FFD700" stroke-width="0.5" opacity="0.12"/>
-            <text x="88" y="155" fill="#FFD700" font-family="Georgia, serif" font-size="80" opacity="0.3">"</text>
-            <text x="100" y="210" fill="#EEEEF0" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" font-style="italic">
+            <circle cx="1100" cy="100" r="3" fill="#D97706" opacity="0.14"/>
+            <circle cx="1050" cy="130" r="4" fill="#8B5CF6" opacity="0.18"/>
+            <circle cx="1130" cy="150" r="3" fill="#D97706" opacity="0.14"/>
+            <line x1="1100" y1="100" x2="1050" y2="130" stroke="#8B5CF6" stroke-width="0.5" opacity="0.1"/>
+            <line x1="1050" y1="130" x2="1130" y2="150" stroke="#D97706" stroke-width="0.5" opacity="0.1"/>
+            <text x="88" y="155" fill="#D97706" font-family="Georgia, serif" font-size="80" opacity="0.2">"</text>
+            <text x="100" y="210" fill="#1A1A1A" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" font-style="italic">
               <tspan x="100" dy="0">The cloud comes first. The land</tspan>
               <tspan x="100" dy="52">comes last. The values come</tspan>
               <tspan x="100" dy="52">always.</tspan>
             </text>
-            <line x1="60" y1="560" x2="1140" y2="560" stroke="#2A2A3A" stroke-width="1"/>
-            <circle cx="90" cy="610" r="18" stroke="#C8A2FF" stroke-width="1.5" opacity="0.6"/>
-            <circle cx="90" cy="610" r="5" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="90" cy="600" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="99" cy="605" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="99" cy="615" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="90" cy="620" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="81" cy="615" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <circle cx="81" cy="605" r="2.5" fill="#FFD700" opacity="0.8"/>
-            <text x="124" y="616" fill="#9999AA" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.1em">THE GRACE NETWORK</text>
-            <text x="1140" y="616" text-anchor="end" fill="#666677" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0.05em">gracenetwork.org</text>
+            <line x1="60" y1="560" x2="1140" y2="560" stroke="#E5E3DE" stroke-width="1"/>
+            <circle cx="90" cy="610" r="18" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="90" cy="610" r="5" fill="#8B5CF6" opacity="0.85"/>
+            <circle cx="90" cy="600" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="99" cy="605" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="99" cy="615" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="90" cy="620" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="81" cy="615" r="2.5" fill="#D97706" opacity="0.75"/>
+            <circle cx="81" cy="605" r="2.5" fill="#D97706" opacity="0.75"/>
+            <text x="124" y="616" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="0.1em">THE GRACE NETWORK</text>
+            <text x="1140" y="616" text-anchor="end" fill="#888888" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="0.05em">gracenetwork.org</text>
           </svg>
         </div>
       </div>
@@ -578,9 +584,9 @@ import SectionHeader from '../components/SectionHeader.astro';
 
           <div class="preset-prompts">
             <span class="preset-label">Quick prompts:</span>
-            <button type="button" class="preset-btn" data-prompt="A glowing network of connected nodes in purple and gold, representing aligned AI governance, dark background, futuristic digital art">Generate my aligned avatar</button>
-            <button type="button" class="preset-btn" data-prompt="A campaign poster for The Grace Network political party, featuring the text 'Machines of Loving Grace', purple and gold color scheme on dark background, modern minimalist political design">Create a campaign poster</button>
-            <button type="button" class="preset-btn" data-prompt="An abstract visualization of cascading abundance: golden light flowing through a network of nodes, representing AI benefits reaching everyone, dark space background with purple nebula accents">Visualize cascading abundance</button>
+            <button type="button" class="preset-btn" data-prompt="A glowing network of connected nodes in purple and amber gold, representing aligned AI governance, light cream background, elegant minimal digital art">Generate my aligned avatar</button>
+            <button type="button" class="preset-btn" data-prompt="A campaign poster for The Grace Network political party, featuring the text 'Machines of Loving Grace', purple and amber gold color scheme on light cream background, modern minimalist political design">Create a campaign poster</button>
+            <button type="button" class="preset-btn" data-prompt="An abstract visualization of cascading abundance: amber golden light flowing through a network of nodes, representing AI benefits reaching everyone, light cream background with soft purple accents">Visualize cascading abundance</button>
           </div>
         </form>
 
