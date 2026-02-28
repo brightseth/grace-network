@@ -222,7 +222,7 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--grace-purple);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(55, 48, 163, 0.1);
 }
 
 .form-group input::placeholder,
@@ -312,7 +312,7 @@
   align-items: center;
   justify-content: space-between;
   background: var(--grace-purple-wash);
-  border: 1px solid rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(55, 48, 163, 0.12);
   border-radius: 16px;
   padding: 3rem;
   gap: 2rem;

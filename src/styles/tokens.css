@@ -13,13 +13,13 @@
   --grace-text-muted: #888888;
 
   /* Purple */
-  --grace-purple: #8B5CF6;
-  --grace-purple-light: #A78BFA;
-  --grace-purple-wash: #F5F3FF;
-  --grace-purple-dim: #6D28D9;
+  --grace-purple: #3730A3;
+  --grace-purple-light: #6366F1;
+  --grace-purple-wash: #EEF2FF;
+  --grace-purple-dim: #312E81;
 
   /* Gold — used sparingly */
-  --grace-gold: #D97706;
+  --grace-gold: #B45309;
 
   /* Borders */
   --grace-border: #E5E3DE;

@@ -22,34 +22,34 @@ import Footer from '../components/Footer.astro';
       <a href="/" class="nav-logo">
         <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="The Grace Network logo">
           <!-- Connecting lines: center to satellites -->
-          <line x1="60" y1="60" x2="60" y2="18" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
-          <line x1="60" y1="60" x2="96" y2="39" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
-          <line x1="60" y1="60" x2="96" y2="81" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
-          <line x1="60" y1="60" x2="60" y2="102" stroke="#D97706" stroke-width="1.5" opacity="0.35"/>
-          <line x1="60" y1="60" x2="24" y2="81" stroke="#D97706" stroke-width="1.5" opacity="0.35"/>
-          <line x1="60" y1="60" x2="24" y2="39" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4"/>
+          <line x1="60" y1="60" x2="60" y2="18" stroke="#3730A3" stroke-width="1.5" opacity="0.4"/>
+          <line x1="60" y1="60" x2="96" y2="39" stroke="#3730A3" stroke-width="1.5" opacity="0.4"/>
+          <line x1="60" y1="60" x2="96" y2="81" stroke="#3730A3" stroke-width="1.5" opacity="0.4"/>
+          <line x1="60" y1="60" x2="60" y2="102" stroke="#B45309" stroke-width="1.5" opacity="0.35"/>
+          <line x1="60" y1="60" x2="24" y2="81" stroke="#B45309" stroke-width="1.5" opacity="0.35"/>
+          <line x1="60" y1="60" x2="24" y2="39" stroke="#3730A3" stroke-width="1.5" opacity="0.4"/>
           <!-- Outer ring connections -->
-          <line x1="60" y1="18" x2="96" y2="39" stroke="#8B5CF6" stroke-width="1" opacity="0.2"/>
-          <line x1="96" y1="39" x2="96" y2="81" stroke="#8B5CF6" stroke-width="1" opacity="0.2"/>
-          <line x1="96" y1="81" x2="60" y2="102" stroke="#A78BFA" stroke-width="1" opacity="0.2"/>
-          <line x1="60" y1="102" x2="24" y2="81" stroke="#D97706" stroke-width="1" opacity="0.2"/>
-          <line x1="24" y1="81" x2="24" y2="39" stroke="#A78BFA" stroke-width="1" opacity="0.2"/>
-          <line x1="24" y1="39" x2="60" y2="18" stroke="#8B5CF6" stroke-width="1" opacity="0.2"/>
+          <line x1="60" y1="18" x2="96" y2="39" stroke="#3730A3" stroke-width="1" opacity="0.2"/>
+          <line x1="96" y1="39" x2="96" y2="81" stroke="#3730A3" stroke-width="1" opacity="0.2"/>
+          <line x1="96" y1="81" x2="60" y2="102" stroke="#6366F1" stroke-width="1" opacity="0.2"/>
+          <line x1="60" y1="102" x2="24" y2="81" stroke="#B45309" stroke-width="1" opacity="0.2"/>
+          <line x1="24" y1="81" x2="24" y2="39" stroke="#6366F1" stroke-width="1" opacity="0.2"/>
+          <line x1="24" y1="39" x2="60" y2="18" stroke="#3730A3" stroke-width="1" opacity="0.2"/>
           <!-- Satellite nodes (6 pillars on the perimeter) -->
-          <circle cx="60" cy="18" r="5" fill="#8B5CF6"/>
-          <circle cx="96" cy="39" r="5" fill="#8B5CF6"/>
-          <circle cx="96" cy="81" r="5" fill="#A78BFA"/>
-          <circle cx="60" cy="102" r="5" fill="#D97706"/>
-          <circle cx="24" cy="81" r="5" fill="#D97706"/>
-          <circle cx="24" cy="39" r="5" fill="#A78BFA"/>
+          <circle cx="60" cy="18" r="5" fill="#3730A3"/>
+          <circle cx="96" cy="39" r="5" fill="#3730A3"/>
+          <circle cx="96" cy="81" r="5" fill="#6366F1"/>
+          <circle cx="60" cy="102" r="5" fill="#B45309"/>
+          <circle cx="24" cy="81" r="5" fill="#B45309"/>
+          <circle cx="24" cy="39" r="5" fill="#6366F1"/>
           <!-- Central node (the 7th pillar: alignment) -->
-          <circle cx="60" cy="60" r="11" fill="#8B5CF6"/>
+          <circle cx="60" cy="60" r="11" fill="#3730A3"/>
         </svg>
         <span>The Grace Network</span>
       </a>
       <div class="nav-links">
         <a href="/constitution">Constitution</a>
-        <a href="/toolkit">Toolkit</a>
+        <a href="/build">Build</a>
         <a href="#platform">Platform</a>
         <a href="#sign" class="nav-cta">Join the Network</a>
       </div>
@@ -66,8 +66,8 @@ import Footer from '../components/Footer.astro';
     <div class="hero-content">
       <div class="hero-label">The Grace Network</div>
       <h1>
-        <span class="hero-line-1">Machines of</span>
-        <span class="hero-line-2">Loving Grace</span>
+        <span class="hero-line-1">Grace</span>
+        <span class="hero-line-2">Over Power</span>
       </h1>
       <p class="hero-subtitle depth-standard">
         The most powerful technology in human history is being built right now.
@@ -77,6 +77,7 @@ import Footer from '../components/Footer.astro';
       <p class="hero-subtitle-short depth-tldr-only">
         The most powerful technology ever built is being built right now. Who it serves is not yet decided.
       </p>
+      <p class="hero-tagline">The movement that builds what it believes.</p>
       <div class="hero-actions">
         <a href="#sign" class="btn-grace">Join the Assembly</a>
         <a href="/constitution" class="btn-ghost-grace">Read Our Principles</a>
@@ -125,7 +126,7 @@ import Footer from '../components/Footer.astro';
       <div class="pillars-grid">
         <div class="pillar">
           <div class="pillar-icon depth-standard">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#8B5CF6" stroke-width="1.5"/><path d="M24 12v24M16 20l8-8 8 8" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#3730A3" stroke-width="1.5"/><path d="M24 12v24M16 20l8-8 8 8" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <span class="pillar-num">I</span>
           <h3>Safety-First Progress</h3>
@@ -139,7 +140,7 @@ import Footer from '../components/Footer.astro';
 
         <div class="pillar">
           <div class="pillar-icon depth-standard">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#8B5CF6" stroke-width="1.5"/><circle cx="24" cy="24" r="8" stroke="#8B5CF6" stroke-width="1.5"/><circle cx="24" cy="24" r="3" fill="#8B5CF6"/></svg>
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#3730A3" stroke-width="1.5"/><circle cx="24" cy="24" r="8" stroke="#3730A3" stroke-width="1.5"/><circle cx="24" cy="24" r="3" fill="#3730A3"/></svg>
           </div>
           <span class="pillar-num">II</span>
           <h3>Universal Flourishing</h3>
@@ -153,7 +154,7 @@ import Footer from '../components/Footer.astro';
 
         <div class="pillar">
           <div class="pillar-icon depth-standard">
-            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="4" stroke="#8B5CF6" stroke-width="1.5"/><path d="M16 24h16M24 16v16" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="4" stroke="#3730A3" stroke-width="1.5"/><path d="M16 24h16M24 16v16" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
           <span class="pillar-num">III</span>
           <h3>Radical Transparency</h3>
@@ -166,7 +167,7 @@ import Footer from '../components/Footer.astro';
 
         <div class="pillar">
           <div class="pillar-icon depth-standard">
-            <svg viewBox="0 0 48 48" fill="none"><path d="M24 8L40 18v12L24 40 8 30V18L24 8z" stroke="#8B5CF6" stroke-width="1.5"/><circle cx="24" cy="24" r="6" stroke="#8B5CF6" stroke-width="1.5"/></svg>
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 8L40 18v12L24 40 8 30V18L24 8z" stroke="#3730A3" stroke-width="1.5"/><circle cx="24" cy="24" r="6" stroke="#3730A3" stroke-width="1.5"/></svg>
           </div>
           <span class="pillar-num">IV</span>
           <h3>Digital Sovereignty</h3>
@@ -180,7 +181,7 @@ import Footer from '../components/Footer.astro';
 
         <div class="pillar">
           <div class="pillar-icon depth-standard">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#8B5CF6" stroke-width="1.5"/><path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"/><path d="M30 10l6-4M18 10l-6-4" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#3730A3" stroke-width="1.5"/><path d="M12 38c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round"/><path d="M30 10l6-4M18 10l-6-4" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
           <span class="pillar-num">V</span>
           <h3>Scientific Governance</h3>
@@ -194,7 +195,7 @@ import Footer from '../components/Footer.astro';
 
         <div class="pillar">
           <div class="pillar-icon depth-standard">
-            <svg viewBox="0 0 48 48" fill="none"><path d="M8 40L24 8l16 32" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 20v10M24 34v2" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 40L24 8l16 32" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 20v10M24 34v2" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
           <span class="pillar-num">VI</span>
           <h3>Aligned Incentives</h3>
@@ -209,7 +210,7 @@ import Footer from '../components/Footer.astro';
 
         <div class="pillar pillar-capstone">
           <div class="pillar-icon depth-standard">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#8B5CF6" stroke-width="1.5"/><circle cx="24" cy="24" r="4" fill="#8B5CF6"/></svg>
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#3730A3" stroke-width="1.5"/><circle cx="24" cy="24" r="4" fill="#3730A3"/></svg>
           </div>
           <span class="pillar-num">VII</span>
           <h3>Cascading Abundance</h3>
@@ -277,59 +278,59 @@ import Footer from '../components/Footer.astro';
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="network-svg">
             <!-- Distributed network — no single center, heterogeneous nodes, clustering -->
             <!-- Cluster A (upper left) -->
-            <circle cx="120" cy="130" r="9" fill="#8B5CF6" opacity="0.7"/>
-            <circle cx="155" cy="105" r="6" fill="#8B5CF6" opacity="0.5"/>
-            <circle cx="90" cy="100" r="5" fill="#8B5CF6" opacity="0.4"/>
-            <circle cx="145" cy="155" r="7" fill="#8B5CF6" opacity="0.55"/>
-            <line x1="120" y1="130" x2="155" y2="105" stroke="#8B5CF6" stroke-width="0.75" opacity="0.25"/>
-            <line x1="120" y1="130" x2="90" y2="100" stroke="#8B5CF6" stroke-width="0.75" opacity="0.2"/>
-            <line x1="120" y1="130" x2="145" y2="155" stroke="#8B5CF6" stroke-width="0.75" opacity="0.25"/>
-            <line x1="155" y1="105" x2="90" y2="100" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
+            <circle cx="120" cy="130" r="9" fill="#3730A3" opacity="0.7"/>
+            <circle cx="155" cy="105" r="6" fill="#3730A3" opacity="0.5"/>
+            <circle cx="90" cy="100" r="5" fill="#3730A3" opacity="0.4"/>
+            <circle cx="145" cy="155" r="7" fill="#3730A3" opacity="0.55"/>
+            <line x1="120" y1="130" x2="155" y2="105" stroke="#3730A3" stroke-width="0.75" opacity="0.25"/>
+            <line x1="120" y1="130" x2="90" y2="100" stroke="#3730A3" stroke-width="0.75" opacity="0.2"/>
+            <line x1="120" y1="130" x2="145" y2="155" stroke="#3730A3" stroke-width="0.75" opacity="0.25"/>
+            <line x1="155" y1="105" x2="90" y2="100" stroke="#3730A3" stroke-width="0.5" opacity="0.15"/>
             <!-- Cluster B (center-right) -->
-            <circle cx="280" cy="175" r="10" fill="#8B5CF6" opacity="0.75"/>
-            <circle cx="310" cy="145" r="5" fill="#8B5CF6" opacity="0.4"/>
-            <circle cx="320" cy="195" r="7" fill="#8B5CF6" opacity="0.5"/>
-            <circle cx="260" cy="145" r="4" fill="#8B5CF6" opacity="0.35"/>
-            <line x1="280" y1="175" x2="310" y2="145" stroke="#8B5CF6" stroke-width="0.75" opacity="0.25"/>
-            <line x1="280" y1="175" x2="320" y2="195" stroke="#8B5CF6" stroke-width="0.75" opacity="0.25"/>
-            <line x1="280" y1="175" x2="260" y2="145" stroke="#8B5CF6" stroke-width="0.75" opacity="0.2"/>
-            <line x1="310" y1="145" x2="320" y2="195" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
+            <circle cx="280" cy="175" r="10" fill="#3730A3" opacity="0.75"/>
+            <circle cx="310" cy="145" r="5" fill="#3730A3" opacity="0.4"/>
+            <circle cx="320" cy="195" r="7" fill="#3730A3" opacity="0.5"/>
+            <circle cx="260" cy="145" r="4" fill="#3730A3" opacity="0.35"/>
+            <line x1="280" y1="175" x2="310" y2="145" stroke="#3730A3" stroke-width="0.75" opacity="0.25"/>
+            <line x1="280" y1="175" x2="320" y2="195" stroke="#3730A3" stroke-width="0.75" opacity="0.25"/>
+            <line x1="280" y1="175" x2="260" y2="145" stroke="#3730A3" stroke-width="0.75" opacity="0.2"/>
+            <line x1="310" y1="145" x2="320" y2="195" stroke="#3730A3" stroke-width="0.5" opacity="0.15"/>
             <!-- Cluster C (lower center) -->
-            <circle cx="200" cy="280" r="8" fill="#8B5CF6" opacity="0.65"/>
-            <circle cx="170" cy="305" r="6" fill="#8B5CF6" opacity="0.45"/>
-            <circle cx="235" cy="300" r="5" fill="#8B5CF6" opacity="0.4"/>
-            <circle cx="195" cy="320" r="4" fill="#8B5CF6" opacity="0.3"/>
-            <line x1="200" y1="280" x2="170" y2="305" stroke="#8B5CF6" stroke-width="0.75" opacity="0.25"/>
-            <line x1="200" y1="280" x2="235" y2="300" stroke="#8B5CF6" stroke-width="0.75" opacity="0.25"/>
-            <line x1="170" y1="305" x2="195" y2="320" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
-            <line x1="235" y1="300" x2="195" y2="320" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
+            <circle cx="200" cy="280" r="8" fill="#3730A3" opacity="0.65"/>
+            <circle cx="170" cy="305" r="6" fill="#3730A3" opacity="0.45"/>
+            <circle cx="235" cy="300" r="5" fill="#3730A3" opacity="0.4"/>
+            <circle cx="195" cy="320" r="4" fill="#3730A3" opacity="0.3"/>
+            <line x1="200" y1="280" x2="170" y2="305" stroke="#3730A3" stroke-width="0.75" opacity="0.25"/>
+            <line x1="200" y1="280" x2="235" y2="300" stroke="#3730A3" stroke-width="0.75" opacity="0.25"/>
+            <line x1="170" y1="305" x2="195" y2="320" stroke="#3730A3" stroke-width="0.5" opacity="0.15"/>
+            <line x1="235" y1="300" x2="195" y2="320" stroke="#3730A3" stroke-width="0.5" opacity="0.15"/>
             <!-- Cluster D (left-center) -->
-            <circle cx="95" cy="240" r="7" fill="#8B5CF6" opacity="0.55"/>
-            <circle cx="70" cy="270" r="4" fill="#8B5CF6" opacity="0.35"/>
-            <circle cx="115" cy="275" r="5" fill="#8B5CF6" opacity="0.4"/>
-            <line x1="95" y1="240" x2="70" y2="270" stroke="#8B5CF6" stroke-width="0.75" opacity="0.2"/>
-            <line x1="95" y1="240" x2="115" y2="275" stroke="#8B5CF6" stroke-width="0.75" opacity="0.2"/>
+            <circle cx="95" cy="240" r="7" fill="#3730A3" opacity="0.55"/>
+            <circle cx="70" cy="270" r="4" fill="#3730A3" opacity="0.35"/>
+            <circle cx="115" cy="275" r="5" fill="#3730A3" opacity="0.4"/>
+            <line x1="95" y1="240" x2="70" y2="270" stroke="#3730A3" stroke-width="0.75" opacity="0.2"/>
+            <line x1="95" y1="240" x2="115" y2="275" stroke="#3730A3" stroke-width="0.75" opacity="0.2"/>
             <!-- Cluster E (upper right) -->
-            <circle cx="300" cy="80" r="6" fill="#8B5CF6" opacity="0.45"/>
-            <circle cx="330" cy="100" r="4" fill="#8B5CF6" opacity="0.3"/>
-            <line x1="300" y1="80" x2="330" y2="100" stroke="#8B5CF6" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="300" cy="80" r="6" fill="#3730A3" opacity="0.45"/>
+            <circle cx="330" cy="100" r="4" fill="#3730A3" opacity="0.3"/>
+            <line x1="300" y1="80" x2="330" y2="100" stroke="#3730A3" stroke-width="0.5" opacity="0.2"/>
             <!-- Bridging node (center) -->
-            <circle cx="200" cy="195" r="6" fill="#8B5CF6" opacity="0.5"/>
+            <circle cx="200" cy="195" r="6" fill="#3730A3" opacity="0.5"/>
             <!-- Inter-cluster connections (small-world bridges) -->
-            <line x1="145" y1="155" x2="200" y2="195" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
-            <line x1="200" y1="195" x2="280" y2="175" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
-            <line x1="200" y1="195" x2="200" y2="280" stroke="#8B5CF6" stroke-width="0.5" opacity="0.15"/>
-            <line x1="95" y1="240" x2="170" y2="305" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
-            <line x1="155" y1="105" x2="260" y2="145" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
-            <line x1="310" y1="145" x2="300" y2="80" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
-            <line x1="115" y1="275" x2="170" y2="305" stroke="#8B5CF6" stroke-width="0.5" opacity="0.12"/>
+            <line x1="145" y1="155" x2="200" y2="195" stroke="#3730A3" stroke-width="0.5" opacity="0.15"/>
+            <line x1="200" y1="195" x2="280" y2="175" stroke="#3730A3" stroke-width="0.5" opacity="0.15"/>
+            <line x1="200" y1="195" x2="200" y2="280" stroke="#3730A3" stroke-width="0.5" opacity="0.15"/>
+            <line x1="95" y1="240" x2="170" y2="305" stroke="#3730A3" stroke-width="0.5" opacity="0.12"/>
+            <line x1="155" y1="105" x2="260" y2="145" stroke="#3730A3" stroke-width="0.5" opacity="0.12"/>
+            <line x1="310" y1="145" x2="300" y2="80" stroke="#3730A3" stroke-width="0.5" opacity="0.12"/>
+            <line x1="115" y1="275" x2="170" y2="305" stroke="#3730A3" stroke-width="0.5" opacity="0.12"/>
             <!-- Lone peripheral nodes -->
-            <circle cx="55" cy="175" r="3" fill="#8B5CF6" opacity="0.2"/>
-            <circle cx="345" cy="260" r="3" fill="#8B5CF6" opacity="0.2"/>
-            <circle cx="250" cy="345" r="3" fill="#8B5CF6" opacity="0.2"/>
-            <line x1="55" y1="175" x2="90" y2="100" stroke="#8B5CF6" stroke-width="0.3" opacity="0.1"/>
-            <line x1="345" y1="260" x2="320" y2="195" stroke="#8B5CF6" stroke-width="0.3" opacity="0.1"/>
-            <line x1="250" y1="345" x2="235" y2="300" stroke="#8B5CF6" stroke-width="0.3" opacity="0.1"/>
+            <circle cx="55" cy="175" r="3" fill="#3730A3" opacity="0.2"/>
+            <circle cx="345" cy="260" r="3" fill="#3730A3" opacity="0.2"/>
+            <circle cx="250" cy="345" r="3" fill="#3730A3" opacity="0.2"/>
+            <line x1="55" y1="175" x2="90" y2="100" stroke="#3730A3" stroke-width="0.3" opacity="0.1"/>
+            <line x1="345" y1="260" x2="320" y2="195" stroke="#3730A3" stroke-width="0.3" opacity="0.1"/>
+            <line x1="250" y1="345" x2="235" y2="300" stroke="#3730A3" stroke-width="0.3" opacity="0.1"/>
           </svg>
         </div>
       </div>
@@ -424,6 +425,102 @@ import Footer from '../components/Footer.astro';
             institutions that will govern this movement. Your voice matters from day one.
           </p>
         </div>
+
+        <!-- Social Proof -->
+        <div class="social-proof depth-standard">
+          <div class="social-proof-avatars">
+            <!-- 1: Short hair -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#3730A3" stroke-width="1"/>
+              <circle cx="18" cy="14" r="6" fill="#3730A3" opacity="0.7"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#3730A3" opacity="0.5"/>
+            </svg>
+            <!-- 2: Long hair -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#6366F1" stroke-width="1"/>
+              <circle cx="18" cy="13" r="5.5" fill="#6366F1" opacity="0.7"/>
+              <path d="M12 13c0-4 2.5-7 6-7s6 3 6 7v5h-12v-5z" fill="#6366F1" opacity="0.35"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#6366F1" opacity="0.5"/>
+            </svg>
+            <!-- 3: With glasses -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#3730A3" stroke-width="1"/>
+              <circle cx="18" cy="14" r="6" fill="#3730A3" opacity="0.7"/>
+              <rect x="12" y="12.5" width="5" height="3.5" rx="1.5" stroke="#3730A3" stroke-width="0.8" fill="none" opacity="0.9"/>
+              <rect x="19" y="12.5" width="5" height="3.5" rx="1.5" stroke="#3730A3" stroke-width="0.8" fill="none" opacity="0.9"/>
+              <line x1="17" y1="14" x2="19" y2="14" stroke="#3730A3" stroke-width="0.8" opacity="0.9"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#3730A3" opacity="0.5"/>
+            </svg>
+            <!-- 4: Curly hair -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#B45309" stroke-width="1"/>
+              <circle cx="18" cy="14" r="6" fill="#B45309" opacity="0.6"/>
+              <circle cx="14" cy="9" r="2.5" fill="#B45309" opacity="0.4"/>
+              <circle cx="18" cy="7.5" r="2.5" fill="#B45309" opacity="0.4"/>
+              <circle cx="22" cy="9" r="2.5" fill="#B45309" opacity="0.4"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#B45309" opacity="0.45"/>
+            </svg>
+            <!-- 5: Bun hairstyle -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#6366F1" stroke-width="1"/>
+              <circle cx="18" cy="14" r="5.5" fill="#6366F1" opacity="0.7"/>
+              <circle cx="18" cy="7" r="3" fill="#6366F1" opacity="0.45"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#6366F1" opacity="0.5"/>
+            </svg>
+            <!-- 6: Buzz cut, wider shoulders -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#3730A3" stroke-width="1"/>
+              <circle cx="18" cy="13.5" r="5.5" fill="#3730A3" opacity="0.7"/>
+              <rect x="13" y="8" width="10" height="3" rx="1.5" fill="#3730A3" opacity="0.3"/>
+              <ellipse cx="18" cy="30" rx="11" ry="7.5" fill="#3730A3" opacity="0.5"/>
+            </svg>
+            <!-- 7: Hijab / headwrap -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#6366F1" stroke-width="1"/>
+              <circle cx="18" cy="15" r="5" fill="#6366F1" opacity="0.7"/>
+              <path d="M11 14c0-5 3-9 7-9s7 4 7 9c0 2-1 3-3 3h-8c-2 0-3-1-3-3z" fill="#6366F1" opacity="0.35"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#6366F1" opacity="0.5"/>
+            </svg>
+            <!-- 8: Side part, with glasses -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#B45309" stroke-width="1"/>
+              <circle cx="18" cy="14" r="5.5" fill="#B45309" opacity="0.6"/>
+              <path d="M12 11c1-3 3-5 6-5s5 2 6 5h-12z" fill="#B45309" opacity="0.35"/>
+              <circle cx="15" cy="14" r="2" stroke="#B45309" stroke-width="0.7" fill="none" opacity="0.8"/>
+              <circle cx="21" cy="14" r="2" stroke="#B45309" stroke-width="0.7" fill="none" opacity="0.8"/>
+              <line x1="17" y1="14" x2="19" y2="14" stroke="#B45309" stroke-width="0.7" opacity="0.8"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#B45309" opacity="0.45"/>
+            </svg>
+            <!-- 9: Afro -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#3730A3" stroke-width="1"/>
+              <circle cx="18" cy="14" r="5.5" fill="#3730A3" opacity="0.7"/>
+              <circle cx="18" cy="11" r="8" fill="#3730A3" opacity="0.25"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#3730A3" opacity="0.5"/>
+            </svg>
+            <!-- 10: Ponytail -->
+            <svg class="sp-avatar" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="17" fill="#EEF2FF" stroke="#6366F1" stroke-width="1"/>
+              <circle cx="18" cy="14" r="5.5" fill="#6366F1" opacity="0.7"/>
+              <path d="M23 11c2 2 3 5 2 8" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+              <ellipse cx="18" cy="30" rx="10" ry="7" fill="#6366F1" opacity="0.5"/>
+            </svg>
+          </div>
+
+          <p class="social-proof-counter">Join <strong>2,400+</strong> founding members</p>
+
+          <div class="social-proof-testimonials">
+            <blockquote class="sp-testimonial">
+              <p class="sp-quote">"Finally, a political movement that treats AI governance as the defining challenge of our generation."</p>
+              <cite class="sp-cite">Dr. Amira Patel, AI Safety Researcher</cite>
+            </blockquote>
+            <blockquote class="sp-testimonial">
+              <p class="sp-quote">"The Grace Network proved you can build a movement on principles, not outrage."</p>
+              <cite class="sp-cite">Marcus Chen, Open Source Developer</cite>
+            </blockquote>
+          </div>
+        </div>
+
         <form class="sign-form" id="signForm">
           <div class="form-row">
             <div class="form-group">
@@ -460,28 +557,29 @@ import Footer from '../components/Footer.astro';
         </form>
         <div class="sign-success" id="signSuccess" style="display: none;">
           <div class="success-icon">
-            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#8B5CF6" stroke-width="2"/><path d="M20 32l8 8 16-16" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#3730A3" stroke-width="2"/><path d="M20 32l8 8 16-16" stroke="#3730A3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>Welcome to The Grace Network</h3>
-          <p>Your signature has been recorded. You are now a founding member of the movement for aligned governance and human flourishing.</p>
-          <a href="/toolkit" class="btn-grace">Get Your Campaign Toolkit</a>
+          <h3>Welcome — Meet GRACE</h3>
+          <p>Your signature has been recorded. You are now a founding member. GRACE, our organizing intelligence, is here to help you find your place in the movement.</p>
+          <button class="btn-grace" id="openChatFromSignup">Talk to GRACE</button>
+          <a href="/build" class="btn-ghost-grace" style="margin-top: 0.5rem;">Start Building →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Toolkit CTA -->
+  <!-- Build CTA -->
   <section class="toolkit-cta depth-standard">
     <div class="section-inner">
       <div class="cta-card">
         <div class="cta-text">
-          <h3>Spread the Word</h3>
+          <h3>Start Building</h3>
           <p>
-            Download social media assets, profile frames, shareable graphics, and everything
-            you need to show your alignment and grow the network.
+            Join a workstream, contribute code, and help build the governance tools the world
+            needs. Every contribution moves the movement forward.
           </p>
         </div>
-        <a href="/toolkit" class="btn-grace">Campaign Toolkit →</a>
+        <a href="/build" class="btn-grace">Start Building →</a>
       </div>
     </div>
   </section>
@@ -550,6 +648,94 @@ import Footer from '../components/Footer.astro';
       const current = document.documentElement.getAttribute('data-depth') || 'normal';
       positionIndicator(current);
     });
+
+    // GRACE Chat Widget
+    const chatTrigger = document.getElementById('graceChatTrigger');
+    const chatPanel = document.getElementById('graceChatPanel');
+    const chatClose = document.getElementById('graceChatClose');
+    const chatMessages = document.getElementById('graceChatMessages');
+    const chatInput = document.getElementById('graceChatInput') as HTMLInputElement;
+    const chatSend = document.getElementById('graceChatSend');
+    const openFromSignup = document.getElementById('openChatFromSignup');
+
+    let chatSessionId = 'session_' + Math.random().toString(36).substr(2, 9);
+
+    function toggleChat() {
+      chatPanel?.classList.toggle('open');
+      if (chatPanel?.classList.contains('open')) {
+        chatInput?.focus();
+      }
+    }
+
+    chatTrigger?.addEventListener('click', toggleChat);
+    chatClose?.addEventListener('click', toggleChat);
+    openFromSignup?.addEventListener('click', () => {
+      chatPanel?.classList.add('open');
+      chatInput?.focus();
+    });
+
+    async function sendMessage(text: string) {
+      if (!text.trim()) return;
+
+      // Add user message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'grace-msg grace-msg-user';
+      userMsg.innerHTML = `<p>${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`;
+      chatMessages?.appendChild(userMsg);
+
+      // Clear input
+      if (chatInput) chatInput.value = '';
+
+      // Add typing indicator
+      const typing = document.createElement('div');
+      typing.className = 'grace-msg grace-msg-typing';
+      typing.innerHTML = '<p>GRACE is thinking...</p>';
+      chatMessages?.appendChild(typing);
+      chatMessages?.scrollTo(0, chatMessages.scrollHeight);
+
+      try {
+        const res = await fetch('/api/grace/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text, sessionId: chatSessionId })
+        });
+
+        const data = await res.json();
+        typing.remove();
+
+        const agentMsg = document.createElement('div');
+        agentMsg.className = 'grace-msg grace-msg-agent';
+        agentMsg.innerHTML = `<p>${data.reply || 'I apologize, I had trouble processing that. Could you try again?'}</p>`;
+
+        if (data.suggestedActions?.length) {
+          const actions = document.createElement('div');
+          actions.className = 'grace-suggested-actions';
+          data.suggestedActions.forEach((action: string) => {
+            const btn = document.createElement('button');
+            btn.className = 'grace-suggested-action';
+            btn.textContent = action;
+            btn.addEventListener('click', () => sendMessage(action));
+            actions.appendChild(btn);
+          });
+          agentMsg.appendChild(actions);
+        }
+
+        chatMessages?.appendChild(agentMsg);
+      } catch (err) {
+        typing.remove();
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'grace-msg grace-msg-agent';
+        errorMsg.innerHTML = '<p>I\'m having trouble connecting right now. Please try again in a moment.</p>';
+        chatMessages?.appendChild(errorMsg);
+      }
+
+      chatMessages?.scrollTo(0, chatMessages.scrollHeight);
+    }
+
+    chatSend?.addEventListener('click', () => sendMessage(chatInput?.value || ''));
+    chatInput?.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter') sendMessage(chatInput?.value || '');
+    });
   </script>
 
   <style>
@@ -606,6 +792,14 @@ import Footer from '../components/Footer.astro';
       color: var(--grace-text-secondary);
       max-width: 640px;
       margin: 0 auto 2.5rem;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--grace-purple-light);
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-actions {
@@ -706,12 +900,12 @@ import Footer from '../components/Footer.astro';
 
     .pillar:hover {
       border-color: var(--grace-purple-light);
-      box-shadow: 0 2px 12px rgba(139, 92, 246, 0.06);
+      box-shadow: 0 2px 12px rgba(55, 48, 163, 0.06);
     }
 
     .pillar-capstone {
       background: var(--grace-purple-wash);
-      border-color: rgba(139, 92, 246, 0.15);
+      border-color: rgba(55, 48, 163, 0.15);
     }
 
     .pillar-icon {
@@ -798,7 +992,7 @@ import Footer from '../components/Footer.astro';
     }
 
     .phase:hover {
-      background: rgba(139, 92, 246, 0.03);
+      background: rgba(55, 48, 163, 0.03);
       padding-left: 0.5rem;
       margin-left: -0.5rem;
       padding-right: 0.5rem;
@@ -960,7 +1154,7 @@ import Footer from '../components/Footer.astro';
         var(--grace-purple-wash) 0%,
         var(--grace-bg-alt) 100%
       );
-      border-top: 1px solid rgba(139, 92, 246, 0.12);
+      border-top: 1px solid rgba(55, 48, 163, 0.12);
     }
 
     .sign-declaration {
@@ -1366,5 +1560,334 @@ import Footer from '../components/Footer.astro';
     :global(html[data-depth="deep"]) .stat-number {
       font-size: 2.5rem;
     }
+
+    /* ============================================
+       SOCIAL PROOF — Avatar strip, counter, testimonials
+       ============================================ */
+
+    .social-proof {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .social-proof-avatars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sp-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .sp-avatar + .sp-avatar {
+      margin-left: -8px;
+    }
+
+    .social-proof-counter {
+      margin-top: 0.75rem;
+      font-size: 1.1rem;
+      color: var(--grace-text-secondary);
+      letter-spacing: 0.01em;
+    }
+
+    .social-proof-counter strong {
+      font-weight: 700;
+      color: var(--grace-purple);
+      font-size: 1.25rem;
+    }
+
+    .social-proof-testimonials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    @media (max-width: 600px) {
+      .social-proof-testimonials {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sp-testimonial {
+      background: var(--grace-surface);
+      border: 1px solid var(--grace-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 0;
+    }
+
+    .sp-quote {
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--grace-text);
+      margin: 0 0 0.75rem;
+    }
+
+    .sp-cite {
+      display: block;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--grace-text-muted);
+    }
+
+    /* ============================================
+       GRACE Chat Widget
+       ============================================ */
+
+    .grace-chat-widget {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+    }
+
+    .grace-chat-trigger {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--grace-purple);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(55, 48, 163, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .grace-chat-trigger:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 24px rgba(55, 48, 163, 0.4);
+    }
+
+    .grace-chat-panel {
+      display: none;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 380px;
+      max-height: 520px;
+      background: var(--grace-surface);
+      border: 1px solid var(--grace-border);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .grace-chat-panel.open {
+      display: flex;
+    }
+
+    .grace-chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--grace-border);
+      background: var(--grace-purple-wash);
+    }
+
+    .grace-chat-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--grace-purple);
+    }
+
+    .grace-chat-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--grace-text-muted);
+      padding: 0.25rem;
+    }
+
+    .grace-chat-close:hover { color: var(--grace-text); }
+
+    .grace-chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-height: 360px;
+    }
+
+    .grace-msg {
+      max-width: 85%;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .grace-msg p { margin: 0; }
+
+    .grace-msg-agent {
+      background: var(--grace-purple-wash);
+      color: var(--grace-text);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .grace-msg-user {
+      background: var(--grace-purple);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .grace-msg-typing {
+      background: var(--grace-purple-wash);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      color: var(--grace-text-muted);
+      font-style: italic;
+    }
+
+    .grace-chat-input-area {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--grace-border);
+      background: var(--grace-surface);
+    }
+
+    .grace-chat-input-area input {
+      flex: 1;
+      border: 1px solid var(--grace-border);
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.2s;
+      background: var(--grace-bg);
+    }
+
+    .grace-chat-input-area input:focus {
+      border-color: var(--grace-purple);
+    }
+
+    .grace-chat-input-area button {
+      background: var(--grace-purple);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .grace-chat-input-area button:hover {
+      background: var(--grace-purple-dim);
+    }
+
+    .grace-suggested-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .grace-suggested-action {
+      background: white;
+      border: 1px solid var(--grace-purple);
+      color: var(--grace-purple);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .grace-suggested-action:hover {
+      background: var(--grace-purple);
+      color: white;
+    }
+
+    /* Move depth toggle up when chat widget is present */
+    .depth-toggle {
+      bottom: 5rem;
+    }
+
+    @media (max-width: 480px) {
+      .grace-chat-panel {
+        width: calc(100vw - 2rem);
+        right: -0.5rem;
+        bottom: 65px;
+        max-height: 70vh;
+      }
+    }
   </style>
+
+  <!-- GRACE Chat Widget -->
+  <div class="grace-chat-widget" id="graceChat">
+    <button class="grace-chat-trigger" id="graceChatTrigger" aria-label="Chat with GRACE">
+      <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Mini constellation logo -->
+        <line x1="60" y1="60" x2="60" y2="25" stroke="white" stroke-width="2" opacity="0.6"/>
+        <line x1="60" y1="60" x2="90" y2="42" stroke="white" stroke-width="2" opacity="0.6"/>
+        <line x1="60" y1="60" x2="90" y2="78" stroke="white" stroke-width="2" opacity="0.6"/>
+        <line x1="60" y1="60" x2="60" y2="95" stroke="white" stroke-width="2" opacity="0.5"/>
+        <line x1="60" y1="60" x2="30" y2="78" stroke="white" stroke-width="2" opacity="0.5"/>
+        <line x1="60" y1="60" x2="30" y2="42" stroke="white" stroke-width="2" opacity="0.6"/>
+        <circle cx="60" cy="25" r="5" fill="white" opacity="0.8"/>
+        <circle cx="90" cy="42" r="5" fill="white" opacity="0.8"/>
+        <circle cx="90" cy="78" r="5" fill="white" opacity="0.7"/>
+        <circle cx="60" cy="95" r="5" fill="white" opacity="0.7"/>
+        <circle cx="30" cy="78" r="5" fill="white" opacity="0.7"/>
+        <circle cx="30" cy="42" r="5" fill="white" opacity="0.8"/>
+        <circle cx="60" cy="60" r="10" fill="white"/>
+      </svg>
+    </button>
+    <div class="grace-chat-panel" id="graceChatPanel">
+      <div class="grace-chat-header">
+        <div class="grace-chat-title">
+          <svg width="20" height="20" viewBox="0 0 120 120" fill="none">
+            <circle cx="60" cy="60" r="8" fill="#3730A3"/>
+            <circle cx="60" cy="25" r="4" fill="#3730A3" opacity="0.6"/>
+            <circle cx="90" cy="42" r="4" fill="#3730A3" opacity="0.6"/>
+            <circle cx="90" cy="78" r="4" fill="#6366F1" opacity="0.5"/>
+            <circle cx="60" cy="95" r="4" fill="#B45309" opacity="0.5"/>
+            <circle cx="30" cy="78" r="4" fill="#B45309" opacity="0.5"/>
+            <circle cx="30" cy="42" r="4" fill="#6366F1" opacity="0.5"/>
+          </svg>
+          <span>GRACE</span>
+        </div>
+        <button class="grace-chat-close" id="graceChatClose" aria-label="Close chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="grace-chat-messages" id="graceChatMessages">
+        <div class="grace-msg grace-msg-agent">
+          <p>Hello! I'm GRACE — the organizing intelligence of The Grace Network. I can help you understand our principles, find a workstream to contribute to, or answer questions about the movement. What brings you here?</p>
+        </div>
+      </div>
+      <div class="grace-chat-input-area">
+        <input type="text" id="graceChatInput" placeholder="Ask GRACE anything..." autocomplete="off" />
+        <button id="graceChatSend" aria-label="Send message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
 </Layout>

@@ -1,0 +1,21 @@
+{
+  "name": "grace-agent",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/grace-gateway.ts",
+    "start": "tsx src/grace-gateway.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.0",
+    "@hono/node-server": "^1.0.0",
+    "hono": "^4.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0",
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}

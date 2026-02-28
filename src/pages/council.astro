@@ -12,6 +12,17 @@ const foundingInfluences = [
     quote: "The world of the future will be an ever more demanding struggle against the limitations of our intelligence, not a comfortable hammock.",
     description: "Wiener founded the field of cybernetics and warned about the ethical implications of autonomous machines decades before AI existed. His insistence that technology must serve human values—not replace human judgment—is a cornerstone of aligned governance.",
     accent: "purple",
+    portrait: {
+      // Round glasses, balding with side hair, mustache
+      head: "M40 18 C30 18 24 26 24 34 C24 42 30 48 40 48 C50 48 56 42 56 34 C56 26 50 18 40 18Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M30 34 C30 30.5 33 30.5 33 34 C33 37.5 30 37.5 30 34Z M47 34 C47 30.5 50 30.5 50 34 C50 37.5 47 37.5 47 34Z", opacity: 0.7, note: "round glasses" },
+        { d: "M27.5 34 L33 34 M47 34 L52.5 34 M33 32 C36 30 44 30 47 32", opacity: 0.5, stroke: true, note: "glass frames + bridge" },
+        { d: "M34 42 C36 44 44 44 46 42", opacity: 0.5, stroke: true, note: "mustache" },
+        { d: "M24 28 C22 22 26 16 32 18 M56 28 C58 22 54 16 48 18", opacity: 0.35, note: "balding side hair" },
+      ]
+    },
   },
   {
     name: "John Rawls",
@@ -21,6 +32,16 @@ const foundingInfluences = [
     quote: "Justice is the first virtue of social institutions.",
     description: "His 'veil of ignorance' thought experiment is foundational to aligned governance: design institutions as if you don't know your position in them. Rawls gave us the intellectual framework for building systems that are fair by design, not by accident.",
     accent: "gold",
+    portrait: {
+      // Square glasses, short neat hair, clean-shaven professor look
+      head: "M40 18 C30 18 24 26 24 34 C24 42 30 48 40 48 C50 48 56 42 56 34 C56 26 50 18 40 18Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M29 31 L35 31 L35 37 L29 37Z M45 31 L51 31 L51 37 L45 37Z", opacity: 0.6, stroke: true, note: "square glasses" },
+        { d: "M27 34 L29 34 M51 34 L53 34 M35 33 L45 33", opacity: 0.5, stroke: true, note: "frame arms + bridge" },
+        { d: "M26 20 C28 14 52 14 54 20 L56 24 C52 18 28 18 24 24Z", opacity: 0.4, note: "neat short hair" },
+      ]
+    },
   },
   {
     name: "Buckminster Fuller",
@@ -30,6 +51,17 @@ const foundingInfluences = [
     quote: "You never change things by fighting the existing reality. To change something, build a new model that makes the existing model obsolete.",
     description: "Fuller believed technology could create abundance for all humanity if we designed comprehensive systems rather than piecemeal fixes. His vision of 'doing more with less' anticipated the cascading abundance at the heart of The Grace Network.",
     accent: "purple",
+    portrait: {
+      // Bald dome, thick round glasses, bow tie
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M40 20 C40 12 30 10 28 18 M40 20 C40 12 50 10 52 18", opacity: 0.3, note: "bald dome highlight" },
+        { d: "M28 32 C28 28 34 28 34 32 C34 36 28 36 28 32Z M46 32 C46 28 52 28 52 32 C52 36 46 36 46 32Z", opacity: 0.65, stroke: true, note: "thick round glasses" },
+        { d: "M26 32 L28 32 M52 32 L54 32 M34 31 L46 31", opacity: 0.5, stroke: true, note: "arms + bridge" },
+        { d: "M36 54 L40 56 L44 54 L44 58 L40 56 L36 58Z", opacity: 0.55, note: "bow tie" },
+      ]
+    },
   },
   {
     name: "Ada Lovelace",
@@ -39,6 +71,16 @@ const foundingInfluences = [
     quote: "The Analytical Engine has no pretensions whatever to originate anything. It can do whatever we know how to order it to perform.",
     description: "Lovelace saw both the potential and the limits of computing machines, insisting they could never 'originate anything' without human guidance. Her clarity about the boundary between human and machine intelligence remains essential to AI safety thinking.",
     accent: "gold",
+    portrait: {
+      // Victorian updo hairstyle, high collar/neckline, elegant features
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M28 22 C26 12 34 6 40 8 C46 6 54 12 52 22 C50 16 30 16 28 22Z M26 24 C24 18 28 14 30 16 M54 24 C56 18 52 14 50 16", opacity: 0.45, note: "victorian updo" },
+        { d: "M32 52 C32 50 36 48 40 48 C44 48 48 50 48 52 L48 56 C44 54 36 54 32 56Z", opacity: 0.4, note: "high collar" },
+        { d: "M34 38 C36 40 44 40 46 38", opacity: 0.35, stroke: true, note: "gentle smile" },
+      ]
+    },
   },
   {
     name: "Václav Havel",
@@ -48,6 +90,16 @@ const foundingInfluences = [
     quote: "The salvation of this human world lies nowhere else than in the human heart, in the human power to reflect, in human meekness and human responsibility.",
     description: "Havel led Czechoslovakia's Velvet Revolution through moral authority and truth-telling, not violence. His concept of 'living in truth' aligns directly with The Grace Network's commitment to radical transparency and governance by conscience.",
     accent: "purple",
+    portrait: {
+      // Curly/wavy hair, mustache, open collar
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M26 24 C24 14 32 10 36 12 C38 8 42 8 44 12 C48 10 56 14 54 24 C52 18 28 18 26 24Z M24 26 C22 20 24 14 28 14 M56 26 C58 20 56 14 52 14", opacity: 0.4, note: "wavy tousled hair" },
+        { d: "M33 41 C34 43 38 44 40 44 C42 44 46 43 47 41", opacity: 0.5, stroke: true, note: "mustache" },
+        { d: "M36 52 L38 56 L40 52 L42 56 L44 52", opacity: 0.35, stroke: true, note: "open collar/v-neck" },
+      ]
+    },
   },
 ];
 
@@ -60,6 +112,16 @@ const contemporaryInfluences = [
     quote: "We should be planning for a world where AI can do extraordinary things—and building the institutions to ensure those benefits reach everyone.",
     description: "Architect of responsible scaling and constitutional AI. His essay 'Machines of Loving Grace' articulates the positive vision this movement is built upon—that safety and transformative benefit are not in tension but are deeply complementary.",
     accent: "gold",
+    portrait: {
+      // Short neat hair, clean-shaven, dress shirt collar
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M26 22 C27 14 34 11 40 12 C46 11 53 14 54 22 C52 18 28 18 26 22Z", opacity: 0.4, note: "short neat hair" },
+        { d: "M34 52 L37 56 L40 52 L43 56 L46 52", opacity: 0.4, stroke: true, note: "shirt collar" },
+        { d: "M35 42 C37 43.5 43 43.5 45 42", opacity: 0.3, stroke: true, note: "slight smile" },
+      ]
+    },
   },
   {
     name: "Balaji Srinivasan",
@@ -69,6 +131,16 @@ const contemporaryInfluences = [
     quote: "A network state is a social network with a moral proposition, a sense of national consciousness, a recognized founder, a capacity for collective action, and a physical presence.",
     description: "His 'Network State' framework provides the organizational blueprint for digital-first governance and cloud-first communities. The Grace Network's structure—from digital constitution to eventual physical archipelago—follows the path he charted.",
     accent: "purple",
+    portrait: {
+      // Bald/shaved head, beard, turtleneck
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M40 20 C48 20 54 16 52 14 C48 10 32 10 28 14 C26 16 32 20 40 20Z", opacity: 0.2, note: "shaved head sheen" },
+        { d: "M30 44 C30 48 34 50 40 50 C46 50 50 48 50 44 C48 46 44 48 40 48 C36 48 32 46 30 44Z", opacity: 0.4, note: "full beard" },
+        { d: "M32 52 C32 50 36 48 40 48 C44 48 48 50 48 52 L48 58 L32 58Z", opacity: 0.35, note: "turtleneck" },
+      ]
+    },
   },
   {
     name: "Audrey Tang",
@@ -78,6 +150,16 @@ const contemporaryInfluences = [
     quote: "When we see the internet of things, let's make it an internet of beings. When we see virtual reality, let's make it a shared reality.",
     description: "As Taiwan's former Digital Minister, Tang demonstrated that radical transparency and digital participation can strengthen democracy rather than undermine it. Their work on tools like Polis and vTaiwan proved consensus-building at scale is possible.",
     accent: "gold",
+    portrait: {
+      // Long straight hair, modern glasses, open expression
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M26 18 C26 12 34 10 40 10 C46 10 54 12 54 18 L56 42 C54 38 52 28 50 22 M26 18 L24 42 C26 38 28 28 30 22", opacity: 0.35, note: "long straight hair" },
+        { d: "M30 32 C30 30 34 30 34 32 C34 34 30 34 30 32Z M46 32 C46 30 50 30 50 32 C50 34 46 34 46 32Z", opacity: 0.55, stroke: true, note: "modern oval glasses" },
+        { d: "M27 32 L30 32 M50 32 L53 32 M34 31.5 L46 31.5", opacity: 0.4, stroke: true, note: "glass frames" },
+      ]
+    },
   },
   {
     name: "Amartya Sen",
@@ -87,6 +169,17 @@ const contemporaryInfluences = [
     quote: "Development consists of the removal of various types of unfreedoms that leave people with little choice and little opportunity.",
     description: "His capability approach to human development aligns with universal flourishing—measuring progress not by GDP alone but by what people are actually free to do and become. This framework underpins The Grace Network's commitment to dignity and agency.",
     accent: "purple",
+    portrait: {
+      // White/gray hair swept back, glasses, distinguished elder look
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M24 24 C24 14 34 10 40 10 C46 10 56 14 56 24 C54 16 26 16 24 24Z", opacity: 0.3, note: "swept-back gray hair" },
+        { d: "M29 31 L36 31 L36 36 L29 36Z M44 31 L51 31 L51 36 L44 36Z", opacity: 0.55, stroke: true, note: "rectangular glasses" },
+        { d: "M26 33 L29 33 M51 33 L54 33 M36 33 L44 33", opacity: 0.4, stroke: true, note: "frame arms + bridge" },
+        { d: "M36 52 L38 56 L42 56 L44 52", opacity: 0.3, stroke: true, note: "collar" },
+      ]
+    },
   },
   {
     name: "Yoshua Bengio",
@@ -96,6 +189,16 @@ const contemporaryInfluences = [
     quote: "We need to take AI safety seriously because the potential consequences of getting it wrong are enormous.",
     description: "A Turing Award laureate and pioneer of deep learning, Bengio has become a leading voice for AI safety governance from within the technical community. His willingness to prioritize caution over speed embodies the safety-first principle of our movement.",
     accent: "gold",
+    portrait: {
+      // Curly hair, beard, warm expression
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M24 24 C22 14 30 8 36 10 C38 6 42 6 44 10 C50 8 58 14 56 24 C54 18 26 18 24 24Z M22 26 C20 20 22 14 26 16 M58 26 C60 20 58 14 54 16", opacity: 0.4, note: "curly voluminous hair" },
+        { d: "M30 44 C30 48 34 50 40 50 C46 50 50 48 50 44 C48 46 44 47 40 47 C36 47 32 46 30 44Z", opacity: 0.4, note: "full beard" },
+        { d: "M35 42 C37 43 43 43 45 42", opacity: 0.3, stroke: true, note: "smile" },
+      ]
+    },
   },
   {
     name: "Michael Levin",
@@ -105,6 +208,16 @@ const contemporaryInfluences = [
     quote: "Every cell is an agent. Every tissue is a collective. Intelligence is a spectrum, not a binary.",
     description: "Levin's groundbreaking work on bioelectricity and morphogenesis reveals how collectives of cells make decisions, solve problems, and self-organize without centralized control. His research on biological collective intelligence provides a scientific foundation for understanding how networks of agents—whether cells or citizens—can achieve aligned, emergent governance.",
     accent: "purple",
+    portrait: {
+      // Short dark hair, clean-shaven, casual collar
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M26 22 C26 14 34 10 40 11 C46 10 54 14 54 22 C52 16 28 16 26 22Z", opacity: 0.45, note: "short dark hair" },
+        { d: "M35 42 C37 43 43 43 45 42", opacity: 0.3, stroke: true, note: "neutral expression" },
+        { d: "M35 52 L38 55 M45 52 L42 55", opacity: 0.3, stroke: true, note: "casual open collar" },
+      ]
+    },
   },
   {
     name: "Yuval Noah Harari",
@@ -114,6 +227,16 @@ const contemporaryInfluences = [
     quote: "In a world deluged by irrelevant information, clarity is power.",
     description: "Harari's sweeping histories of humanity—from Sapiens to Homo Deus—illuminate how shared myths and stories create the cooperative frameworks that underpin civilization. His urgent warnings about AI's potential to concentrate power and erode democracy make him an essential voice for aligned governance in the age of intelligence.",
     accent: "gold",
+    portrait: {
+      // Bald/very short hair, clean-shaven, simple crew neck
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M40 20 C48 20 54 16 52 14 C48 11 32 11 28 14 C26 16 32 20 40 20Z", opacity: 0.15, note: "closely shaved head" },
+        { d: "M34 52 C36 50 44 50 46 52 L46 56 C44 54 36 54 34 56Z", opacity: 0.35, note: "simple crew neck" },
+        { d: "M35 36 C37 37 43 37 45 36", opacity: 0.25, stroke: true, note: "contemplative expression" },
+      ]
+    },
   },
   {
     name: "Barack Obama",
@@ -123,6 +246,17 @@ const contemporaryInfluences = [
     quote: "The best way to not feel hopeless is to get up and do something. Don't wait for good things to happen to you. If you go out and make some good things happen, you will fill the world with hope.",
     description: "Obama's presidency demonstrated that aspirational leadership and pragmatic governance can coexist. His emphasis on building broad coalitions, evidence-based policy, and expanding access to opportunity embodies the Grace Network's conviction that democratic institutions can be strengthened—not replaced—by technology and collective will.",
     accent: "purple",
+    portrait: {
+      // Short cropped hair, prominent ears, confident smile, suit collar + tie
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M27 22 C28 16 34 13 40 13 C46 13 52 16 53 22 C52 18 28 18 27 22Z", opacity: 0.45, note: "short cropped hair" },
+        { d: "M23 30 C20 28 20 36 23 38 M57 30 C60 28 60 36 57 38", opacity: 0.3, note: "ears" },
+        { d: "M35 42 C37 44 43 44 45 42", opacity: 0.35, stroke: true, note: "confident smile" },
+        { d: "M34 52 L37 56 L40 52 L43 56 L46 52 M39 52 L39 58 L41 58 L41 52", opacity: 0.4, note: "suit collar + tie" },
+      ]
+    },
   },
   {
     name: "Michael Bloomberg",
@@ -132,6 +266,16 @@ const contemporaryInfluences = [
     quote: "What I think the government should be doing is incentivizing behavior, giving information, making sure that there's a level playing field.",
     description: "Bloomberg bridges the worlds of technology entrepreneurship, data-driven governance, and large-scale philanthropy. As mayor of New York, he pioneered using data analytics to improve city services. His approach to governance—measure everything, publish the results, iterate—mirrors the Grace Network's commitment to scientific governance and radical transparency.",
     accent: "gold",
+    portrait: {
+      // Receding short hair, suit + tie, clean-shaven executive
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M30 22 C32 16 38 14 40 14 C42 14 48 16 50 22 C48 18 32 18 30 22Z", opacity: 0.35, note: "receding hair" },
+        { d: "M34 52 L37 56 L40 52 L43 56 L46 52 M39 52 L39 60 L41 60 L41 52", opacity: 0.4, note: "suit + tie" },
+        { d: "M35 42 C37 43 43 43 45 42", opacity: 0.3, stroke: true, note: "executive smile" },
+      ]
+    },
   },
   {
     name: "Vitalik Buterin",
@@ -141,6 +285,16 @@ const contemporaryInfluences = [
     quote: "The thing that I find most interesting about Ethereum is that it lets you do things that you could not do before, not that it lets you do things cheaper.",
     description: "Buterin created the infrastructure that makes digital sovereignty possible. Ethereum's programmable smart contracts, decentralized governance tools, and on-chain coordination mechanisms are the technical building blocks of network state governance. His ongoing work on quadratic voting, public goods funding, and soulbound tokens directly enables the aligned incentive structures The Grace Network envisions.",
     accent: "purple",
+    portrait: {
+      // Thin face (narrow head), short messy hair, t-shirt, youthful
+      head: "M40 18 C33 18 28 26 28 34 C28 42 33 48 40 48 C47 48 52 42 52 34 C52 26 47 18 40 18Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M30 20 C28 12 34 8 38 10 C40 7 42 8 44 10 C48 8 52 12 50 20 C48 14 32 14 30 20Z", opacity: 0.4, note: "messy short hair" },
+        { d: "M34 52 C36 50 44 50 46 52 L46 56 C44 54 36 54 34 56Z", opacity: 0.3, note: "simple t-shirt neck" },
+        { d: "M35 42 C37 43 43 43 45 42", opacity: 0.25, stroke: true, note: "slight expression" },
+      ]
+    },
   },
   {
     name: "André 3000",
@@ -150,6 +304,16 @@ const contemporaryInfluences = [
     quote: "Across cultures, darker people suffer most. Why?",
     description: "André Benjamin defies every category. From redefining hip-hop with Outkast to his meditative instrumental album 'New Blue Sun', he embodies the Grace Network's conviction that human meaning and creativity cannot be reduced to optimization. His restless evolution—from pop icon to flautist to quiet philosopher—is a living argument that flourishing means the freedom to become something no algorithm could predict.",
     accent: "gold",
+    portrait: {
+      // Tall stack/natural hair, wide-brim hat, artistic presence
+      head: "M40 22 C31 22 25 28 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 28 49 22 40 22Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M20 18 L60 18 L58 22 L22 22Z M24 18 L24 10 C28 4 52 4 56 10 L56 18", opacity: 0.45, note: "wide-brim hat" },
+        { d: "M35 42 C37 43.5 43 43.5 45 42", opacity: 0.3, stroke: true, note: "calm expression" },
+        { d: "M36 52 L38 48 L40 52 L42 48 L44 52", opacity: 0.35, stroke: true, note: "artistic collar/scarf" },
+      ]
+    },
   },
   {
     name: "John Lennon",
@@ -159,6 +323,16 @@ const contemporaryInfluences = [
     quote: "Imagine all the people sharing all the world.",
     description: "Lennon weaponized imagination itself as a political act. 'Imagine' is the closest thing the modern world has to a universal anthem for human flourishing—a world without borders, without hoarding, without violence. The Grace Network's vision of a cloud-first community united by values rather than geography is, at its core, the realization of what Lennon asked us to imagine.",
     accent: "purple",
+    portrait: {
+      // Long shaggy hair, round glasses, thin face
+      head: "M40 20 C32 20 26 27 26 34 C26 42 32 48 40 48 C48 48 54 42 54 34 C54 27 48 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M24 20 C22 12 30 8 36 10 C38 7 42 7 44 10 C50 8 58 12 56 20 L58 44 C56 40 54 32 54 26 M24 20 L22 44 C24 40 26 32 26 26", opacity: 0.35, note: "long shaggy hair" },
+        { d: "M31 33 C31 30 36 30 36 33 C36 36 31 36 31 33Z M44 33 C44 30 49 30 49 33 C49 36 44 36 44 33Z", opacity: 0.65, stroke: true, note: "round lennon glasses" },
+        { d: "M28 33 L31 33 M49 33 L52 33 M36 32 L44 32", opacity: 0.45, stroke: true, note: "glass arms + bridge" },
+      ]
+    },
   },
   {
     name: "Yoko Ono",
@@ -168,6 +342,16 @@ const contemporaryInfluences = [
     quote: "A dream you dream alone is only a dream. A dream you dream together is reality.",
     description: "Ono pioneered participatory, conceptual art that demanded the audience become co-creator—decades before anyone talked about collective intelligence or open-source governance. Her Wish Trees, her instruction paintings, her bed-ins for peace: all are blueprints for a politics built on imagination, radical participation, and the insistence that every person's voice shapes the whole.",
     accent: "gold",
+    portrait: {
+      // Long straight black hair, wide sunglasses, bold presence
+      head: "M40 20 C31 20 25 27 25 34 C25 42 31 48 40 48 C49 48 55 42 55 34 C55 27 49 20 40 20Z",
+      shoulders: "M18 72 C18 58 28 52 40 52 C52 52 62 58 62 72 L18 72Z",
+      features: [
+        { d: "M24 16 C24 10 34 8 40 8 C46 8 56 10 56 16 L58 50 C56 46 54 34 54 24 M24 16 L22 50 C24 46 26 34 26 24", opacity: 0.4, note: "long straight hair" },
+        { d: "M26 30 L38 30 L38 36 L26 36Z M42 30 L54 30 L54 36 L42 36Z", opacity: 0.5, note: "wide sunglasses" },
+        { d: "M38 33 L42 33", opacity: 0.45, stroke: true, note: "glasses bridge" },
+      ]
+    },
   },
 ];
 ---
@@ -226,9 +410,19 @@ const contemporaryInfluences = [
             <div class="card-header">
               <div class={`avatar avatar-${member.accent}`}>
                 <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#8B5CF6' : '#D97706'} stroke-width="1.5" opacity="0.4"/>
-                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(139, 92, 246, 0.08)' : 'rgba(217, 119, 6, 0.08)'}/>
-                  <text x="40" y="46" text-anchor="middle" fill={member.accent === 'purple' ? '#8B5CF6' : '#D97706'} font-size="22" font-weight="700" font-family="Inter, Helvetica Neue, sans-serif">{member.initials}</text>
+                  <title>{member.initials}</title>
+                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#3730A3' : '#B45309'} stroke-width="1.5" opacity="0.5"/>
+                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(55, 48, 163, 0.06)' : 'rgba(180, 83, 9, 0.06)'}/>
+                  <defs><clipPath id={`clip-${member.initials}`}><circle cx="40" cy="40" r="36"/></clipPath></defs>
+                  <g clip-path={`url(#clip-${member.initials})`}>
+                    <path d={member.portrait.shoulders} fill={member.accent === 'purple' ? '#3730A3' : '#B45309'} opacity="0.55"/>
+                    <path d={member.portrait.head} fill={member.accent === 'purple' ? '#3730A3' : '#B45309'} opacity="0.65"/>
+                    {member.portrait.features.map((f: any) => (
+                      f.stroke
+                        ? <path d={f.d} stroke={member.accent === 'purple' ? '#3730A3' : '#B45309'} stroke-width="1.8" stroke-linecap="round" fill="none" opacity={Math.min(1, f.opacity * 1.6)}/>
+                        : <path d={f.d} fill={member.accent === 'purple' ? '#3730A3' : '#B45309'} opacity={Math.min(1, f.opacity * 1.6)}/>
+                    ))}
+                  </g>
                 </svg>
               </div>
               <div class="card-identity">
@@ -265,9 +459,19 @@ const contemporaryInfluences = [
             <div class="card-header">
               <div class={`avatar avatar-${member.accent}`}>
                 <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#8B5CF6' : '#D97706'} stroke-width="1.5" opacity="0.4"/>
-                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(139, 92, 246, 0.08)' : 'rgba(217, 119, 6, 0.08)'}/>
-                  <text x="40" y="46" text-anchor="middle" fill={member.accent === 'purple' ? '#8B5CF6' : '#D97706'} font-size="22" font-weight="700" font-family="Inter, Helvetica Neue, sans-serif">{member.initials}</text>
+                  <title>{member.initials}</title>
+                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#3730A3' : '#B45309'} stroke-width="1.5" opacity="0.5"/>
+                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(55, 48, 163, 0.06)' : 'rgba(180, 83, 9, 0.06)'}/>
+                  <defs><clipPath id={`clip-${member.initials}`}><circle cx="40" cy="40" r="36"/></clipPath></defs>
+                  <g clip-path={`url(#clip-${member.initials})`}>
+                    <path d={member.portrait.shoulders} fill={member.accent === 'purple' ? '#3730A3' : '#B45309'} opacity="0.55"/>
+                    <path d={member.portrait.head} fill={member.accent === 'purple' ? '#3730A3' : '#B45309'} opacity="0.65"/>
+                    {member.portrait.features.map((f: any) => (
+                      f.stroke
+                        ? <path d={f.d} stroke={member.accent === 'purple' ? '#3730A3' : '#B45309'} stroke-width="1.8" stroke-linecap="round" fill="none" opacity={Math.min(1, f.opacity * 1.6)}/>
+                        : <path d={f.d} fill={member.accent === 'purple' ? '#3730A3' : '#B45309'} opacity={Math.min(1, f.opacity * 1.6)}/>
+                    ))}
+                  </g>
                 </svg>
               </div>
               <div class="card-identity">
@@ -316,7 +520,7 @@ const contemporaryInfluences = [
         </form>
         <div class="nominate-success" id="nominateSuccess" style="display: none;">
           <div class="success-icon">
-            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#8B5CF6" stroke-width="2"/><path d="M20 32l8 8 16-16" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#3730A3" stroke-width="2"/><path d="M20 32l8 8 16-16" stroke="#B45309" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3>Nomination Received</h3>
           <p>Thank you for helping expand the intellectual foundations of The Grace Network. All nominations are reviewed by the community.</p>
@@ -331,9 +535,9 @@ const contemporaryInfluences = [
       <div class="note-card">
         <div class="note-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="20" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
-            <circle cx="24" cy="24" r="4" fill="#8B5CF6" opacity="0.8"/>
-            <path d="M24 4v8M24 36v8M4 24h8M36 24h8M9.86 9.86l5.66 5.66M32.48 32.48l5.66 5.66M9.86 38.14l5.66-5.66M32.48 15.52l5.66-5.66" stroke="#8B5CF6" stroke-width="0.75" opacity="0.3"/>
+            <circle cx="24" cy="24" r="20" stroke="#3730A3" stroke-width="1" opacity="0.5"/>
+            <circle cx="24" cy="24" r="4" fill="#3730A3" opacity="0.8"/>
+            <path d="M24 4v8M24 36v8M4 24h8M36 24h8M9.86 9.86l5.66 5.66M32.48 32.48l5.66 5.66M9.86 38.14l5.66-5.66M32.48 15.52l5.66-5.66" stroke="#3730A3" stroke-width="0.75" opacity="0.3"/>
           </svg>
         </div>
         <p>
@@ -421,7 +625,7 @@ const contemporaryInfluences = [
       letter-spacing: 0.15em;
       color: var(--grace-purple);
       padding: 0.5rem 1.25rem;
-      border: 1px solid rgba(139, 92, 246, 0.2);
+      border: 1px solid rgba(55, 48, 163, 0.2);
       border-radius: 100px;
       margin-bottom: 2.5rem;
       background: var(--grace-purple-wash);
@@ -456,8 +660,8 @@ const contemporaryInfluences = [
     /* Intro Strip */
     .intro-strip {
       background: var(--grace-purple-wash);
-      border-top: 1px solid rgba(139, 92, 246, 0.1);
-      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+      border-top: 1px solid rgba(55, 48, 163, 0.1);
+      border-bottom: 1px solid rgba(55, 48, 163, 0.1);
       padding: 3.5rem 2rem;
     }
 
@@ -512,11 +716,11 @@ const contemporaryInfluences = [
     }
 
     .council-card.accent-purple:hover {
-      border-color: rgba(139, 92, 246, 0.3);
+      border-color: rgba(55, 48, 163, 0.3);
     }
 
     .council-card.accent-gold:hover {
-      border-color: rgba(217, 119, 6, 0.3);
+      border-color: rgba(180, 83, 9, 0.3);
     }
 
     /* Card Header */
@@ -541,13 +745,13 @@ const contemporaryInfluences = [
     }
 
     .avatar-purple {
-      background: rgba(139, 92, 246, 0.06);
-      border: 1.5px solid rgba(139, 92, 246, 0.2);
+      background: rgba(55, 48, 163, 0.06);
+      border: 1.5px solid rgba(55, 48, 163, 0.2);
     }
 
     .avatar-gold {
-      background: rgba(217, 119, 6, 0.06);
-      border: 1.5px solid rgba(217, 119, 6, 0.2);
+      background: rgba(180, 83, 9, 0.06);
+      border: 1.5px solid rgba(180, 83, 9, 0.2);
     }
 
     .card-identity {
@@ -595,13 +799,13 @@ const contemporaryInfluences = [
     }
 
     .accent-purple .card-quote {
-      border-left-color: rgba(139, 92, 246, 0.35);
-      background: rgba(139, 92, 246, 0.03);
+      border-left-color: rgba(55, 48, 163, 0.35);
+      background: rgba(55, 48, 163, 0.03);
     }
 
     .accent-gold .card-quote {
-      border-left-color: rgba(217, 119, 6, 0.35);
-      background: rgba(217, 119, 6, 0.03);
+      border-left-color: rgba(180, 83, 9, 0.35);
+      background: rgba(180, 83, 9, 0.03);
     }
 
     /* Card Relevance */

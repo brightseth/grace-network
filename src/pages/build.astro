@@ -1,0 +1,477 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+---
+
+<Layout
+  title="Build — The Grace Network"
+  description="Join a workstream, contribute code, and help build the governance infrastructure the world needs. Every line of code is a vote for the world you want to live in."
+>
+  <Nav currentPath="/build" />
+
+  <!-- Hero -->
+  <section class="build-hero">
+    <div class="hero-content">
+      <div class="hero-badge">BUILD WITH US</div>
+      <h1>We don't wait for<br/>better systems.<br/><span class="hero-accent">We build them.</span></h1>
+      <p class="hero-subtitle">
+        The Grace Network isn't just a set of principles — it's a workshop. We build open-source
+        governance tools through vibecoding with Claude Code. Every contributor shapes the movement.
+      </p>
+      <div class="hero-actions">
+        <a href="#workstreams" class="btn-grace">Choose a Workstream</a>
+        <a href="#getting-started" class="btn-ghost-grace">Developer Setup</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="section-inner">
+      <SectionHeader
+        tag="HOW IT WORKS"
+        title="Three Steps to Building"
+        description="From joining to shipping — here's how you become a builder in the movement."
+      />
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Join the Network</h3>
+          <p>Sign the constitution, align with the 7 Pillars, and become a founding member of the movement.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Choose a Workstream</h3>
+          <p>Pick the project that matches your skills and interests. Each workstream has clear goals and open tasks.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Vibecode with Claude Code</h3>
+          <p>Build governance software collaboratively using AI-assisted development. Ship real tools that serve the movement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Active Workstreams -->
+  <section class="workstreams" id="workstreams">
+    <div class="section-inner">
+      <SectionHeader
+        tag="ACTIVE WORKSTREAMS"
+        title="What We're Building"
+        description="Four parallel efforts to create the infrastructure of aligned governance. Each is open source and open to contributors."
+      />
+      <div class="workstream-grid">
+        <div class="workstream-card">
+          <div class="ws-status">Planning</div>
+          <div class="ws-icon">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="4" stroke="#3730A3" stroke-width="1.5"/><path d="M16 24h16M24 16v16" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Governance Toolkit</h3>
+          <p>Open-source tools for transparent decision-making. Proposal systems, voting mechanisms, and deliberation frameworks that any community can deploy.</p>
+          <div class="ws-tags">
+            <span>TypeScript</span><span>Smart Contracts</span><span>Open Source</span>
+          </div>
+          <a href="/#sign" class="ws-cta">Join This Workstream &rarr;</a>
+        </div>
+
+        <div class="workstream-card">
+          <div class="ws-status">Planning</div>
+          <div class="ws-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#3730A3" stroke-width="1.5"/><circle cx="24" cy="24" r="8" stroke="#3730A3" stroke-width="1.5"/><circle cx="24" cy="24" r="3" fill="#3730A3"/></svg>
+          </div>
+          <h3>AI Accountability Dashboard</h3>
+          <p>Track AI deployments in public services. A transparency layer that shows where AI is being used, how it's performing, and who it's affecting.</p>
+          <div class="ws-tags">
+            <span>React</span><span>Data Viz</span><span>Public Data</span>
+          </div>
+          <a href="/#sign" class="ws-cta">Join This Workstream &rarr;</a>
+        </div>
+
+        <div class="workstream-card">
+          <div class="ws-status">Planning</div>
+          <div class="ws-icon">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#3730A3" stroke-width="1.5"/><circle cx="24" cy="14" r="4" fill="#B45309" opacity="0.8"/><circle cx="14" cy="30" r="4" fill="#B45309" opacity="0.8"/><circle cx="34" cy="30" r="4" fill="#B45309" opacity="0.8"/><circle cx="24" cy="24" r="6" stroke="#3730A3" stroke-width="1"/></svg>
+          </div>
+          <h3>Assembly Platform</h3>
+          <p>Where members propose, debate, and ratify governance changes. A digital-native deliberation space built for consensus, not conflict.</p>
+          <div class="ws-tags">
+            <span>Full Stack</span><span>On-Chain Voting</span><span>UX</span>
+          </div>
+          <a href="/#sign" class="ws-cta">Join This Workstream &rarr;</a>
+        </div>
+
+        <div class="workstream-card">
+          <div class="ws-status">Planning</div>
+          <div class="ws-icon">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M24 8L40 18v12L24 40 8 30V18L24 8z" stroke="#3730A3" stroke-width="1.5"/><circle cx="24" cy="24" r="6" stroke="#3730A3" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Local Hub Infrastructure</h3>
+          <p>Tools for forming and managing local chapters. From digital coordination to physical meetups — building the archipelago one node at a time.</p>
+          <div class="ws-tags">
+            <span>Community Tools</span><span>Mapping</span><span>Events</span>
+          </div>
+          <a href="/#sign" class="ws-cta">Join This Workstream &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started (Developer Onboarding) -->
+  <section class="getting-started" id="getting-started">
+    <div class="section-inner">
+      <SectionHeader
+        tag="GETTING STARTED"
+        title="Developer Onboarding"
+        description="Everything you need to start contributing. We build with Claude Code — AI-assisted development that makes governance software accessible to everyone."
+      />
+      <div class="onboarding-steps">
+        <div class="onboard-step">
+          <div class="onboard-icon">
+            <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" stroke="#3730A3" stroke-width="1.5"/><path d="M12 16l3 3 5-5" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>1. Join the Network</h4>
+            <p>Sign the constitution and become a founding member. This gives you access to all workstreams and community channels.</p>
+          </div>
+        </div>
+        <div class="onboard-step">
+          <div class="onboard-icon">
+            <svg viewBox="0 0 32 32" fill="none"><rect x="2" y="6" width="28" height="20" rx="2" stroke="#3730A3" stroke-width="1.5"/><path d="M8 14l4 4 4-4M20 12h4M20 16h4M20 20h2" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>2. Set Up Claude Code</h4>
+            <p>Install Claude Code, our AI development partner. It helps you write, review, and ship governance software faster.</p>
+            <code>npm install -g @anthropic-ai/claude-code</code>
+          </div>
+        </div>
+        <div class="onboard-step">
+          <div class="onboard-icon">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="#3730A3" stroke-width="1.5"/><path d="M12 16h8M16 12v8" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>3. Pick a Task</h4>
+            <p>Browse open issues in your chosen workstream. Start with something small, ship it, and grow from there.</p>
+          </div>
+        </div>
+        <div class="onboard-step">
+          <div class="onboard-icon">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M8 24l8-16 8 16" stroke="#3730A3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="14" r="3" stroke="#B45309" stroke-width="1.5"/></svg>
+          </div>
+          <div>
+            <h4>4. Ship It</h4>
+            <p>Submit your contribution. Every pull request is reviewed by the community. Every merge moves the movement forward.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="build-cta">
+    <div class="section-inner">
+      <div class="cta-content">
+        <p class="cta-quote">"Every line of code is a vote<br/>for the world you want to live in."</p>
+        <a href="/#sign" class="btn-grace">Join the Assembly</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Build Hero */
+  .build-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10rem 2rem 6rem;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--grace-purple);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+
+  .build-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+    color: var(--grace-text);
+  }
+
+  .hero-accent {
+    color: var(--grace-purple);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--grace-text-secondary);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* How It Works */
+  .how-it-works {
+    background: var(--grace-bg-alt);
+    padding: 6rem 2rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .step {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .step-number {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--grace-purple);
+    opacity: 0.3;
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--grace-text);
+  }
+
+  .step p {
+    font-size: 0.95rem;
+    color: var(--grace-text-secondary);
+    line-height: 1.65;
+  }
+
+  /* Workstreams */
+  .workstreams {
+    padding: 6rem 2rem;
+  }
+
+  .workstream-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .workstream-card {
+    background: var(--grace-surface);
+    border: 1px solid var(--grace-border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+  .workstream-card:hover {
+    border-color: var(--grace-purple);
+    box-shadow: 0 4px 16px rgba(55, 48, 163, 0.08);
+  }
+
+  .ws-status {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grace-purple-light);
+    background: var(--grace-purple-wash);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  .ws-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.25rem;
+  }
+
+  .ws-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .workstream-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--grace-text);
+  }
+
+  .workstream-card p {
+    font-size: 0.95rem;
+    color: var(--grace-text-secondary);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .ws-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .ws-tags span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--grace-text-muted);
+    background: var(--grace-bg-alt);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .ws-cta {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--grace-purple);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .ws-cta:hover {
+    color: var(--grace-purple-dim);
+  }
+
+  /* Getting Started */
+  .getting-started {
+    background: var(--grace-bg-alt);
+    padding: 6rem 2rem;
+  }
+
+  .onboarding-steps {
+    max-width: 700px;
+    margin: 3rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .onboard-step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .onboard-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .onboard-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .onboard-step h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--grace-text);
+  }
+
+  .onboard-step p {
+    font-size: 0.95rem;
+    color: var(--grace-text-secondary);
+    line-height: 1.6;
+  }
+
+  .onboard-step code {
+    display: inline-block;
+    margin-top: 0.5rem;
+    background: var(--grace-surface);
+    border: 1px solid var(--grace-border);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--grace-purple);
+  }
+
+  /* Build CTA */
+  .build-cta {
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-quote {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--grace-text);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .build-hero {
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .workstream-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .onboard-step {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .build-hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
