@@ -591,15 +591,55 @@ import Footer from '../components/Footer.astro';
     const form = document.getElementById('signForm');
     const success = document.getElementById('signSuccess');
 
-    form?.addEventListener('submit', (e) => {
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (form instanceof HTMLFormElement) {
-        form.style.display = 'none';
+      if (!(form instanceof HTMLFormElement)) return;
+
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const origText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Joining...';
+
+      // Remove any previous error
+      form.querySelector('.form-error')?.remove();
+
+      const data = {
+        firstName: (form.querySelector('#firstName') as HTMLInputElement).value,
+        lastName: (form.querySelector('#lastName') as HTMLInputElement).value,
+        email: (form.querySelector('#email') as HTMLInputElement).value,
+        statement: (form.querySelector('#statement') as HTMLTextAreaElement)?.value || '',
+        pledge: (form.querySelector('#pledge') as HTMLInputElement).checked,
+      };
+
+      try {
+        const res = await fetch('/api/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const result = await res.json();
+
+        if (res.ok) {
+          form.style.display = 'none';
+          if (success instanceof HTMLElement) success.style.display = 'block';
+        } else if (res.status === 409) {
+          const err = document.createElement('p');
+          err.className = 'form-error';
+          err.innerHTML = `You're already a member! <a href="/build">Start building →</a>`;
+          btn.before(err);
+          btn.disabled = false;
+          btn.textContent = origText;
+        } else {
+          throw new Error(result.error || 'Signup failed');
+        }
+      } catch (err: any) {
+        const msg = document.createElement('p');
+        msg.className = 'form-error';
+        msg.textContent = err.message || 'Something went wrong. Please try again.';
+        btn.before(msg);
+        btn.disabled = false;
+        btn.textContent = origText;
       }
-      if (success instanceof HTMLElement) {
-        success.style.display = 'block';
-      }
-      // In production, this would POST to an API endpoint
     });
 
     // Mobile menu toggle
@@ -1240,6 +1280,17 @@ import Footer from '../components/Footer.astro';
       color: var(--grace-text-muted);
       text-align: center;
       margin-top: 0.5rem;
+    }
+
+    .form-error {
+      color: #b91c1c;
+      font-size: 0.875rem;
+      text-align: center;
+      margin: 0.75rem 0;
+    }
+    .form-error a {
+      color: var(--grace-purple);
+      text-decoration: underline;
     }
 
     /* Sign Success */
