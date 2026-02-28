@@ -486,11 +486,11 @@ const contemporaryInfluences = [
     /* Council Grid */
     .council-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 640px) {
       .council-grid {
         grid-template-columns: 1fr;
       }
@@ -694,6 +694,20 @@ const contemporaryInfluences = [
     }
 
     /* Responsive */
+    @media (max-width: 768px) {
+      .council-hero {
+        padding: 7rem 1.5rem 4rem;
+      }
+
+      .council-section {
+        padding: 3.5rem 0;
+      }
+
+      .nominate-section {
+        padding: 4rem 0;
+      }
+    }
+
     @media (max-width: 640px) {
       .council-card {
         padding: 1.75rem;

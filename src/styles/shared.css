@@ -269,6 +269,7 @@
 .footer-links {
   display: flex;
   gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .footer-links a {
@@ -334,6 +335,25 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .section-inner {
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-links {
+    gap: 1.25rem;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 640px) {
