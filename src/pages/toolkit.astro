@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 ---
 
 <Layout
@@ -7,46 +10,10 @@ import Layout from '../layouts/Layout.astro';
   description="Download social media assets, profile frames, shareable graphics, and everything you need to show your alignment and grow The Grace Network."
   image="https://sethgoldstein.com/party/og-grace-network.svg"
 >
-  <!-- Navigation -->
-  <nav class="party-nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="60" r="56" stroke="#C8A2FF" stroke-width="2"/>
-          <path d="M60 20 L60 100" stroke="#C8A2FF" stroke-width="1.5" opacity="0.4"/>
-          <path d="M20 60 L100 60" stroke="#C8A2FF" stroke-width="1.5" opacity="0.4"/>
-          <circle cx="60" cy="60" r="12" fill="#C8A2FF" opacity="0.9"/>
-          <circle cx="60" cy="60" r="28" stroke="#C8A2FF" stroke-width="1" opacity="0.5"/>
-          <circle cx="60" cy="60" r="42" stroke="#C8A2FF" stroke-width="0.75" opacity="0.3"/>
-          <circle cx="60" cy="32" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="84" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="84" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="60" cy="88" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="36" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="36" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-        </svg>
-        <span>The Grace Network</span>
-      </a>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/constitution">Constitution</a>
-        <a href="/toolkit" class="nav-active">Toolkit</a>
-        <a href="/council">Council</a>
-        <a href="/party#sign" class="nav-cta">Join the Network</a>
-      </div>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
+  <Nav currentPath="/toolkit" />
+
   <!-- Hero Section -->
   <section class="toolkit-hero">
-    <div class="hero-bg">
-      <div class="hero-grid"></div>
-      <div class="hero-glow"></div>
-    </div>
     <div class="hero-content">
       <div class="hero-badge">CAMPAIGN TOOLKIT</div>
       <h1>
@@ -68,14 +35,11 @@ import Layout from '../layouts/Layout.astro';
   <!-- Social Media Profile Assets -->
   <section class="assets-section" id="assets">
     <div class="section-inner">
-      <div class="section-header">
-        <span class="section-tag">SOCIAL MEDIA ASSETS</span>
-        <h2>Profile &amp; Banner Graphics</h2>
-        <p class="section-desc">
-          High-quality SVG assets sized for every major platform. Right-click and save,
-          or drag to your desktop. All assets use the official Grace Network visual identity.
-        </p>
-      </div>
+      <SectionHeader
+        tag="SOCIAL MEDIA ASSETS"
+        title="Profile & Banner Graphics"
+        description="High-quality SVG assets sized for every major platform. Right-click and save, or drag to your desktop. All assets use the official Grace Network visual identity."
+      />
 
       <!-- Profile Picture Frame -->
       <div class="asset-block">
@@ -357,14 +321,11 @@ import Layout from '../layouts/Layout.astro';
   <!-- Shareable Quote Cards -->
   <section class="quotes-section" id="quotes">
     <div class="section-inner">
-      <div class="section-header">
-        <span class="section-tag">SHAREABLE QUOTES</span>
-        <h2>Quote Cards</h2>
-        <p class="section-desc">
-          Twitter-optimized quote cards (1200x675). Right-click to save and share
-          on any platform to spread the message.
-        </p>
-      </div>
+      <SectionHeader
+        tag="SHAREABLE QUOTES"
+        title="Quote Cards"
+        description="Twitter-optimized quote cards (1200x675). Right-click to save and share on any platform to spread the message."
+      />
 
       <div class="quotes-grid">
         <!-- Quote 1 -->
@@ -550,13 +511,11 @@ import Layout from '../layouts/Layout.astro';
   <!-- Hashtags & Copy Section -->
   <section class="hashtags-section" id="copy">
     <div class="section-inner">
-      <div class="section-header">
-        <span class="section-tag">READY-TO-POST CONTENT</span>
-        <h2>Hashtags &amp; Copy</h2>
-        <p class="section-desc">
-          Suggested social media copy and hashtags. Click any item to copy it to your clipboard.
-        </p>
-      </div>
+      <SectionHeader
+        tag="READY-TO-POST CONTENT"
+        title="Hashtags & Copy"
+        description="Suggested social media copy and hashtags. Click any item to copy it to your clipboard."
+      />
 
       <div class="hashtags-container">
         <h3 class="subsection-title">Official Hashtags</h3>
@@ -601,14 +560,11 @@ import Layout from '../layouts/Layout.astro';
   <!-- AI Image Generator Section -->
   <section class="ai-generator-section" id="ai-generator">
     <div class="section-inner">
-      <div class="section-header">
-        <span class="section-tag">EXPERIMENTAL</span>
-        <h2>AI Image Generator</h2>
-        <p class="section-desc">
-          Generate custom campaign visuals using AI. Enter a prompt or choose from our
-          pre-built options to create unique Grace Network imagery.
-        </p>
-      </div>
+      <SectionHeader
+        tag="EXPERIMENTAL"
+        title="AI Image Generator"
+        description="Generate custom campaign visuals using AI. Enter a prompt or choose from our pre-built options to create unique Grace Network imagery."
+      />
 
       <div class="generator-container">
         <form class="generator-form" id="imageGenForm">
@@ -631,10 +587,10 @@ import Layout from '../layouts/Layout.astro';
         <div class="generator-output" id="generatorOutput">
           <div class="output-placeholder" id="outputPlaceholder">
             <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
-              <rect x="10" y="10" width="100" height="100" rx="8" stroke="#C8A2FF" stroke-width="1.5" opacity="0.3"/>
-              <circle cx="45" cy="50" r="12" stroke="#C8A2FF" stroke-width="1.5" opacity="0.3"/>
-              <path d="M10 85 L40 60 L65 75 L90 45 L110 65 L110 102 C110 106.418 106.418 110 102 110 L18 110 C13.582 110 10 106.418 10 102 Z" fill="#C8A2FF" opacity="0.08"/>
-              <circle cx="80" cy="35" r="5" fill="#FFD700" opacity="0.3"/>
+              <rect x="10" y="10" width="100" height="100" rx="8" stroke="#8B5CF6" stroke-width="1.5" opacity="0.3"/>
+              <circle cx="45" cy="50" r="12" stroke="#8B5CF6" stroke-width="1.5" opacity="0.3"/>
+              <path d="M10 85 L40 60 L65 75 L90 45 L110 65 L110 102 C110 106.418 106.418 110 102 110 L18 110 C13.582 110 10 106.418 10 102 Z" fill="#8B5CF6" opacity="0.08"/>
+              <circle cx="80" cy="35" r="5" fill="#D97706" opacity="0.3"/>
             </svg>
             <p>Your generated image will appear here</p>
             <span>Enter a prompt above or click a quick prompt to get started</span>
@@ -642,7 +598,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="output-loading" id="outputLoading" style="display: none;">
             <div class="loading-spinner">
               <svg viewBox="0 0 50 50" width="48" height="48">
-                <circle cx="25" cy="25" r="20" fill="none" stroke="#C8A2FF" stroke-width="3" stroke-dasharray="80 40" stroke-linecap="round">
+                <circle cx="25" cy="25" r="20" fill="none" stroke="#8B5CF6" stroke-width="3" stroke-dasharray="80 40" stroke-linecap="round">
                   <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
                 </circle>
               </svg>
@@ -671,48 +627,9 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="party-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="56" stroke="#C8A2FF" stroke-width="2"/>
-            <circle cx="60" cy="60" r="12" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="60" cy="32" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="84" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="84" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="60" cy="88" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="36" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="36" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-          </svg>
-          <span>The Grace Network</span>
-        </div>
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/constitution">Constitution</a>
-          <a href="/toolkit">Toolkit</a>
-          <a href="/council">Council</a>
-          <a href="/party#sign">Join</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>
-          &copy; 2026 The Grace Network. A network state movement for aligned governance and human flourishing.
-        </p>
-        <p class="footer-motto">Built with care. Governed with grace. Aligned by design.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 
   <script>
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    menuBtn?.addEventListener('click', () => {
-      navLinks?.classList.toggle('open');
-    });
-
     // Copy to clipboard functionality
     function copyToClipboard(text, button) {
       navigator.clipboard.writeText(text).then(() => {
@@ -853,236 +770,44 @@ import Layout from '../layouts/Layout.astro';
   <style>
     /* ============================================
        THE GRACE NETWORK — Campaign Toolkit Styles
+       Light minimal aesthetic — page-specific only
+       (nav, footer, section-header, buttons, forms
+        are in shared.css via Layout)
        ============================================ */
-
-    /* Color System */
-    :root {
-      --grace-purple: #C8A2FF;
-      --grace-purple-dim: #9B7ACC;
-      --grace-gold: #FFD700;
-      --grace-gold-dim: #B8A040;
-      --grace-bg: #0A0A0F;
-      --grace-surface: #12121A;
-      --grace-surface-2: #1A1A25;
-      --grace-border: #2A2A3A;
-      --grace-text: #EEEEF0;
-      --grace-text-secondary: #9999AA;
-      --grace-text-muted: #666677;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--grace-bg);
-      color: var(--grace-text);
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* Navigation */
-    .party-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--grace-border);
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--grace-text);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      color: var(--grace-text-secondary);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--grace-text); }
-
-    .nav-links a.nav-active {
-      color: var(--grace-purple);
-    }
-
-    .nav-cta {
-      background: var(--grace-purple);
-      color: var(--grace-bg) !important;
-      padding: 0.5rem 1.25rem;
-      border-radius: 6px;
-      font-weight: 700 !important;
-      font-size: 0.8rem !important;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--grace-gold) !important;
-      color: var(--grace-bg) !important;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--grace-text);
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--grace-bg);
-        flex-direction: column;
-        padding: 1.5rem 2rem;
-        gap: 1rem;
-        border-bottom: 1px solid var(--grace-border);
-      }
-      .nav-links.open { display: flex; }
-      .mobile-menu-btn { display: block; }
-    }
-
-    /* Buttons */
-    .btn-grace {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem 2rem;
-      background: linear-gradient(135deg, var(--grace-purple) 0%, #A87FE0 100%);
-      color: var(--grace-bg);
-      font-weight: 700;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-grace:hover {
-      background: linear-gradient(135deg, var(--grace-gold) 0%, #E0C060 100%);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 30px rgba(200, 162, 255, 0.2);
-    }
-
-    .btn-ghost-grace {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem 2rem;
-      background: transparent;
-      color: var(--grace-text);
-      font-weight: 700;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      border: 1px solid var(--grace-border);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-
-    .btn-ghost-grace:hover {
-      border-color: var(--grace-purple);
-      color: var(--grace-purple);
-    }
 
     /* Hero */
     .toolkit-hero {
       position: relative;
-      min-height: 70vh;
+      min-height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 8rem 2rem 4rem;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(200, 162, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 162, 255, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    .hero-glow {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 600px;
-      background: radial-gradient(ellipse, rgba(200, 162, 255, 0.08) 0%, transparent 70%);
+      background: var(--grace-bg);
     }
 
     .hero-content {
-      position: relative;
-      z-index: 1;
       max-width: 860px;
       text-align: center;
     }
 
     .hero-badge {
       display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--grace-gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--grace-purple);
       padding: 0.5rem 1.25rem;
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      border: 1px solid rgba(139, 92, 246, 0.2);
       border-radius: 100px;
       margin-bottom: 2.5rem;
+      background: var(--grace-purple-wash);
     }
 
     .hero-content h1 {
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      font-weight: 800;
-      line-height: 1.05;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
       margin-bottom: 2rem;
       letter-spacing: -0.02em;
     }
@@ -1094,15 +819,12 @@ import Layout from '../layouts/Layout.astro';
 
     .hero-line-2 {
       display: block;
-      background: linear-gradient(135deg, var(--grace-purple) 0%, var(--grace-gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--grace-purple);
     }
 
     .hero-subtitle {
-      font-size: 1.2rem;
-      line-height: 1.7;
+      font-size: 1.1rem;
+      line-height: 1.75;
       color: var(--grace-text-secondary);
       max-width: 680px;
       margin: 0 auto 2.5rem;
@@ -1122,59 +844,25 @@ import Layout from '../layouts/Layout.astro';
       font-style: italic;
     }
 
-    /* Section shared styles */
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--grace-gold);
-      margin-bottom: 1rem;
-    }
-
-    .section-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-    }
-
-    .section-desc {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: var(--grace-text-secondary);
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
     /* Assets Section */
     .assets-section {
       padding: 6rem 0;
+      background: var(--grace-bg);
       border-top: 1px solid var(--grace-border);
     }
 
     .asset-block {
-      margin-bottom: 4rem;
+      margin-bottom: 3rem;
       background: var(--grace-surface);
       border: 1px solid var(--grace-border);
       border-radius: 16px;
       overflow: hidden;
-      transition: border-color 0.3s;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .asset-block:hover {
-      border-color: rgba(200, 162, 255, 0.3);
+      border-color: var(--grace-border-strong);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
     }
 
     .asset-label {
@@ -1185,10 +873,11 @@ import Layout from '../layouts/Layout.astro';
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 0.5rem;
+      background: var(--grace-surface);
     }
 
     .asset-label h3 {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--grace-text);
     }
@@ -1204,14 +893,14 @@ import Layout from '../layouts/Layout.astro';
       display: flex;
       justify-content: center;
       align-items: center;
-      background: var(--grace-bg);
+      background: var(--grace-bg-alt);
       min-height: 200px;
     }
 
     .asset-svg {
       max-width: 100%;
       height: auto;
-      border-radius: 4px;
+      border-radius: 8px;
     }
 
     .asset-preview.asset-wide .asset-svg {
@@ -1238,7 +927,7 @@ import Layout from '../layouts/Layout.astro';
     /* Quotes Section */
     .quotes-section {
       padding: 6rem 0;
-      background: var(--grace-surface);
+      background: var(--grace-bg-alt);
       border-top: 1px solid var(--grace-border);
       border-bottom: 1px solid var(--grace-border);
     }
@@ -1250,25 +939,27 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .quote-block {
-      background: var(--grace-bg);
+      background: var(--grace-surface);
       border: 1px solid var(--grace-border);
       border-radius: 12px;
       overflow: hidden;
-      transition: border-color 0.3s;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .quote-block:hover {
-      border-color: rgba(200, 162, 255, 0.3);
+      border-color: var(--grace-border-strong);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
     }
 
     /* Hashtags Section */
     .hashtags-section {
       padding: 6rem 0;
+      background: var(--grace-bg);
     }
 
     .subsection-title {
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 0.85rem;
+      font-weight: 600;
       color: var(--grace-purple);
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -1287,27 +978,26 @@ import Layout from '../layouts/Layout.astro';
 
     .hashtag-pill {
       padding: 0.6rem 1.25rem;
-      background: var(--grace-surface);
-      border: 1px solid var(--grace-border);
+      background: var(--grace-purple-wash);
+      border: 1px solid rgba(139, 92, 246, 0.15);
       border-radius: 100px;
-      color: var(--grace-text);
+      color: var(--grace-purple);
       font-family: inherit;
       font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
 
     .hashtag-pill:hover {
       border-color: var(--grace-purple);
-      color: var(--grace-purple);
-      background: rgba(200, 162, 255, 0.06);
+      background: rgba(139, 92, 246, 0.1);
     }
 
     .hashtag-pill.copied {
       border-color: var(--grace-gold);
       color: var(--grace-gold);
-      background: rgba(255, 215, 0, 0.06);
+      background: rgba(217, 119, 6, 0.06);
     }
 
     .sample-posts {
@@ -1326,19 +1016,20 @@ import Layout from '../layouts/Layout.astro';
       border-radius: 12px;
       padding: 2rem;
       position: relative;
-      transition: border-color 0.3s;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .sample-post:hover {
-      border-color: rgba(200, 162, 255, 0.3);
+      border-color: var(--grace-border-strong);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
     }
 
     .post-platform {
       font-size: 0.7rem;
-      font-weight: 700;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--grace-gold);
+      color: var(--grace-purple);
       margin-bottom: 1rem;
     }
 
@@ -1359,10 +1050,9 @@ import Layout from '../layouts/Layout.astro';
       font-family: inherit;
       font-size: 0.8rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
 
     .copy-btn:hover {
@@ -1378,7 +1068,7 @@ import Layout from '../layouts/Layout.astro';
     /* AI Generator Section */
     .ai-generator-section {
       padding: 6rem 0;
-      background: var(--grace-surface);
+      background: var(--grace-bg-alt);
       border-top: 1px solid var(--grace-border);
       border-bottom: 1px solid var(--grace-border);
     }
@@ -1396,16 +1086,6 @@ import Layout from '../layouts/Layout.astro';
       margin-bottom: 1.5rem;
     }
 
-    .generator-form label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--grace-text-secondary);
-      margin-bottom: 0.5rem;
-    }
-
     .prompt-input-wrap {
       display: flex;
       gap: 0.75rem;
@@ -1414,18 +1094,19 @@ import Layout from '../layouts/Layout.astro';
     .prompt-input-wrap input {
       flex: 1;
       padding: 0.875rem 1rem;
-      background: var(--grace-bg);
+      background: var(--grace-surface);
       border: 1px solid var(--grace-border);
       border-radius: 8px;
       color: var(--grace-text);
       font-family: inherit;
       font-size: 0.95rem;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .prompt-input-wrap input:focus {
       outline: none;
       border-color: var(--grace-purple);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
     }
 
     .prompt-input-wrap input::placeholder {
@@ -1440,7 +1121,6 @@ import Layout from '../layouts/Layout.astro';
     .generate-btn:disabled {
       opacity: 0.6;
       cursor: not-allowed;
-      transform: none !important;
     }
 
     .preset-prompts {
@@ -1458,7 +1138,7 @@ import Layout from '../layouts/Layout.astro';
 
     .preset-btn {
       padding: 0.5rem 1rem;
-      background: var(--grace-bg);
+      background: var(--grace-surface);
       border: 1px solid var(--grace-border);
       border-radius: 100px;
       color: var(--grace-text-secondary);
@@ -1466,17 +1146,17 @@ import Layout from '../layouts/Layout.astro';
       font-size: 0.8rem;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
 
     .preset-btn:hover {
       border-color: var(--grace-purple);
       color: var(--grace-purple);
-      background: rgba(200, 162, 255, 0.04);
+      background: var(--grace-purple-wash);
     }
 
     .generator-output {
-      background: var(--grace-bg);
+      background: var(--grace-surface);
       border: 1px solid var(--grace-border);
       border-radius: 16px;
       min-height: 400px;
@@ -1542,65 +1222,6 @@ import Layout from '../layouts/Layout.astro';
       to { transform: rotate(0deg); }
     }
 
-    /* Footer */
-    .party-footer {
-      border-top: 1px solid var(--grace-border);
-      padding: 3rem 0;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .footer-links a {
-      color: var(--grace-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--grace-text); }
-
-    .footer-bottom {
-      border-top: 1px solid var(--grace-border);
-      padding-top: 2rem;
-    }
-
-    .footer-bottom p {
-      font-size: 0.8rem;
-      color: var(--grace-text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-motto {
-      color: var(--grace-purple) !important;
-      font-style: italic;
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .prompt-input-wrap {
@@ -1614,11 +1235,6 @@ import Layout from '../layouts/Layout.astro';
 
       .posts-grid {
         grid-template-columns: 1fr;
-      }
-
-      .footer-links {
-        gap: 1rem;
-        flex-wrap: wrap;
       }
     }
   </style>

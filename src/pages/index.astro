@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout
@@ -457,36 +458,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="party-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="56" stroke="#8B5CF6" stroke-width="2"/>
-            <circle cx="60" cy="60" r="8" fill="#8B5CF6"/>
-          </svg>
-          <span>The Grace Network</span>
-        </div>
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/constitution">Constitution</a>
-          <a href="/toolkit">Toolkit</a>
-          <a href="#sign">Join</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>
-          &copy; 2026 The Grace Network. A network state movement for aligned governance and human flourishing.
-        </p>
-        <p class="footer-credit">
-          Title inspired by Richard Brautigan's poem "All Watched Over by Machines of Loving Grace" (1967)
-          and the subsequent discourse on AI's potential for human flourishing.
-        </p>
-        <p class="footer-motto">Built with care. Governed with grace. Aligned by design.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer showCredit={true} />
 
   <script>
     // Form handling
@@ -554,110 +526,11 @@ import Layout from '../layouts/Layout.astro';
 
   <style>
     /* ============================================
-       THE GRACE NETWORK — Light Redesign
-       Anthropic meets Shepard Fairey
+       THE GRACE NETWORK — Homepage-specific styles
+       Shared styles (nav, footer, buttons, forms, sections) in shared.css
        ============================================ */
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--grace-bg);
-      color: var(--grace-text);
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 1.0625rem;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* Navigation */
-    .party-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(250, 250, 248, 0.9);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--grace-border);
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--grace-text);
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.01em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      color: var(--grace-text-secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--grace-text); }
-
-    .nav-cta {
-      background: var(--grace-purple) !important;
-      color: #FFFFFF !important;
-      padding: 0.5rem 1.25rem;
-      border-radius: 6px;
-      font-weight: 600 !important;
-      font-size: 0.875rem !important;
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--grace-purple-dim) !important;
-      color: #FFFFFF !important;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--grace-text);
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--grace-bg);
-        flex-direction: column;
-        padding: 1.5rem 2rem;
-        gap: 1rem;
-        border-bottom: 1px solid var(--grace-border);
-      }
-      .nav-links.open { display: flex; }
-      .mobile-menu-btn { display: block; }
-    }
+    body { overflow-x: hidden; }
 
     /* Hero */
     .hero {
@@ -715,49 +588,6 @@ import Layout from '../layouts/Layout.astro';
       margin-bottom: 4rem;
     }
 
-    .btn-grace {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem 2rem;
-      background: var(--grace-purple);
-      color: #FFFFFF;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-grace:hover {
-      background: var(--grace-purple-dim);
-    }
-
-    .btn-ghost-grace {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem 2rem;
-      background: transparent;
-      color: var(--grace-text);
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      border: 1px solid var(--grace-border-strong);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-ghost-grace:hover {
-      border-color: var(--grace-purple);
-      color: var(--grace-purple);
-    }
-
-    .btn-full { width: 100%; }
-
     .hero-stats {
       display: flex;
       align-items: center;
@@ -800,44 +630,6 @@ import Layout from '../layouts/Layout.astro';
       line-height: 1.75;
       color: var(--grace-text-secondary);
       font-weight: 400;
-    }
-
-    /* Sections */
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: var(--grace-purple);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .section-header h2 {
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: -0.015em;
-      color: var(--grace-text);
-    }
-
-    .section-desc {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--grace-text-secondary);
-      max-width: 640px;
-      margin: 0 auto;
     }
 
     /* Platform */
@@ -1107,47 +899,11 @@ import Layout from '../layouts/Layout.astro';
       .form-row { grid-template-columns: 1fr; }
     }
 
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      color: var(--grace-text-secondary);
-      margin-bottom: 0.5rem;
-    }
-
     .optional {
       font-weight: 400;
       letter-spacing: 0;
       color: var(--grace-text-muted);
     }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: var(--grace-surface);
-      border: 1px solid var(--grace-border);
-      border-radius: 8px;
-      color: var(--grace-text);
-      font-family: inherit;
-      font-size: 0.95rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--grace-purple);
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: var(--grace-text-muted);
-    }
-
-    .form-group textarea { resize: vertical; }
 
     .form-check {
       display: flex;
@@ -1186,11 +942,6 @@ import Layout from '../layouts/Layout.astro';
       padding: 2rem 0;
     }
 
-    .success-icon {
-      width: 64px;
-      margin: 0 auto 1.5rem;
-    }
-
     .sign-success h3 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -1208,98 +959,6 @@ import Layout from '../layouts/Layout.astro';
     .toolkit-cta {
       padding: 4rem 0;
       background: var(--grace-bg);
-    }
-
-    .cta-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--grace-purple-wash);
-      border: 1px solid rgba(139, 92, 246, 0.12);
-      border-radius: 16px;
-      padding: 3rem;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .cta-text h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--grace-text);
-    }
-
-    .cta-text p {
-      color: var(--grace-text-secondary);
-      max-width: 500px;
-    }
-
-    /* Footer */
-    .party-footer {
-      background: var(--grace-bg);
-      border-top: 1px solid var(--grace-border);
-      padding: 3rem 0;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--grace-text);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .footer-links a {
-      color: var(--grace-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--grace-text); }
-
-    .footer-bottom {
-      border-top: 1px solid var(--grace-border);
-      padding-top: 2rem;
-    }
-
-    .footer-bottom p {
-      font-size: 0.8rem;
-      color: var(--grace-text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-credit {
-      font-size: 0.75rem;
-      color: var(--grace-text-muted);
-      font-style: italic;
-      opacity: 0.7;
-    }
-
-    .footer-motto {
-      color: var(--grace-purple) !important;
-      font-style: italic;
     }
 
     /* ============================================

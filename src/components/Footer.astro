@@ -1,0 +1,40 @@
+---
+interface Props {
+  showCredit?: boolean;
+}
+
+const { showCredit = false } = Astro.props;
+---
+
+<footer class="party-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="56" stroke="#8B5CF6" stroke-width="2"/>
+          <circle cx="60" cy="60" r="8" fill="#8B5CF6"/>
+        </svg>
+        <span>The Grace Network</span>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/constitution">Constitution</a>
+        <a href="/toolkit">Toolkit</a>
+        <a href="/council">Council</a>
+        <a href="/#sign">Join</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>
+        &copy; 2026 The Grace Network. A network state movement for aligned governance and human flourishing.
+      </p>
+      {showCredit && (
+        <p class="footer-credit">
+          Title inspired by Richard Brautigan's poem "All Watched Over by Machines of Loving Grace" (1967)
+          and the subsequent discourse on AI's potential for human flourishing.
+        </p>
+      )}
+      <p class="footer-motto">Built with care. Governed with grace. Aligned by design.</p>
+    </div>
+  </div>
+</footer>

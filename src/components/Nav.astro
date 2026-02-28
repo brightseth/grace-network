@@ -1,0 +1,47 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/constitution', label: 'Constitution' },
+  { href: '/toolkit', label: 'Toolkit' },
+  { href: '/council', label: 'Council' },
+];
+---
+
+<nav class="party-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="56" stroke="#8B5CF6" stroke-width="2"/>
+        <circle cx="60" cy="60" r="8" fill="#8B5CF6"/>
+      </svg>
+      <span>The Grace Network</span>
+    </a>
+    <div class="nav-links">
+      {links.map(link => (
+        <a href={link.href} class={currentPath === link.href ? 'nav-active' : ''}>
+          {link.label}
+        </a>
+      ))}
+      <a href="/#sign" class="nav-cta">Join the Network</a>
+    </div>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<script>
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  menuBtn?.addEventListener('click', () => {
+    navLinks?.classList.toggle('open');
+  });
+</script>

@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 
 const foundingInfluences = [
   {
@@ -175,47 +177,10 @@ const contemporaryInfluences = [
   description="The intellectual and moral advisors whose ideas guide The Grace Network. A curated pantheon of thinkers — both historical and contemporary — who form the foundations of aligned governance."
   image="https://sethgoldstein.com/party/og-grace-network.svg"
 >
-  <!-- Navigation -->
-  <nav class="party-nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="60" r="56" stroke="#C8A2FF" stroke-width="2"/>
-          <path d="M60 20 L60 100" stroke="#C8A2FF" stroke-width="1.5" opacity="0.4"/>
-          <path d="M20 60 L100 60" stroke="#C8A2FF" stroke-width="1.5" opacity="0.4"/>
-          <circle cx="60" cy="60" r="12" fill="#C8A2FF" opacity="0.9"/>
-          <circle cx="60" cy="60" r="28" stroke="#C8A2FF" stroke-width="1" opacity="0.5"/>
-          <circle cx="60" cy="60" r="42" stroke="#C8A2FF" stroke-width="0.75" opacity="0.3"/>
-          <circle cx="60" cy="32" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="84" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="84" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="60" cy="88" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="36" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="36" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-        </svg>
-        <span>The Grace Network</span>
-      </a>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/constitution">Constitution</a>
-        <a href="/toolkit">Toolkit</a>
-        <a href="/council" class="nav-active">Council</a>
-        <a href="#sign" class="nav-cta">Join the Network</a>
-      </div>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
+  <Nav currentPath="/council" />
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-grid"></div>
-      <div class="hero-glow"></div>
-    </div>
     <div class="hero-content">
       <div class="hero-badge">INTELLECTUAL FOUNDATIONS</div>
       <h1>
@@ -261,9 +226,9 @@ const contemporaryInfluences = [
             <div class="card-header">
               <div class={`avatar avatar-${member.accent}`}>
                 <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#C8A2FF' : '#FFD700'} stroke-width="1.5" opacity="0.4"/>
-                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(200, 162, 255, 0.1)' : 'rgba(255, 215, 0, 0.1)'}/>
-                  <text x="40" y="46" text-anchor="middle" fill={member.accent === 'purple' ? '#C8A2FF' : '#FFD700'} font-size="22" font-weight="700" font-family="Helvetica Neue, sans-serif">{member.initials}</text>
+                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#8B5CF6' : '#D97706'} stroke-width="1.5" opacity="0.4"/>
+                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(139, 92, 246, 0.08)' : 'rgba(217, 119, 6, 0.08)'}/>
+                  <text x="40" y="46" text-anchor="middle" fill={member.accent === 'purple' ? '#8B5CF6' : '#D97706'} font-size="22" font-weight="700" font-family="Inter, Helvetica Neue, sans-serif">{member.initials}</text>
                 </svg>
               </div>
               <div class="card-identity">
@@ -300,9 +265,9 @@ const contemporaryInfluences = [
             <div class="card-header">
               <div class={`avatar avatar-${member.accent}`}>
                 <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#C8A2FF' : '#FFD700'} stroke-width="1.5" opacity="0.4"/>
-                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(200, 162, 255, 0.1)' : 'rgba(255, 215, 0, 0.1)'}/>
-                  <text x="40" y="46" text-anchor="middle" fill={member.accent === 'purple' ? '#C8A2FF' : '#FFD700'} font-size="22" font-weight="700" font-family="Helvetica Neue, sans-serif">{member.initials}</text>
+                  <circle cx="40" cy="40" r="38" stroke={member.accent === 'purple' ? '#8B5CF6' : '#D97706'} stroke-width="1.5" opacity="0.4"/>
+                  <circle cx="40" cy="40" r="36" fill={member.accent === 'purple' ? 'rgba(139, 92, 246, 0.08)' : 'rgba(217, 119, 6, 0.08)'}/>
+                  <text x="40" y="46" text-anchor="middle" fill={member.accent === 'purple' ? '#8B5CF6' : '#D97706'} font-size="22" font-weight="700" font-family="Inter, Helvetica Neue, sans-serif">{member.initials}</text>
                 </svg>
               </div>
               <div class="card-identity">
@@ -351,7 +316,7 @@ const contemporaryInfluences = [
         </form>
         <div class="nominate-success" id="nominateSuccess" style="display: none;">
           <div class="success-icon">
-            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#C8A2FF" stroke-width="2"/><path d="M20 32l8 8 16-16" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#8B5CF6" stroke-width="2"/><path d="M20 32l8 8 16-16" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3>Nomination Received</h3>
           <p>Thank you for helping expand the intellectual foundations of The Grace Network. All nominations are reviewed by the community.</p>
@@ -366,9 +331,9 @@ const contemporaryInfluences = [
       <div class="note-card">
         <div class="note-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="20" stroke="#C8A2FF" stroke-width="1" opacity="0.5"/>
-            <circle cx="24" cy="24" r="4" fill="#C8A2FF" opacity="0.8"/>
-            <path d="M24 4v8M24 36v8M4 24h8M36 24h8M9.86 9.86l5.66 5.66M32.48 32.48l5.66 5.66M9.86 38.14l5.66-5.66M32.48 15.52l5.66-5.66" stroke="#C8A2FF" stroke-width="0.75" opacity="0.3"/>
+            <circle cx="24" cy="24" r="20" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+            <circle cx="24" cy="24" r="4" fill="#8B5CF6" opacity="0.8"/>
+            <path d="M24 4v8M24 36v8M4 24h8M36 24h8M9.86 9.86l5.66 5.66M32.48 32.48l5.66 5.66M9.86 38.14l5.66-5.66M32.48 15.52l5.66-5.66" stroke="#8B5CF6" stroke-width="0.75" opacity="0.3"/>
           </svg>
         </div>
         <p>
@@ -400,39 +365,7 @@ const contemporaryInfluences = [
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="party-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="56" stroke="#C8A2FF" stroke-width="2"/>
-            <circle cx="60" cy="60" r="12" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="60" cy="32" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="84" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="84" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="60" cy="88" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="36" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="36" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-          </svg>
-          <span>The Grace Network</span>
-        </div>
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/constitution">Constitution</a>
-          <a href="/toolkit">Toolkit</a>
-          <a href="/council">Council</a>
-          <a href="#sign">Join</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>
-          &copy; 2026 The Grace Network. A network state movement for aligned governance and human flourishing.
-        </p>
-        <p class="footer-motto">Built with care. Governed with grace. Aligned by design.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 
   <script>
     // Nomination form handling
@@ -460,162 +393,18 @@ const contemporaryInfluences = [
   <style>
     /* ============================================
        THE GRACE NETWORK — Council of Influences
+       Light minimal aesthetic
        ============================================ */
-
-    /* Color System */
-    :root {
-      --grace-purple: #C8A2FF;
-      --grace-purple-dim: #9B7ACC;
-      --grace-gold: #FFD700;
-      --grace-gold-dim: #B8A040;
-      --grace-bg: #0A0A0F;
-      --grace-surface: #12121A;
-      --grace-surface-2: #1A1A25;
-      --grace-border: #2A2A3A;
-      --grace-text: #EEEEF0;
-      --grace-text-secondary: #9999AA;
-      --grace-text-muted: #666677;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--grace-bg);
-      color: var(--grace-text);
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* Navigation */
-    .party-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--grace-border);
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--grace-text);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      color: var(--grace-text-secondary);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--grace-text); }
-
-    .nav-links a.nav-active {
-      color: var(--grace-purple);
-    }
-
-    .nav-cta {
-      background: var(--grace-purple);
-      color: var(--grace-bg) !important;
-      padding: 0.5rem 1.25rem;
-      border-radius: 6px;
-      font-weight: 700 !important;
-      font-size: 0.8rem !important;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--grace-gold) !important;
-      color: var(--grace-bg) !important;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--grace-text);
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--grace-bg);
-        flex-direction: column;
-        padding: 1.5rem 2rem;
-        gap: 1rem;
-        border-bottom: 1px solid var(--grace-border);
-      }
-      .nav-links.open { display: flex; }
-      .mobile-menu-btn { display: block; }
-    }
 
     /* Hero */
     .hero {
       position: relative;
-      min-height: 70vh;
+      min-height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 8rem 2rem 4rem;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(200, 162, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 162, 255, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    .hero-glow {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 600px;
-      background: radial-gradient(ellipse, rgba(200, 162, 255, 0.08) 0%, transparent 70%);
+      background: var(--grace-bg);
     }
 
     .hero-content {
@@ -627,20 +416,21 @@ const contemporaryInfluences = [
 
     .hero-badge {
       display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--grace-gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--grace-purple);
       padding: 0.5rem 1.25rem;
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      border: 1px solid rgba(139, 92, 246, 0.2);
       border-radius: 100px;
       margin-bottom: 2.5rem;
+      background: var(--grace-purple-wash);
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      font-weight: 800;
-      line-height: 1.05;
+      font-size: clamp(2.75rem, 7vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.1;
       margin-bottom: 2rem;
       letter-spacing: -0.02em;
     }
@@ -652,93 +442,52 @@ const contemporaryInfluences = [
 
     .hero-line-2 {
       display: block;
-      background: linear-gradient(135deg, var(--grace-purple) 0%, var(--grace-gold) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--grace-purple);
     }
 
     .hero-subtitle {
-      font-size: 1.2rem;
-      line-height: 1.7;
-      color: var(--grace-text-secondary);
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    /* Intro Strip */
-    .intro-strip {
-      background: var(--grace-surface);
-      border-top: 1px solid var(--grace-border);
-      border-bottom: 1px solid var(--grace-border);
-      padding: 3.5rem 2rem;
-    }
-
-    .intro-inner {
-      max-width: 780px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .intro-inner p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: var(--grace-text-secondary);
-      font-weight: 300;
-    }
-
-    /* Sections */
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--grace-gold);
-      margin-bottom: 1rem;
-    }
-
-    .section-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-    }
-
-    .section-desc {
-      font-size: 1.1rem;
-      line-height: 1.7;
+      font-size: 1.125rem;
+      line-height: 1.75;
       color: var(--grace-text-secondary);
       max-width: 640px;
       margin: 0 auto;
     }
 
+    /* Intro Strip */
+    .intro-strip {
+      background: var(--grace-purple-wash);
+      border-top: 1px solid rgba(139, 92, 246, 0.1);
+      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+      padding: 3.5rem 2rem;
+    }
+
+    .intro-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro-inner p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--grace-text-secondary);
+    }
+
     /* Council Sections */
     .council-section {
-      padding: 6rem 0;
+      padding: 5rem 0;
+      background: var(--grace-bg);
     }
 
     .council-section-alt {
-      background: var(--grace-surface);
-      border-top: 1px solid var(--grace-border);
-      border-bottom: 1px solid var(--grace-border);
+      background: var(--grace-bg-alt);
     }
 
     /* Council Grid */
     .council-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     @media (max-width: 480px) {
@@ -749,51 +498,25 @@ const contemporaryInfluences = [
 
     /* Council Cards */
     .council-card {
-      background: var(--grace-surface-2);
+      background: var(--grace-surface);
       border: 1px solid var(--grace-border);
-      border-radius: 16px;
-      padding: 2.5rem;
-      transition: all 0.4s ease;
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
       position: relative;
-      overflow: hidden;
-    }
-
-    .council-section-alt .council-card {
-      background: var(--grace-bg);
-    }
-
-    .council-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-
-    .council-card.accent-purple::before {
-      box-shadow: 0 0 40px rgba(200, 162, 255, 0.1), inset 0 0 40px rgba(200, 162, 255, 0.02);
-    }
-
-    .council-card.accent-gold::before {
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.1), inset 0 0 40px rgba(255, 215, 0, 0.02);
     }
 
     .council-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .council-card:hover::before {
-      opacity: 1;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
     }
 
     .council-card.accent-purple:hover {
-      border-color: rgba(200, 162, 255, 0.4);
+      border-color: rgba(139, 92, 246, 0.3);
     }
 
     .council-card.accent-gold:hover {
-      border-color: rgba(255, 215, 0, 0.4);
+      border-color: rgba(217, 119, 6, 0.3);
     }
 
     /* Card Header */
@@ -801,12 +524,12 @@ const contemporaryInfluences = [
       display: flex;
       align-items: center;
       gap: 1.25rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .avatar {
-      width: 72px;
-      height: 72px;
+      width: 64px;
+      height: 64px;
       flex-shrink: 0;
       border-radius: 50%;
       overflow: hidden;
@@ -818,30 +541,30 @@ const contemporaryInfluences = [
     }
 
     .avatar-purple {
-      background: radial-gradient(circle at 30% 30%, rgba(200, 162, 255, 0.15) 0%, rgba(200, 162, 255, 0.05) 100%);
-      border: 1.5px solid rgba(200, 162, 255, 0.3);
+      background: rgba(139, 92, 246, 0.06);
+      border: 1.5px solid rgba(139, 92, 246, 0.2);
     }
 
     .avatar-gold {
-      background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.12) 0%, rgba(255, 215, 0, 0.04) 100%);
-      border: 1.5px solid rgba(255, 215, 0, 0.3);
+      background: rgba(217, 119, 6, 0.06);
+      border: 1.5px solid rgba(217, 119, 6, 0.2);
     }
 
     .card-identity {
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      gap: 0.1rem;
     }
 
     .card-identity h3 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--grace-text);
       letter-spacing: -0.01em;
     }
 
     .card-era {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -855,29 +578,30 @@ const contemporaryInfluences = [
     }
 
     .accent-gold .card-title {
-      color: var(--grace-gold-dim);
+      color: var(--grace-gold);
     }
 
     /* Card Quote */
     .card-quote {
-      font-size: 0.95rem;
+      font-size: 0.925rem;
       line-height: 1.65;
       font-style: italic;
       color: var(--grace-text);
-      padding: 1.25rem;
-      margin-bottom: 1.25rem;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
       border-left: 3px solid var(--grace-border);
-      background: rgba(200, 162, 255, 0.03);
+      background: var(--grace-bg);
       border-radius: 0 8px 8px 0;
     }
 
     .accent-purple .card-quote {
-      border-left-color: rgba(200, 162, 255, 0.4);
+      border-left-color: rgba(139, 92, 246, 0.35);
+      background: rgba(139, 92, 246, 0.03);
     }
 
     .accent-gold .card-quote {
-      border-left-color: rgba(255, 215, 0, 0.4);
-      background: rgba(255, 215, 0, 0.02);
+      border-left-color: rgba(217, 119, 6, 0.35);
+      background: rgba(217, 119, 6, 0.03);
     }
 
     /* Card Relevance */
@@ -889,7 +613,8 @@ const contemporaryInfluences = [
 
     /* Nominate Section */
     .nominate {
-      padding: 6rem 0;
+      padding: 5rem 0;
+      background: var(--grace-bg);
     }
 
     .nominate-container {
@@ -903,57 +628,17 @@ const contemporaryInfluences = [
       gap: 1.25rem;
     }
 
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--grace-text-secondary);
-      margin-bottom: 0.5rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      background: var(--grace-surface);
-      border: 1px solid var(--grace-border);
-      border-radius: 8px;
-      color: var(--grace-text);
-      font-family: inherit;
-      font-size: 0.95rem;
-      transition: border-color 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--grace-purple);
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: var(--grace-text-muted);
-    }
-
-    .form-group textarea { resize: vertical; }
-
     /* Nominate Success */
     .nominate-success {
       text-align: center;
       padding: 2rem 0;
     }
 
-    .success-icon {
-      width: 64px;
-      margin: 0 auto 1.5rem;
-    }
-
     .nominate-success h3 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--grace-text);
     }
 
     .nominate-success p {
@@ -964,19 +649,17 @@ const contemporaryInfluences = [
     /* Living Note */
     .living-note {
       padding: 4rem 0;
-      background: var(--grace-surface);
-      border-top: 1px solid var(--grace-border);
-      border-bottom: 1px solid var(--grace-border);
+      background: var(--grace-bg-alt);
     }
 
     .note-card {
-      max-width: 700px;
+      max-width: 680px;
       margin: 0 auto;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .note-icon {
@@ -985,79 +668,16 @@ const contemporaryInfluences = [
     }
 
     .note-card p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.8;
       color: var(--grace-text-secondary);
       font-style: italic;
-      font-weight: 300;
     }
-
-    /* Buttons */
-    .btn-grace {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem 2rem;
-      background: linear-gradient(135deg, var(--grace-purple) 0%, #A87FE0 100%);
-      color: var(--grace-bg);
-      font-weight: 700;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-
-    .btn-grace:hover {
-      background: linear-gradient(135deg, var(--grace-gold) 0%, #E0C060 100%);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 30px rgba(200, 162, 255, 0.2);
-    }
-
-    .btn-ghost-grace {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem 2rem;
-      background: transparent;
-      color: var(--grace-text);
-      font-weight: 700;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      border: 1px solid var(--grace-border);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-ghost-grace:hover {
-      border-color: var(--grace-purple);
-      color: var(--grace-purple);
-    }
-
-    .btn-full { width: 100%; }
 
     /* Sign CTA */
     .sign-cta {
       padding: 5rem 0;
-    }
-
-    .cta-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: linear-gradient(135deg, rgba(200, 162, 255, 0.08) 0%, rgba(255, 215, 0, 0.04) 100%);
-      border: 1px solid var(--grace-border);
-      border-radius: 16px;
-      padding: 3rem;
-      gap: 2rem;
-      flex-wrap: wrap;
+      background: var(--grace-bg);
     }
 
     .cta-text {
@@ -1066,103 +686,23 @@ const contemporaryInfluences = [
     }
 
     .cta-text h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
       margin-top: 0.75rem;
     }
 
     .cta-text p {
-      color: var(--grace-text-secondary);
       line-height: 1.7;
-      max-width: 500px;
-    }
-
-    .cta-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* Footer */
-    .party-footer {
-      border-top: 1px solid var(--grace-border);
-      padding: 3rem 0;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .footer-links a {
-      color: var(--grace-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--grace-text); }
-
-    .footer-bottom {
-      border-top: 1px solid var(--grace-border);
-      padding-top: 2rem;
-    }
-
-    .footer-bottom p {
-      font-size: 0.8rem;
-      color: var(--grace-text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-motto {
-      color: var(--grace-purple) !important;
-      font-style: italic;
     }
 
     /* Responsive */
     @media (max-width: 640px) {
       .council-card {
-        padding: 2rem;
+        padding: 1.75rem;
       }
 
       .card-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
-      }
-
-      .cta-card {
-        padding: 2rem;
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .cta-actions {
-        justify-content: center;
+        gap: 0.75rem;
       }
     }
   </style>

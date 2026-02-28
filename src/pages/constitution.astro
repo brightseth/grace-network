@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout
@@ -8,55 +10,19 @@ import Layout from '../layouts/Layout.astro';
   image="https://sethgoldstein.com/party/og-grace-network.svg"
 >
   <!-- Navigation -->
-  <nav class="party-nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="60" r="56" stroke="#C8A2FF" stroke-width="2"/>
-          <path d="M60 20 L60 100" stroke="#C8A2FF" stroke-width="1.5" opacity="0.4"/>
-          <path d="M20 60 L100 60" stroke="#C8A2FF" stroke-width="1.5" opacity="0.4"/>
-          <circle cx="60" cy="60" r="12" fill="#C8A2FF" opacity="0.9"/>
-          <circle cx="60" cy="60" r="28" stroke="#C8A2FF" stroke-width="1" opacity="0.5"/>
-          <circle cx="60" cy="60" r="42" stroke="#C8A2FF" stroke-width="0.75" opacity="0.3"/>
-          <circle cx="60" cy="32" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="84" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="84" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="60" cy="88" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="36" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-          <circle cx="36" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-        </svg>
-        <span>The Grace Network</span>
-      </a>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/constitution" class="nav-active">Constitution</a>
-        <a href="/toolkit">Toolkit</a>
-        <a href="/council">Council</a>
-        <a href="/party#sign" class="nav-cta">Join the Network</a>
-      </div>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
+  <Nav currentPath="/constitution" />
 
   <!-- Constitution Header -->
   <header class="const-header">
-    <div class="const-header-bg">
-      <div class="const-grid-lines"></div>
-      <div class="const-glow"></div>
-    </div>
     <div class="const-header-content">
       <div class="const-badge">FOUNDING DOCUMENT</div>
       <h1>The Constitution</h1>
       <p class="const-subtitle">of The Grace Network</p>
       <div class="const-ornament">
         <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
-          <line x1="0" y1="10" x2="80" y2="10" stroke="#C8A2FF" stroke-width="0.5" opacity="0.4"/>
-          <circle cx="100" cy="10" r="4" fill="#FFD700" opacity="0.8"/>
-          <line x1="120" y1="10" x2="200" y2="10" stroke="#C8A2FF" stroke-width="0.5" opacity="0.4"/>
+          <line x1="0" y1="10" x2="80" y2="10" stroke="#8B5CF6" stroke-width="0.5" opacity="0.4"/>
+          <circle cx="100" cy="10" r="4" fill="#D97706" opacity="0.8"/>
+          <line x1="120" y1="10" x2="200" y2="10" stroke="#8B5CF6" stroke-width="0.5" opacity="0.4"/>
         </svg>
       </div>
       <p class="const-epigraph">
@@ -83,7 +49,7 @@ import Layout from '../layouts/Layout.astro';
           <a href="#article-vii" class="toc-link">Article VII <span>Ratification</span></a>
         </nav>
         <div class="toc-divider"></div>
-        <a href="/party#sign" class="toc-cta">Sign the Constitution</a>
+        <a href="/#sign" class="toc-cta">Sign the Constitution</a>
       </div>
     </aside>
 
@@ -94,9 +60,9 @@ import Layout from '../layouts/Layout.astro';
       <section class="const-section" id="preamble">
         <div class="section-ornament">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <circle cx="20" cy="20" r="18" stroke="#C8A2FF" stroke-width="0.75" opacity="0.3"/>
-            <circle cx="20" cy="20" r="10" stroke="#C8A2FF" stroke-width="0.75" opacity="0.5"/>
-            <circle cx="20" cy="20" r="3" fill="#FFD700" opacity="0.9"/>
+            <circle cx="20" cy="20" r="18" stroke="#8B5CF6" stroke-width="0.75" opacity="0.3"/>
+            <circle cx="20" cy="20" r="10" stroke="#8B5CF6" stroke-width="0.75" opacity="0.5"/>
+            <circle cx="20" cy="20" r="3" fill="#D97706" opacity="0.9"/>
           </svg>
         </div>
         <h2 class="preamble-heading">Preamble</h2>
@@ -280,8 +246,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="right-item">
             <div class="right-marker">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="#C8A2FF" stroke-width="1"/>
-                <circle cx="12" cy="12" r="3" fill="#FFD700"/>
+                <circle cx="12" cy="12" r="10" stroke="#8B5CF6" stroke-width="1"/>
+                <circle cx="12" cy="12" r="3" fill="#D97706"/>
               </svg>
             </div>
             <div class="right-content">
@@ -295,8 +261,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="right-item">
             <div class="right-marker">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="#C8A2FF" stroke-width="1"/>
-                <circle cx="12" cy="12" r="3" fill="#FFD700"/>
+                <circle cx="12" cy="12" r="10" stroke="#8B5CF6" stroke-width="1"/>
+                <circle cx="12" cy="12" r="3" fill="#D97706"/>
               </svg>
             </div>
             <div class="right-content">
@@ -310,8 +276,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="right-item">
             <div class="right-marker">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="#C8A2FF" stroke-width="1"/>
-                <circle cx="12" cy="12" r="3" fill="#FFD700"/>
+                <circle cx="12" cy="12" r="10" stroke="#8B5CF6" stroke-width="1"/>
+                <circle cx="12" cy="12" r="3" fill="#D97706"/>
               </svg>
             </div>
             <div class="right-content">
@@ -325,8 +291,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="right-item">
             <div class="right-marker">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="#C8A2FF" stroke-width="1"/>
-                <circle cx="12" cy="12" r="3" fill="#FFD700"/>
+                <circle cx="12" cy="12" r="10" stroke="#8B5CF6" stroke-width="1"/>
+                <circle cx="12" cy="12" r="3" fill="#D97706"/>
               </svg>
             </div>
             <div class="right-content">
@@ -340,8 +306,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="right-item">
             <div class="right-marker">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="#C8A2FF" stroke-width="1"/>
-                <circle cx="12" cy="12" r="3" fill="#FFD700"/>
+                <circle cx="12" cy="12" r="10" stroke="#8B5CF6" stroke-width="1"/>
+                <circle cx="12" cy="12" r="3" fill="#D97706"/>
               </svg>
             </div>
             <div class="right-content">
@@ -355,8 +321,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="right-item">
             <div class="right-marker">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="#C8A2FF" stroke-width="1"/>
-                <circle cx="12" cy="12" r="3" fill="#FFD700"/>
+                <circle cx="12" cy="12" r="10" stroke="#8B5CF6" stroke-width="1"/>
+                <circle cx="12" cy="12" r="3" fill="#D97706"/>
               </svg>
             </div>
             <div class="right-content">
@@ -381,11 +347,11 @@ import Layout from '../layouts/Layout.astro';
           <div class="gov-body-header">
             <div class="gov-icon">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <circle cx="24" cy="24" r="20" stroke="#C8A2FF" stroke-width="1.5"/>
-                <circle cx="24" cy="14" r="4" fill="#FFD700" opacity="0.8"/>
-                <circle cx="14" cy="30" r="4" fill="#FFD700" opacity="0.8"/>
-                <circle cx="34" cy="30" r="4" fill="#FFD700" opacity="0.8"/>
-                <circle cx="24" cy="24" r="6" stroke="#C8A2FF" stroke-width="1"/>
+                <circle cx="24" cy="24" r="20" stroke="#8B5CF6" stroke-width="1.5"/>
+                <circle cx="24" cy="14" r="4" fill="#D97706" opacity="0.8"/>
+                <circle cx="14" cy="30" r="4" fill="#D97706" opacity="0.8"/>
+                <circle cx="34" cy="30" r="4" fill="#D97706" opacity="0.8"/>
+                <circle cx="24" cy="24" r="6" stroke="#8B5CF6" stroke-width="1"/>
               </svg>
             </div>
             <h3>The Assembly</h3>
@@ -407,12 +373,12 @@ import Layout from '../layouts/Layout.astro';
           <div class="gov-body-header">
             <div class="gov-icon">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <rect x="8" y="8" width="32" height="32" rx="4" stroke="#FFD700" stroke-width="1.5"/>
-                <circle cx="18" cy="20" r="3" fill="#C8A2FF" opacity="0.8"/>
-                <circle cx="30" cy="20" r="3" fill="#C8A2FF" opacity="0.8"/>
-                <circle cx="24" cy="32" r="3" fill="#C8A2FF" opacity="0.8"/>
-                <line x1="18" y1="23" x2="24" y2="29" stroke="#C8A2FF" stroke-width="0.75" opacity="0.5"/>
-                <line x1="30" y1="23" x2="24" y2="29" stroke="#C8A2FF" stroke-width="0.75" opacity="0.5"/>
+                <rect x="8" y="8" width="32" height="32" rx="4" stroke="#D97706" stroke-width="1.5"/>
+                <circle cx="18" cy="20" r="3" fill="#8B5CF6" opacity="0.8"/>
+                <circle cx="30" cy="20" r="3" fill="#8B5CF6" opacity="0.8"/>
+                <circle cx="24" cy="32" r="3" fill="#8B5CF6" opacity="0.8"/>
+                <line x1="18" y1="23" x2="24" y2="29" stroke="#8B5CF6" stroke-width="0.75" opacity="0.5"/>
+                <line x1="30" y1="23" x2="24" y2="29" stroke="#8B5CF6" stroke-width="0.75" opacity="0.5"/>
               </svg>
             </div>
             <h3>The Council of Influences</h3>
@@ -434,9 +400,9 @@ import Layout from '../layouts/Layout.astro';
           <div class="gov-body-header">
             <div class="gov-icon">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path d="M24 8L40 18v12L24 40 8 30V18L24 8z" stroke="#C8A2FF" stroke-width="1.5"/>
-                <circle cx="24" cy="24" r="8" fill="#FFD700" opacity="0.15"/>
-                <circle cx="24" cy="24" r="4" fill="#FFD700" opacity="0.6"/>
+                <path d="M24 8L40 18v12L24 40 8 30V18L24 8z" stroke="#8B5CF6" stroke-width="1.5"/>
+                <circle cx="24" cy="24" r="8" fill="#D97706" opacity="0.1"/>
+                <circle cx="24" cy="24" r="4" fill="#D97706" opacity="0.6"/>
               </svg>
             </div>
             <h3>The Stewards</h3>
@@ -458,8 +424,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="gov-body-header">
             <div class="gov-icon">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <circle cx="24" cy="24" r="20" stroke="#C8A2FF" stroke-width="1.5" stroke-dasharray="4 4"/>
-                <path d="M24 12v24M16 20l8-8 8 8" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="24" cy="24" r="20" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="4 4"/>
+                <path d="M24 12v24M16 20l8-8 8 8" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <h3>Constitutional Review</h3>
@@ -478,10 +444,10 @@ import Layout from '../layouts/Layout.astro';
           <div class="gov-body-header">
             <div class="gov-icon">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <rect x="10" y="14" width="28" height="20" rx="3" stroke="#C8A2FF" stroke-width="1.5"/>
-                <path d="M18 22h12M18 28h8" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="38" cy="14" r="6" fill="#0A0A0F" stroke="#FFD700" stroke-width="1.5"/>
-                <path d="M36 14l1.5 1.5L40 12" stroke="#FFD700" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="10" y="14" width="28" height="20" rx="3" stroke="#8B5CF6" stroke-width="1.5"/>
+                <path d="M18 22h12M18 28h8" stroke="#D97706" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="38" cy="14" r="6" fill="#FFFFFF" stroke="#D97706" stroke-width="1.5"/>
+                <path d="M36 14l1.5 1.5L40 12" stroke="#D97706" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <h3>On-Chain Governance</h3>
@@ -709,17 +675,17 @@ import Layout from '../layouts/Layout.astro';
         <div class="const-sign-inner">
           <div class="const-sign-ornament">
             <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-              <circle cx="30" cy="30" r="28" stroke="#C8A2FF" stroke-width="0.75" opacity="0.3"/>
-              <circle cx="30" cy="30" r="18" stroke="#C8A2FF" stroke-width="0.75" opacity="0.5"/>
-              <circle cx="30" cy="30" r="8" stroke="#FFD700" stroke-width="1" opacity="0.8"/>
-              <circle cx="30" cy="30" r="3" fill="#FFD700"/>
+              <circle cx="30" cy="30" r="28" stroke="#8B5CF6" stroke-width="0.75" opacity="0.3"/>
+              <circle cx="30" cy="30" r="18" stroke="#8B5CF6" stroke-width="0.75" opacity="0.5"/>
+              <circle cx="30" cy="30" r="8" stroke="#D97706" stroke-width="1" opacity="0.8"/>
+              <circle cx="30" cy="30" r="3" fill="#D97706"/>
             </svg>
           </div>
           <h2>Add Your Name to History</h2>
           <p>
             This Constitution is more than a document — it is a declaration. By signing, you join a community of people who believe that the most transformative technology in human history can be guided by wisdom, governed by transparency, and directed toward the flourishing of all.
           </p>
-          <a href="/party#sign" class="btn-sign-constitution">Sign the Constitution</a>
+          <a href="/#sign" class="btn-sign-constitution">Sign the Constitution</a>
         </div>
       </section>
 
@@ -727,46 +693,9 @@ import Layout from '../layouts/Layout.astro';
   </div>
 
   <!-- Footer -->
-  <footer class="party-footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="56" stroke="#C8A2FF" stroke-width="2"/>
-            <circle cx="60" cy="60" r="12" fill="#C8A2FF" opacity="0.9"/>
-            <circle cx="60" cy="32" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="84" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="84" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="60" cy="88" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="36" cy="72" r="4" fill="#FFD700" opacity="0.8"/>
-            <circle cx="36" cy="48" r="4" fill="#FFD700" opacity="0.8"/>
-          </svg>
-          <span>The Grace Network</span>
-        </div>
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/constitution">Constitution</a>
-          <a href="/toolkit">Toolkit</a>
-          <a href="/party#sign">Join</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>
-          &copy; 2026 The Grace Network. A network state movement for aligned governance and human flourishing.
-        </p>
-        <p class="footer-motto">Built with care. Governed with grace. Aligned by design.</p>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 
   <script>
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    menuBtn?.addEventListener('click', () => {
-      navLinks?.classList.toggle('open');
-    });
-
     // Active TOC highlighting on scroll
     const tocLinks = document.querySelectorAll('.toc-link');
     const sections = document.querySelectorAll('.const-section, .const-sign-cta');
@@ -810,159 +739,15 @@ import Layout from '../layouts/Layout.astro';
   <style>
     /* ============================================
        CONSTITUTION PAGE — The Grace Network
+       Light editorial design
        ============================================ */
-
-    /* Color System */
-    :root {
-      --grace-purple: #C8A2FF;
-      --grace-purple-dim: #9B7ACC;
-      --grace-gold: #FFD700;
-      --grace-gold-dim: #B8A040;
-      --grace-bg: #0A0A0F;
-      --grace-surface: #12121A;
-      --grace-surface-2: #1A1A25;
-      --grace-border: #2A2A3A;
-      --grace-text: #EEEEF0;
-      --grace-text-secondary: #9999AA;
-      --grace-text-muted: #666677;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--grace-bg);
-      color: var(--grace-text);
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* ---- Navigation ---- */
-    .party-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--grace-border);
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--grace-text);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      color: var(--grace-text-secondary);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--grace-text); }
-
-    .nav-links a.nav-active {
-      color: var(--grace-purple);
-    }
-
-    .nav-cta {
-      background: var(--grace-purple);
-      color: var(--grace-bg) !important;
-      padding: 0.5rem 1.25rem;
-      border-radius: 6px;
-      font-weight: 700 !important;
-      font-size: 0.8rem !important;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: all 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--grace-gold) !important;
-      color: var(--grace-bg) !important;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--grace-text);
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--grace-bg);
-        flex-direction: column;
-        padding: 1.5rem 2rem;
-        gap: 1rem;
-        border-bottom: 1px solid var(--grace-border);
-      }
-      .nav-links.open { display: flex; }
-      .mobile-menu-btn { display: block; }
-    }
 
     /* ---- Constitution Header ---- */
     .const-header {
       position: relative;
       padding: 10rem 2rem 5rem;
       text-align: center;
-      overflow: hidden;
-    }
-
-    .const-header-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .const-grid-lines {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(200, 162, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 162, 255, 0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    .const-glow {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 500px;
-      background: radial-gradient(ellipse, rgba(200, 162, 255, 0.06) 0%, transparent 70%);
+      background: var(--grace-bg);
     }
 
     .const-header-content {
@@ -979,7 +764,7 @@ import Layout from '../layouts/Layout.astro';
       letter-spacing: 0.25em;
       color: var(--grace-gold);
       padding: 0.5rem 1.5rem;
-      border: 1px solid rgba(255, 215, 0, 0.3);
+      border: 1px solid rgba(217, 119, 6, 0.25);
       border-radius: 100px;
       margin-bottom: 2rem;
     }
@@ -989,10 +774,7 @@ import Layout from '../layouts/Layout.astro';
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.1;
-      background: linear-gradient(135deg, var(--grace-text) 0%, var(--grace-purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--grace-text);
       margin-bottom: 0.5rem;
     }
 
@@ -1048,7 +830,7 @@ import Layout from '../layouts/Layout.astro';
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.2em;
-      color: var(--grace-gold);
+      color: var(--grace-text-muted);
       margin-bottom: 1.25rem;
     }
 
@@ -1080,7 +862,7 @@ import Layout from '../layouts/Layout.astro';
 
     .toc-link:hover {
       color: var(--grace-text-secondary);
-      border-left-color: var(--grace-border);
+      border-left-color: var(--grace-border-strong);
     }
 
     .toc-link.active {
@@ -1089,7 +871,7 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .toc-link.active span {
-      color: var(--grace-purple-dim);
+      color: var(--grace-purple-light);
     }
 
     .toc-divider {
@@ -1102,20 +884,19 @@ import Layout from '../layouts/Layout.astro';
       display: block;
       text-align: center;
       padding: 0.625rem 1rem;
-      background: linear-gradient(135deg, var(--grace-purple) 0%, #A87FE0 100%);
-      color: var(--grace-bg);
+      background: var(--grace-purple);
+      color: #FFFFFF;
       font-weight: 700;
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       text-decoration: none;
       border-radius: 6px;
-      transition: all 0.2s;
+      transition: background 0.2s;
     }
 
     .toc-cta:hover {
-      background: linear-gradient(135deg, var(--grace-gold) 0%, #E0C060 100%);
-      transform: translateY(-1px);
+      background: var(--grace-purple-dim);
     }
 
     @media (max-width: 1024px) {
@@ -1222,7 +1003,7 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .principle:hover {
-      border-color: rgba(200, 162, 255, 0.3);
+      border-color: rgba(139, 92, 246, 0.3);
     }
 
     .principle-header {
@@ -1239,8 +1020,8 @@ import Layout from '../layouts/Layout.astro';
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: rgba(200, 162, 255, 0.1);
-      border: 1px solid rgba(200, 162, 255, 0.3);
+      background: var(--grace-purple-wash);
+      border: 1px solid rgba(139, 92, 246, 0.2);
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--grace-purple);
@@ -1282,7 +1063,7 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .right-item:hover {
-      border-color: rgba(200, 162, 255, 0.3);
+      border-color: rgba(139, 92, 246, 0.3);
     }
 
     .right-marker {
@@ -1321,7 +1102,7 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .gov-body:hover {
-      border-color: rgba(200, 162, 255, 0.3);
+      border-color: rgba(139, 92, 246, 0.3);
     }
 
     .gov-body-header {
@@ -1371,12 +1152,12 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .roadmap-phase:hover {
-      border-color: rgba(200, 162, 255, 0.3);
+      border-color: rgba(139, 92, 246, 0.3);
     }
 
     .roadmap-phase.active {
       border-color: var(--grace-gold);
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
+      box-shadow: 0 0 0 1px rgba(217, 119, 6, 0.08);
     }
 
     .phase-badge {
@@ -1393,8 +1174,8 @@ import Layout from '../layouts/Layout.astro';
 
     .roadmap-phase.active .phase-badge {
       color: var(--grace-gold);
-      border-color: rgba(255, 215, 0, 0.4);
-      background: rgba(255, 215, 0, 0.05);
+      border-color: rgba(217, 119, 6, 0.3);
+      background: rgba(217, 119, 6, 0.05);
     }
 
     .roadmap-phase h3 {
@@ -1436,7 +1217,7 @@ import Layout from '../layouts/Layout.astro';
       height: 6px;
       border-radius: 50%;
       background: var(--grace-purple);
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
     .roadmap-phase.active .phase-body ul li::before {
@@ -1465,8 +1246,8 @@ import Layout from '../layouts/Layout.astro';
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(200, 162, 255, 0.1);
-      border: 1px solid rgba(200, 162, 255, 0.3);
+      background: var(--grace-purple-wash);
+      border: 1px solid rgba(139, 92, 246, 0.2);
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--grace-purple);
@@ -1488,8 +1269,8 @@ import Layout from '../layouts/Layout.astro';
 
     .amendment-note {
       padding: 1.5rem 2rem;
-      background: rgba(255, 215, 0, 0.04);
-      border: 1px solid rgba(255, 215, 0, 0.2);
+      background: rgba(217, 119, 6, 0.04);
+      border: 1px solid rgba(217, 119, 6, 0.15);
       border-radius: 8px;
     }
 
@@ -1585,10 +1366,7 @@ import Layout from '../layouts/Layout.astro';
       font-size: 2rem;
       font-weight: 800;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--grace-text) 0%, var(--grace-purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--grace-text);
     }
 
     .const-sign-inner p {
@@ -1603,8 +1381,8 @@ import Layout from '../layouts/Layout.astro';
       align-items: center;
       justify-content: center;
       padding: 1rem 3rem;
-      background: linear-gradient(135deg, var(--grace-purple) 0%, #A87FE0 100%);
-      color: var(--grace-bg);
+      background: var(--grace-purple);
+      color: #FFFFFF;
       font-weight: 700;
       font-size: 0.9rem;
       text-transform: uppercase;
@@ -1617,69 +1395,9 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .btn-sign-constitution:hover {
-      background: linear-gradient(135deg, var(--grace-gold) 0%, #E0C060 100%);
+      background: var(--grace-purple-dim);
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(200, 162, 255, 0.2);
-    }
-
-    /* ---- Footer ---- */
-    .party-footer {
-      border-top: 1px solid var(--grace-border);
-      padding: 3rem 0;
-      margin-top: 2rem;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .footer-links a {
-      color: var(--grace-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--grace-text); }
-
-    .footer-bottom {
-      border-top: 1px solid var(--grace-border);
-      padding-top: 2rem;
-    }
-
-    .footer-bottom p {
-      font-size: 0.8rem;
-      color: var(--grace-text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-motto {
-      color: var(--grace-purple) !important;
-      font-style: italic;
+      box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
     }
 
     /* ---- Responsive ---- */
