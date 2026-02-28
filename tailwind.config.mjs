@@ -8,23 +8,29 @@ export default {
         padding: '1rem'
       },
       fontFamily: {
-        sans: ['Space Grotesk', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        grace: {
+          bg: '#FAFAF8',
+          'bg-alt': '#F3F2EF',
+          surface: '#FFFFFF',
+          text: '#1A1A1A',
+          'text-secondary': '#555555',
+          'text-muted': '#888888',
+          purple: '#8B5CF6',
+          'purple-light': '#A78BFA',
+          'purple-wash': '#F5F3FF',
+          'purple-dim': '#6D28D9',
+          gold: '#D97706',
+          border: '#E5E3DE',
+          'border-strong': '#D1CFC8',
+        },
       },
       animation: {
-        'gradient': 'gradient 8s linear infinite',
         'fade-in': 'fadeIn 0.5s ease-in',
       },
       keyframes: {
-        gradient: {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          },
-        },
         fadeIn: {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
