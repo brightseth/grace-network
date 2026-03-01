@@ -620,6 +620,8 @@ import Footer from '../components/Footer.astro';
         const result = await res.json();
 
         if (res.ok) {
+          // Store email for GRACE chat member awareness
+          localStorage.setItem('grace-member-email', data.email);
           form.style.display = 'none';
           if (success instanceof HTMLElement) success.style.display = 'block';
         } else if (res.status === 409) {
@@ -734,10 +736,16 @@ import Footer from '../components/Footer.astro';
       chatMessages?.scrollTo(0, chatMessages.scrollHeight);
 
       try {
+        const chatPayload: Record<string, string> = { message: text, sessionId: chatSessionId };
+        const memberEmail = localStorage.getItem('grace-member-email');
+        if (memberEmail) {
+          chatPayload.email = memberEmail;
+        }
+
         const res = await fetch('/api/grace/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: text, sessionId: chatSessionId })
+          body: JSON.stringify(chatPayload)
         });
 
         const data = await res.json();
@@ -750,12 +758,22 @@ import Footer from '../components/Footer.astro';
         if (data.suggestedActions?.length) {
           const actions = document.createElement('div');
           actions.className = 'grace-suggested-actions';
-          data.suggestedActions.forEach((action: string) => {
-            const btn = document.createElement('button');
-            btn.className = 'grace-suggested-action';
-            btn.textContent = action;
-            btn.addEventListener('click', () => sendMessage(action));
-            actions.appendChild(btn);
+          data.suggestedActions.forEach((action: {label: string, url: string} | string) => {
+            if (typeof action === 'string') {
+              // Legacy string format: send as chat message
+              const btn = document.createElement('button');
+              btn.className = 'grace-suggested-action';
+              btn.textContent = action;
+              btn.addEventListener('click', () => sendMessage(action));
+              actions.appendChild(btn);
+            } else {
+              // New link format: navigate to URL
+              const link = document.createElement('a');
+              link.className = 'grace-suggested-action';
+              link.href = action.url;
+              link.textContent = action.label;
+              actions.appendChild(link);
+            }
           });
           agentMsg.appendChild(actions);
         }
@@ -1860,14 +1878,18 @@ import Footer from '../components/Footer.astro';
     }
 
     .grace-suggested-action {
+      display: inline-block;
       background: white;
       border: 1px solid var(--grace-purple);
       color: var(--grace-purple);
       padding: 0.35rem 0.75rem;
       border-radius: 20px;
       font-size: 0.8rem;
+      font-family: inherit;
       cursor: pointer;
       transition: all 0.2s;
+      text-decoration: none;
+      line-height: 1.4;
     }
 
     .grace-suggested-action:hover {

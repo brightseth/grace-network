@@ -36,14 +36,19 @@ app.get("/health", (c) => {
 // Chat endpoint
 app.post("/chat", async (c) => {
   try {
-    const body = await c.req.json<{ message?: string; sessionId?: string }>();
+    const body = await c.req.json<{
+      message?: string;
+      sessionId?: string;
+      email?: string;
+    }>();
 
     if (!body.message || typeof body.message !== "string") {
       return c.json({ error: "message is required" }, 400);
     }
 
     const sessionId = body.sessionId || crypto.randomUUID();
-    const result = await chatHandler.chat(sessionId, body.message);
+    const email = typeof body.email === "string" ? body.email : undefined;
+    const result = await chatHandler.chat(sessionId, body.message, email);
 
     return c.json({
       reply: result.reply,

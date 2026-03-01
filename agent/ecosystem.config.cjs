@@ -23,6 +23,8 @@ module.exports = {
         PORT: process.env.PORT || 4200,
         ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
         GRACE_API_KEY: process.env.GRACE_API_KEY || "grace-net-2026",
+        SUPABASE_URL: process.env.SUPABASE_URL,
+        SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY,
       },
       watch: false,
       max_restarts: 10,

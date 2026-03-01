@@ -1,5 +1,12 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { detectContext, loadSystemPrompt } from "./soul-loader.js";
+import {
+  saveConversation,
+  loadConversation,
+  getMemberByEmail,
+  getMemberHistory,
+  logInteraction,
+} from "./memory.js";
 
 interface Message {
   role: "user" | "assistant";
@@ -9,37 +16,65 @@ interface Message {
 interface Session {
   messages: Message[];
   lastActive: number;
+  memberId?: string;
+}
+
+interface ActionLink {
+  label: string;
+  url: string;
 }
 
 interface ChatResponse {
   reply: string;
-  suggestedActions?: string[];
+  suggestedActions?: ActionLink[];
 }
 
-const ACTION_PATTERNS: Array<{ pattern: RegExp; actions: string[] }> = [
+const ACTION_PATTERNS: Array<{ pattern: RegExp; actions: ActionLink[] }> = [
   {
     pattern: /workstream|build|contribut/i,
-    actions: ["View workstreams", "Start building"],
+    actions: [
+      { label: "Start Building", url: "/build" },
+      { label: "Join the Network", url: "/#sign" },
+    ],
   },
   {
     pattern: /constitution|pillar|principle/i,
-    actions: ["Read constitution", "Explore the pillars"],
+    actions: [
+      { label: "Read the Constitution", url: "/constitution" },
+      { label: "Meet the Council", url: "/council" },
+    ],
   },
   {
     pattern: /join|sign\s*up|member/i,
-    actions: ["Join the network", "Read the constitution first"],
+    actions: [
+      { label: "Join the Network", url: "/#sign" },
+      { label: "Read the Constitution", url: "/constitution" },
+    ],
   },
   {
     pattern: /council|influence/i,
-    actions: ["Meet the council", "Read their principles"],
+    actions: [
+      { label: "Meet the Council", url: "/council" },
+      { label: "Read the Constitution", url: "/constitution" },
+    ],
   },
   {
     pattern: /toolkit|campaign|spread/i,
-    actions: ["Open the toolkit", "Generate campaign art"],
+    actions: [
+      { label: "Open the Toolkit", url: "/toolkit" },
+      { label: "Start Building", url: "/build" },
+    ],
+  },
+  {
+    pattern: /transparen|how.+work|source.+code|open.+source/i,
+    actions: [
+      { label: "Read Our Transparency Page", url: "/transparency" },
+      { label: "Read the Constitution", url: "/constitution" },
+    ],
   },
 ];
 
-function detectActions(reply: string): string[] | undefined {
+function detectActions(reply: string): ActionLink[] | undefined {
   for (const { pattern, actions } of ACTION_PATTERNS) {
     if (pattern.test(reply)) {
       return actions;
@@ -57,18 +92,49 @@ export class ChatHandler {
     this.client = new Anthropic();
   }
 
-  async chat(sessionId: string, message: string): Promise<ChatResponse> {
+  async chat(
+    sessionId: string,
+    message: string,
+    memberEmail?: string,
+  ): Promise<ChatResponse> {
     this.cleanup();
 
     let session = this.sessions.get(sessionId);
+
     if (!session) {
-      session = { messages: [], lastActive: Date.now() };
+      // Try to restore from Supabase
+      const savedMessages = await loadConversation(sessionId);
+      session = {
+        messages: savedMessages || [],
+        lastActive: Date.now(),
+      };
       this.sessions.set(sessionId, session);
     }
     session.lastActive = Date.now();
 
+    // Build member context if email provided
+    let memberContext = "";
+    if (memberEmail && !session.memberId) {
+      const member = await getMemberByEmail(memberEmail);
+      if (member) {
+        session.memberId = member.id;
+        const history = await getMemberHistory(member.id);
+        const joinDate = new Date(member.created_at).toLocaleDateString(
+          "en-US",
+          { year: "numeric", month: "long", day: "numeric" },
+        );
+        memberContext = `\n\n## Member Context\nThe person you are speaking with is ${member.first_name} ${member.last_name}, who joined on ${joinDate}.`;
+        if (member.statement) {
+          memberContext += ` When they signed the constitution, they wrote: "${member.statement}"`;
+        }
+        if (history && history.chatCount > 0) {
+          memberContext += `\nThis member has spoken with you ${history.chatCount} time${history.chatCount === 1 ? "" : "s"} before.`;
+        }
+      }
+    }
+
     const context = detectContext(message);
-    const systemPrompt = loadSystemPrompt(context);
+    const systemPrompt = loadSystemPrompt(context) + memberContext;
 
     session.messages.push({ role: "user", content: message });
 
@@ -83,6 +149,19 @@ export class ChatHandler {
       response.content[0].type === "text" ? response.content[0].text : "";
 
     session.messages.push({ role: "assistant", content: reply });
+
+    // Persist to Supabase (fire and forget)
+    saveConversation(sessionId, session.messages, session.memberId).catch(
+      (err) => console.error("[GRACE] Memory save error:", err),
+    );
+
+    // Log chat interaction for known members
+    if (session.memberId) {
+      logInteraction(session.memberId, "chat", {
+        sessionId,
+        messagePreview: message.slice(0, 100),
+      }).catch((err) => console.error("[GRACE] Interaction log error:", err));
+    }
 
     const suggestedActions = detectActions(reply);
 
