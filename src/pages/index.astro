@@ -1870,6 +1870,26 @@ import Footer from '../components/Footer.astro';
       background: var(--grace-purple-dim);
     }
 
+    /* Suggested actions: styles moved to <style is:global> block below
+       because these elements are created dynamically via JS */
+
+    /* Move depth toggle up when chat widget is present */
+    .depth-toggle {
+      bottom: 5rem;
+    }
+
+    @media (max-width: 480px) {
+      .grace-chat-panel {
+        width: calc(100vw - 2rem);
+        right: -0.5rem;
+        bottom: 65px;
+        max-height: 70vh;
+      }
+    }
+  </style>
+
+  <!-- Global styles for dynamically-created chat elements (not scoped by Astro) -->
+  <style is:global>
     .grace-suggested-actions {
       display: flex;
       flex-wrap: wrap;
@@ -1898,20 +1918,6 @@ import Footer from '../components/Footer.astro';
     .grace-suggested-action:hover {
       background: var(--grace-purple);
       color: white;
-    }
-
-    /* Move depth toggle up when chat widget is present */
-    .depth-toggle {
-      bottom: 5rem;
-    }
-
-    @media (max-width: 480px) {
-      .grace-chat-panel {
-        width: calc(100vw - 2rem);
-        right: -0.5rem;
-        bottom: 65px;
-        max-height: 70vh;
-      }
     }
   </style>
 
