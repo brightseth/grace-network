@@ -12,8 +12,11 @@ interface Props {
 const {
   title,
   description = "The Grace Network — A political movement built on AI safety, radical transparency, scientific governance, and universal flourishing.",
-  image = "/party/og-grace-network.svg",
+  image = "/party/og-grace-network.png",
 } = Astro.props;
+
+const siteUrl = import.meta.env.SITE || 'https://grace-network.vercel.app';
+const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!doctype html>
@@ -36,14 +39,17 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="The Grace Network" />
+    <meta property="og:url" content={siteUrl} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={ogImage} />
 
     <ViewTransitions />
   </head>

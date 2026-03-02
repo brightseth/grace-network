@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 <Layout
   title="The Grace Network — A Network State for Human Flourishing"
   description="Join The Grace Network: a political movement built on AI safety, radical transparency, scientific governance, and universal flourishing. Inspired by the principles of responsible AI development and the network state vision."
-  image="https://sethgoldstein.com/party/og-grace-network.svg"
+  image="/party/og-grace-network.png"
 >
   <!-- Attention Span Toggle -->
   <div class="depth-toggle" id="depthToggle">
@@ -507,18 +507,7 @@ import Footer from '../components/Footer.astro';
             </svg>
           </div>
 
-          <p class="social-proof-counter">Join <strong>2,400+</strong> founding members</p>
-
-          <div class="social-proof-testimonials">
-            <blockquote class="sp-testimonial">
-              <p class="sp-quote">"Finally, a political movement that treats AI governance as the defining challenge of our generation."</p>
-              <cite class="sp-cite">Dr. Amira Patel, AI Safety Researcher</cite>
-            </blockquote>
-            <blockquote class="sp-testimonial">
-              <p class="sp-quote">"The Grace Network proved you can build a movement on principles, not outrage."</p>
-              <cite class="sp-cite">Marcus Chen, Open Source Developer</cite>
-            </blockquote>
-          </div>
+          <p class="social-proof-counter" id="memberCounter">Join the founding members</p>
         </div>
 
         <form class="sign-form" id="signForm">
@@ -588,6 +577,17 @@ import Footer from '../components/Footer.astro';
 
   <script>
     // Form handling
+    // Dynamic member count
+    const counterEl = document.getElementById('memberCounter');
+    fetch('/api/members/count')
+      .then(r => r.json())
+      .then(({ count }) => {
+        if (counterEl && count > 0) {
+          counterEl.innerHTML = `Join <strong>${count.toLocaleString()}</strong> founding member${count === 1 ? '' : 's'}`;
+        }
+      })
+      .catch(() => {}); // Fail silently — keep default text
+
     const form = document.getElementById('signForm');
     const success = document.getElementById('signSuccess');
 
@@ -1667,46 +1667,6 @@ import Footer from '../components/Footer.astro';
       font-weight: 700;
       color: var(--grace-purple);
       font-size: 1.25rem;
-    }
-
-    .social-proof-testimonials {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-      text-align: left;
-    }
-
-    @media (max-width: 600px) {
-      .social-proof-testimonials {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .sp-testimonial {
-      background: var(--grace-surface);
-      border: 1px solid var(--grace-border);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      margin: 0;
-    }
-
-    .sp-quote {
-      font-style: italic;
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--grace-text);
-      margin: 0 0 0.75rem;
-    }
-
-    .sp-cite {
-      display: block;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--grace-text-muted);
     }
 
     /* ============================================
