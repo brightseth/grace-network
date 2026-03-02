@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import '../styles/tokens.css';
 import '../styles/shared.css';
+import GraceChat from '../components/GraceChat.astro';
 
 interface Props {
   title: string;
@@ -17,6 +18,10 @@ const {
 
 const siteUrl = import.meta.env.SITE || 'https://grace-network.vercel.app';
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+// Derive page name from URL path
+const pathname = Astro.url.pathname.replace(/^\/|\/$/g, '');
+const pageName = pathname || 'home';
 ---
 
 <!doctype html>
@@ -55,5 +60,6 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
   </head>
   <body class="antialiased">
     <slot />
+    <GraceChat page={pageName} />
   </body>
 </html>

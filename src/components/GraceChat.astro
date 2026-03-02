@@ -1,0 +1,461 @@
+---
+interface Props {
+  page?: string;
+}
+
+const { page = 'home' } = Astro.props;
+---
+
+<!-- GRACE Chat Widget -->
+<div class="grace-chat-widget" id="graceChat" data-page={page}>
+  <button class="grace-chat-trigger" id="graceChatTrigger" aria-label="Chat with GRACE">
+    <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mini constellation logo -->
+      <line x1="60" y1="60" x2="60" y2="25" stroke="white" stroke-width="2" opacity="0.6"/>
+      <line x1="60" y1="60" x2="90" y2="42" stroke="white" stroke-width="2" opacity="0.6"/>
+      <line x1="60" y1="60" x2="90" y2="78" stroke="white" stroke-width="2" opacity="0.6"/>
+      <line x1="60" y1="60" x2="60" y2="95" stroke="white" stroke-width="2" opacity="0.5"/>
+      <line x1="60" y1="60" x2="30" y2="78" stroke="white" stroke-width="2" opacity="0.5"/>
+      <line x1="60" y1="60" x2="30" y2="42" stroke="white" stroke-width="2" opacity="0.6"/>
+      <circle cx="60" cy="25" r="5" fill="white" opacity="0.8"/>
+      <circle cx="90" cy="42" r="5" fill="white" opacity="0.8"/>
+      <circle cx="90" cy="78" r="5" fill="white" opacity="0.7"/>
+      <circle cx="60" cy="95" r="5" fill="white" opacity="0.7"/>
+      <circle cx="30" cy="78" r="5" fill="white" opacity="0.7"/>
+      <circle cx="30" cy="42" r="5" fill="white" opacity="0.8"/>
+      <circle cx="60" cy="60" r="10" fill="white"/>
+    </svg>
+  </button>
+  <div class="grace-chat-panel" id="graceChatPanel">
+    <div class="grace-chat-header">
+      <div class="grace-chat-title">
+        <svg width="20" height="20" viewBox="0 0 120 120" fill="none">
+          <circle cx="60" cy="60" r="8" fill="#3730A3"/>
+          <circle cx="60" cy="25" r="4" fill="#3730A3" opacity="0.6"/>
+          <circle cx="90" cy="42" r="4" fill="#3730A3" opacity="0.6"/>
+          <circle cx="90" cy="78" r="4" fill="#6366F1" opacity="0.5"/>
+          <circle cx="60" cy="95" r="4" fill="#B45309" opacity="0.5"/>
+          <circle cx="30" cy="78" r="4" fill="#B45309" opacity="0.5"/>
+          <circle cx="30" cy="42" r="4" fill="#6366F1" opacity="0.5"/>
+        </svg>
+        <span>GRACE</span>
+      </div>
+      <button class="grace-chat-close" id="graceChatClose" aria-label="Close chat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="grace-chat-messages" id="graceChatMessages">
+      <!-- Greeting injected on first open -->
+    </div>
+    <div class="grace-chat-input-area">
+      <input type="text" id="graceChatInput" placeholder="Ask GRACE anything..." autocomplete="off" />
+      <button id="graceChatSend" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PAGE_GREETINGS: Record<string, { default: string; member: string }> = {
+    home: {
+      default: "Hi, I'm GRACE \u2014 the organizing intelligence behind this movement. What brought you here?",
+      member: "Welcome back, {name}. What are you working on?"
+    },
+    constitution: {
+      default: "This is our founding document \u2014 seven principles, six rights, and a governance framework. Want me to walk you through any part of it?",
+      member: "Welcome back, {name}. This is our founding document. Want me to walk you through any part of it?"
+    },
+    build: {
+      default: "Looking for a workstream? I can help you find the right fit for your skills.",
+      member: "Welcome back, {name}. Looking for a workstream? I can help you find the right fit."
+    },
+    council: {
+      default: "These are the thinkers whose ideas shaped our principles. Curious about any of them?",
+      member: "Welcome back, {name}. Curious about any of the thinkers who shaped our principles?"
+    },
+    toolkit: {
+      default: "The toolkit has everything you need to spread the word. Need help with anything specific?",
+      member: "Welcome back, {name}. Need help with any of the toolkit resources?"
+    },
+    transparency: {
+      default: "This page explains how I work. If you have questions about my design or principles, ask away.",
+      member: "Welcome back, {name}. Questions about how I work? Ask away."
+    }
+  };
+
+  const DEFAULT_GREETING = {
+    default: "Hi, I'm GRACE \u2014 the organizing intelligence of The Grace Network. How can I help?",
+    member: "Welcome back, {name}. How can I help?"
+  };
+
+  const chatWidget = document.getElementById('graceChat');
+  const chatTrigger = document.getElementById('graceChatTrigger');
+  const chatPanel = document.getElementById('graceChatPanel');
+  const chatClose = document.getElementById('graceChatClose');
+  const chatMessages = document.getElementById('graceChatMessages');
+  const chatInput = document.getElementById('graceChatInput') as HTMLInputElement;
+  const chatSend = document.getElementById('graceChatSend');
+
+  const page = chatWidget?.getAttribute('data-page') || 'home';
+  let chatSessionId = 'session_' + Math.random().toString(36).substr(2, 9);
+  let greetingInjected = false;
+
+  function getGreetingTemplate(): { default: string; member: string } {
+    return PAGE_GREETINGS[page] || DEFAULT_GREETING;
+  }
+
+  function injectGreeting(memberName?: string) {
+    if (greetingInjected || !chatMessages) return;
+    greetingInjected = true;
+
+    const template = getGreetingTemplate();
+    let text = memberName
+      ? template.member.replace('{name}', memberName)
+      : template.default;
+
+    const msg = document.createElement('div');
+    msg.className = 'grace-msg grace-msg-agent';
+    msg.id = 'graceGreeting';
+    msg.innerHTML = `<p>${text}</p>`;
+    chatMessages.appendChild(msg);
+  }
+
+  function upgradeGreeting(name: string) {
+    const existing = document.getElementById('graceGreeting');
+    if (!existing) return;
+
+    const template = getGreetingTemplate();
+    const text = template.member.replace('{name}', name);
+    const p = existing.querySelector('p');
+    if (p) p.textContent = text;
+  }
+
+  function openChat() {
+    chatPanel?.classList.add('open');
+
+    if (!greetingInjected) {
+      // Show default greeting immediately
+      injectGreeting();
+
+      // Try to upgrade with member name
+      const email = localStorage.getItem('grace-member-email');
+      if (email) {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 200);
+
+        fetch(`/api/members/name?email=${encodeURIComponent(email)}`, {
+          signal: controller.signal
+        })
+          .then(res => res.ok ? res.json() : null)
+          .then(data => {
+            clearTimeout(timeout);
+            if (data?.firstName) {
+              upgradeGreeting(data.firstName);
+            }
+          })
+          .catch(() => {
+            clearTimeout(timeout);
+          });
+      }
+    }
+
+    chatInput?.focus();
+  }
+
+  function closeChat() {
+    chatPanel?.classList.remove('open');
+  }
+
+  function toggleChat() {
+    if (chatPanel?.classList.contains('open')) {
+      closeChat();
+    } else {
+      openChat();
+    }
+  }
+
+  chatTrigger?.addEventListener('click', toggleChat);
+  chatClose?.addEventListener('click', closeChat);
+
+  // Listen for external open requests (e.g., from signup success)
+  window.addEventListener('grace-open-chat', () => openChat());
+
+  async function sendMessage(text: string) {
+    if (!text.trim()) return;
+
+    // Add user message
+    const userMsg = document.createElement('div');
+    userMsg.className = 'grace-msg grace-msg-user';
+    userMsg.innerHTML = `<p>${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`;
+    chatMessages?.appendChild(userMsg);
+
+    // Clear input
+    if (chatInput) chatInput.value = '';
+
+    // Add typing indicator
+    const typing = document.createElement('div');
+    typing.className = 'grace-msg grace-msg-typing';
+    typing.innerHTML = '<p>GRACE is thinking...</p>';
+    chatMessages?.appendChild(typing);
+    chatMessages?.scrollTo(0, chatMessages.scrollHeight);
+
+    try {
+      const chatPayload: Record<string, string> = { message: text, sessionId: chatSessionId };
+      const memberEmail = localStorage.getItem('grace-member-email');
+      if (memberEmail) {
+        chatPayload.email = memberEmail;
+      }
+
+      const res = await fetch('/api/grace/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(chatPayload)
+      });
+
+      const data = await res.json();
+      typing.remove();
+
+      const agentMsg = document.createElement('div');
+      agentMsg.className = 'grace-msg grace-msg-agent';
+      agentMsg.innerHTML = `<p>${data.reply || 'I apologize, I had trouble processing that. Could you try again?'}</p>`;
+
+      if (data.suggestedActions?.length) {
+        const actions = document.createElement('div');
+        actions.className = 'grace-suggested-actions';
+        data.suggestedActions.forEach((action: {label: string, url: string} | string) => {
+          if (typeof action === 'string') {
+            const btn = document.createElement('button');
+            btn.className = 'grace-suggested-action';
+            btn.textContent = action;
+            btn.addEventListener('click', () => sendMessage(action));
+            actions.appendChild(btn);
+          } else {
+            const link = document.createElement('a');
+            link.className = 'grace-suggested-action';
+            link.href = action.url;
+            link.textContent = action.label;
+            actions.appendChild(link);
+          }
+        });
+        agentMsg.appendChild(actions);
+      }
+
+      chatMessages?.appendChild(agentMsg);
+    } catch (err) {
+      typing.remove();
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'grace-msg grace-msg-agent';
+      errorMsg.innerHTML = '<p>I\'m having trouble connecting right now. Please try again in a moment.</p>';
+      chatMessages?.appendChild(errorMsg);
+    }
+
+    chatMessages?.scrollTo(0, chatMessages.scrollHeight);
+  }
+
+  chatSend?.addEventListener('click', () => sendMessage(chatInput?.value || ''));
+  chatInput?.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Enter') sendMessage(chatInput?.value || '');
+  });
+</script>
+
+<style>
+  .grace-chat-widget {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+  }
+
+  .grace-chat-trigger {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--grace-purple);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(55, 48, 163, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .grace-chat-trigger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(55, 48, 163, 0.4);
+  }
+
+  .grace-chat-panel {
+    display: none;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 380px;
+    max-height: 520px;
+    background: var(--grace-surface);
+    border: 1px solid var(--grace-border);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .grace-chat-panel.open {
+    display: flex;
+  }
+
+  .grace-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--grace-border);
+    background: var(--grace-purple-wash);
+  }
+
+  .grace-chat-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--grace-purple);
+  }
+
+  .grace-chat-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--grace-text-muted);
+    padding: 0.25rem;
+  }
+
+  .grace-chat-close:hover { color: var(--grace-text); }
+
+  .grace-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 360px;
+  }
+
+  .grace-msg {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .grace-msg p { margin: 0; }
+
+  .grace-msg-agent {
+    background: var(--grace-purple-wash);
+    color: var(--grace-text);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+
+  .grace-msg-user {
+    background: var(--grace-purple);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  .grace-msg-typing {
+    background: var(--grace-purple-wash);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    color: var(--grace-text-muted);
+    font-style: italic;
+  }
+
+  .grace-chat-input-area {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--grace-border);
+    background: var(--grace-surface);
+  }
+
+  .grace-chat-input-area input {
+    flex: 1;
+    border: 1px solid var(--grace-border);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--grace-bg);
+  }
+
+  .grace-chat-input-area input:focus {
+    border-color: var(--grace-purple);
+  }
+
+  .grace-chat-input-area button {
+    background: var(--grace-purple);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .grace-chat-input-area button:hover {
+    background: var(--grace-purple-dim);
+  }
+
+  @media (max-width: 480px) {
+    .grace-chat-panel {
+      width: calc(100vw - 2rem);
+      right: -0.5rem;
+      bottom: 65px;
+      max-height: 70vh;
+    }
+  }
+</style>
+
+<!-- Global styles for dynamically-created chat elements (not scoped by Astro) -->
+<style is:global>
+  .grace-suggested-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(55, 48, 163, 0.1);
+  }
+
+  .grace-suggested-action {
+    display: inline-block;
+    background: white;
+    border: 1px solid var(--grace-purple);
+    color: var(--grace-purple);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .grace-suggested-action:hover {
+    background: var(--grace-purple);
+    color: white;
+  }
+</style>
