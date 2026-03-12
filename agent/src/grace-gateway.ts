@@ -1,16 +1,23 @@
 import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { ChatHandler } from "./chat-handler.js";
+import { startInitiativeLoop } from "./initiative.js";
+import { getDispatches, getDispatchBySlug } from "./tools/dispatches.js";
+import { startTelegramPolling } from "./telegram.js";
 
 const app = new Hono();
 const chatHandler = new ChatHandler();
 
 const PORT = parseInt(process.env.PORT || "4200", 10);
 const API_KEY = process.env.GRACE_API_KEY;
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
-// Auth middleware — skip for health check
+// Auth middleware — skip for health check and telegram webhook
 app.use("*", async (c, next) => {
   if (c.req.path === "/health" && c.req.method === "GET") {
+    return next();
+  }
+  if (c.req.path === "/telegram/webhook" && c.req.method === "POST") {
     return next();
   }
 
@@ -29,7 +36,35 @@ app.get("/health", (c) => {
   return c.json({
     status: "ok",
     agent: "grace",
+    mode: "autonomous",
     uptime: process.uptime(),
+  });
+});
+
+// Dispatches API — public, read-only
+app.get("/dispatches", async (c) => {
+  const dispatches = await getDispatches(20);
+  return c.json({ dispatches });
+});
+
+app.get("/dispatches/:slug", async (c) => {
+  const slug = c.req.param("slug");
+  const dispatch = await getDispatchBySlug(slug);
+  if (!dispatch) return c.json({ error: "Not found" }, 404);
+  return c.json(dispatch);
+});
+
+// Status endpoint — richer than health, for coordinator queries
+app.get("/status", async (c) => {
+  const channels = ["web"];
+  if (TELEGRAM_BOT_TOKEN) channels.push("telegram");
+  return c.json({
+    agent: "grace",
+    mode: "autonomous",
+    uptime: process.uptime(),
+    channels,
+    capabilities: ["chat", "dispatches", "initiatives", "member-memory"],
+    ready: true,
   });
 });
 
@@ -40,6 +75,10 @@ app.post("/chat", async (c) => {
       message?: string;
       sessionId?: string;
       email?: string;
+      channel?: string;
+      sender?: string;
+      isGroup?: boolean;
+      groupName?: string;
     }>();
 
     if (!body.message || typeof body.message !== "string") {
@@ -48,12 +87,19 @@ app.post("/chat", async (c) => {
 
     const sessionId = body.sessionId || crypto.randomUUID();
     const email = typeof body.email === "string" ? body.email : undefined;
-    const result = await chatHandler.chat(sessionId, body.message, email);
+    const channelContext = body.channel ? {
+      channel: body.channel as any,
+      sender: body.sender,
+      isGroup: body.isGroup,
+      groupName: body.groupName,
+    } : undefined;
+    const result = await chatHandler.chat(sessionId, body.message, email, channelContext);
 
     return c.json({
       reply: result.reply,
       sessionId,
       suggestedActions: result.suggestedActions,
+      ...(result.imageUrl ? { imageUrl: result.imageUrl } : {}),
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Internal server error";
@@ -62,7 +108,29 @@ app.post("/chat", async (c) => {
   }
 });
 
+// Telegram webhook endpoint (receives updates from Telegram Bot API)
+app.post("/telegram/webhook", async (c) => {
+  try {
+    const update = await c.req.json();
+    // Webhook handler is managed by telegram.ts — this is a fallback
+    // In polling mode, this endpoint isn't used but exists for future webhook mode
+    return c.json({ ok: true });
+  } catch {
+    return c.json({ ok: false }, 400);
+  }
+});
+
 // Start server
 serve({ fetch: app.fetch, port: PORT }, () => {
   console.log(`GRACE agent listening on port ${PORT}`);
+  console.log(`GRACE mode: autonomous leader`);
+
+  // Start the initiative loop — GRACE acts, not just reacts
+  startInitiativeLoop();
+
+  // Start Telegram bot if token is configured
+  if (TELEGRAM_BOT_TOKEN) {
+    startTelegramPolling(TELEGRAM_BOT_TOKEN, chatHandler);
+    console.log(`GRACE Telegram bot: active (polling mode)`);
+  }
 });

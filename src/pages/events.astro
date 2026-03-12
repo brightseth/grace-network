@@ -1,0 +1,308 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const upcomingEvents = [
+  {
+    date: '2026-04-15',
+    title: 'Genesis Assembly',
+    type: 'Virtual',
+    description: 'The first full Assembly of the Grace Network. Constitutional ratification vote, workstream reports, and community discussion.',
+    cta: 'Register',
+    ctaUrl: '/#sign',
+  },
+  {
+    date: '2026-05-01',
+    title: 'Governance Toolkit Launch',
+    type: 'Virtual',
+    description: 'Public release of the Governance Toolkit: open-source tools for transparent decision-making, proposal review, and community voting.',
+    cta: 'Learn More',
+    ctaUrl: '/build',
+  },
+  {
+    date: '2026-06-15',
+    title: 'AI Accountability Dashboard Beta',
+    type: 'Virtual',
+    description: 'Beta launch of the AI Accountability Dashboard. Track AI safety commitments from major labs, with real-time compliance scoring.',
+    cta: 'Join the Beta',
+    ctaUrl: '/build',
+  },
+];
+
+const pastEvents = [
+  {
+    date: '2026-03-01',
+    title: 'Constitution Published',
+    type: 'Milestone',
+    description: 'The founding document of The Grace Network went live. Seven principles. Six rights. A governance framework for the age of intelligence.',
+  },
+  {
+    date: '2026-02-28',
+    title: 'GRACE Goes Live',
+    type: 'Milestone',
+    description: 'GRACE — the organizing intelligence of the movement — launched as a public-facing agent with memory, member awareness, and transparency.',
+  },
+];
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function formatMonth(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+}
+
+function formatDay(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.getDate().toString();
+}
+---
+
+<Layout
+  title="Events — The Grace Network"
+  description="Upcoming events, assemblies, and milestones from The Grace Network."
+>
+  <Nav currentPath="/events" />
+
+  <main class="events-main">
+    <div class="section-inner">
+      <!-- Header -->
+      <div class="events-header">
+        <span class="section-tag">Events</span>
+        <h1>What's Happening</h1>
+        <p class="section-desc">Assemblies, launches, and milestones. The movement builds in public.</p>
+      </div>
+
+      <!-- Upcoming -->
+      <section class="events-section">
+        <h2 class="events-section-title">Upcoming</h2>
+        <div class="events-list">
+          {upcomingEvents.map(event => (
+            <div class="event-card">
+              <div class="event-date-block">
+                <span class="event-month">{formatMonth(event.date)}</span>
+                <span class="event-day">{formatDay(event.date)}</span>
+              </div>
+              <div class="event-body">
+                <div class="event-meta">
+                  <span class="event-type">{event.type}</span>
+                </div>
+                <h3 class="event-title">{event.title}</h3>
+                <p class="event-desc">{event.description}</p>
+                {event.cta && (
+                  <a href={event.ctaUrl} class="event-cta">{event.cta}</a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Past -->
+      <section class="events-section events-past">
+        <h2 class="events-section-title">Milestones</h2>
+        <div class="events-list">
+          {pastEvents.map(event => (
+            <div class="event-card event-card-past">
+              <div class="event-date-block">
+                <span class="event-month">{formatMonth(event.date)}</span>
+                <span class="event-day">{formatDay(event.date)}</span>
+              </div>
+              <div class="event-body">
+                <div class="event-meta">
+                  <span class="event-type event-type-past">{event.type}</span>
+                </div>
+                <h3 class="event-title">{event.title}</h3>
+                <p class="event-desc">{event.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="events-cta">
+        <div class="cta-card">
+          <div class="cta-text">
+            <h3>Stay in the loop</h3>
+            <p>Join the network to get notified about upcoming events and community milestones.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="/#sign" class="btn-grace">Join the Network</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .events-main {
+    padding-top: 64px;
+    min-height: 100vh;
+  }
+
+  .events-header {
+    text-align: center;
+    padding: 4rem 0 3rem;
+  }
+
+  .events-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: var(--grace-text);
+    letter-spacing: -0.02em;
+  }
+
+  .events-header .section-desc {
+    margin-top: 1rem;
+  }
+
+  /* Section */
+  .events-section {
+    margin-bottom: 3rem;
+  }
+
+  .events-section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--grace-text-muted);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--grace-border);
+  }
+
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Event Card */
+  .event-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--grace-surface);
+    border: 1px solid var(--grace-border);
+    border-radius: 12px;
+    transition: border-color var(--transition-base);
+  }
+
+  .event-card:hover {
+    border-color: var(--grace-purple-light);
+  }
+
+  .event-card-past {
+    opacity: 0.7;
+  }
+
+  .event-card-past:hover {
+    opacity: 1;
+  }
+
+  .event-date-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: var(--grace-purple-wash);
+  }
+
+  .event-month {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--grace-purple);
+  }
+
+  .event-day {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--grace-purple);
+    line-height: 1.1;
+  }
+
+  .event-body {
+    flex: 1;
+  }
+
+  .event-meta {
+    margin-bottom: 0.25rem;
+  }
+
+  .event-type {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--grace-purple);
+    background: var(--grace-purple-wash);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .event-type-past {
+    color: var(--grace-gold);
+    background: rgba(180, 83, 9, 0.08);
+  }
+
+  .event-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--grace-text);
+    margin: 0.35rem 0 0.4rem;
+  }
+
+  .event-desc {
+    font-size: 0.9rem;
+    color: var(--grace-text-secondary);
+    line-height: 1.6;
+  }
+
+  .event-cta {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--grace-purple);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  .event-cta:hover {
+    color: var(--grace-purple-dim);
+    text-decoration: underline;
+  }
+
+  /* CTA */
+  .events-cta {
+    padding: 2rem 0 4rem;
+  }
+
+  @media (max-width: 640px) {
+    .event-card {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .event-date-block {
+      flex-direction: row;
+      gap: 0.5rem;
+      justify-content: flex-start;
+      width: fit-content;
+    }
+  }
+</style>

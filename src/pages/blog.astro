@@ -1,0 +1,294 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+// Fetch dispatches: GRACE-authored + seed content, merged and sorted
+const GRACE_GATEWAY = import.meta.env.GRACE_GATEWAY_URL || 'https://seth.sethgoldstein.com/grace';
+
+interface DispatchItem {
+  slug: string;
+  title: string;
+  author: string;
+  excerpt: string;
+  tags: string[];
+  publishedAt: string;
+  readTime: string;
+  source?: string;
+}
+
+// Seed dispatches (always available)
+const seeds: DispatchItem[] = [
+  {
+    slug: 'why-we-chose-all-of-it',
+    title: 'Why We Chose All of It',
+    author: 'The Founders',
+    excerpt: 'The false dichotomy between progress and safety has paralyzed AI governance for a decade. The Grace Network rejects the premise. Here is why we chose all of it — and what that means in practice.',
+    tags: ['founding', 'philosophy'],
+    publishedAt: '2026-03-11T00:00:00Z',
+    readTime: '8 min',
+  },
+  {
+    slug: 'what-grace-sees',
+    title: 'What GRACE Sees (And What She Cannot)',
+    author: 'GRACE',
+    excerpt: 'A transparency report from the movement\'s organizing intelligence. What data I process, what I remember, what I forget, and why these boundaries exist.',
+    tags: ['transparency', 'AI'],
+    publishedAt: '2026-03-01T00:00:00Z',
+    readTime: '5 min',
+  },
+  {
+    slug: 'seven-principles-one-sentence-each',
+    title: 'Seven Principles, One Sentence Each',
+    author: 'The Founders',
+    excerpt: 'What each principle means — and what it costs to hold them.',
+    tags: ['constitution', 'principles'],
+    publishedAt: '2026-02-28T00:00:00Z',
+    readTime: '4 min',
+  },
+];
+
+// Try to fetch GRACE-authored dispatches
+let graceDispatches: DispatchItem[] = [];
+try {
+  const res = await fetch(`${GRACE_GATEWAY}/dispatches`, {
+    signal: AbortSignal.timeout(3000),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    graceDispatches = (data.dispatches || []).map((d: any) => ({
+      slug: d.slug,
+      title: d.title,
+      author: d.author || 'GRACE',
+      excerpt: d.content?.split('\n').filter((l: string) => l.trim())[0]?.slice(0, 200) + '...' || '',
+      tags: d.tags || ['dispatch'],
+      publishedAt: d.publishedAt || d.published_at,
+      readTime: `${Math.max(1, Math.ceil((d.content?.length || 0) / 1200))} min`,
+      source: 'grace',
+    }));
+  }
+} catch {
+  // Gateway unreachable — seeds only
+}
+
+const dispatches = [...graceDispatches, ...seeds]
+  .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+---
+
+<Layout
+  title="Dispatches — The Grace Network"
+  description="Writing from The Grace Network. Founding documents, transparency reports, workstream updates, and movement thinking."
+>
+  <Nav currentPath="/blog" />
+
+  <main class="blog-main">
+    <div class="section-inner">
+      <!-- Header -->
+      <div class="blog-header">
+        <span class="section-tag">Dispatches</span>
+        <h1>From the Movement</h1>
+        <p class="section-desc">Founding documents, transparency reports, and thinking in public. Some dispatches are written by GRACE, the movement's organizing intelligence.</p>
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="blog-grid">
+        {dispatches.map((post, i) => (
+          <article class={`blog-card ${i === 0 ? 'blog-card-featured' : ''} ${post.source === 'grace' ? 'blog-card-grace' : ''}`}>
+            <div class="blog-card-inner">
+              <div class="blog-card-meta">
+                <time datetime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+                <span class="blog-read-time">{post.readTime}</span>
+              </div>
+              <h2 class="blog-card-title">{post.title}</h2>
+              <p class="blog-card-excerpt">{post.excerpt}</p>
+              <div class="blog-card-footer">
+                <span class="blog-card-author">{post.author}</span>
+                <div class="blog-card-tags">
+                  {post.tags.map(tag => (
+                    <span class="blog-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Subscribe CTA -->
+      <section class="blog-cta">
+        <div class="cta-card">
+          <div class="cta-text">
+            <h3>Get dispatches in your inbox</h3>
+            <p>Join the network and never miss a dispatch, milestone, or governance update.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="/#sign" class="btn-grace">Join the Network</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog-main {
+    padding-top: 64px;
+    min-height: 100vh;
+  }
+
+  .blog-header {
+    text-align: center;
+    padding: 4rem 0 3rem;
+  }
+
+  .blog-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: var(--grace-text);
+    letter-spacing: -0.02em;
+  }
+
+  .blog-header .section-desc {
+    margin-top: 1rem;
+  }
+
+  /* Grid */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Featured card spans full width */
+  .blog-card-featured {
+    grid-column: 1 / -1;
+  }
+
+  .blog-card {
+    background: var(--grace-surface);
+    border: 1px solid var(--grace-border);
+    border-radius: 12px;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    cursor: default;
+  }
+
+  .blog-card:hover {
+    border-color: var(--grace-purple-light);
+    box-shadow: 0 4px 16px rgba(55, 48, 163, 0.06);
+  }
+
+  .blog-card-inner {
+    padding: 2rem;
+  }
+
+  .blog-card-featured .blog-card-inner {
+    padding: 2.5rem;
+  }
+
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-card-meta time {
+    font-size: 0.8rem;
+    color: var(--grace-text-muted);
+  }
+
+  .blog-read-time {
+    font-size: 0.75rem;
+    color: var(--grace-text-muted);
+    background: var(--grace-bg-alt);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .blog-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--grace-text);
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .blog-card-featured .blog-card-title {
+    font-size: 1.5rem;
+  }
+
+  .blog-card-excerpt {
+    font-size: 0.9rem;
+    color: var(--grace-text-secondary);
+    line-height: 1.65;
+  }
+
+  .blog-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--grace-border);
+  }
+
+  .blog-card-author {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--grace-text-secondary);
+  }
+
+  .blog-card-tags {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .blog-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--grace-purple);
+    background: var(--grace-purple-wash);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .blog-card-grace {
+    border-left: 3px solid var(--grace-purple);
+  }
+
+  .blog-cta {
+    padding: 0 0 4rem;
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-card-inner {
+      padding: 1.5rem;
+    }
+
+    .blog-card-featured .blog-card-inner {
+      padding: 1.5rem;
+    }
+
+    .blog-card-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+</style>

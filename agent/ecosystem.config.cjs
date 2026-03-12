@@ -25,6 +25,8 @@ module.exports = {
         GRACE_API_KEY: process.env.GRACE_API_KEY || "grace-net-2026",
         SUPABASE_URL: process.env.SUPABASE_URL,
         SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY,
+        TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || "",
+        FAL_API_KEY: process.env.FAL_API_KEY || "",
       },
       watch: false,
       max_restarts: 10,

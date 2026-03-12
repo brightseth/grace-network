@@ -8,20 +8,35 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  type?: string;
 }
 
 const {
   title,
   description = "The Grace Network — A political movement built on AI safety, radical transparency, scientific governance, and universal flourishing.",
   image = "/party/og-grace-network.png",
+  type = "website",
 } = Astro.props;
 
 const siteUrl = import.meta.env.SITE || 'https://grace-network.vercel.app';
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 
 // Derive page name from URL path
 const pathname = Astro.url.pathname.replace(/^\/|\/$/g, '');
 const pageName = pathname || 'home';
+
+// Structured data
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "The Grace Network",
+  "url": siteUrl,
+  "logo": `${siteUrl}/party/og-grace-network.png`,
+  "description": "A political movement built on AI safety, radical transparency, scientific governance, and universal flourishing.",
+  "foundingDate": "2026",
+  "sameAs": [],
+});
 ---
 
 <!doctype html>
@@ -39,16 +54,17 @@ const pageName = pathname || 'home';
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="The Grace Network" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={canonicalUrl} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -56,10 +72,57 @@ const pageName = pathname || 'home';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={jsonLd} />
+
     <ViewTransitions />
   </head>
   <body class="antialiased">
     <slot />
     <GraceChat page={pageName} />
+    <style is:global>
+      /* Page transition animations */
+      @keyframes fadeSlideIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      ::view-transition-old(root) {
+        animation: 150ms ease-out both fade-out;
+      }
+      ::view-transition-new(root) {
+        animation: 200ms ease-in both fade-in;
+      }
+      @keyframes fade-out { to { opacity: 0; } }
+      @keyframes fade-in { from { opacity: 0; } }
+
+      /* Scroll-triggered fade-in for sections */
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+    <script>
+      // Intersection Observer for scroll-reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Re-observe after view transitions
+      document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      });
+    </script>
   </body>
 </html>

@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const LORE_DIR = path.resolve(__dirname, "../lore");
+const SKILLS_DIR = path.resolve(__dirname, "../skills");
 const SOUL_PATH = path.resolve(__dirname, "../SOUL.md");
 
 function readFile(filePath: string): string | null {
@@ -20,6 +21,21 @@ function loadLoreFile(name: string): string {
   return content ?? "";
 }
 
+function loadSkillFile(name: string): string {
+  const content = readFile(path.join(SKILLS_DIR, `${name}.md`));
+  return content ?? "";
+}
+
+// Map contexts to relevant procedural skills
+const SKILL_MAP: Record<string, string[]> = {
+  workstreams: ["workstream-matching"],
+  build: ["workstream-matching"],
+  onboarding: ["workstream-matching"],
+  constitution: ["explain-amendment"],
+  principles: ["explain-amendment"],
+  skeptic: ["skeptic-response"],
+};
+
 const CONTEXT_MAP: Record<string, string[]> = {
   onboarding: ["onboarding"],
   workstreams: ["workstreams"],
@@ -29,6 +45,10 @@ const CONTEXT_MAP: Record<string, string[]> = {
   council: ["council"],
   faq: ["faq"],
   help: ["faq"],
+  policy: ["policy"],
+  positions: ["policy"],
+  governance_toolkit: ["workstreams", "policy"],
+  accountability: ["workstreams", "policy"],
 };
 
 export function detectContext(message: string): string {
@@ -45,6 +65,18 @@ export function detectContext(message: string): string {
   }
   if (/\b(council|influence|who\s+(are|is)|members?|advisors?)\b/.test(lower)) {
     return "council";
+  }
+  if (/\b(policy|position|stance|ai\s+safety|data\s+sovereign|algorith|regulation|economic|digital\s+rights?)\b/.test(lower)) {
+    return "policy";
+  }
+  if (/\b(governance\s+toolkit|voting\s+tool|proposal\s+system)\b/.test(lower)) {
+    return "governance_toolkit";
+  }
+  if (/\b(accountability|dashboard|track|audit|compliance)\b/.test(lower)) {
+    return "accountability";
+  }
+  if (/\b(won'?t\s+work|utopi|scam|real\s+agenda|who'?s\s+behind|skeptic|doubt|cynical|too\s+good)\b/.test(lower)) {
+    return "skeptic";
   }
   if (/\b(help|faq|question|what\s+is|explain|how\s+does)\b/.test(lower)) {
     return "faq";
@@ -78,9 +110,26 @@ export function loadSystemPrompt(context?: string): string {
     }
   }
 
-  if (loreParts.length === 0) {
-    return soulContent;
+  // Load procedural skills for this context
+  const skillParts: string[] = [];
+  if (context && SKILL_MAP[context]) {
+    for (const skill of SKILL_MAP[context]) {
+      const content = loadSkillFile(skill);
+      if (content) {
+        skillParts.push(content);
+      }
+    }
   }
 
-  return soulContent + "\n\n---\n\n## Reference Context\n\n" + loreParts.join("\n\n---\n\n");
+  let prompt = soulContent;
+
+  if (loreParts.length > 0) {
+    prompt += "\n\n---\n\n## Reference Context\n\n" + loreParts.join("\n\n---\n\n");
+  }
+
+  if (skillParts.length > 0) {
+    prompt += "\n\n---\n\n## Conversation Procedures\nFollow these procedures when they match the situation. They are instructions, not scripts — adapt to the specific conversation.\n\n" + skillParts.join("\n\n---\n\n");
+  }
+
+  return prompt;
 }
