@@ -4,6 +4,7 @@ import { ChatHandler } from "./chat-handler.js";
 import { startInitiativeLoop } from "./initiative.js";
 import { getDispatches, getDispatchBySlug } from "./tools/dispatches.js";
 import { startTelegramPolling } from "./telegram.js";
+import { scanResearchForGrace, refreshCurrentEventsLore } from "./knowledge.js";
 
 const app = new Hono();
 const chatHandler = new ChatHandler();
@@ -58,14 +59,48 @@ app.get("/dispatches/:slug", async (c) => {
 app.get("/status", async (c) => {
   const channels = ["web"];
   if (TELEGRAM_BOT_TOKEN) channels.push("telegram");
+  const knowledgeEntries = scanResearchForGrace();
   return c.json({
     agent: "grace",
     mode: "autonomous",
     uptime: process.uptime(),
     channels,
-    capabilities: ["chat", "dispatches", "initiatives", "member-memory"],
+    capabilities: [
+      "chat",
+      "dispatches",
+      "initiatives",
+      "member-memory",
+      "knowledge",
+    ],
+    knowledge: {
+      entries: knowledgeEntries.length,
+      categories: [...new Set(knowledgeEntries.map((e) => e.category))],
+      lastRefresh: knowledgeEntries[0]?.created_at || null,
+    },
     ready: true,
   });
+});
+
+// Knowledge endpoint — view GRACE's current intelligence
+app.get("/knowledge", async (c) => {
+  const entries = scanResearchForGrace();
+  return c.json({
+    count: entries.length,
+    entries: entries.slice(0, 20).map((e) => ({
+      topic: e.topic,
+      category: e.category,
+      relevance: e.relevance_score,
+      summary: e.summary.slice(0, 300),
+      sources: e.sources.slice(0, 3),
+      date: e.created_at,
+    })),
+  });
+});
+
+// Knowledge refresh endpoint — trigger a manual refresh
+app.post("/knowledge/refresh", async (c) => {
+  const count = await refreshCurrentEventsLore();
+  return c.json({ refreshed: true, entries: count });
 });
 
 // Chat endpoint

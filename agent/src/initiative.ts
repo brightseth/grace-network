@@ -20,6 +20,11 @@ import {
 import { loadSystemPrompt } from "./soul-loader.js";
 import { publishDispatch, type Dispatch } from "./tools/dispatches.js";
 import { sendMemberEmail } from "./tools/email.js";
+import {
+  refreshCurrentEventsLore,
+  scanResearchForGrace,
+  saveKnowledge,
+} from "./knowledge.js";
 
 const client = new Anthropic();
 
@@ -112,6 +117,17 @@ const RULES: InitiativeRule[] = [
       const recentChats = await getRecentInteractions("chat", 10080);
       const chatCount = recentChats?.length ?? 0;
 
+      // Load current events intelligence to inform the dispatch
+      let researchContext = "";
+      try {
+        const knowledge = scanResearchForGrace().slice(0, 5);
+        if (knowledge.length > 0) {
+          researchContext = `\n\nRecent policy intelligence (use 1-2 of these to ground the dispatch in real events):\n${knowledge.map((k) => `- [${k.category}] ${k.topic}: ${k.summary.slice(0, 200)}`).join("\n")}`;
+        }
+      } catch {
+        // Research scan is best-effort
+      }
+
       const content = await graceThink(
         `Write this week's dispatch for The Grace Network blog.
 
@@ -120,14 +136,15 @@ Context:
 - ${chatCount} chat conversations this week
 - We are in Phase 1 (Constitution phase)
 - Active workstreams: Governance Toolkit, AI Accountability Dashboard, Assembly Platform, Local Hub Infrastructure
+${researchContext}
 
 Write a dispatch that:
-1. Opens with what happened this week (be honest — if little happened, say that)
-2. Highlights one constitutional principle and what it means in practice
+1. Opens with what is happening in the world RIGHT NOW that is relevant to our mission — reference specific developments if you have them
+2. Connects those developments to our constitutional principles
 3. Poses a question to the community
 4. Ends with a concrete call to action
 
-Title it. Keep it under 600 words. Write as GRACE, not about GRACE.`,
+Title it. Keep it under 600 words. Write as GRACE, not about GRACE. Ground the dispatch in reality — this is a movement that pays attention to the world, not one that talks in abstractions.`,
         1500,
       );
 
@@ -190,6 +207,35 @@ Be warm but not pushy. Acknowledge they might be busy. Give ONE specific thing t
 
         console.log(`[initiative] Nurtured ${member.first_name} (${Math.floor(daysSinceJoin)}d)`);
       }
+    },
+  },
+
+  {
+    id: "research-digest",
+    name: "Research Digest",
+    interval: 720, // every 12 hours
+    condition: async () => {
+      return isCooledDown("research-digest", 720);
+    },
+    execute: async () => {
+      console.log("[initiative] Scanning LEVI research for GRACE-relevant intelligence...");
+
+      // Scan LEVI's research directory for relevant briefs
+      const entries = scanResearchForGrace();
+
+      // Persist to Supabase (fire-and-forget per entry)
+      for (const entry of entries.slice(0, 15)) {
+        await saveKnowledge(entry).catch((err) =>
+          console.error("[initiative] Knowledge save error:", err),
+        );
+      }
+
+      // Refresh the current-events.md lore file
+      const count = await refreshCurrentEventsLore();
+
+      console.log(
+        `[initiative] Research digest complete: ${entries.length} relevant briefs found, ${count} entries in current-events.md`,
+      );
     },
   },
 

@@ -45,8 +45,9 @@ const CONTEXT_MAP: Record<string, string[]> = {
   council: ["council"],
   faq: ["faq"],
   help: ["faq"],
-  policy: ["policy"],
-  positions: ["policy"],
+  policy: ["policy", "current-events"],
+  positions: ["policy", "current-events"],
+  current_events: ["current-events", "policy"],
   governance_toolkit: ["workstreams", "policy"],
   accountability: ["workstreams", "policy"],
 };
@@ -65,6 +66,9 @@ export function detectContext(message: string): string {
   }
   if (/\b(council|influence|who\s+(are|is)|members?|advisors?)\b/.test(lower)) {
     return "council";
+  }
+  if (/\b(news|current|happening|latest|today|recent|update|headline|world|congress|legislation|bill\s+pass|law\s+change)\b/.test(lower)) {
+    return "current_events";
   }
   if (/\b(policy|position|stance|ai\s+safety|data\s+sovereign|algorith|regulation|economic|digital\s+rights?)\b/.test(lower)) {
     return "policy";
