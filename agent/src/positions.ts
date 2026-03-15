@@ -17,6 +17,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { KnowledgeEntry } from "./knowledge.js";
 
 const LORE_DIR = path.resolve(
   path.dirname(new URL(import.meta.url).pathname),
@@ -248,15 +249,14 @@ async function savePositionToSupabase(position: Position): Promise<void> {
 function calculateConfidence(position: Position): number {
   let confidence = 0.5;
 
-  for (const ev of position.evidence_for) {
-    // Diminishing returns: each subsequent piece adds less
-    const diminish = 1 / (1 + position.evidence_for.indexOf(ev) * 0.3);
-    confidence += 0.04 * ev.weight * diminish;
+  for (let i = 0; i < position.evidence_for.length; i++) {
+    const diminish = 1 / (1 + i * 0.3);
+    confidence += 0.04 * position.evidence_for[i].weight * diminish;
   }
 
-  for (const ev of position.evidence_against) {
-    const diminish = 1 / (1 + position.evidence_against.indexOf(ev) * 0.3);
-    confidence -= 0.06 * ev.weight * diminish;
+  for (let i = 0; i < position.evidence_against.length; i++) {
+    const diminish = 1 / (1 + i * 0.3);
+    confidence -= 0.06 * position.evidence_against[i].weight * diminish;
   }
 
   return Math.max(0.1, Math.min(0.95, confidence));
@@ -283,14 +283,7 @@ function determineStatus(position: Position): PositionStatus {
 
 // ─── Position Synthesis (Claude-powered) ─────────────────────────────
 
-interface KnowledgeEntry {
-  topic: string;
-  category: string;
-  summary: string;
-  sources: string[];
-  source_file: string;
-  created_at: string;
-}
+const anthropic = new Anthropic();
 
 /**
  * Evaluate a piece of research against an existing position.
@@ -304,10 +297,9 @@ async function evaluateEvidence(
   summary: string;
   stance_refinement: string | null;
 } | null> {
-  const client = new Anthropic();
 
   try {
-    const response = await client.messages.create({
+    const response = await anthropic.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 400,
       system:

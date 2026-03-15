@@ -101,7 +101,7 @@ async function main(): Promise<void> {
 
   // Select topics: 1 random topic per category, up to maxToAdd
   let added = 0;
-  const shuffledCategories = POLICY_WATCHLIST.sort(() => Math.random() - 0.5);
+  const shuffledCategories = [...POLICY_WATCHLIST].sort(() => Math.random() - 0.5);
 
   for (const category of shuffledCategories) {
     if (added >= maxToAdd) break;

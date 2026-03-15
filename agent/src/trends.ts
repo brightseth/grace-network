@@ -18,8 +18,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import Anthropic from "@anthropic-ai/sdk";
-import { scanResearchForGrace } from "./knowledge.js";
+import { scanResearchForGrace, type KnowledgeEntry } from "./knowledge.js";
 import { loadPositionsFromFile, type Position } from "./positions.js";
+
+const anthropic = new Anthropic();
 
 const LORE_DIR = path.resolve(
   path.dirname(new URL(import.meta.url).pathname),
@@ -83,24 +85,15 @@ function saveTrends(trends: Trend[]): void {
 
 // ─── Pattern Detection (structural, pre-Claude) ─────────────────────
 
-interface ResearchEntry {
-  topic: string;
-  category: string;
-  summary: string;
-  sources: string[];
-  source_file: string;
-  created_at: string;
-}
-
 /**
  * Detect momentum: 3+ research entries in the same category within 14 days.
  */
-function detectMomentum(entries: ResearchEntry[]): Array<{
+function detectMomentum(entries: KnowledgeEntry[]): Array<{
   category: string;
-  entries: ResearchEntry[];
+  entries: KnowledgeEntry[];
   window_days: number;
 }> {
-  const byCategory = new Map<string, ResearchEntry[]>();
+  const byCategory = new Map<string, KnowledgeEntry[]>();
   for (const e of entries) {
     const list = byCategory.get(e.category) || [];
     list.push(e);
@@ -109,7 +102,7 @@ function detectMomentum(entries: ResearchEntry[]): Array<{
 
   const signals: Array<{
     category: string;
-    entries: ResearchEntry[];
+    entries: KnowledgeEntry[];
     window_days: number;
   }> = [];
 
@@ -191,9 +184,9 @@ function detectShifts(positions: Position[]): Array<{
  * any existing position (potential new positions forming).
  */
 function detectEmergence(
-  entries: ResearchEntry[],
+  entries: KnowledgeEntry[],
   positions: Position[],
-): ResearchEntry[] {
+): KnowledgeEntry[] {
   const positionTopicWords = new Set(
     positions.flatMap((p) =>
       p.topic
@@ -249,10 +242,8 @@ async function synthesizeTrends(
 
   if (signals.length === 0) return existingTrends;
 
-  const client = new Anthropic();
-
   try {
-    const response = await client.messages.create({
+    const response = await anthropic.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 1200,
       system: `You are GRACE's trend analysis engine. You take detected patterns in policy research and synthesize them into actionable intelligence with predictions. You are part of a political movement focused on AI governance, digital rights, and governance innovation. Be specific and forward-looking. Respond in JSON only.`,

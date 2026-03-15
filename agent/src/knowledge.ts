@@ -145,14 +145,9 @@ const GRACE_KEYWORDS = [
 
 // ─── Research Index Types ────────────────────────────────────────────
 
-interface ResearchIndexEntry {
-  file: string;
-  date: string;
-  relevance: string[];
-  insights: string[];
-}
+// ─── Shared Types ────────────────────────────────────────────────────
 
-interface KnowledgeEntry {
+export interface KnowledgeEntry {
   id?: string;
   topic: string;
   category: string;
@@ -377,45 +372,59 @@ function extractSources(content: string): string[] {
   return [...new Set(urls)].slice(0, 6);
 }
 
+// ─── Cached Research Scanner ─────────────────────────────────────────
+
+let _scanCache: { entries: KnowledgeEntry[]; timestamp: number } | null = null;
+const SCAN_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
 /**
  * Scan LEVI's research directory for GRACE-relevant briefs.
- * Returns entries scored 3+ on GRACE relevance.
+ * Results are cached for 5 minutes to avoid redundant disk I/O
+ * across /status, /knowledge, and initiative rules.
  */
 export function scanResearchForGrace(): KnowledgeEntry[] {
+  if (_scanCache && Date.now() - _scanCache.timestamp < SCAN_CACHE_TTL) {
+    return _scanCache.entries;
+  }
+
   if (!fs.existsSync(RESEARCH_DIR)) {
     console.log("[knowledge] No research directory at", RESEARCH_DIR);
     return [];
   }
 
-  const files = fs
-    .readdirSync(RESEARCH_DIR)
-    .filter((f) => f.endsWith(".md"))
-    .sort(
-      (a, b) =>
-        fs.statSync(path.join(RESEARCH_DIR, b)).mtimeMs -
-        fs.statSync(path.join(RESEARCH_DIR, a)).mtimeMs,
-    );
+  // Stat each file once, store results
+  const fileStats: Array<{ name: string; path: string; mtimeMs: number }> = [];
+  for (const name of fs.readdirSync(RESEARCH_DIR)) {
+    if (!name.endsWith(".md")) continue;
+    const filePath = path.join(RESEARCH_DIR, name);
+    try {
+      const stat = fs.statSync(filePath);
+      fileStats.push({ name, path: filePath, mtimeMs: stat.mtimeMs });
+    } catch {
+      continue;
+    }
+  }
+
+  fileStats.sort((a, b) => b.mtimeMs - a.mtimeMs);
 
   const entries: KnowledgeEntry[] = [];
 
-  for (const file of files) {
-    const filePath = path.join(RESEARCH_DIR, file);
+  for (const file of fileStats) {
     let content: string;
     try {
-      content = fs.readFileSync(filePath, "utf-8");
+      content = fs.readFileSync(file.path, "utf-8");
     } catch {
       continue;
     }
 
-    const relevance = scoreGraceRelevance(content, file);
+    const relevance = scoreGraceRelevance(content, file.name);
     if (relevance < 3) continue;
 
-    // Extract title from frontmatter or first heading
     const titleMatch =
       content.match(/^topic:\s*(.+)$/m) ||
       content.match(/^#\s+(.+)$/m) ||
       content.match(/^title:\s*(.+)$/m);
-    const topic = titleMatch?.[1]?.trim() || file.replace(/\.md$/, "");
+    const topic = titleMatch?.[1]?.trim() || file.name.replace(/\.md$/, "");
 
     entries.push({
       topic,
@@ -423,15 +432,17 @@ export function scanResearchForGrace(): KnowledgeEntry[] {
       summary: extractSummary(content),
       sources: extractSources(content),
       relevance_score: relevance,
-      source_file: file,
-      created_at: fs.statSync(filePath).mtime.toISOString(),
+      source_file: file.name,
+      created_at: new Date(file.mtimeMs).toISOString(),
       expires_at: new Date(
         Date.now() + 14 * 24 * 60 * 60 * 1000,
-      ).toISOString(), // 14 day TTL
+      ).toISOString(),
     });
   }
 
-  return entries.sort((a, b) => b.relevance_score - a.relevance_score);
+  const sorted = entries.sort((a, b) => b.relevance_score - a.relevance_score);
+  _scanCache = { entries: sorted, timestamp: Date.now() };
+  return sorted;
 }
 
 // ─── Dynamic Lore File Generation ────────────────────────────────────
@@ -501,33 +512,3 @@ export async function refreshCurrentEventsLore(): Promise<number> {
   return entries.length;
 }
 
-// ─── LEVI Research Queue Integration ─────────────────────────────────
-
-/**
- * Generate research topics from GRACE's policy watchlist
- * for seeding into LEVI's research queue.
- *
- * Returns topics ready to be added via research-queue.ts addTopic().
- */
-export function generateResearchTopics(): Array<{
-  query: string;
-  context: string;
-}> {
-  const topics: Array<{ query: string; context: string }> = [];
-
-  for (const category of POLICY_WATCHLIST) {
-    // Pick 1-2 topics per category per cycle to avoid flooding
-    const selected = category.topics
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 2);
-
-    for (const topic of selected) {
-      topics.push({
-        query: topic,
-        context: `GRACE Network policy intelligence — ${category.category}. Research for The Grace Network political movement's awareness of current developments in this area.`,
-      });
-    }
-  }
-
-  return topics;
-}
