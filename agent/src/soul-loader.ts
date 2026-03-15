@@ -45,9 +45,9 @@ const CONTEXT_MAP: Record<string, string[]> = {
   council: ["council"],
   faq: ["faq"],
   help: ["faq"],
-  policy: ["policy", "current-events"],
-  positions: ["policy", "current-events"],
-  current_events: ["current-events", "policy"],
+  policy: ["policy", "positions-live", "current-events"],
+  positions: ["positions-live", "policy", "current-events"],
+  current_events: ["current-events", "positions-live"],
   governance_toolkit: ["workstreams", "policy"],
   accountability: ["workstreams", "policy"],
 };

@@ -25,6 +25,11 @@ import {
   scanResearchForGrace,
   saveKnowledge,
 } from "./knowledge.js";
+import {
+  reviewPositions,
+  generatePositionsLore,
+  loadPositionsFromFile,
+} from "./positions.js";
 
 const client = new Anthropic();
 
@@ -235,6 +240,33 @@ Be warm but not pushy. Acknowledge they might be busy. Give ONE specific thing t
 
       console.log(
         `[initiative] Research digest complete: ${entries.length} relevant briefs found, ${count} entries in current-events.md`,
+      );
+    },
+  },
+
+  {
+    id: "position-review",
+    name: "Position Review",
+    interval: 1440, // daily
+    condition: async () => {
+      return isCooledDown("position-review", 1440);
+    },
+    execute: async () => {
+      console.log("[initiative] Reviewing positions against new research...");
+
+      // Get GRACE-relevant research entries
+      const research = scanResearchForGrace();
+      if (research.length === 0) {
+        // Still generate the lore file (seeds the positions on first run)
+        await generatePositionsLore();
+        console.log("[initiative] No new research — positions unchanged (lore regenerated)");
+        return;
+      }
+
+      // Review positions against new evidence
+      const updated = await reviewPositions(research);
+      console.log(
+        `[initiative] Position review complete: ${updated} position(s) updated from ${research.length} research entries`,
       );
     },
   },

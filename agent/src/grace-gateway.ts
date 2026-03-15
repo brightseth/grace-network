@@ -5,6 +5,7 @@ import { startInitiativeLoop } from "./initiative.js";
 import { getDispatches, getDispatchBySlug } from "./tools/dispatches.js";
 import { startTelegramPolling } from "./telegram.js";
 import { scanResearchForGrace, refreshCurrentEventsLore } from "./knowledge.js";
+import { getPositionsSummary } from "./positions.js";
 
 const app = new Hono();
 const chatHandler = new ChatHandler();
@@ -60,6 +61,7 @@ app.get("/status", async (c) => {
   const channels = ["web"];
   if (TELEGRAM_BOT_TOKEN) channels.push("telegram");
   const knowledgeEntries = scanResearchForGrace();
+  const positionsSummary = getPositionsSummary();
   return c.json({
     agent: "grace",
     mode: "autonomous",
@@ -71,11 +73,19 @@ app.get("/status", async (c) => {
       "initiatives",
       "member-memory",
       "knowledge",
+      "positions",
     ],
     knowledge: {
       entries: knowledgeEntries.length,
       categories: [...new Set(knowledgeEntries.map((e) => e.category))],
       lastRefresh: knowledgeEntries[0]?.created_at || null,
+    },
+    positions: {
+      total: positionsSummary.total,
+      established: positionsSummary.established,
+      developing: positionsSummary.developing,
+      contested: positionsSummary.contested,
+      avgConfidence: positionsSummary.avgConfidence,
     },
     ready: true,
   });
@@ -101,6 +111,12 @@ app.get("/knowledge", async (c) => {
 app.post("/knowledge/refresh", async (c) => {
   const count = await refreshCurrentEventsLore();
   return c.json({ refreshed: true, entries: count });
+});
+
+// Positions endpoint — view GRACE's evolving policy positions
+app.get("/positions", async (c) => {
+  const summary = getPositionsSummary();
+  return c.json(summary);
 });
 
 // Chat endpoint
