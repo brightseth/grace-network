@@ -30,6 +30,7 @@ import {
   generatePositionsLore,
   loadPositionsFromFile,
 } from "./positions.js";
+import { analyzeTrends } from "./trends.js";
 
 const client = new Anthropic();
 
@@ -267,6 +268,22 @@ Be warm but not pushy. Acknowledge they might be busy. Give ONE specific thing t
       const updated = await reviewPositions(research);
       console.log(
         `[initiative] Position review complete: ${updated} position(s) updated from ${research.length} research entries`,
+      );
+    },
+  },
+
+  {
+    id: "trend-analysis",
+    name: "Trend Analysis",
+    interval: 10080, // weekly
+    condition: async () => {
+      return isCooledDown("trend-analysis", 10080);
+    },
+    execute: async () => {
+      console.log("[initiative] Running anticipatory trend analysis...");
+      const activeCount = await analyzeTrends();
+      console.log(
+        `[initiative] Trend analysis complete: ${activeCount} active trend(s)`,
       );
     },
   },

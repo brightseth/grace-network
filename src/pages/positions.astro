@@ -1,0 +1,464 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const GRACE_GATEWAY = import.meta.env.GRACE_GATEWAY_URL || 'https://seth.sethgoldstein.com/grace';
+const API_KEY = import.meta.env.GRACE_API_KEY || '';
+
+interface PositionItem {
+  topic: string;
+  category: string;
+  confidence: number;
+  status: string;
+  evidenceCount: number;
+}
+
+interface PositionsData {
+  total: number;
+  established: number;
+  developing: number;
+  contested: number;
+  seed: number;
+  avgConfidence: number;
+  positions: PositionItem[];
+}
+
+let data: PositionsData = {
+  total: 0, established: 0, developing: 0, contested: 0, seed: 0,
+  avgConfidence: 0, positions: [],
+};
+
+try {
+  const res = await fetch(`${GRACE_GATEWAY}/positions`, {
+    headers: { 'X-Api-Key': API_KEY },
+    signal: AbortSignal.timeout(3000),
+  });
+  if (res.ok) {
+    data = await res.json();
+  }
+} catch {
+  // Gateway unreachable — show empty state
+}
+
+const categoryLabels: Record<string, string> = {
+  'ai-regulation': 'AI Regulation',
+  'digital-rights': 'Digital Rights',
+  'governance-innovation': 'Governance Innovation',
+  'economic-distribution': 'Economic Distribution',
+  'algorithmic-transparency': 'Algorithmic Transparency',
+  'movement-landscape': 'Movement Landscape',
+};
+
+const statusLabels: Record<string, string> = {
+  seed: 'Seed',
+  developing: 'Developing',
+  established: 'Established',
+  contested: 'Contested',
+  revised: 'Revised',
+};
+
+function confidenceColor(confidence: number): string {
+  if (confidence >= 0.7) return 'var(--grace-purple)';
+  if (confidence >= 0.5) return 'var(--grace-purple-light)';
+  return 'var(--grace-text-muted)';
+}
+---
+
+<Layout
+  title="Live Positions — The Grace Network"
+  description="Watch GRACE's policy positions evolve in real-time, backed by evidence and grounded in constitutional principles."
+>
+  <Nav currentPath="/positions" />
+
+  <main class="positions-main">
+    <div class="section-inner">
+      <!-- Header -->
+      <div class="positions-header">
+        <span class="section-tag">Living Intelligence</span>
+        <h1>Policy Positions</h1>
+        <p class="section-desc">
+          These positions are alive. They start as seeds from our constitution, then evolve as
+          GRACE's research intelligence gathers evidence. Confidence grows with supporting evidence
+          and adjusts with counterpoints. This is scientific governance in practice.
+        </p>
+      </div>
+
+      <!-- Stats Bar -->
+      {data.total > 0 && (
+        <div class="stats-bar reveal">
+          <div class="stat">
+            <span class="stat-value">{data.total}</span>
+            <span class="stat-label">Positions</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{data.established}</span>
+            <span class="stat-label">Established</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{data.developing}</span>
+            <span class="stat-label">Developing</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{data.contested}</span>
+            <span class="stat-label">Contested</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{Math.round(data.avgConfidence * 100)}%</span>
+            <span class="stat-label">Avg Confidence</span>
+          </div>
+        </div>
+      )}
+
+      <!-- Positions Grid -->
+      <div class="positions-grid">
+        {data.positions.length > 0 ? (
+          data.positions
+            .sort((a, b) => b.confidence - a.confidence)
+            .map((pos) => (
+              <article class={`position-card reveal position-${pos.status}`}>
+                <div class="position-header">
+                  <span class={`position-status status-${pos.status}`}>
+                    {statusLabels[pos.status] || pos.status}
+                  </span>
+                  <span class="position-category">
+                    {categoryLabels[pos.category] || pos.category}
+                  </span>
+                </div>
+
+                <h2 class="position-topic">{pos.topic}</h2>
+
+                <div class="confidence-bar">
+                  <div class="confidence-track">
+                    <div
+                      class="confidence-fill"
+                      style={`width: ${Math.round(pos.confidence * 100)}%; background: ${confidenceColor(pos.confidence)}`}
+                    />
+                  </div>
+                  <span class="confidence-label" style={`color: ${confidenceColor(pos.confidence)}`}>
+                    {Math.round(pos.confidence * 100)}%
+                  </span>
+                </div>
+
+                <div class="position-meta">
+                  <span class="evidence-count">
+                    {pos.evidenceCount} evidence {pos.evidenceCount === 1 ? 'piece' : 'pieces'}
+                  </span>
+                </div>
+              </article>
+            ))
+        ) : (
+          <div class="empty-state">
+            <p>GRACE's policy positions are being initialized. Check back soon as research intelligence begins to accumulate.</p>
+          </div>
+        )}
+      </div>
+
+      <!-- How It Works -->
+      <section class="how-it-works reveal">
+        <h2>How Positions Evolve</h2>
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Seed</h3>
+            <p>Positions begin as principles from the constitution. Confidence starts at 50%.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Research</h3>
+            <p>GRACE's research intelligence gathers evidence from overnight analysis of policy developments worldwide.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Evaluate</h3>
+            <p>Each piece of evidence is evaluated: does it support, counter, or nuance the position? Confidence adjusts accordingly.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Evolve</h3>
+            <p>Positions strengthen, get contested, or are revised. Counter-evidence weighs more than supporting evidence — epistemic humility built in.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="positions-cta reveal">
+        <div class="cta-card">
+          <div class="cta-text">
+            <h3>Shape these positions</h3>
+            <p>Join The Grace Network to participate in policy deliberation. Members can propose evidence, challenge positions, and vote on revisions.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="/#sign" class="btn-grace">Join the Network</a>
+            <a href="/constitution" class="btn-ghost-grace">Read the Constitution</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .positions-main {
+    padding-top: 64px;
+    min-height: 100vh;
+  }
+
+  .positions-header {
+    text-align: center;
+    padding: 4rem 0 3rem;
+  }
+
+  .positions-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: var(--grace-text);
+    letter-spacing: -0.02em;
+  }
+
+  /* Stats Bar */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1.5rem 2rem;
+    background: var(--grace-surface);
+    border: 1px solid var(--grace-border);
+    border-radius: 12px;
+    margin-bottom: 3rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--grace-purple);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--grace-text-muted);
+  }
+
+  /* Positions Grid */
+  .positions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .position-card {
+    background: var(--grace-surface);
+    border: 1px solid var(--grace-border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .position-card:hover {
+    border-color: var(--grace-purple-light);
+    box-shadow: 0 4px 16px rgba(55, 48, 163, 0.06);
+  }
+
+  .position-established {
+    border-left: 3px solid var(--grace-purple);
+  }
+
+  .position-contested {
+    border-left: 3px solid var(--grace-gold);
+  }
+
+  .position-revised {
+    border-left: 3px solid var(--grace-purple-light);
+  }
+
+  .position-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .position-status {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .status-seed {
+    color: var(--grace-text-muted);
+    background: var(--grace-bg-alt);
+  }
+
+  .status-developing {
+    color: var(--grace-purple-light);
+    background: var(--grace-purple-wash);
+  }
+
+  .status-established {
+    color: var(--grace-purple);
+    background: var(--grace-purple-wash);
+  }
+
+  .status-contested {
+    color: var(--grace-gold);
+    background: rgba(180, 83, 9, 0.08);
+  }
+
+  .status-revised {
+    color: var(--grace-purple-dim);
+    background: var(--grace-purple-wash);
+  }
+
+  .position-category {
+    font-size: 0.75rem;
+    color: var(--grace-text-muted);
+  }
+
+  .position-topic {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--grace-text);
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* Confidence Bar */
+  .confidence-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .confidence-track {
+    flex: 1;
+    height: 6px;
+    background: var(--grace-bg-alt);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .confidence-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+  }
+
+  .confidence-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    min-width: 3rem;
+    text-align: right;
+  }
+
+  .position-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .evidence-count {
+    font-size: 0.8rem;
+    color: var(--grace-text-muted);
+  }
+
+  /* Empty State */
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--grace-text-secondary);
+  }
+
+  /* How It Works */
+  .how-it-works {
+    margin-bottom: 4rem;
+  }
+
+  .how-it-works h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--grace-text);
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .process-step {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--grace-purple-wash);
+    color: var(--grace-purple);
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .process-step h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--grace-text);
+  }
+
+  .process-step p {
+    font-size: 0.85rem;
+    color: var(--grace-text-secondary);
+    line-height: 1.6;
+  }
+
+  .positions-cta {
+    padding-bottom: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    .positions-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-bar {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

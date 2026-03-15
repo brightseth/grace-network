@@ -6,6 +6,7 @@ import { getDispatches, getDispatchBySlug } from "./tools/dispatches.js";
 import { startTelegramPolling } from "./telegram.js";
 import { scanResearchForGrace, refreshCurrentEventsLore } from "./knowledge.js";
 import { getPositionsSummary } from "./positions.js";
+import { getTrendsSummary } from "./trends.js";
 
 const app = new Hono();
 const chatHandler = new ChatHandler();
@@ -116,6 +117,12 @@ app.post("/knowledge/refresh", async (c) => {
 // Positions endpoint — view GRACE's evolving policy positions
 app.get("/positions", async (c) => {
   const summary = getPositionsSummary();
+  return c.json(summary);
+});
+
+// Trends endpoint — view GRACE's anticipatory intelligence
+app.get("/trends", async (c) => {
+  const summary = getTrendsSummary();
   return c.json(summary);
 });
 
