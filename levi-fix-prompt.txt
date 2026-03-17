@@ -1,0 +1,27 @@
+LEVI has been crash-looping since Mar 10 and hasn't produced new research since Mar 8. The research queue has 16 pending topics but nothing is processing them. I need you to:
+
+1. **Diagnose the crash**: Check `pm2 logs levi-core --lines 50` on the agent server (ssh sethstudio1@100.106.71.27). Find what's causing the crash loop — likely a startup error, missing dependency, or API auth failure.
+
+2. **Fix and restart**: Get levi-core running stable again.
+
+3. **Verify the overnight pipeline**: The autoresearch pipeline (`scripts/autoresearch.ts`) should be running 11PM-6AM, processing 1-3 topics every 20 min from `~/.seth/research-queue.json`. Verify the pipeline runner schedule is intact in `src/core/pipeline-runner.ts` (lines ~253-275).
+
+4. **GRACE integration context**: I just added a `grace` classification to `scripts/research-ingest.ts` with 26 policy keywords (ai regulation, digital rights, governance innovation, etc.). GRACE's agent now has a full 3-phase learning stack that consumes LEVI's research overnight:
+   - Phase 1: Research briefs flow into GRACE's dynamic lore files (current-events.md)
+   - Phase 2: Each brief is evaluated against 6 living policy positions — supporting or countering evidence adjusts confidence scores
+   - Phase 3: Accumulated research is analyzed weekly for trend patterns (momentum, shifts, emergence) and GRACE generates predictions
+
+   The more research LEVI produces, the smarter GRACE gets. Briefs classified as `grace` relevant will automatically flow into GRACE's position memory system.
+
+5. **Quality improvement**: Current average quality is 4.7/10. Consider switching some queries to Tavily `advanced` mode for richer source material. No brief has ever scored 7+ (the threshold for skill extraction). See if the synthesis prompt in `scripts/autoresearch.ts` can be tightened.
+
+6. **Seed GRACE topics**: Once the queue clears below 15 pending, run `npx tsx ~/Projects/grace-network/agent/scripts/seed-research-queue.ts` to add GRACE policy topics (AI regulation, digital rights, governance innovation, economic distribution, algorithmic transparency, movement landscape).
+
+Key files:
+- ~/Projects/seth/agent/scripts/autoresearch.ts
+- ~/Projects/seth/agent/scripts/research-ingest.ts (grace classification added)
+- ~/Projects/seth/agent/src/core/pipeline-runner.ts
+- ~/Projects/seth/agent/src/workers/agent-worker.ts
+- ~/.seth/agents/levi/SOUL.md
+- ~/.seth/research-queue.json
+- ~/Projects/grace-network/agent/scripts/seed-research-queue.ts

@@ -1,3 +1,23 @@
+// Load .env file if env vars are missing (PM2 subprocess inheritance issue)
+import fs from "node:fs";
+import path from "node:path";
+if (!process.env.ANTHROPIC_API_KEY) {
+  try {
+    const envPath = path.resolve(
+      path.dirname(new URL(import.meta.url).pathname),
+      "../.env",
+    );
+    const envContent = fs.readFileSync(envPath, "utf-8");
+    for (const line of envContent.split("\n")) {
+      const match = line.match(/^([^#=]+)=(.*)$/);
+      if (match) process.env[match[1].trim()] = match[2].trim();
+    }
+    console.log("[grace] Loaded .env file");
+  } catch {
+    // .env not found — rely on process env
+  }
+}
+
 import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { ChatHandler } from "./chat-handler.js";

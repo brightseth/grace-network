@@ -47,6 +47,7 @@ const CONTEXT_MAP: Record<string, string[]> = {
   help: ["faq"],
   policy: ["policy", "positions-live", "current-events"],
   positions: ["positions-live", "policy", "current-events"],
+  constellation: ["constellation"],
   current_events: ["current-events", "positions-live", "trends-live"],
   governance_toolkit: ["workstreams", "policy"],
   accountability: ["workstreams", "policy"],
@@ -66,6 +67,9 @@ export function detectContext(message: string): string {
   }
   if (/\b(council|influence|who\s+(are|is)|members?|advisors?)\b/.test(lower)) {
     return "council";
+  }
+  if (/\b(agent|fleet|constellation|seth|sal|solienne|coltrane|fred|levi|archie|who\s+made|who\s+built|behind\s+you|your\s+creator|other\s+agents?|how\s+were\s+you)\b/.test(lower)) {
+    return "constellation";
   }
   if (/\b(news|current|happening|latest|today|recent|update|headline|world|congress|legislation|bill\s+pass|law\s+change)\b/.test(lower)) {
     return "current_events";
