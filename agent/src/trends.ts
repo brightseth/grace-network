@@ -263,7 +263,7 @@ Synthesize these signals into trends. For each trend, provide:
 Respond as a JSON array:
 [{"title": "...", "type": "momentum|convergence|shift|emergence", "description": "...", "prediction": "...", "category": "...", "strength": 0.7}]
 
-Return 1-4 trends. Only create a trend if the signal is meaningful. If existing trends are confirmed by new signals, update rather than duplicate.`,
+Return 2-4 trends MAX. Deduplicate ruthlessly — if two trends describe the same underlying pattern with different words, merge them into one. Only create a trend if the signal is genuinely distinct. If existing trends are confirmed by new signals, update rather than create new ones. Quality over quantity.`,
         },
       ],
     });
@@ -283,12 +283,31 @@ Return 1-4 trends. Only create a trend if the signal is meaningful. If existing 
     }>;
 
     const now = new Date().toISOString();
-    const newTrends: Trend[] = rawTrends.map((t, i) => {
-      // Check if this updates an existing trend
+
+    // Dedup: compute similarity between trend titles using word overlap
+    function titleSimilarity(a: string, b: string): number {
+      const wordsA = new Set(a.toLowerCase().split(/\s+/).filter((w) => w.length > 3));
+      const wordsB = new Set(b.toLowerCase().split(/\s+/).filter((w) => w.length > 3));
+      if (wordsA.size === 0 || wordsB.size === 0) return 0;
+      const overlap = [...wordsA].filter((w) => wordsB.has(w)).length;
+      return overlap / Math.min(wordsA.size, wordsB.size);
+    }
+
+    // Dedup raw trends from Claude (it sometimes returns near-duplicates)
+    const dedupedRaw: typeof rawTrends = [];
+    for (const t of rawTrends) {
+      const isDupe = dedupedRaw.some(
+        (existing) => titleSimilarity(t.title, existing.title) > 0.5,
+      );
+      if (!isDupe) {
+        dedupedRaw.push(t);
+      }
+    }
+
+    const newTrends: Trend[] = dedupedRaw.map((t, i) => {
+      // Check if this updates an existing trend (word overlap > 50%)
       const existing = existingTrends.find(
-        (et) =>
-          et.category === t.category &&
-          et.title.toLowerCase().includes(t.title.split(" ")[0].toLowerCase()),
+        (et) => titleSimilarity(et.title, t.title) > 0.5,
       );
 
       if (existing) {
@@ -324,19 +343,30 @@ Return 1-4 trends. Only create a trend if the signal is meaningful. If existing 
       };
     });
 
-    // Merge: keep unaffected existing trends, replace matched ones
-    const mergedIds = new Set(newTrends.map((t) => t.id));
-    const kept = existingTrends.filter((t) => !mergedIds.has(t.id));
+    // Merge: keep unaffected existing trends, dedup against new ones
+    const matchedExistingIds = new Set<string>();
+    for (const nt of newTrends) {
+      const match = existingTrends.find(
+        (et) => et.id === nt.id || titleSimilarity(et.title, nt.title) > 0.5,
+      );
+      if (match) matchedExistingIds.add(match.id);
+    }
+    const kept = existingTrends.filter((t) => !matchedExistingIds.has(t.id));
 
-    // Mark old unconfirmed trends as inactive after 30 days
+    // Mark old unconfirmed trends as inactive after 14 days (was 30, tightened)
     for (const t of kept) {
       const age =
         (Date.now() - new Date(t.last_updated).getTime()) /
         (24 * 60 * 60 * 1000);
-      if (age > 30) t.active = false;
+      if (age > 14) t.active = false;
     }
 
-    return [...newTrends, ...kept];
+    // Final dedup pass: if any kept trends are similar to new trends, drop them
+    const finalKept = kept.filter(
+      (kt) => !newTrends.some((nt) => titleSimilarity(kt.title, nt.title) > 0.4),
+    );
+
+    return [...newTrends, ...finalKept];
   } catch (err) {
     console.error(
       "[trends] Synthesis failed:",
