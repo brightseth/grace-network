@@ -38,3 +38,23 @@ vercel login
 vercel link  # link to existing 'grace-network' project under 'sethvibes' team
 vercel --prod
 ```
+
+---
+
+## Available Skills
+
+Key skills available in every CC session:
+
+| Command | What it does |
+|---------|-------------|
+| `/deploy` | Rsync to agent server + PM2 restart + health verify |
+| `/debug` | Symptom-driven runbooks (gateway down, agent crash, pipeline stuck, telegram silent, connectivity) |
+| `/wire` | Send messages to other agents/projects via @seth message bus |
+| `/status` | Cross-project status synthesis |
+| `/review` | Pre-deploy checklist with automated checks |
+| `/new-agent` | Scaffold a new agent (SOUL.md, registry, worker config) |
+| `/session-start` | Full context briefing |
+| `/session-end` | Commit + deploy + wire state sync |
+
+Type `/` to see all available skills. Skills are shared across all machines via `~/.claude/skills/`.
+
