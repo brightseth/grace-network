@@ -58,3 +58,6 @@ Key skills available in every CC session:
 
 Type `/` to see all available skills. Skills are shared across all machines via `~/.claude/skills/`.
 
+
+## Fleet Protocol
+Read `~/.seth/agents/FLEET_PROTOCOL.md` on session start for cross-machine memory and Telegram coordination instructions.
