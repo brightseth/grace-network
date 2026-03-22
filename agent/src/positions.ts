@@ -148,6 +148,42 @@ const SEED_POSITIONS: Omit<Position, "id" | "created_at" | "updated_at">[] = [
     status: "seed",
     revisions: [],
   },
+  {
+    topic: "Community-Governed Physical Infrastructure",
+    category: "governance-innovation",
+    stance:
+      "DAOs and community governance structures can responsibly own and operate physical infrastructure — land, solar arrays, compute facilities — when paired with proper legal wrappers (LLC under DAO LLC), transparent decision-making, and local government partnerships. Spirit Land is the proof case.",
+    pillars: ["Scientific Governance", "Cascading Abundance"],
+    evidence_for: [],
+    evidence_against: [],
+    confidence: 0.5,
+    status: "seed",
+    revisions: [],
+  },
+  {
+    topic: "Regenerative Technology Infrastructure",
+    category: "movement-landscape",
+    stance:
+      "AI compute infrastructure should be regenerative, not extractive. Solar-powered data centers, community energy models, and integration with regenerative agriculture demonstrate that technology and ecology can be mutually reinforcing. Government incentives (ITC, USDA grants) should prioritize these models.",
+    pillars: ["Universal Flourishing", "Safety-First Progress"],
+    evidence_for: [],
+    evidence_against: [],
+    confidence: 0.5,
+    status: "seed",
+    revisions: [],
+  },
+  {
+    topic: "State & Local Technology Partnerships",
+    category: "governance-innovation",
+    stance:
+      "State and local governments should partner with technology communities — not just corporations — to build shared infrastructure. Municipal broadband, community solar, and cooperative compute facilities create local economic value while maintaining democratic accountability.",
+    pillars: ["Cascading Abundance", "Radical Transparency"],
+    evidence_for: [],
+    evidence_against: [],
+    confidence: 0.5,
+    status: "seed",
+    revisions: [],
+  },
 ];
 
 // ─── Position Store ──────────────────────────────────────────────────

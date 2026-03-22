@@ -51,6 +51,9 @@ const CONTEXT_MAP: Record<string, string[]> = {
   current_events: ["current-events", "positions-live", "trends-live"],
   governance_toolkit: ["workstreams", "policy"],
   accountability: ["workstreams", "policy"],
+  spiritland: ["spiritland", "policy", "positions-live"],
+  infrastructure: ["spiritland", "workstreams"],
+  partnerships: ["spiritland", "policy"],
 };
 
 export function detectContext(message: string): string {
@@ -82,6 +85,12 @@ export function detectContext(message: string): string {
   }
   if (/\b(accountability|dashboard|track|audit|compliance)\b/.test(lower)) {
     return "accountability";
+  }
+  if (/\b(spirit\s*land|oracle|biosphere|solar\s+farm|data\s+center|agent\s+sovereignty|tier\s*4|physical\s+infrastructure|desert)\b/.test(lower)) {
+    return "spiritland";
+  }
+  if (/\b(partnership|municipal|county|state\s+government|local\s+government|community\s+partner|university|grant)\b/.test(lower)) {
+    return "partnerships";
   }
   if (/\b(won'?t\s+work|utopi|scam|real\s+agenda|who'?s\s+behind|skeptic|doubt|cynical|too\s+good)\b/.test(lower)) {
     return "skeptic";

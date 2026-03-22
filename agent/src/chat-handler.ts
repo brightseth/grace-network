@@ -28,7 +28,7 @@ interface ActionLink {
 }
 
 interface ChannelContext {
-  channel: "web" | "whatsapp" | "discord" | "imessage" | "telegram" | "openclaw";
+  channel: "web" | "whatsapp" | "discord" | "imessage" | "telegram";
   sender?: string;
   isGroup?: boolean;
   groupName?: string;
