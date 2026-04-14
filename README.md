@@ -1,175 +1,51 @@
-# Seth Goldstein Personal Website
+# The Grace Network
 
-A modern, interactive personal website showcasing Seth Goldstein's journey through technology, art, and entrepreneurship. Built with Astro, React, and Tailwind CSS.
+The member-facing site for The Grace Network — a political movement and aspiring network state dedicated to AI governance, human flourishing, and aligned institutions. Home of GRACE, the organizing intelligence of the movement.
 
-## 🚀 Features
+**Live:** https://grace-network.vercel.app
 
-- **Interactive Timeline**: Navigate through Seth's career milestones from the 1980s to present
-- **Powers of Ten Biography**: Multiple levels of biographical detail (1 word to 10,000 words)
-- **Generative Background**: Interactive particle system with mouse interaction
-- **Image Upload**: Community-driven image sharing via Supabase
-- **Responsive Design**: Optimized for all device sizes
-- **Modern Stack**: Built with Astro, React, Tailwind CSS, and Framer Motion
+## What This Is
 
-## 🛠️ Tech Stack
+The Grace Network believes powerful technology must be developed safely, governed transparently, and directed toward the flourishing of all. We are Phase 1: the Constitution phase. Members sign seven Pillars and six inalienable rights; GRACE is the voice and operational backbone of the community.
 
-- **Framework**: [Astro](https://astro.build/) with React components
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Database**: [Supabase](https://supabase.com/)
-- **Deployment**: [Netlify](https://netlify.com/)
-- **Typography**: Space Grotesk font family
+## Architecture
 
-## 📋 Prerequisites
+- **Framework:** Astro + React (islands)
+- **Styling:** Tailwind CSS
+- **Database:** Supabase (members, signatures, workstream contributions)
+- **Chat:** GRACE web-chat powered by the `/ask` endpoint on `seth.sethgoldstein.com/agents/grace/ask`
+- **Deployment:** Vercel
 
-Before you begin, ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (version 18 or higher)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+## Repo Layout
 
-## 🔧 Installation
+- `src/pages/` — Astro routes (index, constitution, build, council, transparency)
+- `src/components/` — React components (including GRACE chat widget)
+- `src/layouts/` — Page layouts
+- `agent/` — GRACE agent runtime, SOUL.md, tools, memory
+- `public/` — Static assets, OG images
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/[username]/sethgoldstein.com.git
-   cd sethgoldstein.com
-   ```
+## SOUL.md — Two Files, One Agent
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+GRACE has two canonical SOUL files:
+- `agent/SOUL.md` — **member-facing voice** (this site, Constitution, 7 Pillars, Council of Influences, web-chat registers)
+- `~/.seth/agents/grace/SOUL.md` — **CMA crew identity** (relationships to SAL, SOLIENNE, ARCHIE, LEVI; role in fleet intelligence loop)
 
-3. **Environment Setup**
-   Create a `.env` file in the root directory:
-   ```env
-   PUBLIC_SUPABASE_URL=your_supabase_url
-   PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
+The two files are the same agent seen from two surfaces. Reconciled 2026-04-11. When they describe overlapping concepts, they should not contradict; when they differ, the `agent/SOUL.md` governs web-chat and the `.seth` file governs CMA runtime.
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+## Development
 
-5. **Open your browser**
-   Navigate to `http://localhost:4321`
-
-## 🚀 Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-
-### Project Structure
-
-```
-/
-├── public/              # Static assets
-├── src/
-│   ├── components/      # Reusable components
-│   ├── layouts/         # Page layouts
-│   ├── pages/          # Route pages
-│   ├── styles/         # Custom CSS
-│   └── lib/            # Utility functions
-├── supabase/
-│   └── migrations/     # Database migrations
-└── docs/               # Documentation
-```
-
-### Key Components
-
-- **PowersOfTen.astro** - Main biography component with interactive sections
-- **Timeline.tsx** - Interactive career timeline with animations
-- **GenerativeBackground.tsx** - Particle system background
-- **ImageUploader.tsx** - File upload functionality
-- **Header.astro** - Navigation component
-- **Footer.astro** - Footer with social links
-
-## 🗄️ Database Setup
-
-This project uses Supabase for data storage and image uploads.
-
-1. **Create a Supabase project** at [supabase.com](https://supabase.com)
-2. **Run migrations** (migrations are in `/supabase/migrations/`)
-3. **Update environment variables** with your Supabase credentials
-
-The database includes:
-- Image storage bucket for community uploads
-- Row Level Security (RLS) policies for safe data access
-
-## 🎨 Customization
-
-### Styling
-- Primary styling uses Tailwind CSS
-- Custom animations defined in `/src/styles/timeline.css`
-- Color scheme focuses on black/white with blue accents
-
-### Content
-- Biography content is in `PowersOfTen.astro`
-- Timeline data is in `Timeline.tsx`
-- Media/press content is in respective page files
-
-## 📱 Responsive Design
-
-The site is fully responsive with breakpoints for:
-- Mobile: < 768px
-- Tablet: 768px - 1024px  
-- Desktop: > 1024px
-
-## 🚢 Deployment
-
-### Netlify (Recommended)
-1. Connect your GitHub repository to Netlify
-2. Set build command: `npm run build`
-3. Set publish directory: `dist`
-4. Add environment variables in Netlify dashboard
-
-### Manual Deployment
 ```bash
+npm install
+npm run dev   # localhost:4321
 npm run build
-# Upload contents of `dist` folder to your hosting provider
 ```
 
-## 🤝 Contributing
-
-1. **Fork the repository**
-2. **Create your feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit your changes** (`git commit -m 'Add some amazing feature'`)
-4. **Push to the branch** (`git push origin feature/amazing-feature`)
-5. **Open a Pull Request**
-
-### Contribution Guidelines
-
-- Follow existing code style and patterns
-- Test changes across different screen sizes
-- Update documentation for significant changes
-- Keep commits focused and descriptive
-
-## 🔐 Environment Variables
-
-Required environment variables:
-
-```env
-PUBLIC_SUPABASE_URL=your_supabase_project_url
-PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+Environment:
+```
+PUBLIC_SUPABASE_URL=...
+PUBLIC_SUPABASE_ANON_KEY=...
 ```
 
-## 📄 License
+## Next Phase
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 📞 Contact
-
-Seth Goldstein - [@seth](https://twitter.com/seth) - sethgoldstein@gmail.com
-
-Project Link: [https://github.com/[username]/sethgoldstein.com](https://github.com/[username]/sethgoldstein.com)
-
-## 🙏 Acknowledgments
-
-- [Astro](https://astro.build/) for the amazing framework
-- [Tailwind CSS](https://tailwindcss.com/) for utility-first styling
-- [Supabase](https://supabase.com/) for backend services
-- [Framer Motion](https://www.framer.com/motion/) for smooth animations
-- [Netlify](https://netlify.com/) for seamless deployment
+See `NEXT-PHASE.md` for Phase 9 launch-readiness work: global chat widget, context-aware GRACE greetings, share/invite mechanics, per-page OG images.
