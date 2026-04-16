@@ -21,7 +21,11 @@ import Anthropic from "@anthropic-ai/sdk";
 import { scanResearchForGrace, type KnowledgeEntry } from "./knowledge.js";
 import { loadPositionsFromFile, type Position } from "./positions.js";
 
-const anthropic = new Anthropic();
+let _anthropic: Anthropic | null = null;
+function getAnthropicClient(): Anthropic {
+  if (!_anthropic) _anthropic = new Anthropic();
+  return _anthropic;
+}
 
 const LORE_DIR = path.resolve(
   path.dirname(new URL(import.meta.url).pathname),
@@ -243,7 +247,7 @@ async function synthesizeTrends(
   if (signals.length === 0) return existingTrends;
 
   try {
-    const response = await anthropic.messages.create({
+    const response = await getAnthropicClient().messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 1200,
       system: `You are GRACE's trend analysis engine. You take detected patterns in policy research and synthesize them into actionable intelligence with predictions. You are part of a political movement focused on AI governance, digital rights, and governance innovation. Be specific and forward-looking. Respond in JSON only.`,

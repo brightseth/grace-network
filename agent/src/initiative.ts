@@ -32,7 +32,11 @@ import {
 } from "./positions.js";
 import { analyzeTrends } from "./trends.js";
 
-const client = new Anthropic();
+let _client: Anthropic | null = null;
+function getClient(): Anthropic {
+  if (!_client) _client = new Anthropic();
+  return _client;
+}
 
 interface InitiativeRule {
   id: string;
@@ -59,7 +63,7 @@ function markRun(id: string): void {
  */
 async function graceThink(prompt: string, maxTokens = 1024): Promise<string> {
   const systemPrompt = loadSystemPrompt("default");
-  const response = await client.messages.create({
+  const response = await getClient().messages.create({
     model: "claude-sonnet-4-6",
     max_tokens: maxTokens,
     system:

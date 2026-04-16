@@ -319,7 +319,11 @@ function determineStatus(position: Position): PositionStatus {
 
 // ─── Position Synthesis (Claude-powered) ─────────────────────────────
 
-const anthropic = new Anthropic();
+let _anthropic: Anthropic | null = null;
+function getAnthropicClient(): Anthropic {
+  if (!_anthropic) _anthropic = new Anthropic();
+  return _anthropic;
+}
 
 /**
  * Evaluate a piece of research against an existing position.
@@ -335,7 +339,7 @@ async function evaluateEvidence(
 } | null> {
 
   try {
-    const response = await anthropic.messages.create({
+    const response = await getAnthropicClient().messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 400,
       system:
