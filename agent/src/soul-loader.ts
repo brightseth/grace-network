@@ -108,14 +108,13 @@ export function loadSystemPrompt(context?: string): string {
     return "You are Grace, the AI guide for The Grace Network political movement. Be helpful and welcoming.";
   }
 
-  const loreFiles: string[] = [];
+  const loreFiles: string[] = ["web-chat-guide"];
 
   if (context && CONTEXT_MAP[context]) {
     for (const file of CONTEXT_MAP[context]) {
       loreFiles.push(file);
     }
   } else {
-    // Default: load faq + onboarding
     loreFiles.push("faq", "onboarding");
   }
 
