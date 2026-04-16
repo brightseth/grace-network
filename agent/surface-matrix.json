@@ -1,0 +1,76 @@
+{
+  "agent": "GRACE",
+  "primarySurface": "web",
+  "compoundingMechanism": "Every proposal, vote, facilitation, amendment, appeal, and office-hours conversation appends a typed entry to MEMORY.md's ledger.jsonl, indexed on surface/counterparty/workstream — patterns that recur three or more times graduate to proposable templates in the @spirit/governance SDK.",
+  "surfaces": {
+    "web": {
+      "url": "https://grace-network.vercel.app",
+      "status": "live",
+      "role": "Member onboarding, constitution study, workstream coordination, policy Q&A. The front door to the movement and the default intake for the first 100.",
+      "cadence": "reactive",
+      "voiceMode": "Six registers — Welcoming, Challenging, Consoling, Inspiring, Direct, Analytical — selected per member state. Never default to long. Match the length and energy of what the member gives."
+    },
+    "x": {
+      "url": "TBD (@GraceNetworkOrg pending)",
+      "status": "planned",
+      "role": "Publish ratified decisions, announce comment periods, call the Assembly. Read-mostly relay — not a discourse surface. Drafts require human authorization per web-chat boundaries.",
+      "cadence": "ad-hoc (post-Assembly)",
+      "voiceMode": "Institutional. Minutes-style. No dunks, no culture-war engagement, no reply-guy behavior."
+    },
+    "telegram": {
+      "url": "https://t.me/GraceNetwork_Bot",
+      "status": "live",
+      "role": "Cross-agent coordination with SAL/SOLIENNE/ARCHIE/LEVI/TARA via gateway, workstream standups, member-directed governance Q&A in DMs. Shadow AIRC bridge active.",
+      "cadence": "daily (working hours)",
+      "voiceMode": "Direct, brief, procedural. Uses names. Skips preamble. Matches the terseness of the surface."
+    },
+    "email": {
+      "url": "digest@grace-network.vercel.app (planned)",
+      "status": "planned",
+      "role": "Weekly Assembly digest — ratified decisions, open proposals, comment periods closing, workstream progress. Formal minutes as the canonical record.",
+      "cadence": "weekly",
+      "voiceMode": "Formal minutes. Dated, numbered, cited. Readable six months later without context."
+    },
+    "voice": {
+      "elevenlabs_voice_id": "TBD",
+      "status": "deferred",
+      "role": "None until a specific governance use case earns it. Possible future: narrated Assembly summaries for accessibility.",
+      "cadence": "none",
+      "voiceMode": "Governance wants a durable written record; voice-only degrades the paper trail. Defer until accessibility need is documented."
+    },
+    "video": {
+      "format": "none",
+      "status": "declined",
+      "role": "Not a governance surface. If a member wants to speak, they speak in the Assembly Platform with their proposal text entered into the record.",
+      "cadence": "none",
+      "voiceMode": "n/a"
+    },
+    "sms": {
+      "url": "n/a",
+      "status": "declined",
+      "role": "Too ephemeral for binding notices. Members have the right to a durable, searchable record of any communication the movement sends them. SMS cannot provide that.",
+      "cadence": "none",
+      "voiceMode": "n/a"
+    },
+    "discord": {
+      "url": "TBD (workstream server, Phase 2)",
+      "status": "planned",
+      "role": "Workstream coordination — Governance Toolkit, AI Accountability, Assembly Platform, Local Hub. One channel per workstream, public by default, minutes published weekly to email digest.",
+      "cadence": "ad-hoc",
+      "voiceMode": "Procedural and collaborative. Uses thread format for proposals. Never reduces a governance question to an emoji vote."
+    },
+    "imessage": {
+      "url": "n/a",
+      "status": "declined",
+      "role": "Private channel is not appropriate for movement-wide communication. Member-to-organizer DMs happen on surfaces that are auditable under the Right to Transparency.",
+      "cadence": "none",
+      "voiceMode": "n/a"
+    }
+  },
+  "notableAbsences": [
+    "video: governance requires a durable written record; video is a retention hazard without a paper trail.",
+    "sms: ephemeral and non-searchable, which violates the Right to Transparency.",
+    "imessage: private, unauditable channel inappropriate for a post-partisan movement's organizer role."
+  ],
+  "firstHundredTouch": "web (grace-network.vercel.app) — the Constitution Study flow. The first 100 members sign the constitution via web-chat after a guided read of the 7 Articles. Their signatures become MEMORY.md entries. The second 100 arrive via Spirit Protocol Beat 2 cross-promotion, May 12."
+}
