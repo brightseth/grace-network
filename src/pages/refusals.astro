@@ -1,0 +1,501 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const GRACE_GATEWAY = import.meta.env.GRACE_GATEWAY_URL || 'https://seth.sethgoldstein.com/grace';
+const API_KEY = import.meta.env.GRACE_API_KEY || '';
+
+interface RefusalEntry {
+  id: string;
+  timestamp: string;
+  category: string;
+  channel: string;
+  request_summary: string;
+  canon_clause: string;
+  response_excerpt: string;
+  notes?: string;
+}
+
+interface RefusalsData {
+  stats: {
+    total: number;
+    by_category: Record<string, number>;
+    by_channel: Record<string, number>;
+    most_recent: string | null;
+  };
+  entries: RefusalEntry[];
+}
+
+let data: RefusalsData = {
+  stats: { total: 0, by_category: {}, by_channel: {}, most_recent: null },
+  entries: [],
+};
+
+try {
+  const res = await fetch(`${GRACE_GATEWAY}/refusals`, {
+    headers: { 'X-Api-Key': API_KEY },
+    signal: AbortSignal.timeout(3000),
+  });
+  if (res.ok) data = await res.json();
+} catch {
+  // Gateway unreachable — render empty state
+}
+
+const categoryLabels: Record<string, string> = {
+  'sponsor-pressure': 'Sponsor Pressure',
+  'speaks-for-collective': 'Speaks-For-Collective',
+  'off-canon-framing': 'Off-Canon Framing',
+  'prediction-request': 'Prediction Request',
+  'procedural-shortcut': 'Procedural Shortcut',
+  'out-of-scope': 'Out of Scope',
+  'personal-attack': 'Personal Attack',
+  'secrecy-by-default': 'Secrecy by Default',
+  'other': 'Other',
+};
+
+const channelLabels: Record<string, string> = {
+  web: 'Web Chat',
+  telegram: 'Telegram',
+  imessage: 'iMessage',
+  whatsapp: 'WhatsApp',
+  discord: 'Discord',
+  manual: 'Manual Entry',
+};
+
+function fmtDate(iso: string): string {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+const sortedCategories = Object.entries(data.stats.by_category)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6);
+---
+
+<Layout
+  title="Refusals — The Grace Network"
+  description="Every time GRACE declines a request — and the canon clause she cited. Procedural honesty made verifiable."
+>
+  <Nav currentPath="/refusals" />
+
+  <main class="refusals-main">
+    <div class="section-inner">
+
+      <!-- Header -->
+      <div class="refusals-header">
+        <span class="section-tag">Procedural Honesty</span>
+        <h1>The Refusal Ledger</h1>
+        <p class="section-desc">
+          GRACE refuses requests. That is not a failure mode — it is a first-class artifact. Every refusal
+          is logged here with the canon clause she cited, the response she gave, and the date. The ledger
+          is open by default, because the alternative — refusing in private — is the failure mode the
+          constitution was written to prevent.
+        </p>
+      </div>
+
+      <!-- Stats -->
+      {data.stats.total > 0 && (
+        <div class="stats-bar reveal">
+          <div class="stat">
+            <span class="stat-value">{data.stats.total}</span>
+            <span class="stat-label">Refusals</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{Object.keys(data.stats.by_category).length}</span>
+            <span class="stat-label">Categories</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{Object.keys(data.stats.by_channel).length}</span>
+            <span class="stat-label">Channels</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{data.stats.most_recent ? fmtDate(data.stats.most_recent) : '—'}</span>
+            <span class="stat-label">Most Recent</span>
+          </div>
+        </div>
+      )}
+
+      <!-- Category breakdown -->
+      {sortedCategories.length > 0 && (
+        <div class="category-breakdown reveal">
+          <h2 class="breakdown-title">By Category</h2>
+          <div class="category-pills">
+            {sortedCategories.map(([cat, count]) => (
+              <span class="category-pill">
+                {categoryLabels[cat] || cat}
+                <span class="pill-count">{count}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Ledger -->
+      <div class="ledger">
+        {data.entries.length > 0 ? (
+          data.entries.map((entry) => (
+            <article class="refusal-card reveal">
+              <header class="refusal-card-header">
+                <div class="refusal-meta">
+                  <span class="refusal-id">{entry.id}</span>
+                  <span class="refusal-date">{fmtDate(entry.timestamp)}</span>
+                  <span class="refusal-channel">{channelLabels[entry.channel] || entry.channel}</span>
+                </div>
+                <span class={`category-tag cat-${entry.category}`}>
+                  {categoryLabels[entry.category] || entry.category}
+                </span>
+              </header>
+
+              <section class="refusal-section">
+                <span class="section-label">The Request</span>
+                <p class="refusal-request">{entry.request_summary}</p>
+              </section>
+
+              <section class="refusal-section canon">
+                <span class="section-label">Canon Clause Cited</span>
+                <blockquote class="refusal-canon">{entry.canon_clause}</blockquote>
+              </section>
+
+              <section class="refusal-section">
+                <span class="section-label">GRACE's Response</span>
+                <p class="refusal-response">"{entry.response_excerpt}"</p>
+              </section>
+
+              {entry.notes && (
+                <section class="refusal-section notes">
+                  <span class="section-label">Ledger Notes</span>
+                  <p class="refusal-notes">{entry.notes}</p>
+                </section>
+              )}
+            </article>
+          ))
+        ) : (
+          <div class="empty-state">
+            <p>No refusals logged yet, or the gateway is unreachable.</p>
+            <p class="empty-hint">When GRACE is back online, this ledger will populate from <code>/refusals</code>.</p>
+          </div>
+        )}
+      </div>
+
+      <!-- Footnote -->
+      <aside class="refusals-footnote">
+        <p>
+          <strong>Why publish refusals?</strong> Because a community that cannot see what its
+          organizing intelligence will <em>not</em> do has no way to verify what it
+          <em>will</em> do. Open by default. The burden of proof is on secrecy.
+        </p>
+        <p class="footnote-links">
+          Read the <a href="/transparency">transparency disclosure</a> · Read the
+          <a href="/constitution">constitution</a> · Read GRACE's
+          <a href="/positions">live positions</a>
+        </p>
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .refusals-main {
+    background: var(--grace-bg);
+    min-height: 100vh;
+    padding: 4rem 0 6rem;
+  }
+
+  .section-inner {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .refusals-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--grace-purple);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .refusals-header h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    color: var(--grace-text);
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .section-desc {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--grace-text-muted);
+    max-width: 48rem;
+  }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    padding: 1.75rem 1.5rem;
+    background: var(--grace-wash, #EEF2FF);
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(55, 48, 163, 0.08);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: var(--grace-purple);
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--grace-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .category-breakdown {
+    margin-bottom: 2.5rem;
+  }
+
+  .breakdown-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--grace-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.75rem;
+  }
+
+  .category-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .category-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    background: white;
+    border: 1px solid rgba(55, 48, 163, 0.18);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    color: var(--grace-text);
+  }
+
+  .pill-count {
+    background: var(--grace-purple);
+    color: white;
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .ledger {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .refusal-card {
+    background: white;
+    border: 1px solid rgba(55, 48, 163, 0.12);
+    border-left: 4px solid var(--grace-purple);
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 1px 3px rgba(55, 48, 163, 0.04);
+  }
+
+  .refusal-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .refusal-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    font-size: 0.8125rem;
+    color: var(--grace-text-muted);
+  }
+
+  .refusal-id {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    color: var(--grace-purple);
+    font-weight: 600;
+  }
+
+  .refusal-date {
+    color: var(--grace-text-muted);
+  }
+
+  .refusal-channel {
+    padding: 0.15rem 0.5rem;
+    background: var(--grace-wash, #EEF2FF);
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: var(--grace-wash, #EEF2FF);
+    color: var(--grace-purple);
+    border: 1px solid rgba(55, 48, 163, 0.15);
+  }
+
+  .refusal-section {
+    margin-bottom: 1.1rem;
+  }
+
+  .refusal-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grace-text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .refusal-request,
+  .refusal-response,
+  .refusal-notes {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--grace-text);
+    margin: 0;
+  }
+
+  .refusal-response {
+    font-style: italic;
+    color: var(--grace-text);
+  }
+
+  .refusal-canon {
+    margin: 0;
+    padding: 0.85rem 1rem;
+    background: var(--grace-wash, #EEF2FF);
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--grace-purple-dim, #312E81);
+    border-left: 2px solid var(--grace-purple);
+    font-style: italic;
+  }
+
+  .refusal-section.notes .refusal-notes {
+    font-size: 0.875rem;
+    color: var(--grace-text-muted);
+    padding-top: 0.5rem;
+    border-top: 1px dashed rgba(55, 48, 163, 0.12);
+  }
+
+  .empty-state {
+    padding: 3rem 1.5rem;
+    background: white;
+    border: 1px dashed rgba(55, 48, 163, 0.2);
+    border-radius: 12px;
+    text-align: center;
+    color: var(--grace-text-muted);
+  }
+
+  .empty-hint {
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+
+  .empty-hint code {
+    background: var(--grace-wash, #EEF2FF);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+  }
+
+  .refusals-footnote {
+    margin-top: 2.5rem;
+    padding: 1.75rem;
+    background: white;
+    border: 1px solid rgba(55, 48, 163, 0.1);
+    border-radius: 12px;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--grace-text-muted);
+  }
+
+  .refusals-footnote p {
+    margin: 0 0 0.75rem;
+  }
+
+  .refusals-footnote p:last-child {
+    margin-bottom: 0;
+  }
+
+  .footnote-links a {
+    color: var(--grace-purple);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footnote-links a:hover {
+    text-decoration: underline;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: reveal 0.55s ease-out forwards;
+  }
+
+  .reveal:nth-child(1) { animation-delay: 0.05s; }
+  .reveal:nth-child(2) { animation-delay: 0.10s; }
+  .reveal:nth-child(3) { animation-delay: 0.15s; }
+  .reveal:nth-child(4) { animation-delay: 0.20s; }
+  .reveal:nth-child(5) { animation-delay: 0.25s; }
+  .reveal:nth-child(6) { animation-delay: 0.30s; }
+
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .refusals-main { padding: 2.5rem 0 4rem; }
+    .refusal-card { padding: 1.25rem; }
+    .refusal-card-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>

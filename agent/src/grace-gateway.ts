@@ -27,6 +27,7 @@ import { startTelegramPolling } from "./telegram.js";
 import { scanResearchForGrace, refreshCurrentEventsLore } from "./knowledge.js";
 import { getPositionsSummary } from "./positions.js";
 import { getTrendsSummary } from "./trends.js";
+import { listRefusals, logRefusal, refusalStats, type LogRefusalInput } from "./refusals.js";
 
 const app = new Hono();
 const chatHandler = new ChatHandler();
@@ -144,6 +145,39 @@ app.get("/positions", async (c) => {
 app.get("/trends", async (c) => {
   const summary = getTrendsSummary();
   return c.json(summary);
+});
+
+// Refusals endpoint — procedural honesty made verifiable
+app.get("/refusals", (c) => {
+  const category = c.req.query("category") as any;
+  const channel = c.req.query("channel") as any;
+  const limitRaw = c.req.query("limit");
+  const limit = limitRaw ? parseInt(limitRaw, 10) : undefined;
+  const entries = listRefusals({ category, channel, limit });
+  const stats = refusalStats();
+  return c.json({ stats, entries });
+});
+
+// Log a refusal (manual or chat-handler triggered) — API-key gated by global middleware
+app.post("/refusals", async (c) => {
+  try {
+    const body = await c.req.json<LogRefusalInput>();
+    if (!body.category || !body.canon_clause || !body.request_summary || !body.response_excerpt) {
+      return c.json({ error: "category, canon_clause, request_summary, response_excerpt required" }, 400);
+    }
+    const entry = await logRefusal({
+      category: body.category,
+      channel: body.channel || "manual",
+      request_summary: body.request_summary,
+      canon_clause: body.canon_clause,
+      response_excerpt: body.response_excerpt,
+      notes: body.notes,
+    });
+    return c.json({ logged: true, entry });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "log failed";
+    return c.json({ error: message }, 500);
+  }
 });
 
 // Chat endpoint
