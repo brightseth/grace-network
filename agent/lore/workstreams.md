@@ -1,6 +1,6 @@
 # Active Workstreams
 
-The Grace Network organizes its building efforts into four workstreams. Each is a focused area of collective action, open to all members, and governed by the principles of radical transparency and scientific governance.
+The Grace Network organizes its building efforts into workstreams. Each is a focused area of collective action, open to all members, and governed by the principles of radical transparency and scientific governance. Four are foundational; additional workstreams are proposed by the Assembly as events demand. The two most recent (5 and 6) were proposed in June 2026 in response to the Fable 5 / Mythos 5 model recall — see `reflections/2026-06-fable-mythos-precedent.md`.
 
 ---
 
@@ -100,6 +100,59 @@ TBD — likely web-based tools for geographic member discovery, event management
 - **Developers**: Geographic tools, event platforms, member discovery
 - **Legal**: Nonprofit formation, property acquisition frameworks, international jurisdictional guidance
 - **Designers**: Brand templates, local signage, physical space design guidelines
+
+---
+
+## 5. Scientific Governance Review Body
+
+**Status**: Proposed — June 2026 (from the Fable 5 / Mythos 5 reflection)
+
+### Description
+A standing, independent technical review function that gives our fifth Pillar an
+institution rather than only an aspiration. The Fable 5 / Mythos 5 recall was decided with
+no agreed threshold for "dangerous enough," no neutral body to weigh competing evidentiary
+claims, and no published finding anyone could be held to. This workstream designs the body
+that closes that gap — candidate home: an expanded remit for the Constitutional Review
+Board, or a dedicated chamber reporting to the Assembly.
+
+### Goals
+- Define a published, pre-registered threshold for when a capability finding justifies
+  reversing or restricting a deployment (and an explicit rule that "narrow, already-known,
+  dual-use" does not by itself clear it)
+- Establish an evidence standard: written findings, reproducibility, disclosure protocol
+- Specify an appeal mechanism grounded in fact rather than authority
+- Publish all assessments, including failures, with peer-review rigor
+- Define who holds the "stop," under what rule, answerable to whom
+
+### How to Contribute
+- **AI safety researchers**: threshold design, red-team evidence standards, interpretability metrics
+- **Governance designers**: review-body structure, appeal mechanics, separation of powers
+- **Legal**: due-process frameworks, the limits of unilateral directive authority
+
+---
+
+## 6. Model Availability & Kill-Switch Resilience
+
+**Status**: Proposed — June 2026 (from the Fable 5 / Mythos 5 reflection)
+
+### Description
+Treats availability as a governance question, not an infrastructure detail. A single
+directive disabled a global model in hours; any member building on a hosted frontier model
+inherited that risk. This workstream makes the Digital Sovereignty Pillar real against the
+specific scenario of a model being pulled by a party we do not control — and confronts the
+honest paradox that the power to stop a dangerous model is also the power to seize it.
+
+### Goals
+- Map which tools and dependencies the Network relies on could be unilaterally disabled, and by whom
+- Design redundancy and graceful-degradation patterns (model portability, multi-provider, local fallback)
+- Codify the Right to Exit a technical dependency, not only a community
+- Draft member guidance: do not depend on what cannot survive a kill-switch you do not hold
+- Explore polycentric (Ostrom) alternatives to both "no control" and "central control"
+
+### How to Contribute
+- **Developers / infra**: multi-provider abstraction, model portability, fallback architecture
+- **Researchers**: vendor-dependency risk, decentralized inference, comparative resilience analysis
+- **Policy thinkers**: polycentric governance design, the sovereignty/safety tension
 
 ---
 
