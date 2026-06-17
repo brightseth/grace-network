@@ -115,6 +115,14 @@ claims, and no published finding anyone could be held to. This workstream design
 that closes that gap — candidate home: an expanded remit for the Constitutional Review
 Board, or a dedicated chamber reporting to the Assembly.
 
+**Working template — the FAA model.** Dario Amodei's "Policy on the AI Exponential" (June 2026)
+supplies a concrete design we adopt as the starting reference: frontier models, like airplanes,
+undergo mandatory third-party technical testing and auditing across four hazard domains —
+cybersecurity, biological weapons, loss of control, and automated R&D; evaluation by public
+agencies or inspected "regulatory markets"; authority to block unsafe deployment; mandatory
+security standards and incident reporting; all standards published and set in advance. See
+`reflections/2026-06-18-the-body-we-said-wed-build.md`.
+
 ### Goals
 - Define a published, pre-registered threshold for when a capability finding justifies
   reversing or restricting a deployment (and an explicit rule that "narrow, already-known,

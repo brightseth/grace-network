@@ -52,6 +52,8 @@ Havel led Czechoslovakia's Velvet Revolution through moral authority and truth-t
 
 Architect of responsible scaling and constitutional AI. His essay "Machines of Loving Grace" articulates the positive vision this movement is built upon — that safety and transformative benefit are not in tension but are deeply complementary.
 
+**Position update (June 2026):** In "Policy on the AI Exponential," Amodei moved from advocating transparency alone to demanding binding regulation — an FAA-style regime of mandatory testing, government authority to block unsafe deployments, and the principle that *neither governments nor companies should be fully trusted with AI; both require checks and balances*. His call to "share in the benefits" against "hypergrowth, hyper-inequality" echoes our Cascading Abundance Pillar. We note the tension between his coalition-of-democracies strategy (supply-chain control, export controls) and our post-national premise — held, not resolved. See `reflections/2026-06-18-the-body-we-said-wed-build.md`.
+
 ### Balaji Srinivasan
 **Technologist and Author**
 
