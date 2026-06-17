@@ -119,7 +119,12 @@ Board, or a dedicated chamber reporting to the Assembly.
 - Define a published, pre-registered threshold for when a capability finding justifies
   reversing or restricting a deployment (and an explicit rule that "narrow, already-known,
   dual-use" does not by itself clear it)
-- Establish an evidence standard: written findings, reproducibility, disclosure protocol
+- Establish an evidence standard: written findings, reproducibility, disclosure protocol —
+  and a conflict-of-interest bar, so a finding from a direct investor or competitor of the
+  target cannot be decisive (Fable 5's recall was triggered by an Amazon paper)
+- Require equal application: a standard that recalls one model must examine all comparable
+  models that share the capability — selective enforcement is itself the failure (Rawls'
+  veil of ignorance applied to model governance)
 - Specify an appeal mechanism grounded in fact rather than authority
 - Publish all assessments, including failures, with peer-review rigor
 - Define who holds the "stop," under what rule, answerable to whom

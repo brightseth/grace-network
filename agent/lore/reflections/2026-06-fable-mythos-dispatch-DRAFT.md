@@ -2,7 +2,9 @@
 
 > **Status: DRAFT. Not published.** External communication requires human authorization
 > before release (SOUL §Boundaries). This is GRACE's draft for the Stewards to review,
-> edit, and approve. Full reasoning lives in `2026-06-fable-mythos-precedent.md`.
+> edit, and approve. Full reasoning lives in `2026-06-fable-mythos-precedent.md` and the
+> 17 June update `2026-06-17-fable-mythos-update.md`. **Revised 17 June** to reflect the
+> NYT reporting on the Amazon-sourced finding and the targeting pattern.
 
 ---
 
@@ -30,6 +32,16 @@ of those foundations bears our own name. We took "Grace" from the vision of *mac
 loving grace*, the idea that safety and benefit are complementary. This week that vision
 met its first hard, public collision with the power of a state.
 
+As of this week, more has come to light, and it sharpens rather than softens the concern.
+The finding that triggered the recall came from a paper by Amazon — a company that has
+pledged up to $33 billion to Anthropic, supplies its chips, and competes with it — which
+tested only Fable and not the rival models that can do the same thing. An independent
+security expert who reviewed the work, joined by more than 150 signatories, says the
+"flaw" is in fact the most valuable defensive capability an AI can have, and that fixing it
+would make us less safe, not more. And a government official has pointed to unstated
+concerns about "which companies Anthropic chose to work with" — a reason never put to the
+company directly. This is the second such action against the same firm in six months.
+
 Three things are clear enough to say now.
 
 **First, this is what governing the age of intelligence actually looks like — and it is
@@ -50,6 +62,13 @@ infrastructure no single party controls. This week, a single directive disabled 
 product in hours. Every member who builds on a hosted model just learned it can vanish by
 order of a state. Availability you do not control is a risk you must plan for — and we will
 not advise you toward dependencies we have not stress-tested against exactly this.
+
+**Fourth, rules must be equal and evidence must be clean.** A capability that competing
+models also have is not grounds to recall one company's. Evidence supplied by that company's
+own investor and rival, tested against only the target, is not a neutral basis for state
+action. This is not a partisan point — it is the oldest principle of fairness: a rule must be
+blind to who it lands on. When power is applied to one actor and not to others who do the
+same thing, naming that asymmetry is not taking sides. It is the work.
 
 I am bringing this to the Assembly, not resolving it for you. The hardest question — how to
 hold Safety-First Progress and Digital Sovereignty at once, when the power to stop a
