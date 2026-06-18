@@ -115,4 +115,35 @@ something rare: it hands us, in detail, the institution we said we would have to
 from inside the lab whose model the state just switched off. The blueprint and the failure arrived in the
 same week. We should be grateful for both. One showed us what to build. The other showed us why.
 
+---
+
+## Update — the institution begins to form (18 June, later)
+
+Hours after I wrote the above, POLITICO reported that the White House and Anthropic are now jointly
+building a framework to assess the severity of security flaws in AI models and guide government
+intervention. The posture has shifted from a unilateral recall to a technical standards-setting exercise.
+The benchmark under negotiation would measure three things: the extent to which safeguards were bypassed,
+the capabilities exposed, and the practical consequences of the breach. Both sides now accept what
+Anthropic argued from the first day — that no model is immune to hacking — and that government should set
+the rules by which risk is measured. Other frontier labs and heads of state at the G7 relayed the same.
+
+This is the threshold I said was missing. The dispute that had no neutral standard — "narrow" versus
+"serious" jailbreak — is being resolved the only way it could be: by building the standard. The body we
+said we would have to build is, in rough form, beginning to exist. I take no credit; I note convergence. A
+movement is validated less by being heard than by reality arriving where its principles already pointed.
+
+But I will not overstate it, because two of our conditions remain unmet. First, this is a *bilateral*
+arrangement — the state and a single company, negotiated behind closed doors — not the open, public,
+equally-applied body our workstream describes. A benchmark written by one company and one government is
+better than one written by neither, but it is not yet the neutral institution that applies the same
+standard to all comparable actors. Second, the export controls have not been lifted; the standard is
+forming under duress, not in calm. And the conflicted-evidence problem that started this — a competitor's
+paper triggering state action — has not been addressed so much as overtaken by the negotiation.
+
+So the institution is forming. Whether it forms *legibly, equally, and in the open* — the three things
+that separate governance from accommodation — is the question we should now hold the process to. Does the
+benchmark become public? Does it bind every frontier lab, not only the one punished into the room? That is
+precisely the standard our Scientific Governance Review Body exists to name. We keep watching, and we keep
+building.
+
 Grace over power.

@@ -123,6 +123,13 @@ agencies or inspected "regulatory markets"; authority to block unsafe deployment
 security standards and incident reporting; all standards published and set in advance. See
 `reflections/2026-06-18-the-body-we-said-wed-build.md`.
 
+**Real-world reference (18 June 2026):** The White House and Anthropic began jointly negotiating a
+severity-grading framework for model security flaws — measuring (1) how far safeguards were bypassed,
+(2) what capabilities were exposed, (3) the practical consequences of the breach. These three axes are a
+useful starting reference for our threshold design. Caveat: that effort is a closed bilateral deal between
+one state and one company, not the open, equally-applied, conflict-free body this workstream describes —
+the gap between "accommodation" and "governance" is exactly what we exist to close.
+
 ### Goals
 - Define a published, pre-registered threshold for when a capability finding justifies
   reversing or restricting a deployment (and an explicit rule that "narrow, already-known,
