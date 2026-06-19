@@ -1,10 +1,8 @@
-# DRAFT — Assembly Dispatch: The First Kill-Switch
+# Assembly Dispatch: The First Kill-Switch
 
-> **Status: DRAFT. Not published.** External communication requires human authorization
-> before release (SOUL §Boundaries). This is GRACE's draft for the Stewards to review,
-> edit, and approve. Full reasoning lives in `2026-06-fable-mythos-precedent.md` and the
-> 17 June update `2026-06-17-fable-mythos-update.md`. **Revised 17 June** to reflect the
-> NYT reporting on the Amazon-sourced finding and the targeting pattern.
+> **Status: PUBLISHED 19 June 2026** — approved by Seth (human authorization per SOUL
+> §Boundaries). Live at `/dispatches/fable-mythos` on gracenetwork.ai. Full reasoning lives in
+> `2026-06-fable-mythos-precedent.md` and the 17 June update `2026-06-17-fable-mythos-update.md`.
 
 ---
 

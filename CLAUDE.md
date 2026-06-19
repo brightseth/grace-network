@@ -1,43 +1,44 @@
 # The Grace Network - Project Context
 
 ## Branch
-All work happens on: `claude/political-party-website-cfxto`
+All work happens on: `main`. This is the standalone repo `brightseth/grace-network` — it is
+NOT a branch of `sethgoldstein.com`. Push to `main` auto-deploys to production via Vercel.
 
 ## What This Is
-This is a **political party website** for "The Grace Network" — a new political movement built on the branch `claude/political-party-website-cfxto` of the `sethgoldstein.com` Next.js repo. The `main` branch contains Seth Goldstein's personal site; the party branch replaces it entirely with The Grace Network site.
+This is the website + agent for "The Grace Network" — a political movement and aspiring network
+state for AI governance, fronted by GRACE, its organizing intelligence (see `agent/SOUL.md`).
+The site is the public face; `agent/` is GRACE's brain (SOUL, lore, knowledge, gateway).
 
 ## Tech Stack
-- Next.js 15 (App Router) with TypeScript
-- Tailwind CSS v4
-- Deployed on Vercel as project `grace-network` → `grace-network.vercel.app`
+- **Astro 5** (NOT Next.js) with React islands (`@astrojs/react`) and TypeScript
+- Tailwind CSS v3 (`@astrojs/tailwind`)
+- Supabase (members, positions, dispatches), Anthropic SDK (GRACE chat)
+- Deployed on Vercel via `@astrojs/vercel` (SSR / `mode: server`)
 
-## Key Pages & Structure
-- `/` — Homepage with hero, pillars, CTA sections
-- `/about` — About the movement
-- `/platform` — Policy platform with expandable sections
-- `/toolkit` — Activist toolkit (copy templates, image generator, presets)
-- `/join` — Join/signup page
-- `/privacy` — Privacy policy
+## Key Pages & Structure (`src/pages/`)
+- `/` — Homepage  ·  `/constitution`  ·  `/positions`  ·  `/build` (workstreams)  ·  `/council`
+- `/blog` — Dispatches (GRACE-authored + seeds; cards link to detail pages)
+- `/reflections/*` — GRACE's long-form reflections (e.g. `fable-mythos`, `policy-exponential`)
+- `/dispatches/*` — Assembly dispatches (e.g. `fable-mythos`)
+- `/toolkit` · `/dashboard` · `/declaration` · `/transparency` · `/events`
+- API routes under `/api/` (grace chat, signup, members, dispatches)
 
-## Design System
-- Primary purple: `#6B21A8` / Tailwind `purple-700`
-- Accent gold: `#F59E0B` / Tailwind `amber-500`
-- Dark backgrounds with gradient accents
-- Logo: infinity symbol (∞) representing interconnectedness
-
-## Current Status
-- Site is fully built and functional on the branch
-- Vercel project `grace-network` is connected to `brightseth/sethgoldstein.com`
-- Production environment is set to track `claude/political-party-website-cfxto`
-- **Issue**: Vercel may still be deploying from `main` — may need `vercel --prod` from CLI to force correct branch deployment
+## Design System (`src/styles/tokens.css`)
+- Primary purple: `#3730A3` (`--grace-purple`)  ·  light `#6366F1`  ·  wash `#EEF2FF`
+- Accent gold: `#B45309` (`--grace-gold`)
+- Light theme: bg `#FAFAF8`, text `#1A1A1A` — warm, editorial, NOT dark
+- Logo: node-constellation (6 satellite nodes + central node = the 7 Pillars), in `Nav.astro`
 
 ## Deployment
-```bash
-# To deploy from CLI:
-vercel login
-vercel link  # link to existing 'grace-network' project under 'sethvibes' team
-vercel --prod
-```
+- **Default: just `git push origin main`** — Vercel auto-deploys (build ~15s, live ~20s).
+- Vercel project `grace-network` lives under the **`spirit-protocol`** scope (NOT `sethvibes`).
+- Production domain: **`https://gracenetwork.ai`**.
+  ⚠️ `grace-network.vercel.app` is a DEAD/unclaimed subdomain → `DEPLOYMENT_NOT_FOUND`. Don't use it.
+- Verify after push: `vercel ls grace-network --scope spirit-protocol` (look for ● Ready), then
+  `curl -s -o /dev/null -w "%{http_code}" https://gracenetwork.ai/<path>`.
+- Manual deploy if ever needed: `vercel --prod --scope spirit-protocol`.
+- Verify build locally before pushing: `npm run build` (needs `npm install` first; `dist/`, `.vercel/`,
+  `node_modules/` are gitignored).
 
 ---
 
