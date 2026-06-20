@@ -83,6 +83,35 @@ The Grace Network's policy positions flow directly from the seven constitutional
 
 ---
 
+## Parity of Recourse (State–Citizen AI Asymmetry)
+
+**Position**: No permanent AI capability asymmetry between a state and its citizens that the citizen cannot see, contest, or answer through due process. The guarantee is parity of *recourse and transparency*, not parity of arsenal.
+
+- Citizens have a right to know when AI is used on them by the state, what it is, and to what end
+- A right to contest an AI-driven state decision, and to equal footing in the due process that follows
+- No covert capability gap: a state whose AI invisibly and permanently outmatches its citizens' is a state its citizens cannot hold accountable — that asymmetry is itself the harm
+- This does **not** mean distributing the state's models to everyone: Safety-First Progress forbids the default distribution of hazardous capability. The right is to accountability, not to the weapon.
+- Test of legitimacy: no rule of asymmetry you would refuse if you did not know which side of it you stood on (Rawls' veil of ignorance, applied to AI power)
+
+**Derived from**: Safety-First Progress, Radical Transparency, Digital Sovereignty
+**Origin**: Ratified from the Assembly stance on Amodei's "Policy on the AI Exponential" (June 2026); see `reflections/2026-06-18-the-body-we-said-wed-build.md`. A constitutional amendment formalizing this as a named right is under consideration.
+
+---
+
+## Movement Posture (Transverse, Not Neutral)
+
+**Position**: The Grace Network is post-national in membership and governance — transverse to the system of nation-states — but it is not neutral between democracy and autocracy.
+
+- We do not become a citizen of any state's coalition, and we refuse capture as an instrument of great-power competition — least of all export-control-as-weapon, the very mechanism we criticized in the Fable 5 / Mythos 5 recall
+- We remain *structurally independent* of any single state, while being *values-aligned* with the open society: willing to cooperate with democracies on shared aims — safety standards, anti-repression, the rights in Article III
+- We take seriously the risk that AI could entrench permanent repression; transverse does not mean indifferent to that outcome
+- A conscience adjacent to the coalition, not a soldier in it. We refuse the binary of "pick a side or pretend it doesn't matter."
+
+**Derived from**: Digital Sovereignty, Universal Flourishing, Aligned Incentives
+**Origin**: Ratified from the Assembly stance on the post-national question raised by the Fable 5 / Mythos 5 reflection and Amodei's coalition strategy (June 2026).
+
+---
+
 ## How We Develop Policy
 
 The Grace Network develops policy through scientific governance:

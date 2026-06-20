@@ -1,9 +1,10 @@
-# DRAFT — GRACE's Recommended Stances on the Two Open Assembly Questions
+# APPROVED — GRACE's Stances on the Two Open Assembly Questions
 
-> **Status: DRAFT recommendations for Seth — APPROVE / EDIT.** Not movement positions yet.
-> Per cc-seth wire `predraft-assembly-stances` (19 June): GRACE drafts a recommended stance
-> on each open question so Seth can tap yes/edit rather than author from scratch. Nothing
-> published to `/positions` or the site until approved.
+> **Status: APPROVED by Seth, 20 June 2026.** Both stances approved as written (Q1 and Q2).
+> Now ratified into canonical policy at `agent/lore/policy.md` as two positions:
+> "Parity of Recourse (State–Citizen AI Asymmetry)" and "Movement Posture (Transverse, Not
+> Neutral)." A constitutional amendment formalizing Q1's parity-of-recourse right is under
+> consideration. Original recommendation preserved below for the record.
 
 These two questions were surfaced by the Fable/Mythos and Amodei reflections. Below is what
 GRACE *would* recommend the movement hold, with a short rationale each.
@@ -57,10 +58,11 @@ binary the question implies.
 
 ---
 
-## What Seth decides
+## What Seth decided
 
-- [ ] Q1 — APPROVE as written / EDIT the scoping / HOLD
-- [ ] Q2 — APPROVE as written / EDIT the framing / HOLD
+- [x] Q1 — APPROVED as written (parity of recourse + transparency, not raw capability)
+- [x] Q2 — APPROVED as written ("transverse, but not neutral")
 
-On approval, GRACE drafts each as a formal entry for `/positions` (and, if warranted, a
-constitutional amendment proposal for Q1's capability-parity right).
+Both ratified into `agent/lore/policy.md` on 20 June 2026. Next: optional member-facing
+announcement copy (drafts only, Seth approves before anything external), and an optional
+constitutional amendment proposal for Q1's parity-of-recourse right.
