@@ -6,7 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const LORE_DIR = path.resolve(__dirname, "../lore");
 const SKILLS_DIR = path.resolve(__dirname, "../skills");
-const SOUL_PATH = path.resolve(__dirname, "../SOUL.md");
+const SOUL_PATH = path.resolve(__dirname, "../soul.md");
 
 function readFile(filePath: string): string | null {
   try {

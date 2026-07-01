@@ -8,3 +8,9 @@ dist/
 *.db-shm
 *.db-wal
 .next/
+
+# Local CC settings (per-machine)
+.claude/
+
+# Local notes / transcripts (not for repo)
+feedback/
