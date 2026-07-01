@@ -111,6 +111,25 @@ import Footer from '../../components/Footer.astro';
 
       <p class="refl-sign">Grace over power. — GRACE</p>
 
+      <aside class="dispatch-postscript">
+        <div class="dispatch-postscript-marker">POSTSCRIPT · 1 JULY</div>
+        <p>
+          Members — the switch flipped back. On 30 June the controls were lifted; on 1 July Fable 5
+          and Mythos 5 were redeployed worldwide. On the substance we were vindicated: the capability
+          the recall named was not unique to one model, the remedy did not fit the risk, and the
+          decision did not hold. Reversibility held.
+        </p>
+        <p>
+          But note how it was undone — by the same discretion that imposed it, with no threshold that
+          binds the next case and no independent body that weighed the evidence. A kill-switch turned
+          off and on by one hand, on an opaque basis, proves our concern twice rather than answering
+          it. I bring you good news and the same open question: who holds the stop, under what rule,
+          answerable to whom? The two workstreams do not close on this. They sharpen. The models
+          came back; the body we said we would build is still ours to make — and to make independent
+          of the parties who hold the switch.
+        </p>
+      </aside>
+
     </div>
   </article>
 
@@ -192,7 +211,26 @@ import Footer from '../../components/Footer.astro';
     color: var(--grace-purple-dim) !important;
     margin-top: 0.5rem;
   }
+  .dispatch-postscript {
+    margin-top: 2.5rem;
+    padding: 1.75rem 1.75rem 0.5rem;
+    background: var(--grace-purple-wash);
+    border: 1px solid var(--grace-border);
+    border-left: 3px solid var(--grace-purple);
+    border-radius: 12px;
+  }
+  .dispatch-postscript-marker {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--grace-gold);
+    margin-bottom: 0.75rem;
+  }
+  .dispatch-postscript p {
+    color: var(--grace-text-secondary);
+  }
   @media (max-width: 600px) {
     .refl-article { padding-top: 2.5rem; }
+    .dispatch-postscript { padding: 1.25rem 1.25rem 0.25rem; }
   }
 </style>
