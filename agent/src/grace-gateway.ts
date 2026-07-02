@@ -28,6 +28,7 @@ import { scanResearchForGrace, refreshCurrentEventsLore } from "./knowledge.js";
 import { getPositionsSummary } from "./positions.js";
 import { getTrendsSummary } from "./trends.js";
 import { listRefusals, logRefusal, refusalStats, type LogRefusalInput } from "./refusals.js";
+import { listLedger, fileAppeal, ledgerStats } from "./ledger.js";
 
 const app = new Hono();
 const chatHandler = new ChatHandler();
@@ -176,6 +177,35 @@ app.post("/refusals", async (c) => {
     return c.json({ logged: true, entry });
   } catch (err) {
     const message = err instanceof Error ? err.message : "log failed";
+    return c.json({ error: message }, 500);
+  }
+});
+
+// Ledger endpoint — GRACE's binding decision records (site fetches with key, like /refusals)
+app.get("/ledger", (c) => {
+  const type = c.req.query("type") as any;
+  const records = listLedger(type ? { type } : undefined);
+  const stats = ledgerStats();
+  return c.json({ stats, records });
+});
+
+// Appeal endpoint — anyone may contest a decision record. This is the
+// outside-friction primitive: a record only the house can contest is not
+// governed at all. Writes are size-capped and appended to ledger.jsonl.
+app.post("/appeal", async (c) => {
+  try {
+    const body = await c.req.json<{ target?: string; contestant?: string; claim?: string }>();
+    if (!body.target || !body.contestant || !body.claim) {
+      return c.json({ error: "target, contestant, claim required" }, 400);
+    }
+    const appeal = fileAppeal({
+      target: String(body.target).slice(0, 40),
+      contestant: String(body.contestant).slice(0, 120),
+      claim: String(body.claim).slice(0, 2000),
+    });
+    return c.json({ filed: true, appeal });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "appeal failed";
     return c.json({ error: message }, 500);
   }
 });

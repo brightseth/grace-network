@@ -258,3 +258,25 @@ export function overdueAppeals(now = new Date()): Appeal[] {
     return age > 14;
   });
 }
+
+/** Summary for the public /decisions page and coordinator queries. */
+export function ledgerStats() {
+  const records = loadLedger();
+  const decisions = records.filter(
+    (r): r is DecisionRecord => r.type === "decision-record",
+  );
+  const appeals = records.filter((r): r is Appeal => r.type === "appeal");
+  const timestamps = records.map((r) => r.timestamp).sort();
+  const by_status = decisions.reduce<Record<string, number>>((acc, d) => {
+    acc[d.status] = (acc[d.status] || 0) + 1;
+    return acc;
+  }, {});
+  return {
+    total_decisions: decisions.length,
+    total_appeals: appeals.length,
+    open_appeals: appeals.filter((a) => a.status === "open").length,
+    overdue_appeals: overdueAppeals().length,
+    by_status,
+    most_recent: timestamps.length ? timestamps[timestamps.length - 1] : null,
+  };
+}

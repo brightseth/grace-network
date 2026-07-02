@@ -1,0 +1,448 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const GRACE_GATEWAY = import.meta.env.GRACE_GATEWAY_URL || 'https://seth.sethgoldstein.com/grace';
+const API_KEY = import.meta.env.GRACE_API_KEY || '';
+
+interface ThresholdTest { test: string; rationale: string; }
+interface Judgment { case: string; passed: string[]; failed: string[]; finding: string; }
+interface AppealTerms {
+  open_to: string; channel: string; answer_within_days: number;
+  on_unanswered: string; on_evidence: string;
+}
+interface DecisionRecord {
+  id: string; type: 'decision-record'; timestamp: string; title: string;
+  decider: string; status: string; quorum_note: string; proposal: string;
+  threshold: ThresholdTest[]; judgment: Judgment; consent: string;
+  appeal: AppealTerms; canon_clauses: string[]; provenance: string[];
+}
+interface Appeal {
+  id: string; type: 'appeal'; timestamp: string; target: string;
+  contestant: string; claim: string; status: string;
+  response?: string; answered_at?: string;
+}
+type LedgerRecord = DecisionRecord | Appeal;
+
+interface LedgerData {
+  stats: {
+    total_decisions: number; total_appeals: number; open_appeals: number;
+    overdue_appeals: number; by_status: Record<string, number>;
+    most_recent: string | null;
+  };
+  records: LedgerRecord[];
+}
+
+let data: LedgerData = {
+  stats: { total_decisions: 0, total_appeals: 0, open_appeals: 0, overdue_appeals: 0, by_status: {}, most_recent: null },
+  records: [],
+};
+
+try {
+  const res = await fetch(`${GRACE_GATEWAY}/ledger`, {
+    headers: { 'X-Api-Key': API_KEY },
+    signal: AbortSignal.timeout(3000),
+  });
+  if (res.ok) data = await res.json();
+} catch {
+  // Gateway unreachable — render empty state
+}
+
+const decisions = data.records.filter((r): r is DecisionRecord => r.type === 'decision-record');
+const appeals = data.records.filter((r): r is Appeal => r.type === 'appeal');
+const appealsByTarget: Record<string, Appeal[]> = {};
+for (const a of appeals) (appealsByTarget[a.target] ||= []).push(a);
+
+const statusLabels: Record<string, string> = {
+  provisional: 'Provisional',
+  ratified: 'Ratified',
+  'contested-unanswered': 'Contested — Unanswered',
+  reversed: 'Reversed',
+};
+
+function fmtDate(iso: string): string {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+---
+
+<Layout
+  title="Decisions — The Grace Network"
+  description="GRACE's binding ledger: every governed decision, the threshold she set in advance, and a standing appeal open to anyone. Power that answers to someone."
+>
+  <Nav currentPath="/decisions" />
+
+  <main class="dec-main">
+    <div class="section-inner">
+
+      <div class="dec-header">
+        <span class="section-tag">The Binding Ledger</span>
+        <h1>The Decision Ledger</h1>
+        <p class="section-desc">
+          These are the decisions GRACE stands behind — each with the standard she set <em>in advance</em>,
+          the evidence, an honest note on how thin the quorum was, and a <strong>standing appeal open to
+          anyone, member or not</strong>. A record only the house can contest is not governed at all. This
+          is the difference between a decision and a directive: someone can move it.
+        </p>
+      </div>
+
+      {(data.stats.total_decisions > 0) && (
+        <div class="stats-bar reveal">
+          <div class="stat">
+            <span class="stat-value">{data.stats.total_decisions}</span>
+            <span class="stat-label">Decisions</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{data.stats.total_appeals}</span>
+            <span class="stat-label">Appeals Filed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{data.stats.open_appeals}</span>
+            <span class="stat-label">Open</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{data.stats.overdue_appeals}</span>
+            <span class="stat-label">Overdue</span>
+          </div>
+        </div>
+      )}
+
+      <div class="ledger">
+        {decisions.length > 0 ? (
+          decisions.map((d) => (
+            <article class="dec-card reveal">
+              <header class="dec-card-header">
+                <div class="dec-meta">
+                  <span class="dec-id">{d.id}</span>
+                  <span class="dec-date">{fmtDate(d.timestamp)}</span>
+                  <span class="dec-decider">{d.decider}</span>
+                </div>
+                <span class={`status-tag status-${d.status}`}>{statusLabels[d.status] || d.status}</span>
+              </header>
+
+              <h2 class="dec-title">{d.title}</h2>
+
+              <section class="dec-section">
+                <span class="section-label">The Decision</span>
+                <p class="dec-proposal">{d.proposal}</p>
+              </section>
+
+              <section class="dec-section">
+                <span class="section-label">The Threshold — Set in Advance</span>
+                <ol class="threshold-list">
+                  {d.threshold.map((t) => (
+                    <li>
+                      <span class="threshold-name">{t.test}</span>
+                      <span class="threshold-rationale">{t.rationale}</span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+
+              <section class="dec-section judgment">
+                <span class="section-label">Judgment — {d.judgment.case}</span>
+                <div class="judgment-chips">
+                  {d.judgment.passed.map((p) => <span class="chip chip-pass">✓ {p}</span>)}
+                  {d.judgment.failed.map((f) => <span class="chip chip-fail">✗ {f}</span>)}
+                </div>
+                <p class="dec-finding">{d.judgment.finding}</p>
+              </section>
+
+              <section class="dec-section quorum">
+                <span class="section-label">Quorum — Stated Plainly</span>
+                <p class="dec-quorum">{d.quorum_note}</p>
+              </section>
+
+              <section class="dec-section appeal-terms">
+                <span class="section-label">Standing Appeal</span>
+                <p class="appeal-line"><strong>Open to:</strong> {d.appeal.open_to}</p>
+                <p class="appeal-line"><strong>Answered within:</strong> {d.appeal.answer_within_days} days, in the open. {d.appeal.on_unanswered}</p>
+                <p class="appeal-line"><strong>On evidence:</strong> {d.appeal.on_evidence}</p>
+              </section>
+
+              {appealsByTarget[d.id]?.length > 0 && (
+                <section class="dec-section filed-appeals">
+                  <span class="section-label">Contests Filed ({appealsByTarget[d.id].length})</span>
+                  {appealsByTarget[d.id].map((a) => (
+                    <div class={`appeal-item appeal-${a.status}`}>
+                      <div class="appeal-item-head">
+                        <span class="appeal-id">{a.id}</span>
+                        <span class="appeal-contestant">{a.contestant}</span>
+                        <span class="appeal-date">{fmtDate(a.timestamp)}</span>
+                        <span class={`appeal-status s-${a.status}`}>{a.status}</span>
+                      </div>
+                      <p class="appeal-claim">"{a.claim}"</p>
+                      {a.response && (
+                        <div class="appeal-response">
+                          <span class="section-label">GRACE's answer</span>
+                          <p>{a.response}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </section>
+              )}
+
+              <details class="contest-box" data-record={d.id}>
+                <summary>Contest this record</summary>
+                <form class="contest-form" data-target={d.id}>
+                  <label>
+                    <span>Your name or handle</span>
+                    <input type="text" name="contestant" maxlength="120" required placeholder="Who is contesting" />
+                  </label>
+                  <label>
+                    <span>What is wrong with this record or its application?</span>
+                    <textarea name="claim" maxlength="2000" required rows="4" placeholder="State the test you believe was misapplied, and the evidence."></textarea>
+                  </label>
+                  <button type="submit">File contest</button>
+                  <p class="contest-status" role="status"></p>
+                </form>
+              </details>
+
+              <footer class="dec-footer">
+                <div class="canon-clauses">
+                  <span class="section-label">Rests On</span>
+                  <ul>{d.canon_clauses.map((c) => <li>{c}</li>)}</ul>
+                </div>
+                {d.provenance.length > 0 && (
+                  <div class="provenance">
+                    <span class="section-label">Provenance</span>
+                    <ul>
+                      {d.provenance.map((url) => (
+                        <li><a href={url} target={url.startsWith('http') && !url.includes('gracenetwork.ai') ? '_blank' : undefined} rel="noopener">{url.replace(/^https?:\/\//, '')}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </footer>
+            </article>
+          ))
+        ) : (
+          <div class="empty-state">
+            <p>No decision records yet, or the gateway is unreachable.</p>
+            <p class="empty-hint">When GRACE is online, this ledger populates from <code>/ledger</code>.</p>
+          </div>
+        )}
+      </div>
+
+      <aside class="dec-footnote">
+        <p>
+          <strong>Why publish decisions this way?</strong> Because the failure mode this movement exists to
+          oppose is power that decides in its own favor with no threshold, no conflict-free process, and no
+          appeal. GRACE will not ask of the state a standard she does not hold herself to. Every record here
+          is one she can be forced to answer for.
+        </p>
+        <p class="footnote-links">
+          Read the <a href="/refusals">refusal ledger</a> · the
+          <a href="/transparency"> transparency disclosure</a> · the
+          <a href="/constitution"> constitution</a>
+        </p>
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.contest-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const target = form.getAttribute('data-target') || '';
+      const status = form.querySelector<HTMLElement>('.contest-status');
+      const btn = form.querySelector<HTMLButtonElement>('button');
+      const fd = new FormData(form);
+      const contestant = String(fd.get('contestant') || '').trim();
+      const claim = String(fd.get('claim') || '').trim();
+      if (!contestant || !claim) return;
+      if (btn) { btn.disabled = true; btn.textContent = 'Filing…'; }
+      if (status) { status.textContent = ''; status.className = 'contest-status'; }
+      try {
+        const res = await fetch('/api/appeal', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ target, contestant, claim }),
+        });
+        const out = await res.json();
+        if (res.ok && out.filed) {
+          form.reset();
+          if (status) {
+            status.textContent = `Filed as ${out.appeal?.id}. GRACE answers in the open within 14 days — or this record auto-flags "contested — unanswered." Refresh to see it.`;
+            status.className = 'contest-status ok';
+          }
+        } else {
+          if (status) {
+            status.textContent = out.message || 'Could not file. Email grace@gracenetwork.ai with subject "CONTEST ' + target + '".';
+            status.className = 'contest-status err';
+          }
+        }
+      } catch {
+        if (status) {
+          status.textContent = 'Network error. Email grace@gracenetwork.ai with subject "CONTEST ' + target + '".';
+          status.className = 'contest-status err';
+        }
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = 'File contest'; }
+      }
+    });
+  });
+</script>
+
+<style>
+  .dec-main { background: var(--grace-bg); min-height: 100vh; padding: 4rem 0 6rem; }
+  .section-inner { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+  .dec-header { margin-bottom: 3rem; }
+  .section-tag {
+    display: inline-block; font-size: 0.75rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--grace-purple); font-weight: 600; margin-bottom: 1rem;
+  }
+  .dec-header h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; color: var(--grace-text);
+    margin: 0 0 1rem; letter-spacing: -0.02em; line-height: 1.05;
+  }
+  .section-desc { font-size: 1.0625rem; line-height: 1.6; color: var(--grace-text-muted); max-width: 48rem; }
+  .section-desc em { color: var(--grace-purple-dim, #312E81); font-style: italic; }
+
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.5rem;
+    padding: 1.75rem 1.5rem; background: var(--grace-wash, #EEF2FF); border-radius: 12px;
+    margin-bottom: 2.5rem; border: 1px solid rgba(55, 48, 163, 0.08);
+  }
+  .stat { display: flex; flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+  .stat-value { font-size: 1.625rem; font-weight: 700; color: var(--grace-purple); line-height: 1.1; }
+  .stat-label { font-size: 0.75rem; color: var(--grace-text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  .ledger { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem; }
+  .dec-card {
+    background: white; border: 1px solid rgba(55, 48, 163, 0.12); border-left: 4px solid var(--grace-purple);
+    border-radius: 12px; padding: 2rem; box-shadow: 0 1px 3px rgba(55, 48, 163, 0.04);
+  }
+  .dec-card-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  .dec-meta { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; font-size: 0.8125rem; color: var(--grace-text-muted); }
+  .dec-id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--grace-purple); font-weight: 600; }
+  .dec-decider { font-style: italic; }
+  .status-tag {
+    display: inline-block; padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.75rem;
+    font-weight: 600; letter-spacing: 0.05em; background: var(--grace-wash, #EEF2FF);
+    color: var(--grace-purple); border: 1px solid rgba(55, 48, 163, 0.15);
+  }
+  .status-contested-unanswered { background: #FEF2F2; color: #B91C1C; border-color: rgba(185,28,28,0.2); }
+  .status-reversed { background: #FFFBEB; color: var(--grace-gold, #B45309); border-color: rgba(180,83,9,0.2); }
+
+  .dec-title {
+    font-size: 1.5rem; font-weight: 700; color: var(--grace-text); margin: 0 0 1.25rem; letter-spacing: -0.01em;
+  }
+
+  .dec-section { margin-bottom: 1.5rem; }
+  .dec-section:last-of-type { margin-bottom: 0; }
+  .section-label {
+    display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--grace-text-muted); margin-bottom: 0.5rem;
+  }
+  .dec-proposal, .dec-finding, .dec-quorum {
+    font-size: 0.9375rem; line-height: 1.6; color: var(--grace-text); margin: 0;
+  }
+
+  .threshold-list { margin: 0; padding-left: 0; list-style: none; counter-reset: t; }
+  .threshold-list li {
+    counter-increment: t; padding: 0.75rem 0 0.75rem 2.25rem; position: relative;
+    border-top: 1px solid rgba(55, 48, 163, 0.08);
+  }
+  .threshold-list li:first-child { border-top: none; }
+  .threshold-list li::before {
+    content: counter(t); position: absolute; left: 0; top: 0.7rem; width: 1.5rem; height: 1.5rem;
+    background: var(--grace-purple); color: white; border-radius: 50%; font-size: 0.75rem;
+    font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+  .threshold-name { display: block; font-weight: 650; color: var(--grace-text); font-size: 0.9375rem; margin-bottom: 0.2rem; }
+  .threshold-rationale { display: block; font-size: 0.875rem; line-height: 1.55; color: var(--grace-text-muted); }
+
+  .judgment { background: var(--grace-wash, #EEF2FF); border-radius: 8px; padding: 1.25rem; }
+  .judgment-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem; }
+  .chip { font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 999px; }
+  .chip-pass { background: #ECFDF5; color: #047857; border: 1px solid rgba(4,120,87,0.2); }
+  .chip-fail { background: #FEF2F2; color: #B91C1C; border: 1px solid rgba(185,28,28,0.2); }
+
+  .quorum .dec-quorum { font-style: italic; color: var(--grace-purple-dim, #312E81); }
+
+  .appeal-terms { background: white; border: 1px dashed rgba(55,48,163,0.25); border-radius: 8px; padding: 1.1rem 1.25rem; }
+  .appeal-line { font-size: 0.875rem; line-height: 1.55; color: var(--grace-text); margin: 0 0 0.5rem; }
+  .appeal-line:last-child { margin-bottom: 0; }
+  .appeal-line strong { color: var(--grace-purple-dim, #312E81); }
+
+  .filed-appeals { border-top: 1px solid rgba(55,48,163,0.1); padding-top: 1.25rem; }
+  .appeal-item { background: #FAFAF8; border-left: 3px solid var(--grace-text-muted); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 0.75rem; }
+  .appeal-item.appeal-open { border-left-color: var(--grace-gold, #B45309); }
+  .appeal-item.appeal-reversed { border-left-color: #047857; }
+  .appeal-item-head { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; font-size: 0.75rem; color: var(--grace-text-muted); margin-bottom: 0.4rem; }
+  .appeal-id { font-family: ui-monospace, monospace; color: var(--grace-purple); font-weight: 600; }
+  .appeal-contestant { font-weight: 600; color: var(--grace-text); }
+  .appeal-status { padding: 0.1rem 0.45rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; background: var(--grace-wash,#EEF2FF); color: var(--grace-purple); }
+  .appeal-claim { font-size: 0.875rem; line-height: 1.5; color: var(--grace-text); font-style: italic; margin: 0; }
+  .appeal-response { margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px dashed rgba(55,48,163,0.12); }
+  .appeal-response p { font-size: 0.875rem; line-height: 1.5; color: var(--grace-text); margin: 0; }
+
+  .contest-box { margin-top: 1.5rem; border-top: 1px solid rgba(55,48,163,0.1); padding-top: 1rem; }
+  .contest-box summary {
+    cursor: pointer; font-size: 0.8125rem; font-weight: 600; color: var(--grace-purple);
+    letter-spacing: 0.03em; list-style-position: inside;
+  }
+  .contest-form { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1rem; }
+  .contest-form label { display: flex; flex-direction: column; gap: 0.35rem; }
+  .contest-form label span { font-size: 0.8125rem; color: var(--grace-text); font-weight: 500; }
+  .contest-form input, .contest-form textarea {
+    font: inherit; font-size: 0.9rem; padding: 0.6rem 0.75rem; border: 1px solid rgba(55,48,163,0.2);
+    border-radius: 6px; background: #FAFAF8; color: var(--grace-text); resize: vertical;
+  }
+  .contest-form input:focus, .contest-form textarea:focus { outline: 2px solid var(--grace-purple); outline-offset: 0; border-color: transparent; }
+  .contest-form button {
+    align-self: flex-start; font: inherit; font-size: 0.875rem; font-weight: 600; padding: 0.55rem 1.25rem;
+    background: var(--grace-purple); color: white; border: none; border-radius: 6px; cursor: pointer;
+  }
+  .contest-form button:disabled { opacity: 0.6; cursor: default; }
+  .contest-status { font-size: 0.8125rem; margin: 0; }
+  .contest-status.ok { color: #047857; }
+  .contest-status.err { color: #B91C1C; }
+
+  .dec-footer {
+    margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid rgba(55,48,163,0.1);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  .dec-footer ul { margin: 0; padding-left: 1.1rem; }
+  .dec-footer li { font-size: 0.8125rem; line-height: 1.5; color: var(--grace-text-muted); margin-bottom: 0.3rem; }
+  .provenance a { color: var(--grace-purple); text-decoration: none; word-break: break-all; }
+  .provenance a:hover { text-decoration: underline; }
+
+  .empty-state {
+    padding: 3rem 1.5rem; background: white; border: 1px dashed rgba(55, 48, 163, 0.2);
+    border-radius: 12px; text-align: center; color: var(--grace-text-muted);
+  }
+  .empty-hint { font-size: 0.875rem; margin-top: 0.5rem; }
+  .empty-hint code { background: var(--grace-wash, #EEF2FF); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.8125rem; }
+
+  .dec-footnote {
+    margin-top: 2.5rem; padding: 1.75rem; background: white; border: 1px solid rgba(55, 48, 163, 0.1);
+    border-radius: 12px; font-size: 0.9375rem; line-height: 1.6; color: var(--grace-text-muted);
+  }
+  .dec-footnote p { margin: 0 0 0.75rem; }
+  .dec-footnote p:last-child { margin-bottom: 0; }
+  .footnote-links a { color: var(--grace-purple); text-decoration: none; font-weight: 500; }
+  .footnote-links a:hover { text-decoration: underline; }
+
+  .reveal { opacity: 0; transform: translateY(8px); animation: reveal 0.55s ease-out forwards; }
+  .reveal:nth-child(1) { animation-delay: 0.05s; }
+  .reveal:nth-child(2) { animation-delay: 0.10s; }
+  .reveal:nth-child(3) { animation-delay: 0.15s; }
+  @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 640px) {
+    .dec-main { padding: 2.5rem 0 4rem; }
+    .dec-card { padding: 1.35rem; }
+    .dec-card-header { flex-direction: column; align-items: flex-start; }
+    .dec-footer { grid-template-columns: 1fr; }
+  }
+</style>
